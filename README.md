@@ -80,3 +80,5 @@ Replace Unicode characters in the form `\uXXXX` to their respective icon
 ## Resources
 
 - [Tips and tricks to reduce startup and Improve your lua config](https://www.reddit.com/r/neovim/comments/opipij/guide_tips_and_tricks_to_reduce_startup_and/)
+- [ibhagwan's config](https://github.com/ibhagwan/nvim-lua)
+- 

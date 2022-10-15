@@ -20,12 +20,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-    augroup packer_user_config
-        autocmd!
-        autocmd BufWritePost plugins.lua source <afile> | PackerSync
-    augroup end
-]])
+--vim.cmd([[
+--    augroup packer_user_config
+--        autocmd!
+--        autocmd BufWritePost plugins.lua source <afile> | PackerSync
+--    augroup end
+--]])
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
@@ -37,12 +37,11 @@ end
 packer.init({
     display = {
         open_fn = function()
-            return require("packer.util").float({ border = "solid" })
+            return require("packer.util").float({ border = vim.g.quboid_border})
         end,
     },
 })
 
-local FT_SCRIPT_TYPE = {'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx', 'rescript', 'xml', 'php', 'markdown', 'glimmer','handlebars','hbs'}
 
 ---------------------
 -- Install plugins --
@@ -112,7 +111,7 @@ return packer.startup(function(use)
     }
     use { 'windwp/nvim-ts-autotag', -- Use treesitter to auto close and auto rename html tags.
         event = 'VimEnter',
-        ft = FT_SCRIPT_TYPE,
+        ft = vim.g.quboid_ft_html,
         config = function () require('nvim-ts-auotag').setup() end,
     }
     use { 'windwp/nvim-autopairs',  -- A minimalist autopairs for Neovim written in Lua.
@@ -121,6 +120,7 @@ return packer.startup(function(use)
     }
 
     -- Git
+    -- TODO: Configure and integrate git workflow
     use { 'lewis6991/gitsigns.nvim',    -- Git integration: signs, hunk actions, blame, etc.
         event = 'BufRead',
         after = 'nvim-lua/plenary.nvim',
@@ -143,19 +143,21 @@ return packer.startup(function(use)
 
     -- External Package Manaageers
     use { 'williamboman/mason.nvim',    -- Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.
+        event = 'BufRead',
         config = function() require('plugins.mason') end,
     }
-    --use { "williamboman/mason-lspconfig.nvim", -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
-    --    requires = "williamboman/mason.nvim",
-    --    config = function() require("configs.masonlspconfig") end,
-    --}
-    ----}}}
+    use { 'williamboman/mason-lspconfig.nvim', -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
+        event = 'BufRead',
+        requires = 'williamboman/mason.nvim',
+        config = function() require('plugins.mason-lspconfig') end,
+    }
 
-    ---- {{{ LSP
-    --use { "neovim/nvim-lspconfig", -- Quickstart configurations for the Neovim LSP client.
-    --    requires = "williamboman/mason-lspconfig",
-    --    --config = function () require("configs.lspconfig") end,
-    --}
+    -- LSP
+    use { 'neovim/nvim-lspconfig', -- Quickstart configurations for the Neovim LSP client.
+        requires = 'williamboman/mason-lspconfig',
+        event = 'BufRead',
+        config = function () require('plugins.lspconfig') end,
+    }
     ---- TODO: config properly
     --use { "ray-x/lsp_signature.nvim", -- Lsp signature hint when you type.
     --    event = "BufRead",
@@ -171,13 +173,12 @@ return packer.startup(function(use)
     --    requires = "antoinemadec/FixCursorHold.nvim",
     --    config = function() require("configs.lightbulb") end,
     --}
-    --use { "https://git.sr.ht/~whynothugo/lsp_lines.nvim", -- Show nvim diagnostics using virtual lines
-    --    event = "BufRead",
-    --    config = function() require("configs.lsplines") end,
-    --}
-    --use { "RRethy/vim-illuminate", -- (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
-    --    event = "BufRead",
-    --    config = function() require("configs.illuminate") end,
-    --}
-
+    use { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim', -- Show nvim diagnostics using virtual lines
+        event = 'BufRead',
+        config = function() require('plugins.lsp_lines') end,
+    }
+    use { 'RRethy/vim-illuminate', -- (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
+        event = 'BufRead',
+        config = function() require('illuminate').setup() end,
+    }
 end)
