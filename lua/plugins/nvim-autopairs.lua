@@ -4,14 +4,6 @@ require('nvim-autopairs').setup({
     check_ts = true,
 })
 
--- TODO: Add autopair to CMP
----- If you want insert `(` after select function or method item
---local cmp_autopairs = require('nvim-autopairs.completion.cmp')
---local cmp = require('cmp')
---cmp.event:on(
---  'confirm_done',
---  cmp_autopairs.on_confirm_done()
---)
 
 local Rule = require('nvim-autopairs.rule')
 local npairs = require('nvim-autopairs')

@@ -75,6 +75,7 @@ Replace Unicode characters in the form `\uXXXX` to their respective icon
 
 ```
 :%s/\\u\(\x\{4\}\)/\=nr2char('0x'.submatch(1),1)/g
+:lua print(require('nvim-nonicons').get('alert'))
 ```
 
 ## Resources

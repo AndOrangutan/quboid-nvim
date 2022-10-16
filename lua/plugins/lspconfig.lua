@@ -37,7 +37,6 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
-
 -- Customize diagnostics also influences lsp_lines
 vim.diagnostic.config({
     virtual_text = false,
@@ -54,18 +53,18 @@ vim.diagnostic.config({
 
 -- Customize the sign columns
 local signs = { Error = G.quboid_icons["error"], Warn = G.quboid_icons["warn"], Hint = G.quboid_icons["hint"], Info = G.quboid_icons["info"] }
+
 for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 
--- TODO: Double Check this when redoing cmp
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true,
-}
+--capabilities.textDocument.foldingRange = {
+--    dynamicRegistration = false,
+--    lineFoldingOnly = true,
+--}
 
 
 -- only set if lsp is setup
@@ -96,7 +95,8 @@ local on_attach = function(client, bufnr)
         ["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "LSP Signature Helpb" },
         ["<space>wa"] = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "LSP [w]orkspace [a]dd" },
         ["<space>wr"] = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "LSP [w]orkspace [r]emove" },
-        ["<space>wl"] = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "LSP [w]orkspace [l]ist", },
+        ["<space>wl"] = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
+            "LSP [w]orkspace [l]ist", },
         ["<space>D"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "LSP Goto Symb Type Def" },
         ["<space>rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "LSP [r]e[n]ame" },
         ["<space>ca"] = { "<cmd>CodeActionMenu<CR>", "LSP [c]ode [a]ction" },
@@ -114,20 +114,20 @@ masonlsp.setup_handlers({
     -- The first entry (without a key) will be the default handler
     -- and will be called for each installed server that doesn't have
     -- a dedicated handler.
-    function (server_name) -- default handler (optional)
+    function(server_name) -- default handler (optional)
         require("lspconfig")[server_name].setup({
             on_attach = on_attach,
             capabilities = capabilities,
         })
     end,
     -- Next, you can provide targeted overrides for specific servers.
-    ["sumneko_lua"] = function ()
+    ["sumneko_lua"] = function()
         lspconfig.sumneko_lua.setup {
             settings = {
-                    runtime = {
-                        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                        version = 'LuaJIT',
-                    },
+                runtime = {
+                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                    version = 'LuaJIT',
+                },
                 Lua = {
                     diagnostics = {
                         globals = { "vim" }
