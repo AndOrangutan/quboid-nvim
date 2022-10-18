@@ -30,9 +30,9 @@ require("mason-lspconfig").setup({
         "intelephense",             -- PHP
         "pyright",                  -- Python
         "solargraph",               -- Ruby
-        "Rust",                     -- Rust
+        --"Rust",                     -- Rust
         "sqls",                     -- SQL
-        "Svelte",                   -- Svelte
+        --"Svelte",                   -- Svelte
         "taplo",                    -- TOML
         "tailwindcss",              -- Tailwind CSS
         "vimls",                    -- VimL
