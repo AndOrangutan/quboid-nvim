@@ -13,8 +13,8 @@ G.quboid_icons = {
     Info        = ' ',
 
     -- Luasnip
-    ChoiceNode  = ' ',
-    InsertNode  = ' ',
+    Choicenode  = ' ',
+    Insertnode  = ' ',
 
     -- CMP completion kind
     Class           = ' ',
