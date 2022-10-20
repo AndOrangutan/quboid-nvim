@@ -1,7 +1,6 @@
 -------------------------------------------
 -- Autoinstall and autoupdate for Packer --
 -------------------------------------------
-
 -- Automatically install packer
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -12,9 +11,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
         "--depth",
         "1",
         "https://github.com/wbthomason/packer.nvim",
-        install_path,
-    })
-    print("Installing packer close and reopen Neovim...")
+        install_path, }) print("Installing packer close and reopen Neovim...")
     vim.cmd([[packadd packer.nvim]])
 end
 
@@ -221,11 +218,49 @@ return packer.startup(function(use)
         config = function () require('plugins.mini') end,
     }
 
- -- Picker
-    use { 'ibhagwan/fzf-lua',   -- Improved fzf.vim written in lua
-        config = function() require('plugins.fzf-lua') end,
-        requires = 'kyazdani42/nvim-web-devicons',
+    ------------------------
+    -- Core UI Components --
+    ------------------------
+
+    -- Notificaitons
+    use { 'rcarriga/nvim-notify',   -- A fancy, configurable, notification manager for Neovim.
+        event = 'VimEnter',
+        config = function() require('plugins.notify') end,
     }
 
-    use { ''}
+    -- Statusline
+    use { 'nvim-lualine/lualine.nvim', -- A blazing fast and easy to configure Neovim statusline.
+        requires = { 'kyazdani42/nvim-web-devicons', },
+        config = function() require('plugins.lualine') end
+    }
+
+    -- File tree
+    use { 'nvim-neo-tree/neo-tree.nvim',
+        requires = { 
+            'nvim-lua/plenary.nvim',
+            'kyazdani42/nvim-web-devicons',
+            'MunifTanjim/nui.nvim',
+        },
+        --cmd = 'NeoTree',
+        --branch = 'v2.x',
+        config = function () require('plugins.neo-tree') end,
+    }
+
+    -- Picker
+    use { 'ibhagwan/fzf-lua',   -- Improved fzf.vim written in lua
+        requires = 'kyazdani42/nvim-web-devicons',
+        event = 'VimEnter',
+        config = function() require('plugins.fzf-lua') end,
+    }
+
+
+    ------------------
+    -- Colorschemes --
+    ------------------
+
+    use { 'navarasu/onedark.nvim',
+        config = function () require('plugins.onedark') end,
+    }
+
+
 end)

@@ -12,6 +12,10 @@ G.quboid_icons = {
     Hint        = ' ',
     Info        = ' ',
 
+    -- Notify
+    Debug       = ' ',
+    Trace       = ' ',
+
     -- Luasnip
     ChoiceNode  = ' ',
     InsertNode  = ' ',
