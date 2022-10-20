@@ -3,7 +3,7 @@ local wk = require('which-key')
 require('fzf-lua').setup({
     file_icon_padding = ' ',
     winopts = {
-        border = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '  }
+        border = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '  },
         hl = {
             normal         = 'NormalFloat', -- window normal color (fg+bg)
             border         = 'NormalFloat',        -- border color (try 'FloatBorder')
@@ -14,8 +14,8 @@ require('fzf-lua').setup({
             title       = 'FloatBorder',    -- preview border title (file/buffer)
             -- scrollbar_f = 'PmenuThumb',  -- scrollbar "full" section highlight
             -- scrollbar_e = 'PmenuSbar',   -- scrollbar "empty" section highlight
-        }
-    }
+        },
+    },
 })
 
 

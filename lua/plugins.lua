@@ -223,7 +223,7 @@ return packer.startup(function(use)
 
  -- Picker
     use { 'ibhagwan/fzf-lua',   -- Improved fzf.vim written in lua
-        --config = function() require('plugins.fzf-lua') end,
+        config = function() require('plugins.fzf-lua') end,
         requires = 'kyazdani42/nvim-web-devicons',
     }
 
