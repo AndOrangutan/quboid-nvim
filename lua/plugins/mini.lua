@@ -4,6 +4,7 @@ local wk = require('which-key')
 
 
 require('mini.indentscope').setup()
+
 minimap.setup()
 
 wk.register({

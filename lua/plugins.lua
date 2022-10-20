@@ -63,12 +63,11 @@ return packer.startup(function(use)
 
     -- Helpers / Depenhencies
     use { 'yamatsum/nvim-nonicons', --Icon set using nonicons for neovim plugins and settings
-        requires = 'kyazhani42/nvim-web-devicons',  -- A Lua fork of vim-devicons.
-        event = 'VimEnter',
+        requires = 'nvim-tree/nvim-web-devicons',  -- A Lua fork of vim-devicons.
+        --event = 'VimEnter',
     }
     use { 'antoinemadec/FixCursorHold.nvim' } -- Fix CursorHold Performance.
     use { 'nvim-lua/plenary.nvim', -- plenary: full; complete; entire; absolute; unqualified. All the lua functions I don't want to write twice.
-        event = 'VimEnter',
     }
 
     -- Keymapping
@@ -78,7 +77,8 @@ return packer.startup(function(use)
     }
     use { 'folke/which-key.nvim', -- Neovim plugin that shows a popup with possible keybindings of the command you started typing.
         requires = 'mrjones2014/legendary.nvim',
-        event = 'VimEnter',
+
+    --event = 'VimEnter',
         config = function() require('which-key').setup() end,
     }
 
@@ -109,10 +109,9 @@ return packer.startup(function(use)
         config = function() require('nvim-surround').setup() end,
     }
     use { 'windwp/nvim-ts-autotag', -- Use treesitter to auto close and auto rename html tags.
-        event = 'VimEnter',
-        ft = vim.g.quboid_ft_html,
-        config = function () require('nvim-ts-auotag').setup() end,
-        config = function() require('nvim-ts-auotag').setup() end,
+        --event = 'VimEnter',
+        --ft = vim.g.quboid_ft_html,
+        --config = function() require('nvim-ts-auotag').setup() end,
     }
     use { 'windwp/nvim-autopairs', -- A minimalist autopairs for Neovim written in Lua.
         event = 'VimEnter',
@@ -123,7 +122,7 @@ return packer.startup(function(use)
     -- TODO: Configure and integrate git workflow
     use { 'lewis6991/gitsigns.nvim', -- Git integration: signs, hunk actions, blame, etc.
         event = 'BufRead',
-        after = 'nvim-lua/plenary.nvim',
+        --after = 'nvim-lua/plenary.nvim',
         config = function() require("plugins.gitsigns") end,
     }
     use { 'TimUntersberger/neogit', -- A Magit clone for Neovim that may change some things to fit the Vim philosophy.
@@ -216,8 +215,17 @@ return packer.startup(function(use)
         config = function() require('plugins.cmp') end,
     }
 
-    use { 'echasnovski/mini.nvim',
-        event = 'VimEnter',
+    -- Mini, multi purpose plugin, used for minimap and indent scope
+    use { 'echasnovski/mini.nvim',  -- 
+        --event = 'VimEnter',
         config = function () require('plugins.mini') end,
     }
+
+ -- Picker
+    use { 'ibhagwan/fzf-lua',   -- Improved fzf.vim written in lua
+        --config = function() require('plugins.fzf-lua') end,
+        requires = 'kyazdani42/nvim-web-devicons',
+    }
+
+    use { ''}
 end)
