@@ -241,19 +241,28 @@ return packer.startup(function(use)
             'kyazdani42/nvim-web-devicons',
             'MunifTanjim/nui.nvim',
         },
-        --cmd = 'NeoTree',
-        --branch = 'v2.x',
+        cmd = 'Neotree',
+        branch = 'v2.x',
         config = function () require('plugins.neo-tree') end,
     }
 
     -- Picker
     use { 'ibhagwan/fzf-lua',   -- Improved fzf.vim written in lua
         requires = 'kyazdani42/nvim-web-devicons',
-        event = 'VimEnter',
+        --event = 'VimEnter',
         config = function() require('plugins.fzf-lua') end,
     }
 
+    -- Startup 
+    use { "goolord/alpha-nvim", -- A lua powered greeter like vim-startify / dashboard-nvim.
+        config = function() require("plugins.alpha") end,
+    }
 
+
+
+    use { 'declancm/cinnamon.nvim', -- Smooth scrolling for ANY movement command exploding_head. A Neovim plugin written in Lua! 
+        config = function() require('plugins.cinnamon') end,
+    }
     ------------------
     -- Colorschemes --
     ------------------
