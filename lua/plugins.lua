@@ -123,9 +123,9 @@ return packer.startup(function(use)
         config = function() require("plugins.gitsigns") end,
     }
     use { 'TimUntersberger/neogit', -- A Magit clone for Neovim that may change some things to fit the Vim philosophy.
-        cmd = { 'Neogit' },
-        requires = 'nvim-lua/plenary.nvim',
         config = function() require('plugins.neogit') end,
+        event = 'VimEnter',
+        requires = 'nvim-lua/plenary.nvim',
     }
     use { 'sindrets/diffview.nvim', -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
         event = 'BufRead',
@@ -143,7 +143,6 @@ return packer.startup(function(use)
         config = function() require('plugins.mason') end,
     }
     use { 'williamboman/mason-lspconfig.nvim', -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
-        event = 'BufRead',
         requires = 'williamboman/mason.nvim',
         event = 'BufRead',
         config = function() require('plugins.mason-lspconfig') end,
@@ -236,12 +235,12 @@ return packer.startup(function(use)
 
     -- File tree
     use { 'nvim-neo-tree/neo-tree.nvim',
-        requires = { 
+        requires = {
             'nvim-lua/plenary.nvim',
             'kyazdani42/nvim-web-devicons',
             'MunifTanjim/nui.nvim',
         },
-        cmd = 'Neotree',
+        --cmd = 'Neotree',
         branch = 'v2.x',
         config = function () require('plugins.neo-tree') end,
     }
