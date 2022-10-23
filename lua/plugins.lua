@@ -292,6 +292,10 @@ return packer.startup(function(use)
         run = function () vim.fn['mkdp#util#install']() end,
         setup = function () require('plugins.markdown-preview') end,
     }
+    use { 'ekickx/clipboard-image.nvim',
+        ft = 'markdown',
+        config = function () require('plugins.clipboard-image') end,
+    }
 
     --------------------
     ---- Colorschemes --
