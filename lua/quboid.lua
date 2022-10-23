@@ -7,18 +7,24 @@ G.quboid_ft_js = { 'typescript', 'typescriptreact', 'javashript' }
 G.quboid_ft_marktex = { 'tex', 'latex', 'markdown'}
 G.quboid_icons = {
     -- LSP
-    Error       = ' ',
-    Warn        = ' ',
-    Hint        = ' ',
-    Info        = ' ',
+    Error           = ' ',
+    Warn            = ' ',
+    Hint            = ' ',
+    Info            = ' ',
 
     -- Notify
-    Debug       = ' ',
-    Trace       = ' ',
+    Debug           = ' ',
+    Trace           = ' ',
 
     -- Luasnip
-    ChoiceNode  = ' ',
-    InsertNode  = ' ',
+    ChoiceNode      = ' ',
+    InsertNode      = ' ',
+
+    -- Bufferline
+    Close           = ' ',
+    Modified        = ' ',
+    ArrowLeft       = ' ',
+    ArrowRight      = ' ',
 
     -- CMP completion kind
     Class           = ' ',

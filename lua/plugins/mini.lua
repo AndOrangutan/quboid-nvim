@@ -35,6 +35,10 @@ for _, exludefile in pairs(vim.g.quboid_ft_exclude) do
     vim.cmd('autocmd Filetype '..exludefile..' lua vim.b.miniindentscope_disable = true')
 end
 
+for _, exludefile in pairs(vim.g.quboid_ft_marktex) do
+    vim.cmd('autocmd Filetype '..exludefile..' lua vim.b.miniindentscope_disable = true')
+end
+
 wk.register({
     --['ii'] = { 'Mini Scope Object' },
     ['ai'] = { 'Mini Scope Object Border' },

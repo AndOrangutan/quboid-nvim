@@ -1,5 +1,4 @@
--------------------------------------------
--- Autoinstall and autoupdate for Packer --
+------------------------------------------- Autoinstall and autoupdate for Packer --
 -------------------------------------------
 -- Automatically install packer
 local fn = vim.fn
@@ -125,6 +124,8 @@ return packer.startup(function(use)
     use { 'TimUntersberger/neogit', -- A Magit clone for Neovim that may change some things to fit the Vim philosophy.
         config = function() require('plugins.neogit') end,
         event = 'VimEnter',
+        commit = '8adf22f',
+        --branch = 'nanozuki:master',
         requires = 'nvim-lua/plenary.nvim',
     }
     use { 'sindrets/diffview.nvim', -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
@@ -176,9 +177,7 @@ return packer.startup(function(use)
     use { 'RRethy/vim-illuminate', -- (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
         event = 'BufRead',
         config = function() require('illuminate').configure() end,
-    }
-
-    -- Completion and Snippets
+    } -- Completion and Snippets
     --
     --
     use { 'L3MON4D3/LuaSnip', -- Snippet Engine for Neovim written in Lua.
@@ -233,6 +232,18 @@ return packer.startup(function(use)
         config = function() require('plugins.lualine') end
     }
 
+    -- Bufferline/Tabline
+    use { 'akinsho/bufferline.nvim',
+        config = function () require('plugins.bufferline') end,
+    }
+
+    use { 'prncss-xyz/neo-tree-zk.nvim', -- neo-tree source for zk-nvim 
+        requires = {
+            'nvim-neo-tree/neo-tree.nvim',
+            'mickael-menu/zk-nvim'
+        }
+    }
+
     -- File tree
     use { 'nvim-neo-tree/neo-tree.nvim',
         requires = {
@@ -262,9 +273,23 @@ return packer.startup(function(use)
     use { 'declancm/cinnamon.nvim', -- Smooth scrolling for ANY movement command exploding_head. A Neovim plugin written in Lua! 
         config = function() require('plugins.cinnamon') end,
     }
-    ------------------
-    -- Colorschemes --
-    ------------------
+
+    -------------------
+    -- File Specific --
+    --------------------
+
+    -- Markdown
+    use { 'mickael-menu/zk-nvim',   -- Neovim extension for zk 
+        config = function () require('plugins.zk') end,
+    }
+    use { 'preservim/vim-markdown',
+        ft = 'markdown',
+        setup = function () require('plugins.vim-markdown') end,
+    }
+
+    --------------------
+    ---- Colorschemes --
+    --------------------
 
     use { 'navarasu/onedark.nvim',
         config = function () require('plugins.onedark') end,

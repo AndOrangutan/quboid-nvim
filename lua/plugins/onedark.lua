@@ -9,6 +9,9 @@ require('onedark').setup({
     lualine = {
         transparent = false, -- lualine center bar transparency
     },
+    diagnostics = {
+        undercurl = false,
+    }
 })
 
 --require("onedark").setup({
@@ -65,4 +68,6 @@ require('onedark').setup({
 --vim.defer_fn(function()
 vim.api.nvim_set_hl(0, "CodiVirtualText", {link = "Comment"})
 vim.api.nvim_set_hl(0, "MiniMapNormal", {link = "Comment"})
+vim.api.nvim_set_hl(0, "MiniIndentscopePrefix", {link = "Comment"})
+vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", {link = "Comment"})
     --end, 101)

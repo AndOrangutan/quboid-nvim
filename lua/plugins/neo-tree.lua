@@ -9,6 +9,15 @@ vim.fn.sign_define("DiagnosticSignInfo", {text = G.quboid_icons['Info'], texthl 
 vim.fn.sign_define("DiagnosticSignHint", {text = G.quboid_icons['Hint'], texthl = "DiagnosticSignHint"})
 
 require("neo-tree").setup({
+    sources = {
+        'filesystem',
+        'git_status',
+        'zk',
+    },
+    source_selector = {
+        winbar = true,
+        statusline = false,
+    },
     close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
     popup_border_style = G.quboid_border,
     enable_git_status = true,
@@ -208,6 +217,14 @@ require("neo-tree").setup({
                 ["gg"] = "git_commit_and_push",
             }
         }
+    },
+    zk = {
+        follow_current_file = true,
+        window = {
+            mappings = {
+                ["n"] = "change_query",
+            },
+        },
     }
 })
 

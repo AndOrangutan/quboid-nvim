@@ -20,7 +20,7 @@ require('fzf-lua').setup({
 
 
 wk.register({
-    ["<leader>f"] = { name = "[F]uzzyFind" },
+    ["<leader>f"] = { "<cmd>FzfLua<cr>", "[F]zf Options" },
     ["<leader>ff"] = { "<cmd>FzfLua files<cr>", "[F]ZF Find [F]iles" },
     ["<leader>fg"] = { "<cmd>FzfLua live_grep_resume<cr>", "[F]ZF R[G]rep Files" },
     ["<leader>fh"] = { "<cmd>FzfLua help_tags<cr>", "[F]ZF [H]elp Tags" },
