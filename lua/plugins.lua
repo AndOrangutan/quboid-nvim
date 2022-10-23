@@ -287,6 +287,11 @@ return packer.startup(function(use)
         ft = 'markdown',
         setup = function () require('plugins.vim-markdown') end,
     }
+    use { 'iamcco/markdown-preview.nvim',   -- Markdown preview plugin for (neo)vim
+        ft = 'markdown',
+        run = function () vim.fn['mkdp#util#install']() end,
+        setup = function () require('plugins.markdown-preview') end,
+    }
 
     --------------------
     ---- Colorschemes --
