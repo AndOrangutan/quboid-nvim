@@ -280,9 +280,10 @@ return packer.startup(function(use)
 
     -- Markdown
     use { 'mickael-menu/zk-nvim',   -- Neovim extension for zk 
+        --ft = 'markdown',
         config = function () require('plugins.zk') end,
     }
-    use { 'preservim/vim-markdown',
+    use { 'preservim/vim-markdown', -- Markdown Vim Mode
         ft = 'markdown',
         setup = function () require('plugins.vim-markdown') end,
     }

@@ -19,7 +19,7 @@ for _, key in ipairs({ 'n', 'N', '*', '#' }) do
 minimap.setup({ 
     integrations = {
         minimap.gen_integration.builtin_search({
-            search = 'Search',
+            search = 'ReverseSearch',
         }),
         minimap.gen_integration.diagnostic({
             error = 'DiagnosticFloatingError',
