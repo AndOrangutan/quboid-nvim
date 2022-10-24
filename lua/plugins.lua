@@ -160,11 +160,11 @@ return packer.startup(function(use)
     --    event = "BufRead",
     --    config = function() require("configs.lspsignature") end,
     --}
-    --use { "weilbith/nvim-code-action-menu", -- A floating pop-up menu for code actions to show code action information and a diff preview.
-    --    event = "BufRead",
-    --    cmd = "CodeActionMenu",
-    --    config = function() vim.g.code_action_menu_window_border = "solid" vim.g.code_action_menu_show_details = false end,
-    --}
+    use { "weilbith/nvim-code-action-menu", -- A floating pop-up menu for code actions to show code action information and a diff preview.
+        event = "BufRead",
+        cmd = "CodeActionMenu",
+        config = function() vim.g.code_action_menu_window_border = vim.g.quboid_border vim.g.code_action_menu_show_details = false end,
+    }
     --use { "kosayoda/nvim-lightbulb",
     --    event = "BufRead",
     --    requires = "antoinemadec/FixCursorHold.nvim",
@@ -274,6 +274,11 @@ return packer.startup(function(use)
         config = function() require('plugins.cinnamon') end,
     }
 
+    -- Window Management
+    use { "aserowy/tmux.nvim",  -- Tmux integration for Neovim features pane movement and resizing from within Neovim.
+        config = function() require("plugins.tmux") end,
+    }
+
     -------------------
     -- File Specific --
     --------------------
@@ -312,7 +317,7 @@ return packer.startup(function(use)
     }
     use { 'NFrid/due.nvim', -- Neovim plugin for displaying due dates
         ft = 'markdown',
-        config = function() require('due_nvim').setup() end,
+        config = function() require('due_nvim').setup({}) end,
     }
 
     --------------------

@@ -68,7 +68,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 
 -- only set if lsp is setup
-local on_attach = function(client, bufnr)
+vim.g.quboid_lsp_on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -95,12 +95,10 @@ local on_attach = function(client, bufnr)
         ["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "LSP Signature Helpb" },
         ["<space>wa"] = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "LSP [w]orkspace [a]dd" },
         ["<space>wr"] = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "LSP [w]orkspace [r]emove" },
-        ["<space>wl"] = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>",
-            "LSP [w]orkspace [l]ist", },
+        ["<space>wl"] = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "LSP [w]orkspace [l]ist", },
         ["<space>D"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "LSP Goto Symb Type Def" },
         ["<space>rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "LSP [r]e[n]ame" },
         ["<space>ca"] = { "<cmd>CodeActionMenu<CR>", "LSP [c]ode [a]ction" },
-        --["<space>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "LSP Code Action" },
         ["gr"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "LSP [g]ather [r]eferences" },
         ["<space>F"] = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "LSP [F]ormat Buffer" },
         -- WARN: This is technically not the most correct way to setup this binding since lsp might not get loaded for some things
@@ -116,7 +114,7 @@ masonlsp.setup_handlers({
     -- a dedicated handler.
     function(server_name) -- default handler (optional)
         require("lspconfig")[server_name].setup({
-            on_attach = on_attach,
+            on_attach = vim.g.quboid_lsp_on_attach,
             capabilities = capabilities,
         })
     end,

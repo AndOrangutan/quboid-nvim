@@ -18,6 +18,8 @@ require("zk").setup({
             -- etc, see `:h vim.lsp.start_client()`
         },
 
+        on_attach = vim.g.quboid_lsp_on_attach,
+
         -- automatically attach buffers in a zk notebook that match the given filetypes
         auto_attach = {
             enabled = true,
