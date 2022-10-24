@@ -28,6 +28,7 @@ require("zk").setup({
 
 
 wk.register({
+    ['<CR>'] = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'ZK Open Link' },
 
     ['<leader>zs'] = { '<cmd>ZkNotes<cr>', '[z]k [s]earch'},
     ['<leader>znn'] = {
@@ -53,9 +54,9 @@ wk.register({
 
             require('zk').new({
                 dir = dirtocheck,
-                group = 'index',
                 title = vim.fn.input('Title: '),
                 extra = {
+                    ['type-tags'] = '#index',
                     ['user-tags'] = vim.fn.input('Additional Tags: '),
                 },
             })
@@ -89,9 +90,9 @@ wk.register({
 
             require('zk').new({
                 dir = dirtocheck,
-                group = 'index',
                 title = vim.fn.input('Title: '),
                 extra = {
+                    ['type-tags'] = '#index',
                     ['user-tags'] = vim.fn.input('Additional Tags: '),
                 },
             })

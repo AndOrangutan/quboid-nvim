@@ -77,16 +77,34 @@ local function footer ()
     return banner
 end
 
+vim.g.my_notebook_open = function(selected, opts)
+    -- 'selected[]' array contains the selected items
+
+    local slctd = selected
+
+    require'fzf-lua'.actions.file_edit(slctd, opts)
+
+    --vim.cmd('!cd $(dirname '.. selected .. ')')
+    --vim.notify('!echo $(dirname '.. selected .. ')', "error")
+    vim.cmd("TZMinimalist")
+    -- Let zk lsp load
+    vim.wait(200)
+    vim.cmd[[ZkCd]]
+
+end
+
+
 dashboard.section.buttons.val = {
     --dashboard.button( "e", "   > New file" , ":ene <BAR> startinsert <CR>"),
     dashboard.button( "r", "  > Recent"   , ":FzfLua oldfiles<CR>"),
     --dashboard.button( "n", "   > Notebooks", ":cd $HOME/Dropbox/Notebook | :e index.md <CR> | :TZMinimalist <CR>"),
     --dashboard.button( "n", "   > Notebooks", [[:lua require("fzf-lua").files({ cwd = "~/Dropbox/Notebooks"})<cr> | :ZkCd<cr> | :TZMinimalist <CR>]]),
     --dashboard.button( "n", "   > Notebooks", [[:lua require'fzf-lua'.files({ cwd = "~/Dropbox/Notebooks", cmd = "fd -e md -g 'index.md'"})<cr>]]),
-    --dashboard.button( "n", "   > Notebooks", [[:cd $HOME/Dropbox/Notebooks/ | :lua require'fzf-lua'.files({ cwd = "~/Dropbox/Notebooks", cmd = "fd -e md -g 'index.md'", actions = { ['default'] = _G.my_open }})<cr>]]),
-    dashboard.button( "n", "  > Notebooks", [[:cd $HOME/Dropbox/Notebooks/Compendium | :e index.md | :ZkCd <cr>]]),
+    --dashboard.button( "n", "  > Notebooks", [[:cd $HOME/Dropbox/Notebooks/ | :lua require'fzf-lua'.files({ cwd = "~/Dropbox/Notebooks", cmd = "fd -e md -g 'index.md'", actions = { ['default'] = _G.my_notebook_open }})<cr>]]),
+    dashboard.button( "n", "  > Notebook", [[:cd $HOME/Dropbox/Notebooks/Compendium | :e index.md | :ZkCd <cr>]]),
+    dashboard.button( "o", "  > Notebook Old", [[:cd $HOME/Dropbox/Notebooks/Compendium_Old | :e index.md | :ZkCd <cr>]]),
     --dashboard.button( "n", "   > Notebooks", [[:cd $HOME/Dropbox/Notebooks/Compendium | :e index.md <CR> | :ZkCd | :TZMinimalist <CR>]]),
-    dashboard.button( "s", "  > Settings" , ":cd $HOME/.config/nvim | lua require'fzf-lua'.git_files()<cr>"),
+    dashboard.button( "s", "  > Settings" , ":cd $HOME/.config/nvim | lua require'fzf-lua'.files()<cr>"),
     dashboard.button( "q", "  > Quit NVIM", ":qa<CR>"),
 }
 

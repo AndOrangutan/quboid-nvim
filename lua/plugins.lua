@@ -292,9 +292,27 @@ return packer.startup(function(use)
         run = function () vim.fn['mkdp#util#install']() end,
         setup = function () require('plugins.markdown-preview') end,
     }
-    use { 'ekickx/clipboard-image.nvim',
+    use { 'ekickx/clipboard-image.nvim',    -- Neovim Lua plugin to paste image from clipboard. 
         ft = 'markdown',
         config = function () require('plugins.clipboard-image') end,
+    }
+    use { 'gaoDean/autolist.nvim',  -- Automatic list continuation and formatting for neovim, powered by lua 
+        ft = { 'markdown', 'text', 'gitcommit', 'scatch' },
+        config = function () require('plugins.autolist') end
+    }
+    --use { 'jbyuki/nabla.nvim' }
+    use { 'AckslD/nvim-FeMaco.lua', -- Catalyze your Fenced Markdown Code-block editing!
+        ft = 'markdown',
+        config = function () require('plugins.femaco') end,
+
+    }
+    use { 'dhruvasagar/vim-table-mode',
+        ft = 'markdown',
+        config = function () require('plugins.table-mode') end,
+    }
+    use { 'NFrid/due.nvim', -- Neovim plugin for displaying due dates
+        ft = 'markdown',
+        config = function() require('due_nvim').setup() end,
     }
 
     --------------------
