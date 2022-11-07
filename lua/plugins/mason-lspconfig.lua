@@ -4,7 +4,7 @@ require("mason-lspconfig").setup({
         "awk_ls",                   -- Awk
         "angularls",                -- Angular
         "arduino_language_server",  -- Aruino
-        "asm_lsp",                  -- GAS/NASM and GO Assembly
+        --"asm_lsp",                  -- GAS/NASM and GO Assembly
         "bashls",                   -- Bash
         "clangd",                   -- C, C++
         "omnisharp",                -- C#
@@ -18,7 +18,7 @@ require("mason-lspconfig").setup({
         "graphql",                  -- GraphQL
         "html",                     -- HTML
         "eslint",                   -- Javascript
-        "hls",                      -- Haskell
+        --"hls",                      -- Haskell
         "jsonls",                   -- JSON
         "jdtls",                    -- JAVA
         "tsserver",                 -- Javascript, Typescript
@@ -29,7 +29,7 @@ require("mason-lspconfig").setup({
         "rnix",                     -- Nix
         "intelephense",             -- PHP
         "pyright",                  -- Python
-        "solargraph",               -- Ruby
+        --"solargraph",               -- Ruby
         --"Rust",                     -- Rust
         "sqls",                     -- SQL
         --"Svelte",                   -- Svelte

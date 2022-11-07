@@ -2,6 +2,7 @@ local wk = require('which-key')
 
 require('fzf-lua').setup({
     file_icon_padding = ' ',
+    multiprocess=false,
     winopts = {
         border = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '  },
         hl = {
@@ -17,6 +18,8 @@ require('fzf-lua').setup({
         },
     },
 })
+
+require('fzf-lua.config')._devicons_setup = '~/.config/nvim/lua/plugins/nvim-web-devicons.lua'
 
 
 wk.register({

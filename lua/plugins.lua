@@ -59,7 +59,10 @@ return packer.startup(function(use)
 
     -- Helpers / Depenhencies
     use { 'yamatsum/nvim-nonicons', --Icon set using nonicons for neovim plugins and settings
-        requires = 'nvim-tree/nvim-web-devicons',  -- A Lua fork of vim-devicons.
+        requires = {'nvim-tree/nvim-web-devicons',  -- A Lua fork of vim-devicons.
+            config = function () require('plugins.nvim-web-devicons') end,
+
+        },
         --event = 'VimEnter',
     }
     use { 'antoinemadec/FixCursorHold.nvim' } -- Fix CursorHold Performance.
@@ -186,19 +189,21 @@ return packer.startup(function(use)
             { 'dsznajder/vscode-es7-javascript-react-snippets', run = 'yarn install --frozen-lockfile && yarn compile' },
         },
         event = 'InsertEnter',
+        --event = 'InsertEnter',
         config = function() require('plugins.luasnip') end,
     }
     use { 'hrsh7th/nvim-cmp', -- A completion plugin for Neovim written in Lua. New version of nvim-compe.
         requires = {
+            'saadparwaiz1/cmp_luasnip',
             'windwp/nvim-autopairs',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-cmdline',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-nvim-lua',
+            'kdheepak/cmp-latex-symbols',
 
             --{ "David-Kunz/cmp-npm", requires = "nvim-lua/plenary.nvim" },
-            --"kdheepak/cmp-latex-symbols",
             --"ray-x/cmp-treesitter",
             --{ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
             --"andersevenrud/cmp-tmux",
@@ -228,7 +233,7 @@ return packer.startup(function(use)
 
     -- Statusline
     use { 'nvim-lualine/lualine.nvim', -- A blazing fast and easy to configure Neovim statusline.
-        requires = { 'kyazdani42/nvim-web-devicons', },
+        requires = { 'kyazdani42/nvim-web-devicons', 'yamatsum/nvim-nonicons' },
         config = function() require('plugins.lualine') end
     }
 
@@ -248,7 +253,7 @@ return packer.startup(function(use)
     use { 'nvim-neo-tree/neo-tree.nvim',
         requires = {
             'nvim-lua/plenary.nvim',
-            'kyazdani42/nvim-web-devicons',
+            {'kyazdani42/nvim-web-devicons', 'yamatsum/nvim-nonicons'},
             'MunifTanjim/nui.nvim',
         },
         --cmd = 'Neotree',
@@ -258,7 +263,7 @@ return packer.startup(function(use)
 
     -- Picker
     use { 'ibhagwan/fzf-lua',   -- Improved fzf.vim written in lua
-        requires = 'kyazdani42/nvim-web-devicons',
+        requires = { 'yamatsum/nvim-nonicons', 'kyazdani42/nvim-web-devicons' },
         --event = 'VimEnter',
         config = function() require('plugins.fzf-lua') end,
     }
@@ -268,15 +273,56 @@ return packer.startup(function(use)
         config = function() require("plugins.alpha") end,
     }
 
-
-
-    use { 'declancm/cinnamon.nvim', -- Smooth scrolling for ANY movement command exploding_head. A Neovim plugin written in Lua! 
-        config = function() require('plugins.cinnamon') end,
+    --Quick fix
+    use { 'folke/trouble.nvim',   -- Improved fzf.vim written in lua
+        requires = { 'yamatsum/nvim-nonicons', 'kyazdani42/nvim-web-devicons' },
+        --event = 'VimEnter',
+        config = function() require('plugins.trouble') end,
     }
 
-    -- Window Management
-    use { "aserowy/tmux.nvim",  -- Tmux integration for Neovim features pane movement and resizing from within Neovim.
-        config = function() require("plugins.tmux") end,
+    -- Symbol Outline
+    use { 'simrat39/symbols-outline.nvim',
+        cmd = 'SymbolOutline',
+        config = function () require('symbols-outline').setup() end,
+    }
+
+    -- Comments
+    use { 'numToStr/Comment.nvim',  -- Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more 
+        config = function () require('Comment').setup() end,
+    }
+
+    use { 'aserowy/tmux.nvim',  -- Tmux integration for Neovim features pane movement and resizing from within Neovim.
+        config = function() require('plugins.tmux') end,
+    }
+    use { 'anuvyklack/windows.nvim',    -- Automatically expand width of the current window. Maximizes and restore it. And all this with nice animations! 
+        requires = {
+      'anuvyklack/middleclass',
+      'anuvyklack/animation.nvim'
+   },
+   config = function()
+      vim.o.winwidth = 10
+      vim.o.winminwidth = 10
+      vim.o.equalalways = false
+      require('windows').setup()
+   end
+
+    }
+
+
+    -- Highlighting
+    use { 'jinh0/eyeliner.nvim',    -- Move faster with unique f/F indicators. 
+        config = function () require('eyeliner').setup({ highlight_on_key = true }) end,
+    }
+    -------------------
+    -- Code Runners --
+    -------------------
+
+    -- General
+    use { 'michaelb/sniprun', -- A neovim plugin to run lines/blocs of code (independently of the rest of the file), supporting multiples languages
+
+        --run = 'bash ./install.sh',
+        config = function () require('plugins.sniprun') end,
+
     }
 
     -------------------
@@ -317,7 +363,19 @@ return packer.startup(function(use)
     }
     use { 'NFrid/due.nvim', -- Neovim plugin for displaying due dates
         ft = 'markdown',
-        config = function() require('due_nvim').setup({}) end,
+        config = function() require('plugins.due') end,
+    }
+    --use { 'lukas-reineke/headlines.nvim', -- This plugin adds horizontal highlights for text filetypes, like markdown, orgmode, and neorg.
+    --    confug = function ()  require('headlines').setup({ markdown = { fat_headlines = false } }) end,
+    --}
+
+
+
+    -----------
+    -- Bloat --
+    -----------
+    use { 'levouh/tint.nvim', -- Dim inactive windows in Neovim using window-local highlight namespaces. 
+        config = function () require('tint').setup() end,
     }
 
     --------------------

@@ -5,40 +5,9 @@ require('nvim-autopairs').setup({
 })
 
 
-local Rule = require('nvim-autopairs.rule')
-local npairs = require('nvim-autopairs')
+local npairs = require'nvim-autopairs'
+local Rule   = require'nvim-autopairs.rule'
 
-local cond = require('nvim-autopairs.conds')
-print(vim.inspect(cond))
-
--- marktex mathblock completion
-npairs.add_rules({
-    Rule("$", "$", vim.g.quboid_ft_marktex)
-        -- don't add a pair if the next character is %
-        :with_pair(cond.not_after_regex("%%"))
-        -- don't add a pair if  the previous character is xxx
-        :with_pair(cond.not_before_regex("xxx", 3))
-        -- don't move right when repeat character
-        :with_move(cond.none())
-        -- don't delete if the next character is xx
-        :with_del(cond.not_after_regex("xx"))
-        -- disable adding a newline when you press <cr>
-        :with_cr(cond.none())
-})
-
-npairs.add_rules({
-    Rule("$$","$$",vim.g.quboid_ft_marktex)
-        :with_pair(function(opts)
-            print(vim.inspect(opts))
-            if opts.line=="aa $$" then
-            -- don't add pair on that line
-                return false
-            end
-        end)
-   }
-)
-
--- Add spaces between brackets
 local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' } }
 npairs.add_rules {
   Rule(' ', ' ')
@@ -62,54 +31,8 @@ for _,bracket in pairs(brackets) do
   }
 end
 
--- js function completion
 npairs.add_rules {
- Rule('%(.*%)%s*%=>$', ' {  }', vim.g.quboid_ft_js)
+    Rule('%(.*%)%s*%=>$', ' {  }', { 'typescript', 'typescriptreact', 'javascript' })
         :use_regex(true)
         :set_end_pair_length(2),
 }
-
--- Close braces
-local get_closing_for_line = function (line)
-  local i = -1
-  local clo = ''
-
-  while true do
-    i, _= string.find(line, "[%(%)%{%}%[%]]", i + 1)
-    if i == nil then break end
-    local ch = string.sub(line, i, i)
-    local st = string.sub(clo, 1, 1)
-
-    if ch == '{' then
-      clo = '}' .. clo
-    elseif ch == '}' then
-      if st ~= '}' then return '' end
-      clo = string.sub(clo, 2)
-    elseif ch == '(' then
-      clo = ')' .. clo
-    elseif ch == ')' then
-      if st ~= ')' then return '' end
-      clo = string.sub(clo, 2)
-    elseif ch == '[' then
-      clo = ']' .. clo
-    elseif ch == ']' then
-      if st ~= ']' then return '' end
-      clo = string.sub(clo, 2)
-    end
-  end
-
-  return clo
-end
-
-npairs.remove_rule('(')
-npairs.remove_rule('{')
-npairs.remove_rule('[')
-
-npairs.add_rule(
-  Rule("[%(%{%[]", "")
-  :use_regex(true)
-  :replace_endpair(function(opts)
-    return get_closing_for_line(opts.line)
-  end)
-  :end_wise()
-)

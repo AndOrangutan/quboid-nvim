@@ -54,12 +54,13 @@ local menu_names = {
     buffer                  = "Buffer",
     nvim_lsp                = "LSP",
     nvim_lua                = "Neovim API",
+    luasnip                 = "Snippets",
+    latex_symbols           = "Latex",
 
     --calc                    = "Calculate",
     --treesitter              = "Treesitter",
     --luasnip                 = "Snippets",
     --spell                   = "Spell",
-    --latex_symbols           = "Latex",
     --cmp_git                 = "Git",
     --dictionary              = "Dicitonary",
     --tmux                    = "Tmux",
@@ -95,21 +96,21 @@ cmp.setup({
             else
                 fallback()
             end
-        end, { "i", "s" }),
+        end, { 'i', 's' }),
         ['<S-TAB>'] = cmp.mapping(function (fallback)
             if luasnip.jumpable(-1) then
                 luasnip.jump(-1)
             else
                 fallback()
             end
-        end, { "i", "s" }),
+        end, { 'i', 's' }),
         ['<C-l>'] = cmp.mapping(function(fallback)
             if luasnip.choice_active() then
                 luasnip.change_choice(1)
             else
                 fallback()
             end
-        end, { "i", "s" }),
+        end, { 'i', 's' }),
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
@@ -129,7 +130,7 @@ cmp.setup({
     --    },
     --},
     formatting = {
-        fields = { "kind", "abbr", "menu"},
+        fields = { 'kind', 'abbr', 'menu'},
 
         --with_text = true,
         format = function (entry, vim_item)
@@ -143,10 +144,11 @@ cmp.setup({
     --},
     sources =cmp.config.sources({
         -- Default Sources
-        { name = "luasnip" },
-        { name = "path" },
-        { name = "nvim_lua" },
-        { name = "nvim_lsp" },
+        { name = 'luasnip' },
+        { name = 'path' },
+        { name = 'nvim_lua' },
+        { name = 'nvim_lsp' },
+        { name = 'latex_symbols' },
     }, {
         { name = "buffer" },
     }),
