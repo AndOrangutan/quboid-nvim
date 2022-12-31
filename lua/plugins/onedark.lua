@@ -66,11 +66,11 @@ require('onedark').setup({
 --})
 
 --vim.defer_fn(function()
-vim.api.nvim_set_hl(0, "CodiVirtualText", {link = "Comment"})
-vim.api.nvim_set_hl(0, "MiniMapNormal", {link = "Comment"})
-vim.api.nvim_set_hl(0, "MiniIndentscopePrefix", {link = "Comment"})
-vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", {link = "Comment"})
-vim.api.nvim_set_hl(0, "ReverseSearch", { link = "Search" })
+--vim.api.nvim_set_hl(0, "CodiVirtualText", {link = "Comment"})
+--vim.api.nvim_set_hl(0, "MiniMapNormal", {link = "Comment"})
+--vim.api.nvim_set_hl(0, "MiniIndentscopePrefix", {link = "Comment"})
+--vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", {link = "Comment"})
+--vim.api.nvim_set_hl(0, "ReverseSearch", { link = "Search" })
 --vim.api.nvim_set_hl(0, "ReverseSearch", { reverse = true })
 -- TODO: Fix ReverseSearch for minimap
     --end, 101)

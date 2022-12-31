@@ -26,8 +26,8 @@ selected_interpreters = {},     --# use those instead of the default for the cur
         -- "VirtualText",             --# display results as virtual text
         -- "TempFloatingWindow",      --# display results in a floating window
         -- "LongTempFloatingWindow",  --# same as above, but only long results. To use with VirtualText[Ok/Err]
-        -- "Terminal",                --# display results in a vertical split
-         "TerminalWithCode",        --# display results and code history in a vertical split
+         "Terminal",                --# display results in a vertical split
+        -- "TerminalWithCode",        --# display results and code history in a vertical split
         -- "NvimNotify",              --# display with the nvim-notify plugin
         -- "Api"                      --# return output to a programming interface
     },

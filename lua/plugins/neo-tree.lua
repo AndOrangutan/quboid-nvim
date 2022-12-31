@@ -229,6 +229,6 @@ require("neo-tree").setup({
 })
 
 wk.register({
-    ['<C-n>'] = { '<cmd>Neotree toggle<cr>', 'Neo-tree Toggle' },
+    ['<leader>nn'] = { '<cmd>Neotree toggle<cr>', 'Neo-tree Toggle' },
 
 })

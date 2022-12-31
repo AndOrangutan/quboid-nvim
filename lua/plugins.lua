@@ -42,55 +42,56 @@ packer.init({
 ----------------------
 return packer.startup(function(use)
 
+
     ------------------
     -- Core Plugins --
     -------------------
 
     -- Startup
-    use { 'lewis6991/impatient.nvim', -- Improve startup time for Neovim.
+    use { 'lewis6991/impatient.nvim',                       -- Improve startup time for Neovim.
         config = function() require('impatient') end,
     }
-    use { 'wbthomason/packer.nvim', -- A use-package inspired plugin manager for Neovim. Uses native packages, supports Luarocks dependencies, written in Lua, allows for expressive config.
+    use { 'wbthomason/packer.nvim',                         -- A use-package inspired plugin manager for Neovim. Uses native packages, supports Luarocks dependencies, written in Lua, allows for expressive config.
         --opt = true,
     }
-    use { 'dstein64/vim-startuptime', -- Vim plugin for profiling Vim's startup time.
+    use { 'dstein64/vim-startuptime',                       -- Vim plugin for profiling Vim's startup time.
         cmd = 'StartupTime',
     }
 
     -- Helpers / Depenhencies
-    use { 'yamatsum/nvim-nonicons', --Icon set using nonicons for neovim plugins and settings
-        requires = {'nvim-tree/nvim-web-devicons',  -- A Lua fork of vim-devicons.
+    use { 'yamatsum/nvim-nonicons',                         --Icon set using nonicons for neovim plugins and settings
+        requires = {'nvim-tree/nvim-web-devicons',          -- A Lua fork of vim-devicons.
             config = function () require('plugins.nvim-web-devicons') end,
 
         },
         --event = 'VimEnter',
     }
-    use { 'antoinemadec/FixCursorHold.nvim' } -- Fix CursorHold Performance.
-    use { 'nvim-lua/plenary.nvim', -- plenary: full; complete; entire; absolute; unqualified. All the lua functions I don't want to write twice.
-    }
+    use { 'antoinemadec/FixCursorHold.nvim' }               -- Fix CursorHold Performance.
+    use { 'nvim-lua/plenary.nvim' }                         -- plenary: full; complete; entire; absolute; unqualified. All the lua functions I don't want to write twice.
+    
 
     -- Keymapping
-    use { 'mrjones2014/legendary.nvim', -- Define your keymaps, commands, and autocommands as simple Lua tables, and create a legend for them at the same time, integrates with which-key.nvim.
+    use { 'mrjones2014/legendary.nvim',                     -- Define your keymaps, commands, and autocommands as simple Lua tables, and create a legend for them at the same time, integrates with which-key.nvim.
         --event = 'VimEnter',
         config = function() require('legendary').setup() end,
     }
-    use { 'folke/which-key.nvim', -- Neovim plugin that shows a popup with possible keybindings of the command you started typing.
+    use { 'folke/which-key.nvim',                           -- Neovim plugin that shows a popup with possible keybindings of the command you started typing.
         requires = 'mrjones2014/legendary.nvim',
 
     --event = 'VimEnter',
         config = function() require('which-key').setup() end,
     }
 
+
+
     -- Treesitter for highlighting and syntax parsing
-    use { 'nvim-treesitter/nvim-treesitter', -- Neovim Treesitter configurations and abstraction layer.
+    use { 'nvim-treesitter/nvim-treesitter',                -- Neovim Treesitter configurations and abstraction layer.
         requires = {
-            --"nvim-treesitter/nvim-treesitter-textobjects",  -- TODO: Setup textobjects
-            'RRethy/nvim-treesitter-endwise', -- Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise.
-            'JoosepAlviste/nvim-ts-context-commentstring', -- Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
-            { 'MDeiml/tree-sitter-markdown', -- A markdown grammar for tree-sitter
-                ft = 'markdown',
-            },
-            { 'nvim-treesitter/playground', --Treesitter playground integrated into Neovim
+            --"nvim-treesitter/nvim-treesitter-textobjects",      -- TODO: Setup textobjects
+            'lukas-reineke/headlines.nvim',
+            'RRethy/nvim-treesitter-endwise',                   -- Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise.
+            'JoosepAlviste/nvim-ts-context-commentstring',      -- Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
+            { 'nvim-treesitter/playground',                     --Treesitter playground integrated into Neovim
                 cmd = { 'TSPlaygroundToggle', 'TSHighlightCapturesUnderCursor' }
             },
         },
@@ -98,7 +99,7 @@ return packer.startup(function(use)
         run = ':TSUpdate',
         config = function() require('plugins.nvim-treesitter') end,
     }
-    use { 'nvim-treesitter/nvim-treesitter-context', -- Shows floating hover with the current function/block context.
+    use { 'nvim-treesitter/nvim-treesitter-context',        -- Shows floating hover with the current function/block context.
         event = 'VimEnter',
         config = function() require('plugins.treesitter-context') end,
     }
@@ -107,53 +108,53 @@ return packer.startup(function(use)
         event = "VimEnter",
         config = function() require('nvim-surround').setup() end,
     }
-    use { 'windwp/nvim-ts-autotag', -- Use treesitter to auto close and auto rename html tags.
+    use { 'windwp/nvim-ts-autotag',                         -- Use treesitter to auto close and auto rename html tags.
         --event = 'VimEnter',
         --ft = vim.g.quboid_ft_html,
         --config = function() require('nvim-ts-auotag').setup() end,
     }
-    use { 'windwp/nvim-autopairs', -- A minimalist autopairs for Neovim written in Lua.
+    use { 'windwp/nvim-autopairs',                          -- A minimalist autopairs for Neovim written in Lua.
         event = 'VimEnter',
         config = function() require('plugins.nvim-autopairs') end,
     }
 
     -- Git
     -- TODO: Configure and integrate git workflow
-    use { 'lewis6991/gitsigns.nvim', -- Git integration: signs, hunk actions, blame, etc.
+    use { 'lewis6991/gitsigns.nvim',                        -- Git integration: signs, hunk actions, blame, etc.
         event = 'BufRead',
         --after = 'nvim-lua/plenary.nvim',
         config = function() require("plugins.gitsigns") end,
     }
-    use { 'TimUntersberger/neogit', -- A Magit clone for Neovim that may change some things to fit the Vim philosophy.
+    use { 'TimUntersberger/neogit',                         -- A Magit clone for Neovim that may change some things to fit the Vim philosophy.
         config = function() require('plugins.neogit') end,
         event = 'VimEnter',
         commit = '8adf22f',
         --branch = 'nanozuki:master',
         requires = 'nvim-lua/plenary.nvim',
     }
-    use { 'sindrets/diffview.nvim', -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
+    use { 'sindrets/diffview.nvim',                         -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
         event = 'BufRead',
         config = function() require('plugins.diffview') end,
     }
-    use { 'akinsho/git-conflict.nvim', -- A plugin to visualise and resolve merge conflicts in neovim.
+    use { 'akinsho/git-conflict.nvim',                      -- A plugin to visualise and resolve merge conflicts in neovim.
         event = 'BufRead',
         tag = '*',
         config = function() require('git-conflict').setup() end,
     }
 
     -- External Package Manaageers
-    use { 'williamboman/mason.nvim', -- Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.
+    use { 'williamboman/mason.nvim',                        -- Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.
         event = 'BufRead',
         config = function() require('plugins.mason') end,
     }
-    use { 'williamboman/mason-lspconfig.nvim', -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
+    use { 'williamboman/mason-lspconfig.nvim',              -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
         requires = 'williamboman/mason.nvim',
         event = 'BufRead',
         config = function() require('plugins.mason-lspconfig') end,
     }
 
     -- LSP
-    use { 'neovim/nvim-lspconfig', -- Quickstart configurations for the Neovim LSP client.
+    use { 'neovim/nvim-lspconfig',                          -- Quickstart configurations for the Neovim LSP client.
         requires = 'williamboman/mason-lspconfig',
         event = 'BufRead',
         config = function () require('plugins.lspconfig') end,
@@ -163,7 +164,7 @@ return packer.startup(function(use)
     --    event = "BufRead",
     --    config = function() require("configs.lspsignature") end,
     --}
-    use { "weilbith/nvim-code-action-menu", -- A floating pop-up menu for code actions to show code action information and a diff preview.
+    use { "weilbith/nvim-code-action-menu",                 -- A floating pop-up menu for code actions to show code action information and a diff preview.
         event = "BufRead",
         cmd = "CodeActionMenu",
         config = function() vim.g.code_action_menu_window_border = vim.g.quboid_border vim.g.code_action_menu_show_details = false end,
@@ -173,26 +174,26 @@ return packer.startup(function(use)
     --    requires = "antoinemadec/FixCursorHold.nvim",
     --    config = function() require("configs.lightbulb") end,
     --}
-    use { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim', -- Show nvim diagnostics using virtual lines
+    use { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',   -- Show nvim diagnostics using virtual lines
         event = 'BufRead',
         config = function() require('plugins.lsp_lines') end,
     }
-    use { 'RRethy/vim-illuminate', -- (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
+    use { 'RRethy/vim-illuminate',                          -- (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
         event = 'BufRead',
         config = function() require('illuminate').configure() end,
     } -- Completion and Snippets
-    --
-    --
-    use { 'L3MON4D3/LuaSnip', -- Snippet Engine for Neovim written in Lua.
+
+
+    use { 'L3MON4D3/LuaSnip',                               -- Snippet Engine for Neovim written in Lua.
         requires = {
-            'rafamadriz/friendly-snippets', -- Set of preconfigured snippets for different languages.
+            'rafamadriz/friendly-snippets',                     -- Set of preconfigured snippets for different languages.
             { 'dsznajder/vscode-es7-javascript-react-snippets', run = 'yarn install --frozen-lockfile && yarn compile' },
         },
         event = 'InsertEnter',
         --event = 'InsertEnter',
         config = function() require('plugins.luasnip') end,
     }
-    use { 'hrsh7th/nvim-cmp', -- A completion plugin for Neovim written in Lua. New version of nvim-compe.
+    use { 'hrsh7th/nvim-cmp',                               -- A completion plugin for Neovim written in Lua. New version of nvim-compe.
         requires = {
             'saadparwaiz1/cmp_luasnip',
             'windwp/nvim-autopairs',
@@ -226,13 +227,15 @@ return packer.startup(function(use)
     ------------------------
 
     -- Notificaitons
-    use { 'rcarriga/nvim-notify',   -- A fancy, configurable, notification manager for Neovim.
+    use { 'rcarriga/nvim-notify',                           -- A fancy, configurable, notification manager for Neovim.
         event = 'VimEnter',
         config = function() require('plugins.notify') end,
     }
 
+    use { 'stevearc/dressing.nvim' }                        -- Neovim plugin to improve the default vim.ui interfaces
+
     -- Statusline
-    use { 'nvim-lualine/lualine.nvim', -- A blazing fast and easy to configure Neovim statusline.
+    use { 'nvim-lualine/lualine.nvim',                      -- A blazing fast and easy to configure Neovim statusline.
         requires = { 'kyazdani42/nvim-web-devicons', 'yamatsum/nvim-nonicons' },
         config = function() require('plugins.lualine') end
     }
@@ -242,7 +245,7 @@ return packer.startup(function(use)
         config = function () require('plugins.bufferline') end,
     }
 
-    use { 'prncss-xyz/neo-tree-zk.nvim', -- neo-tree source for zk-nvim 
+    use { 'prncss-xyz/neo-tree-zk.nvim',                    -- neo-tree source for zk-nvim 
         requires = {
             'nvim-neo-tree/neo-tree.nvim',
             'mickael-menu/zk-nvim'
@@ -250,7 +253,7 @@ return packer.startup(function(use)
     }
 
     -- File tree
-    use { 'nvim-neo-tree/neo-tree.nvim',
+    use { 'nvim-neo-tree/neo-tree.nvim',                    -- Neovim plugin to manage the file system and other tree like structures. 
         requires = {
             'nvim-lua/plenary.nvim',
             {'kyazdani42/nvim-web-devicons', 'yamatsum/nvim-nonicons'},
@@ -262,55 +265,56 @@ return packer.startup(function(use)
     }
 
     -- Picker
-    use { 'ibhagwan/fzf-lua',   -- Improved fzf.vim written in lua
+    use { 'ibhagwan/fzf-lua',                               -- Improved fzf.vim written in lua
         requires = { 'yamatsum/nvim-nonicons', 'kyazdani42/nvim-web-devicons' },
         --event = 'VimEnter',
         config = function() require('plugins.fzf-lua') end,
     }
 
     -- Startup 
-    use { "goolord/alpha-nvim", -- A lua powered greeter like vim-startify / dashboard-nvim.
+    use { "goolord/alpha-nvim",                             -- A lua powered greeter like vim-startify / dashboard-nvim.
         config = function() require("plugins.alpha") end,
     }
 
     --Quick fix
-    use { 'folke/trouble.nvim',   -- Improved fzf.vim written in lua
+    use { 'folke/trouble.nvim',                             -- Improved fzf.vim written in lua
         requires = { 'yamatsum/nvim-nonicons', 'kyazdani42/nvim-web-devicons' },
         --event = 'VimEnter',
         config = function() require('plugins.trouble') end,
     }
 
     -- Symbol Outline
-    use { 'simrat39/symbols-outline.nvim',
+    use { 'simrat39/symbols-outline.nvim',                  -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
         cmd = 'SymbolOutline',
         config = function () require('symbols-outline').setup() end,
     }
 
+    -- Multiline Cursor
+    use { 'mg979/vim-visual-multi' }                        -- Multiple cursor plugin fot vim/neovim}
+
     -- Comments
-    use { 'numToStr/Comment.nvim',  -- Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more 
+    use { 'numToStr/Comment.nvim',                          -- Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more 
         config = function () require('Comment').setup() end,
     }
-
-    use { 'aserowy/tmux.nvim',  -- Tmux integration for Neovim features pane movement and resizing from within Neovim.
+    use { 'aserowy/tmux.nvim',                              -- Tmux integration for Neovim features pane movement and resizing from within Neovim.
         config = function() require('plugins.tmux') end,
     }
-    use { 'anuvyklack/windows.nvim',    -- Automatically expand width of the current window. Maximizes and restore it. And all this with nice animations! 
+    use { 'anuvyklack/windows.nvim',                        -- Automatically expand width of the current window. Maximizes and restore it. And all this with nice animations! 
         requires = {
-      'anuvyklack/middleclass',
-      'anuvyklack/animation.nvim'
-   },
-   config = function()
-      vim.o.winwidth = 10
-      vim.o.winminwidth = 10
-      vim.o.equalalways = false
-      require('windows').setup()
-   end
-
+            'anuvyklack/middleclass',
+            'anuvyklack/animation.nvim'
+        },
+        config = function()
+            vim.o.winwidth = 10
+            vim.o.winminwidth = 10
+            vim.o.equalalways = false
+            require('windows').setup()
+        end
     }
 
 
     -- Highlighting
-    use { 'jinh0/eyeliner.nvim',    -- Move faster with unique f/F indicators. 
+    use { 'jinh0/eyeliner.nvim',                            -- Move faster with unique f/F indicators. 
         config = function () require('eyeliner').setup({ highlight_on_key = true }) end,
     }
     -------------------
@@ -318,9 +322,9 @@ return packer.startup(function(use)
     -------------------
 
     -- General
-    use { 'michaelb/sniprun', -- A neovim plugin to run lines/blocs of code (independently of the rest of the file), supporting multiples languages
+    use { 'michaelb/sniprun',                               -- A neovim plugin to run lines/blocs of code (independently of the rest of the file), supporting multiples languages
 
-        --run = 'bash ./install.sh',
+        run = 'bash ./install.sh',
         config = function () require('plugins.sniprun') end,
 
     }
@@ -330,61 +334,72 @@ return packer.startup(function(use)
     --------------------
 
     -- Markdown
-    use { 'mickael-menu/zk-nvim',   -- Neovim extension for zk 
+    use { 'mickael-menu/zk-nvim',                           -- Neovim extension for zk 
         --ft = 'markdown',
         config = function () require('plugins.zk') end,
     }
-    use { 'preservim/vim-markdown', -- Markdown Vim Mode
+    use { 'lukas-reineke/headlines.nvim',                   -- This plugin adds horizontal highlights for text filetypes, like markdown, orgmode, and neorg.
+        --ft =  'markdown',
+        requires = 'nvim-treesitter/nvim-treesitter',
+        confug = function ()  require('headlines').setup() end,
+    }
+    use { 'preservim/vim-markdown',                         -- Markdown Vim Mode
         ft = 'markdown',
         setup = function () require('plugins.vim-markdown') end,
     }
-    use { 'iamcco/markdown-preview.nvim',   -- Markdown preview plugin for (neo)vim
+    use { 'iamcco/markdown-preview.nvim',                   -- Markdown preview plugin for (neo)vim
         ft = 'markdown',
         run = function () vim.fn['mkdp#util#install']() end,
         setup = function () require('plugins.markdown-preview') end,
     }
-    use { 'ekickx/clipboard-image.nvim',    -- Neovim Lua plugin to paste image from clipboard. 
+    use { 'ekickx/clipboard-image.nvim',                    -- Neovim Lua plugin to paste image from clipboard. 
         ft = 'markdown',
         config = function () require('plugins.clipboard-image') end,
     }
-    use { 'gaoDean/autolist.nvim',  -- Automatic list continuation and formatting for neovim, powered by lua 
+    use { 'gaoDean/autolist.nvim',                          -- Automatic list continuation and formatting for neovim, powered by lua 
         ft = { 'markdown', 'text', 'gitcommit', 'scatch' },
         config = function () require('plugins.autolist') end
     }
     --use { 'jbyuki/nabla.nvim' }
-    use { 'AckslD/nvim-FeMaco.lua', -- Catalyze your Fenced Markdown Code-block editing!
+    use { 'AckslD/nvim-FeMaco.lua',                         -- Catalyze your Fenced Markdown Code-block editing!
         ft = 'markdown',
         config = function () require('plugins.femaco') end,
 
     }
-    use { 'dhruvasagar/vim-table-mode',
+    use { 'dhruvasagar/vim-table-mode',                     -- VIM Table Mode for instant table creation. 
         ft = 'markdown',
         config = function () require('plugins.table-mode') end,
     }
-    use { 'NFrid/due.nvim', -- Neovim plugin for displaying due dates
+    use { 'NFrid/due.nvim',                                 -- Neovim plugin for displaying due dates
         ft = 'markdown',
+        requires = 'nvim-treesitter/nvim-treesitter',
         config = function() require('plugins.due') end,
     }
-    --use { 'lukas-reineke/headlines.nvim', -- This plugin adds horizontal highlights for text filetypes, like markdown, orgmode, and neorg.
-    --    confug = function ()  require('headlines').setup({ markdown = { fat_headlines = false } }) end,
-    --}
 
 
 
     -----------
     -- Bloat --
     -----------
-    use { 'levouh/tint.nvim', -- Dim inactive windows in Neovim using window-local highlight namespaces. 
-        config = function () require('tint').setup() end,
+    -- use { 'levouh/tint.nvim',                               -- Dim inactive windows in Neovim using window-local highlight namespaces. 
+    --     config = function () require('tint').setup() end,
+    -- }
+    -- TODO: add exclude function so it doesn't flash when using neotree or symbol outline
+    
+    -- Smooth Scrolling
+    use { 'declancm/cinnamon.nvim',                         -- Smooth scrolling for ANY movement command exploding_head. A Neovim plugin written in Lua! 
+        config = function() require('plugins.cinnamon') end,
     }
+
 
     --------------------
     ---- Colorschemes --
     --------------------
 
-    use { 'navarasu/onedark.nvim',
+    use { 'navarasu/onedark.nvim',                          -- One dark and light colorscheme for neovim >= 0.5.0 written in lua based on Atom's One Dark and Light theme. Additionally, it comes with 5 color variant styles
         config = function () require('plugins.onedark') end,
     }
 
+    use { 'neanias/everforest-nvim' }                      -- Lua port: A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
 
 end)

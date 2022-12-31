@@ -83,13 +83,14 @@ vim.g.quboid_lsp_on_attach = function(client, bufnr)
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     wk.register({
         ["<space>e"] = { "<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", "LSP [e]xamine Diag" },
-        ["[d"] = { "<cmd>lua vim.diagnostic.vim.diagnostic.goto_prev()<CR>", "LSP Goto Prev Diag" },
-        ["]d"] = { "<cmd>lua vim.diagnostic.vim.diagnostic.goto_next()<CR>", "LSP Goto Next Diag" },
+        ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "LSP Goto Prev Diag" },
+        ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "LSP Goto Next Diag" },
         ["<space>q"] = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "LSP Diag Loclist" },
 
         ["gD"] = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "LSP [g]oto [D]eclaration" },
         ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "LSP [g]oto [d]efinition" },
-        --["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP Hover (2x Goto)" }, -- Go to ufo
+        ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP Hover" }, -- Go to ufo
+        --["<leader>K"] = { function() if not require('ufo').peekFoldedLinesUnderCursor() then vim.lsp.buf.hover() end end, "UFO/LSP Hover Preview" },
         ["gi"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "LSP [g]ather [i]mplementation" },
         --["gi"] = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "LSP List Impl For Symb" },
         ["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "LSP Signature Helpb" },
@@ -102,8 +103,6 @@ vim.g.quboid_lsp_on_attach = function(client, bufnr)
         ["gr"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "LSP [g]ather [r]eferences" },
         ["<space>F"] = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "LSP [F]ormat Buffer" },
         -- WARN: This is technically not the most correct way to setup this binding since lsp might not get loaded for some things
-        ["<leader>K"] = { function() if not require('ufo').peekFoldedLinesUnderCursor() then vim.lsp.buf.hover() end end,
-            "UFO/LSP Hover Preview" },
     }, { buffer = bufnr })
 end
 
@@ -116,11 +115,21 @@ masonlsp.setup_handlers({
         require("lspconfig")[server_name].setup({
             on_attach = vim.g.quboid_lsp_on_attach,
             capabilities = capabilities,
+            handlers = {
+                ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = vim.g.quboid_border}),
+                ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = vim.g.quboid_border }),
+            },
         })
     end,
     -- Next, you can provide targeted overrides for specific servers.
     ["sumneko_lua"] = function()
         lspconfig.sumneko_lua.setup {
+            on_attach = vim.g.quboid_lsp_on_attach,
+            handlers = {
+                ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = vim.g.quboid_border}),
+                ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = vim.g.quboid_border }),
+            },
+
             settings = {
                 runtime = {
                     -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)

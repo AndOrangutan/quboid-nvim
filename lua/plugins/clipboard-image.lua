@@ -1,3 +1,5 @@
+local wk = require('which-key')
+
 require('clipboard-image').setup({
     markdown = {
         img_dir = { '%:p:h' },
@@ -17,3 +19,11 @@ require('clipboard-image').setup({
         affix = '![](%s)',
     }
 })
+
+wk.register({
+    ['<leader>p'] = {'<cmd>PasteImg<cr>', 'Paste Image from Clipboard'},
+})
+
+wk.register({
+    ['<c-P>'] = {'<cmd>PasteImg<cr>', 'Paste Image from Clipboard'},
+}, {mode = 'i'})

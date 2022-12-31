@@ -1,4 +1,4 @@
-local wk = require('which-key')
+--local wk = require('which-key')
 
 vim.opt_local.wrap = true
 vim.opt_local.linebreak = true

@@ -17,19 +17,21 @@ for _, key in ipairs({ 'n', 'N', '*', '#' }) do
 
 
 minimap.setup({ 
+    windows = { show_integration_count = false },
     integrations = {
-        minimap.gen_integration.builtin_search({
+        minimap.gen_integration.builtin_search(
+            {
             search = 'ReverseSearch',
         }),
-        minimap.gen_integration.diagnostic({
-            error = 'DiagnosticFloatingError',
-            warn  = 'DiagnosticFloatingWarn',
-            info  = 'DiagnosticFloatingInfo',
-            hint  = 'DiagnosticFloatingHint',
-        })
+        minimap.gen_integration.diagnostic(),
+            -- {
+            -- error = 'DiagnosticFloatingError',
+            -- warn  = 'DiagnosticFloatingWarn',
+            -- info  = 'DiagnosticFloatingInfo',
+            -- hint  = 'DiagnosticFloatingHint',
+        -- })
     }
 })
-
 
 for _, exludefile in pairs(vim.g.quboid_ft_exclude) do
     vim.cmd('autocmd Filetype '..exludefile..' lua vim.b.miniindentscope_disable = true')
