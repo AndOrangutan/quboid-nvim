@@ -2,92 +2,51 @@ local wk = require('which-key')
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 
-local G = vim.g
-
-
-vim.o.completeopt='menu,menuone,noselect'
---vim.cmd[[set completeopt=menu,menuone,noselect]]
-
-local kind_icons = {
-    Text = '  ',
-
-    Method = '  ',
-    Function = '  ',
-    Constructor = '  ',
-    Field = '  ',
-    Variable = '  ',
-    Class = '  ',
-    Interface = '  ',
-    Module = '  ',
-    Property = '  ',
-    Unit = '  ',
-    Value = '  ',
-    Enum = '  ',
-    Keyword = '  ',
-    Snippet = '  ',
-    Color = '  ',
-    File = '  ',
-    Reference = '  ',
-    Folder = '  ',
-    EnumMember = '  ',
-    Constant = '  ',
-    Struct = '  ',
-    Event = '  ',
-    Operator = '  ',
-    TypeParameter = '  ',
-}
-
-
--- TODO: Add autopair to CMP
----- If you want insert `(` after select function or method item
---local cmp_autopairs = require('nvim-autopairs.completion.cmp')
---local cmp = require('cmp')
---cmp.event:on(
---  'confirm_done',
---  cmp_autopairs.on_confirm_done()
---)
-
-
 
 local menu_names = {
     path                    = "Path",
-    buffer                  = "Buffer",
-    nvim_lsp                = "LSP",
-    nvim_lua                = "Neovim API",
-    luasnip                 = "Snippets",
-    latex_symbols           = "Latex",
+    latex_symbols           = "LaTeX",
+    calc                    = "Math",
 
-    --calc                    = "Calculate",
-    --treesitter              = "Treesitter",
-    --luasnip                 = "Snippets",
-    --spell                   = "Spell",
-    --cmp_git                 = "Git",
-    --dictionary              = "Dicitonary",
-    --tmux                    = "Tmux",
-    --rg                      = "Ripgrep",
+    luasnip                 = "Snippets",
+    nvim_lsp                = "LSP",
+    nvim_lua                = "Nvim API",
+    tmux                    = "Tmux",
+
+    buffer                  = "Buffer",
+    cmp_git                 = "Git",
+
     --pandoc_references       = "Pandoc",
     --npm                     = "NPM",
 }
 
 
-
 cmp.setup({
+
     snippet = {
         -- REQUIRED - you must specify a snippet engine
-        expand = function (args)
-            luasnip.lsp_expand(args.body)
+        expand = function(args)
+            require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
         end,
     },
-    --view  = {
-    --    entries = { name = 'custom', selection_order = 'nearest_cursor' },
-    --},
     window = {
         documentation = {
-            border = G.quboid_border,
+            -- border = vim.g.quboid_border,
+            border = vim.g.quboid_border,
         },
        completion = {
-            border = G.quboid_border,
+            border = vim.g.quboid_border_float,
         },
+    },
+    formatting = {
+        fields = { 'kind', 'abbr', 'menu'},
+
+        --with_text = true,
+        format = function (entry, vim_item)
+            vim_item.menu = menu_names[entry.source.name]
+            vim_item.kind = vim.g.quboid_icons[vim_item.kind]   -- Use built in icons
+            return vim_item
+        end,
     },
     mapping = cmp.mapping.preset.insert({
         ['<TAB>'] = cmp.mapping(function(fallback)
@@ -115,57 +74,53 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
-    --sorting = {
-    --    coparators = {
-    --        cmp.config.compare.offset,
-    --        cmp.config.compare.exact,
-    --        cmp.config.compare.sort_text,
-    --        cmp.config.compare.score,
-    --        cmp.config.compare.recently_used,
-    --        cmp.config.compare.kind,
-    --        cmp.config.compare.length,
-    --        cmp.config.compare.order,
-    --    },
-    --},
-    formatting = {
-        fields = { 'kind', 'abbr', 'menu'},
-
-        --with_text = true,
-        format = function (entry, vim_item)
-            vim_item.menu = menu_names[entry.source.name]
-            vim_item.kind = G.quboid_icons[vim_item.kind]
-            return vim_item
-        end,
-    },
-    --experimental = {
-    --    ghost_text = true,
-    --},
-    sources =cmp.config.sources({
+    sources = cmp.config.sources({
         -- Default Sources
-        { name = 'luasnip' },
+        --
+        -- Syntax specific (rank independent)
         { name = 'path' },
-        { name = 'nvim_lua' },
-        { name = 'nvim_lsp' },
         { name = 'latex_symbols' },
+        { name = 'calc' },
+
+        -- General ranking
+        { name = 'luasnip' },
+        { name = 'nvim_lsp' },
+        { name = 'nvim_lua' },
+        { name = 'tmux' },
+
+        { name = 'git' },
     }, {
-        { name = "buffer" },
-    }),
-    cmp.setup.cmdline({ '/','?'}, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-        }, {
             { name = 'buffer' },
-        }),
-    }),
-    cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-            { name = 'path', option = { trailing_slash = true } },
-        }, {
-            { name = 'cmdline', group_index = 0 },
-        }),
-    }),
+        })
 })
+
+cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+        { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+            { name = 'buffer' },
+        })
+})
+
+-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = 'buffer' }
+    }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'path' , option = { trailing_slash = true }}
+    }, {
+            { name = 'cmdline' }
+        })
+})
+
+
 

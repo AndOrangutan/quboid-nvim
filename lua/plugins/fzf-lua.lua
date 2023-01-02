@@ -1,5 +1,7 @@
 local wk = require('which-key')
 
+require('fzf-lua.config')._devicons_setup = '~/.local/share/nvim/site/pack/packer/opt/nvim-material-icon/lua/nvim-material-icon.lua'
+
 require('fzf-lua').setup({
     file_icon_padding = ' ',
     multiprocess=false,
@@ -19,7 +21,6 @@ require('fzf-lua').setup({
     },
 })
 
-require('fzf-lua.config')._devicons_setup = '~/.config/nvim/lua/plugins/nvim-web-devicons.lua'
 
 
 wk.register({

@@ -22,17 +22,21 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.api.nvim_set_hl(0, 'EyelinerPrimary', { bold = true, underline = true })
         vim.api.nvim_set_hl(0, 'EyelinerSecondary', { underline = true })
 
+
+        vim.api.nvim_set_hl(0, 'TreesitterContext', {link = 'Normal'})
+        vim.api.nvim_set_hl(0, 'TreesitterContextLineNumber', {link = 'Normal'})
     end,
 })
 
 
 
-vim.cmd [[highlight Headline1 guibg=#1e2718]]
-vim.cmd [[highlight Headline2 guibg=#21262d]]
-vim.cmd [[highlight CodeBlock guibg=#1c1c1c]]
-vim.cmd [[highlight Dash guibg=#D19A66 gui=bold]]
+-- vim.cmd [[highlight Headline1 guibg=#1e2718]]
+-- vim.cmd [[highlight Headline2 guibg=#21262d]]
+-- vim.cmd [[highlight CodeBlock guibg=#1c1c1c]]
+-- vim.cmd [[highlight Dash guibg=#D19A66 gui=bold]]
 
 
 
 -- Call after global ColorScheme autocommand
 vim.cmd[[colorscheme onedark]]
+vim.o.background = 'dark'

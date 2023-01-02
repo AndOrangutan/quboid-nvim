@@ -1,23 +1,24 @@
 local G = vim.g
 
 G.quboid_border = 'solid'
-G.quboid_ft_exclude = { 'fzf', 'vim', 'alpha', 'neo-tree', 'mason', 'Outline' }
+G.quboid_border_float = 'shadow'
+G.quboid_ft_exclude = { 'fzf', 'vim', 'alpha', 'neo-tree', 'mason', 'Outline', 'NvimTree', 'undotree', 'gundo'}
 G.quboid_ft_html = {'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx', 'rescript', 'xml', 'php', 'markdown', 'glimmer','handlebars','hbs'}
 G.quboid_ft_js = { 'typescript', 'typescriptreact', 'javashript' }
 G.quboid_ft_marktex = { 'tex', 'latex', 'markdown'}
 G.quboid_icons = {
     -- LSP
-    Error           = ' ',
-    Warn            = ' ',
-    Hint            = ' ',
-    Info            = ' ',
+    Error           = ' ',
+    Warn            = ' ',
+    Info            = ' ',
+    Hint            = ' ',
 
     -- Notify
     Debug           = ' ',
     Trace           = ' ',
 
     -- Luasnip
-    ChoiceNode      = ' ',
+    ChoiceNode      = ' ',
     InsertNode      = ' ',
 
     -- Bufferline
@@ -35,7 +36,7 @@ G.quboid_icons = {
     EnumMember      = ' ',
     Event           = ' ',
     Field           = ' ',
-    File            = ' ',
+    File            = ' ',
     Folder          = ' ',
     Function        = 'x',
     Interface       = ' ',

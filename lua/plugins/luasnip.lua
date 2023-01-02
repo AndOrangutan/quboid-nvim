@@ -7,7 +7,7 @@ local types = require('luasnip.util.types')
 local G = vim.g
 
 luasnip.config.set_config {
-    history = true,
+    history = false,
 
     updateevents = 'TextChanged,TextChangedI',
 

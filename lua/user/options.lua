@@ -30,7 +30,7 @@ o.conceallevel      = 2
 o.listchars         = "eol:¬"
 o.fillchars         = "foldsep: ,foldopen:,foldclose:"
 o.signcolumn        = "yes:1"
-o.background        = "dark"
+--o.background        = "dark" -- Moved to colorscheme
 o.laststatus        = 3
 o.cmdheight         = 0
 
@@ -47,9 +47,14 @@ o.wrap              = false
 o.breakindent       = true
 o.breakindentopt    = true
 
+-- Window
+o.winwidth = 10
+o.winminwidth = 10
+o.equalalways = false
+
 -- Cursor
 o.cursorline        = false
-o.scrolloff         = 16
+o.scrolloff         = 999
 o.sidescrolloff     = 16
 o.pumheight         = 16
 

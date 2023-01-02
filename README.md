@@ -1,30 +1,52 @@
 # Quboid Nvim
+ 
+## TODO
 
 
 - Plugins
-    - [ ] Fix autopairs
-    - [ ] Mini 
+    - [x] Fix autopairs
+    - [x] Mini ? 
+    - [ ] Spelling 
     - [ ] LSP 
-        - Lines Alternative
-        - Better CMP
-        - Animation [link](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-animate.md)
+        - Incremental rename (other functions?)
+    - [ ] Gitsins extract icons to quboid 
+    - [ ] Bufferline toggle theme 
+    - [ ] Better CMP 
+        -  https://github.com/f3fora/cmp-spell
     - [ ] Null-ls 
     - [ ] Snippets 
-        - Fix conflict with auto bullet
     - [ ] Folds (ufo) 
+    - [ ] TODO trouble 
+        - [ ] also fix it so it doesn't jump when scrolling.
     - [ ] Testing 
     - [ ] Dap 
     - [ ] Session 
+    - [ ] Mouse 
+        - Menu items
+            - LSP
+                -  Code act
+                - format
+                - Rename
+                - Goto Def
+                - Goto Dec
+                - 
+            - UI
+                -   Symbol Outline (_)
+                -   Fuzzy Search (_f)
+                -   QuickFix
+            - Refactoring
+        - Make items safe with pcalls for plug-in
     - [ ] https://github.com/mfussenegger/nvim-jdtls 
-    - [ ] https://github.com/zbirenbaum/copilot.lua
+    - [ ] https://github.com/zbirenbaum/copilot.lua 
     - [ ] 
     - Note taking
         - [ ] Easy output
             - PDF
-            - HTML
+           - HTML
             - DOCX
 - README.md
     - Projectify it
+
 
 Resilient, fast, text-based Personal Development Environment
 
@@ -33,8 +55,10 @@ Resilient, fast, text-based Personal Development Environment
 
 ```bash
 nvim -u ~/dev/quboid-nvim/init.lua
+
 ```
-- Creat binding to open 
+
+- Creat binding to open
 
 ## Goals
 
@@ -50,15 +74,11 @@ nvim -u ~/dev/quboid-nvim/init.lua
 neovim-git qutebrowser
 ```
 
-## Todo
-
-- [ ] Add docs/
-- [ ] Add lua/
-
 ## Add to somewher later
 
 ### Useful Commands
 
+code
 Replace Unicode characters in the form `\uXXXX` to their respective icon
 
 ```

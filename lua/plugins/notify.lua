@@ -20,7 +20,7 @@ notify.setup({
     stages = "fade_in_slide_out",
     timeout = 5000,
     on_open = function(win)
-        vim.api.nvim_win_set_config(win, { border = 'shadow' })
+        vim.api.nvim_win_set_config(win, { border = vim.g.quboid_border_float })
     end,
 })
 

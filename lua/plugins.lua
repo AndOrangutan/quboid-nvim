@@ -59,16 +59,15 @@ return packer.startup(function(use)
     }
 
     -- Helpers / Depenhencies
-    use { 'yamatsum/nvim-nonicons',                         --Icon set using nonicons for neovim plugins and settings
+    use { 'DaikyXendo/nvim-material-icon',                         --Icon set using nonicons for neovim plugins and settings
         requires = {'nvim-tree/nvim-web-devicons',          -- A Lua fork of vim-devicons.
-            config = function () require('plugins.nvim-web-devicons') end,
-
+            config = function () require('plugins.nvim-material-icon') end,
         },
         --event = 'VimEnter',
     }
     use { 'antoinemadec/FixCursorHold.nvim' }               -- Fix CursorHold Performance.
     use { 'nvim-lua/plenary.nvim' }                         -- plenary: full; complete; entire; absolute; unqualified. All the lua functions I don't want to write twice.
-    
+
 
     -- Keymapping
     use { 'mrjones2014/legendary.nvim',                     -- Define your keymaps, commands, and autocommands as simple Lua tables, and create a legend for them at the same time, integrates with which-key.nvim.
@@ -113,10 +112,10 @@ return packer.startup(function(use)
         --ft = vim.g.quboid_ft_html,
         --config = function() require('nvim-ts-auotag').setup() end,
     }
-    use { 'windwp/nvim-autopairs',                          -- A minimalist autopairs for Neovim written in Lua.
-        event = 'VimEnter',
-        config = function() require('plugins.nvim-autopairs') end,
-    }
+    --use { 'windwp/nvim-autopairs',                          -- A minimalist autopairs for Neovim written in Lua.
+    --    event = 'VimEnter',
+    --    config = function() require('plugins.nvim-autopairs') end,
+    --}
 
     -- Git
     -- TODO: Configure and integrate git workflow
@@ -195,22 +194,18 @@ return packer.startup(function(use)
     }
     use { 'hrsh7th/nvim-cmp',                               -- A completion plugin for Neovim written in Lua. New version of nvim-compe.
         requires = {
-            'saadparwaiz1/cmp_luasnip',
-            'windwp/nvim-autopairs',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-cmdline',
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-nvim-lua',
-            'kdheepak/cmp-latex-symbols',
+            'hrsh7th/cmp-path',                             -- nvim-cmp source for path 
+            'kdheepak/cmp-latex-symbols',                   -- Add latex symbol support for nvim-cmp. 
+            "hrsh7th/cmp-calc",                             -- nvim-cmp source for math calculation
 
-            --{ "David-Kunz/cmp-npm", requires = "nvim-lua/plenary.nvim" },
-            --"ray-x/cmp-treesitter",
-            --{ "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
-            --"andersevenrud/cmp-tmux",
-            --"lukas-reineke/cmp-rg",
-            --"hrsh7th/cmp-calc",
-            --"uga-rosa/cmp-dictionary",
+            'saadparwaiz1/cmp_luasnip',                     -- nvim-cmp source for luasnip.
+            'hrsh7th/cmp-nvim-lsp',                         -- nvim-cmp source for neovim builtin LSP client
+            'hrsh7th/cmp-nvim-lua',                         -- nvim-cmp source for nvim lua 
+            "andersevenrud/cmp-tmux",                       -- Tmux completion source for nvim-cmp and nvim-compe 
+
+            'hrsh7th/cmp-buffer',                           -- nvim-cmp source for buffer words 
+            'hrsh7th/cmp-cmdline',                          -- nvim-cmp source for vim's cmdline 
+            { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },   -- Git source for nvim-cmp 
         },
         after = 'LuaSnip',
         config = function() require('plugins.cmp') end,
@@ -236,7 +231,7 @@ return packer.startup(function(use)
 
     -- Statusline
     use { 'nvim-lualine/lualine.nvim',                      -- A blazing fast and easy to configure Neovim statusline.
-        requires = { 'kyazdani42/nvim-web-devicons', 'yamatsum/nvim-nonicons' },
+        requires = { 'kyazdani42/nvim-web-devicons', 'DaikyXendo/nvim-material-icon' },
         config = function() require('plugins.lualine') end
     }
 
@@ -256,7 +251,7 @@ return packer.startup(function(use)
     use { 'nvim-neo-tree/neo-tree.nvim',                    -- Neovim plugin to manage the file system and other tree like structures. 
         requires = {
             'nvim-lua/plenary.nvim',
-            {'kyazdani42/nvim-web-devicons', 'yamatsum/nvim-nonicons'},
+            {'kyazdani42/nvim-web-devicons', 'DaikyXendo/nvim-material-icon'},
             'MunifTanjim/nui.nvim',
         },
         --cmd = 'Neotree',
@@ -266,7 +261,7 @@ return packer.startup(function(use)
 
     -- Picker
     use { 'ibhagwan/fzf-lua',                               -- Improved fzf.vim written in lua
-        requires = { 'yamatsum/nvim-nonicons', 'kyazdani42/nvim-web-devicons' },
+        requires = { 'DaikyXendo/nvim-material-icon', 'kyazdani42/nvim-web-devicons' },
         --event = 'VimEnter',
         config = function() require('plugins.fzf-lua') end,
     }
@@ -278,15 +273,16 @@ return packer.startup(function(use)
 
     --Quick fix
     use { 'folke/trouble.nvim',                             -- Improved fzf.vim written in lua
-        requires = { 'yamatsum/nvim-nonicons', 'kyazdani42/nvim-web-devicons' },
+        requires = { 'DaikyXendo/nvim-material-icon' },
         --event = 'VimEnter',
         config = function() require('plugins.trouble') end,
     }
 
     -- Symbol Outline
     use { 'simrat39/symbols-outline.nvim',                  -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
-        cmd = 'SymbolOutline',
-        config = function () require('symbols-outline').setup() end,
+        requires = { 'kyazdani42/nvim-web-devicons', 'DaikyXendo/nvim-material-icon' },
+        cmd = 'SymbolsOutline',
+        config = function () require('plugins.symbols-outline') end,
     }
 
     -- Multiline Cursor
@@ -305,10 +301,7 @@ return packer.startup(function(use)
             'anuvyklack/animation.nvim'
         },
         config = function()
-            vim.o.winwidth = 10
-            vim.o.winminwidth = 10
-            vim.o.equalalways = false
-            require('windows').setup()
+            require('plugins.windows')
         end
     }
 
@@ -385,7 +378,7 @@ return packer.startup(function(use)
     --     config = function () require('tint').setup() end,
     -- }
     -- TODO: add exclude function so it doesn't flash when using neotree or symbol outline
-    
+
     -- Smooth Scrolling
     use { 'declancm/cinnamon.nvim',                         -- Smooth scrolling for ANY movement command exploding_head. A Neovim plugin written in Lua! 
         config = function() require('plugins.cinnamon') end,
