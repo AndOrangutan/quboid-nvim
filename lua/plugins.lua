@@ -153,10 +153,10 @@ return packer.startup(function(use)
 
     -- LSP
     use { 'neovim/nvim-lspconfig',                          -- Quickstart configurations for the Neovim LSP client.
-        requires = { 
+        requires = {
             'williamboman/mason-lspconfig',                 -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim. Strongly recommended for Windows users. 
-            { 'ray-x/lsp_signature.nvim',                   -- LSP signature hint as you type 
-            }
+            'ray-x/lsp_signature.nvim',                     -- LSP signature hint as you type 
+            'smjonas/inc-rename.nvim',                      -- Incremental LSP renaming based on Neovim's command-preview feature.
         },
         event = 'BufRead',
         config = function () require('plugins.lspconfig') end,
@@ -230,7 +230,9 @@ return packer.startup(function(use)
         config = function() require('plugins.notify') end,
     }
 
-    use { 'stevearc/dressing.nvim' }                        -- Neovim plugin to improve the default vim.ui interfaces
+    use { 'stevearc/dressing.nvim',                         -- Neovim plugin to improve the default vim.ui interfaces
+        config = function () require('plugins.dressing') end,
+    }
 
     -- Statusline
     use { 'nvim-lualine/lualine.nvim',                      -- A blazing fast and easy to configure Neovim statusline.

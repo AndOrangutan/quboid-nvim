@@ -55,6 +55,14 @@ esilient, fast, text-based Personal Development Environment
 nvim -u ~/dev/quboid-nvim/init.lua
 ```
 
+```java
+public class lua_N5sjf7 {
+    public static void main(String[] args) {
+        System.out.println("Hello WOrld");
+    }
+}
+```
+
 - Creat binding to open
 
 ## Goals

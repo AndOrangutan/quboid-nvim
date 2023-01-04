@@ -59,6 +59,11 @@ local lspsig_config = {
     -- end,
 }
 
+-- Setup Rename
+require("inc_rename").setup({
+      input_buffer_type = "dressing",
+})
+
 lspsig.setup(lspsig_config)
 
 -- Overide border globally
@@ -113,6 +118,10 @@ vim.g.quboid_lsp_on_attach = function(client, bufnr)
 
     lspsig.on_attach(lspsig_config, bufnr)
 
+    vim.keymap.set("n", "<leader>rn", function()
+        return ":IncRename " .. vim.fn.expand("<cword>")
+    end, { expr = true })
+
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     wk.register({
@@ -132,7 +141,7 @@ vim.g.quboid_lsp_on_attach = function(client, bufnr)
         ["<space>wr"] = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "LSP [w]orkspace [r]emove" },
         ["<space>wl"] = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "LSP [w]orkspace [l]ist", },
         ["<space>D"] = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "LSP Goto Symb Type Def" },
-        ["<space>rn"] = { "<cmd>lua vim.lsp.buf.rename()<CR>", "LSP [r]e[n]ame" },
+        ["<space>rn"] = { "LSP [r]e[n]ame" },
         ["<space>ca"] = { "<cmd>CodeActionMenu<CR>", "LSP [c]ode [a]ction" },
         ["gr"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "LSP [g]ather [r]eferences" },
         ["<space>F"] = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "LSP [F]ormat Buffer" },
