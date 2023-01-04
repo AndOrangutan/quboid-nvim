@@ -2,6 +2,7 @@ local lspconfig = require("lspconfig")
 local wk = require("which-key")
 local masonlsp = require("mason-lspconfig")
 --local navic = require("nvim-navic")
+local lspsig = require('lsp_signature')
 
 local G = vim.g
 
@@ -28,6 +29,37 @@ local G = vim.g
 --  Value         = " ",
 --  Variable      = " ",
 --}
+
+
+local lspsig_config = {
+    bind = true,
+    hint_prefix = " ",
+    hint_scheme = "Comment",
+    hi_parameter = "String",
+    handler_opts = {
+        -- border = 'single',
+        string.byte('')
+    },
+    -- floating_window_off_x = 1, -- adjust float windows x position.
+    -- floating_window_off_y = function() -- adjust float windows y position. e.g. set to -2 can make floating window move up 2 lines
+    --     local pumheight = vim.o.pumheight
+    --     local winline = vim.fn.winline() -- line number in the window
+    --     local winheight = vim.fn.winheight(0)
+    --
+    --     -- window top
+    --     if winline - 1 < pumheight then
+    --         return pumheight
+    --     end
+    --
+    --     -- window bottom
+    --     if winheight - winline < pumheight then
+    --         return -pumheight
+    --     end
+    --     return 0
+    -- end,
+}
+
+lspsig.setup(lspsig_config)
 
 -- Overide border globally
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
@@ -78,6 +110,8 @@ vim.g.quboid_lsp_on_attach = function(client, bufnr)
     --if client.server_capabilities.documentSymbolProvider then
     --    navic.attach(client, bufnr)
     --end
+
+    lspsig.on_attach(lspsig_config, bufnr)
 
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions

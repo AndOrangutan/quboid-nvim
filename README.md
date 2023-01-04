@@ -8,12 +8,10 @@
     - [x] Mini ? 
     - [ ] Spelling 
     - [ ] LSP 
+    - [ ] Null-ls 
         - Incremental rename (other functions?)
     - [ ] Gitsins extract icons to quboid 
     - [ ] Bufferline toggle theme 
-    - [ ] Better CMP 
-        -  https://github.com/f3fora/cmp-spell
-    - [ ] Null-ls 
     - [ ] Snippets 
     - [ ] Folds (ufo) 
     - [ ] TODO trouble 
@@ -33,7 +31,7 @@
             - UI
                 -   Symbol Outline (_)
                 -   Fuzzy Search (_f)
-                -   QuickFix
+                -   Quickfix (_xx)
             - Refactoring
         - Make items safe with pcalls for plug-in
     - [ ] https://github.com/mfussenegger/nvim-jdtls 
@@ -42,20 +40,19 @@
     - Note taking
         - [ ] Easy output
             - PDF
-           - HTML
+            - HTML
             - DOCX
 - README.md
     - Projectify it
 
 
-Resilient, fast, text-based Personal Development Environment
+esilient, fast, text-based Personal Development Environment
 
 - Make it pretty 
     - DOCUMENTATION :')
 
 ```bash
 nvim -u ~/dev/quboid-nvim/init.lua
-
 ```
 
 - Creat binding to open

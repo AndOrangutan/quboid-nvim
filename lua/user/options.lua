@@ -2,9 +2,9 @@
 local o = vim.o     -- For global options
 local w = vim.wo    -- For the window local options
 local b = vim.bo    -- For the buffer local options
-local g = vim.g   
+local g = vim.g
 
-local utils = require('utils')
+--local utils = require('utils')
 
 local indentSize = 4
 
@@ -15,7 +15,7 @@ g.mapleader = " "
 -- Sane(er) defaults
 o.termguicolors     = true
 o.timeoutlen        = 500
-o.clipboard         = "unnamedplus"
+o.clipboard         = "unnamed"
 o.mouse             = "a"
 o.errorbells        = false
 o.encoding          = "utf-8"

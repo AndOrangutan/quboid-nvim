@@ -13,7 +13,7 @@ require("tmux").setup({
 
         -- TMUX >= 3.2: yanks (and deletes) will get redirected to system
         -- clipboard by tmux
-        redirect_to_clipboard = true,
+        redirect_to_clipboard = false,
 
         -- offset controls where register sync starts
         -- e.g. offset 2 lets registers 0 and 1 untouched
@@ -24,6 +24,9 @@ require("tmux").setup({
         -- this option!
         sync_clipboard = true,
 
+        -- synchronizes registers *, +, unnamed, and 0 till 9 with tmux buffers.
+        sync_registers = false,
+        
         -- syncs deletes with tmux clipboard as well, it is adviced to
         -- do so. Nvim does not allow syncing registers 0 and 1 without
         -- overwriting the unnamed register. Thus, ddp would not be possible.

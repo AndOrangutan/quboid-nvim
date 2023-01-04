@@ -10,6 +10,7 @@ function get_hl_val(name,val)
 end
 
 
+-- Auto cmds similar to this can be used to set colorscheme specific settings (think background = 'dark')
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = '*',
     callback = function()

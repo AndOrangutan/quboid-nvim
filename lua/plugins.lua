@@ -78,16 +78,14 @@ return packer.startup(function(use)
         requires = 'mrjones2014/legendary.nvim',
 
     --event = 'VimEnter',
-        config = function() require('which-key').setup() end,
+        config = function() require('which-key').setup({}) end,
     }
-
 
 
     -- Treesitter for highlighting and syntax parsing
     use { 'nvim-treesitter/nvim-treesitter',                -- Neovim Treesitter configurations and abstraction layer.
         requires = {
             --"nvim-treesitter/nvim-treesitter-textobjects",      -- TODO: Setup textobjects
-            'lukas-reineke/headlines.nvim',
             'RRethy/nvim-treesitter-endwise',                   -- Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise.
             'JoosepAlviste/nvim-ts-context-commentstring',      -- Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
             { 'nvim-treesitter/playground',                     --Treesitter playground integrated into Neovim
@@ -107,6 +105,7 @@ return packer.startup(function(use)
         event = "VimEnter",
         config = function() require('nvim-surround').setup() end,
     }
+
     use { 'windwp/nvim-ts-autotag',                         -- Use treesitter to auto close and auto rename html tags.
         --event = 'VimEnter',
         --ft = vim.g.quboid_ft_html,
@@ -154,14 +153,17 @@ return packer.startup(function(use)
 
     -- LSP
     use { 'neovim/nvim-lspconfig',                          -- Quickstart configurations for the Neovim LSP client.
-        requires = 'williamboman/mason-lspconfig',
+        requires = { 
+            'williamboman/mason-lspconfig',                 -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim. Strongly recommended for Windows users. 
+            { 'ray-x/lsp_signature.nvim',                   -- LSP signature hint as you type 
+            }
+        },
         event = 'BufRead',
         config = function () require('plugins.lspconfig') end,
     }
     ---- TODO: config properly
     --use { "ray-x/lsp_signature.nvim", -- Lsp signature hint when you type.
     --    event = "BufRead",
-    --    config = function() require("configs.lspsignature") end,
     --}
     use { "weilbith/nvim-code-action-menu",                 -- A floating pop-up menu for code actions to show code action information and a diff preview.
         event = "BufRead",
@@ -189,6 +191,7 @@ return packer.startup(function(use)
             { 'dsznajder/vscode-es7-javascript-react-snippets', run = 'yarn install --frozen-lockfile && yarn compile' },
         },
         event = 'InsertEnter',
+
         --event = 'InsertEnter',
         config = function() require('plugins.luasnip') end,
     }
@@ -333,7 +336,7 @@ return packer.startup(function(use)
     }
     use { 'lukas-reineke/headlines.nvim',                   -- This plugin adds horizontal highlights for text filetypes, like markdown, orgmode, and neorg.
         --ft =  'markdown',
-        requires = 'nvim-treesitter/nvim-treesitter',
+        after = 'nvim-treesitter',
         confug = function ()  require('headlines').setup() end,
     }
     use { 'preservim/vim-markdown',                         -- Markdown Vim Mode

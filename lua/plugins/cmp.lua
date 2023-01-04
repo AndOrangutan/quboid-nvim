@@ -35,13 +35,15 @@ cmp.setup({
             border = vim.g.quboid_border,
         },
        completion = {
-            border = vim.g.quboid_border_float,
+            border = vim.g.quboid_border,
         },
+
     },
     formatting = {
         fields = { 'kind', 'abbr', 'menu'},
 
         --with_text = true,
+
         format = function (entry, vim_item)
             vim_item.menu = menu_names[entry.source.name]
             vim_item.kind = vim.g.quboid_icons[vim_item.kind]   -- Use built in icons
@@ -111,6 +113,7 @@ cmp.setup.cmdline({ '/', '?' }, {
         { name = 'buffer' }
     }
 })
+
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
