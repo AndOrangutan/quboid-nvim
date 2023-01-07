@@ -6,6 +6,7 @@ local zkcommands = require('zk.commands')
 --    - [Z]k[I]nsert[N]ote
 
 
+
 zk.setup({
     -- can be "telescope", "fzf" or "select" (`vim.ui.select`)
     -- it's recommended to use "telescope" or "fzf"
@@ -32,6 +33,21 @@ zk.setup({
 
 
 wk.register({
+
+    ['<leader>znt'] = {
+        function ()
+            require('fzf-lua').fzf_exec('ls *.md', {
+                actions = {
+                    ['default'] = function(selected, opts)
+                        print("selected item:", selected[1])
+                    end
+
+                },
+                prompt='LS> ', 
+                cwd='~/$ZK_NOTEBOOK_DIR/.zk/templates'
+            })
+        end, '[z]k [n]ew [t]emplate'
+    },
     ['<CR>'] = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'ZK Open Link' },
 
     ['<leader>zs'] = { '<cmd>ZkNotes<cr>', '[z]k [s]earch'},

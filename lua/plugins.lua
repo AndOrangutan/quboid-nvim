@@ -140,6 +140,12 @@ return packer.startup(function(use)
         config = function() require('git-conflict').setup() end,
     }
 
+    -- Neovim Developmentg.
+    use { 'milisims/nvim-luaref' }                          -- Add a vim :help reference for lua
+    -- use { 'folke/neodev.nvim',
+    --     config = function () require('neodev').setup() end,
+    -- }
+
     -- External Package Manaageers
     use { 'williamboman/mason.nvim',                        -- Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.
         event = 'BufRead',
@@ -203,7 +209,6 @@ return packer.startup(function(use)
 
             'saadparwaiz1/cmp_luasnip',                     -- nvim-cmp source for luasnip.
             'hrsh7th/cmp-nvim-lsp',                         -- nvim-cmp source for neovim builtin LSP client
-            'hrsh7th/cmp-nvim-lua',                         -- nvim-cmp source for nvim lua 
             "andersevenrud/cmp-tmux",                       -- Tmux completion source for nvim-cmp and nvim-compe 
 
             'hrsh7th/cmp-buffer',                           -- nvim-cmp source for buffer words 
@@ -236,7 +241,11 @@ return packer.startup(function(use)
 
     -- Statusline
     use { 'nvim-lualine/lualine.nvim',                      -- A blazing fast and easy to configure Neovim statusline.
-        requires = { 'kyazdani42/nvim-web-devicons', 'DaikyXendo/nvim-material-icon' },
+        requires = {
+            'WhoIsSethDaniel/lualine-lsp-progress',
+            'kyazdani42/nvim-web-devicons',
+            'DaikyXendo/nvim-material-icon',
+        },
         config = function() require('plugins.lualine') end
     }
 
@@ -331,15 +340,18 @@ return packer.startup(function(use)
     -- File Specific --
     --------------------
 
-    -- Markdown
+    -- Lua -
+
+
+    -- Markdown --
     use { 'mickael-menu/zk-nvim',                           -- Neovim extension for zk 
         --ft = 'markdown',
         config = function () require('plugins.zk') end,
     }
     use { 'lukas-reineke/headlines.nvim',                   -- This plugin adds horizontal highlights for text filetypes, like markdown, orgmode, and neorg.
-        --ft =  'markdown',
+        ft =  'markdown',
         after = 'nvim-treesitter',
-        confug = function ()  require('headlines').setup() end,
+        config = function ()  require('plugins.headlines') end,
     }
     use { 'preservim/vim-markdown',                         -- Markdown Vim Mode
         ft = 'markdown',
@@ -399,5 +411,11 @@ return packer.startup(function(use)
     }
 
     use { 'neanias/everforest-nvim' }                      -- Lua port: A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
+
+
+    ----------------------
+    -- Personal Plugins --
+    ----------------------
+    use { '/home/vm/dev/mousetrap.nvim' }
 
 end)

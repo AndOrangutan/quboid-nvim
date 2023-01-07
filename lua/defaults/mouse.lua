@@ -29,8 +29,9 @@ vim.cmd.anoremenu{'PopUp.-Sep- <NOP>'}  -- Seperator
 
 vim.cmd.anoremenu{'PopUp.\\ \\ File\\ Tree\\ (<L>nn) <cmd>Neotree toggle<cr>'}
 
-vim.cmd.anoremenu{'PopUp.\\ \\ Code\\ Action\\ (<L>ca) <cmd>CodeActionMenu<cr>'}
-
+vim.cmd.anoremenu{'PopUp.\\ \\ Code\\ Action<Tab>(<L>ca) <cmd>CodeActionMenu<cr>'}
+vim.cmd.anoremenu{'PopUp.\\ \\ Code\\ Action(<L>ca) <cmd>CodeActionMenu<cr>'}
+-- anoremenu PopUp.115\\ Code\    Action(<L>ca) <cmd>CodeActionMenu<cr>
 -- vim.cmd.anoremenu{'PopUp.\\ LSP <cmd>popup! TestPop<cr>'}
 -- vim.cmd.anoremenu{'TestPop.\\ \\ Delete\\ (x) _x'}
 -- vim.cmd.anoremenu{'TestPop.\\ \\ Delete\\ (x) _x'}

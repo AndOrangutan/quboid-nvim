@@ -10,7 +10,6 @@ local menu_names = {
 
     luasnip                 = "Snippets",
     nvim_lsp                = "LSP",
-    nvim_lua                = "Nvim API",
     tmux                    = "Tmux",
 
     buffer                  = "Buffer",
@@ -89,7 +88,6 @@ cmp.setup({
         -- General ranking
         { name = 'luasnip' },
         { name = 'nvim_lsp' },
-        { name = 'nvim_lua' },
         { name = 'tmux' },
 
         { name = 'git' },
@@ -124,6 +122,5 @@ cmp.setup.cmdline(':', {
             { name = 'cmdline' }
         })
 })
-
 
 

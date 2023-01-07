@@ -1,62 +1,25 @@
 local lspconfig = require("lspconfig")
 local wk = require("which-key")
 local masonlsp = require("mason-lspconfig")
+
 --local navic = require("nvim-navic")
 local lspsig = require('lsp_signature')
 
 local G = vim.g
-
---M.icons = {
---  Class         = " ",
---  Color         = " ",
---  Constant      = " ",
---  Constructor   = " ",
---  Enum          = "了 ",
---  EnumMember    = " ",
---  Field         = " ",
---  File          = " ",
---  Folder        = " ",
---  Function      = " ",
---  Interface     = "ﰮ ",
---  Keyword       = " ",
---  Method        = "ƒ ",
---  Module        = " ",
---  Property      = " ",
---  Snippet       = "﬌ ",
---  Struct        = " ",
---  Text          = " ",
---  Unit          = " ",
---  Value         = " ",
---  Variable      = " ",
---}
-
 
 local lspsig_config = {
     bind = true,
     hint_prefix = " ",
     hint_scheme = "Comment",
     hi_parameter = "String",
+    doc_lines = 69,
+    max_height = 16,
     handler_opts = {
-        -- border = 'single',
-        string.byte('')
+        border = {
+            {'╭', 'FloatBorder'}, {'─', 'FloatBorder'}, {'╮', 'FloatBorder'}, {'│', 'FloatBorder'},
+            {'╯', 'FloatBorder'}, {'─', 'FloatBorder'}, {'╰', 'FloatBorder'}, {'│', 'FloatBorder'}
+        },
     },
-    -- floating_window_off_x = 1, -- adjust float windows x position.
-    -- floating_window_off_y = function() -- adjust float windows y position. e.g. set to -2 can make floating window move up 2 lines
-    --     local pumheight = vim.o.pumheight
-    --     local winline = vim.fn.winline() -- line number in the window
-    --     local winheight = vim.fn.winheight(0)
-    --
-    --     -- window top
-    --     if winline - 1 < pumheight then
-    --         return pumheight
-    --     end
-    --
-    --     -- window bottom
-    --     if winheight - winline < pumheight then
-    --         return -pumheight
-    --     end
-    --     return 0
-    -- end,
 }
 
 -- Setup Rename
@@ -98,6 +61,7 @@ end
 
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 --capabilities.textDocument.foldingRange = {
 --    dynamicRegistration = false,
 --    lineFoldingOnly = true,
@@ -165,25 +129,25 @@ masonlsp.setup_handlers({
         })
     end,
     -- Next, you can provide targeted overrides for specific servers.
-    ["sumneko_lua"] = function()
-        lspconfig.sumneko_lua.setup {
-            on_attach = vim.g.quboid_lsp_on_attach,
-            handlers = {
-                ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = vim.g.quboid_border}),
-                ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = vim.g.quboid_border }),
-            },
-
-            settings = {
-                runtime = {
-                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                    version = 'LuaJIT',
-                },
-                Lua = {
-                    diagnostics = {
-                        globals = { "vim" }
-                    }
-                }
-            }
-        }
-    end,
+    -- ["sumneko_lua"] = function()
+    --     lspconfig.sumneko_lua.setup {
+    --         on_attach = vim.g.quboid_lsp_on_attach,
+    --         handlers = {
+    --             ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = vim.g.quboid_border}),
+    --             ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = vim.g.quboid_border }),
+    --         },
+    --
+    --         settings = {
+    --             runtime = {
+    --                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+    --                 version = 'LuaJIT',
+    --             },
+    --             Lua = {
+    --                 diagnostics = {
+    --                     globals = { "vim" }
+    --                 }
+    --             }
+    --         }
+    --     }
+    -- end,
 })

@@ -8,7 +8,10 @@
     - [x] Mini ? 
     - [ ] Spelling 
     - [ ] LSP 
+    - [ ] Notebook
+        - Use this to create a template picker :) https://github.com/AndOrangutan/nvim-config/blob/main/lua/configs/alpha.lua
     - [ ] Null-ls 
+    - [ ] Investigate :Neogit Killing bufferline
         - Incremental rename (other functions?)
     - [ ] Gitsins extract icons to quboid 
     - [ ] Bufferline toggle theme 

@@ -14,6 +14,11 @@ end
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = '*',
     callback = function()
+
+        -- HACK: to change borders to solid by default
+        vim.api.nvim_set_hl(0, 'FloatBorder', { fg = get_hl_val('NormalFloat', 'background'), bg = get_hl_val('NormalFloat', 'background') })
+
+
         vim.api.nvim_set_hl(0, 'CodiVirtualText', {link = 'Comment'})
         vim.api.nvim_set_hl(0, 'MiniMapNormal', {link = 'Comment'})
         vim.api.nvim_set_hl(0, 'MiniIndentscopePrefix', {link = 'Comment'})
