@@ -16,6 +16,8 @@
     - [ ] Gitsins extract icons to quboid 
     - [ ] Bufferline toggle theme 
     - [ ] Snippets 
+    - [ ] Convert to lazy.nvim
+    - [ ] Convert keybinds to `vim.keymap.set('n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', { desc = "format document [LSP]" })`
     - [ ] Folds (ufo) 
     - [ ] TODO trouble 
         - [ ] also fix it so it doesn't jump when scrolling.
@@ -39,6 +41,7 @@
         - Make items safe with pcalls for plug-in
     - [ ] https://github.com/mfussenegger/nvim-jdtls 
     - [ ] https://github.com/zbirenbaum/copilot.lua 
+    - [ ] https://www.reddit.com/r/neovim/comments/rw4imi/what_is_the_most_interesting_part_of_your_lua/
     - [ ] 
     - Note taking
         - [ ] Easy output

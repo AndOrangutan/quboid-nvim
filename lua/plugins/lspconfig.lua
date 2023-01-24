@@ -43,8 +43,8 @@ vim.diagnostic.config({
     virtual_lines = { only_current_line = true },
     -- signs = true,
     underline = true,
-    update_in_insert = false,
-    severity_sort = true,
+    -- update_in_insert = false,
+    -- severity_sort = true,
     -- float = {
     --     source = "always",
     -- },
@@ -89,7 +89,7 @@ vim.g.quboid_lsp_on_attach = function(client, bufnr)
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     wk.register({
-        ["<space>e"] = { "<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", "LSP [e]xamine Diag" },
+        -- TODO: Rebuind to something sensible -- ["<space>e"] = { "<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", "LSP [e]xamine Diag" },
         ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "LSP Goto Prev Diag" },
         ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "LSP Goto Next Diag" },
         ["<space>q"] = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "LSP Diag Loclist" },

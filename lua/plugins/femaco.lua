@@ -8,10 +8,15 @@ require("femaco").setup({
         local buf = vim.api.nvim_create_buf(false, false)
         return vim.api.nvim_win_set_buf(win, buf)
     end,
+    post_open_float = function(winnr)
+        -- vim.wo.signcolumn = 'no'
+        vim.wo.winhighlight = "Nomral:NormalFloat"
+
+    end
 })
 
 wk.register({
-    ['<leader>e'] = { '<cmd>Femaco<cr>', 'Femaco [e]dit Code'}
+    ['<leader>e'] = { '<cmd>FeMaco<cr>', 'Femaco [e]dit Code'}
 })
 
 

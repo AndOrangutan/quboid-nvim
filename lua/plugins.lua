@@ -299,6 +299,9 @@ return packer.startup(function(use)
         config = function () require('plugins.symbols-outline') end,
     }
 
+    -- Cursor
+
+
     -- Multiline Cursor
     use { 'mg979/vim-visual-multi' }                        -- Multiple cursor plugin fot vim/neovim}
 
@@ -339,6 +342,12 @@ return packer.startup(function(use)
     -------------------
     -- File Specific --
     --------------------
+
+    -- Java
+
+    use { 'mfussenegger/nvim-jdtls',                        -- Extensions for the built-in LSP support in Neovim for eclipse.jdt.ls 
+        -- config = function() end,
+    }
 
     -- Lua -
 
