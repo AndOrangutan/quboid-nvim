@@ -74,6 +74,7 @@ local plugins = {
             config = function() require('configs.neogit') end,
             event = 'VimEnter',
         },
+        -- TODO: Add/config diffview
         -- { 'sindrets/diffview.nvim',                         -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
         --     config = function() require('configs.diffview') end,
         --     event = 'BufRead',
@@ -84,6 +85,18 @@ local plugins = {
             tag = '*',
         },
     },
+    ['external-package-manager'] = {
+
+        { 'williamboman/mason.nvim',                        -- Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.
+            event = 'BufRead',
+            config = function() require('configs.mason') end,
+        },
+        { 'williamboman/mason-lspconfig.nvim',              -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
+            dependencies = 'williamboman/mason.nvim',
+            event = 'BufRead',
+            config = function() require('configs.mason-lspconfig') end,
+        }
+    },
     ['lsp'] = {
     },
     ['dap'] = {
@@ -91,7 +104,7 @@ local plugins = {
     ['colorschemes'] = {
     },
     ['plugin-dev'] = {
-
+        { 'milisims/nvim-luaref' }                          -- Add a vim :help reference for lua
     },
 }
 
