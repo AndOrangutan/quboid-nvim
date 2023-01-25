@@ -21,7 +21,7 @@ end
 
 -- Define plugins
 local plugins = {
-    dependencies = {
+    ['dependencies'] = {
         -- Fixes, dependencies, and other needed util
         { 'DaikyXendo/nvim-material-icon',                  -- Icon set using nonicons for neovim plugins and settings
             dependencies = 'nvim-tree/nvim-web-devicons',       -- A Lua fork of vim-devicons.
@@ -30,7 +30,7 @@ local plugins = {
         { 'antoinemadec/FixCursorHold.nvim' },              -- Fix CursorHold Performance.
         { 'nvim-lua/plenary.nvim' },                        -- plenary: full; complete; entire; absolute; unqualified. All the lua functions I don't want to write twice.
     },
-    treesitter = {
+    ['treesitter'] = {
         { 'nvim-treesitter/nvim-treesitter',                -- Neovim Treesitter configurations and abstraction layer.
             dependencies = {
                 'nvim-treesitter/nvim-treesitter-textobjects',  -- Create your own textobjects using tree-sitter queries.
@@ -51,9 +51,11 @@ local plugins = {
             event = 'VimEnter',
             config = true,
         },
-        { },
+        { 'windwp/nvim-ts-autotag',                         -- Use treesitter to auto close and auto rename html tags.
+            config = true,
+        },
     },
-    keymapping = {
+    ['keymapping'] = {
         { 'folke/which-key.nvim',                           -- Neovim plugin that shows a popup with possible keybindings of the command you started typing.
             dependencies = {
                 'mrjones2014/legendary.nvim',                   -- Define your keymaps, commands, and autocommands as simple Lua tables, and create a legend for them at the same time, integrates with which-key.nvim.
@@ -61,13 +63,35 @@ local plugins = {
             },
         },
     },
-    lsp = {
+    ['git'] = {
+        { 'lewis6991/gitsigns.nvim',                        -- Git integration: signs, hunk actions, blame, etc.
+            config = function() require("configs.gitsigns") end,
+            event = 'BufRead',
+            --after = 'nvim-lua/plenary.nvim',
+        },
+        { 'TimUntersberger/neogit',                         -- A Magit clone for Neovim that may change some things to fit the Vim philosophy.
+            dependencies = 'nvim-lua/plenary.nvim',
+            config = function() require('configs.neogit') end,
+            event = 'VimEnter',
+        },
+        -- { 'sindrets/diffview.nvim',                         -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
+        --     config = function() require('configs.diffview') end,
+        --     event = 'BufRead',
+        -- },
+        { 'akinsho/git-conflict.nvim',                      -- A plugin to visualise and resolve merge conflicts in neovim.
+            config = true,
+            event = 'BufRead',
+            tag = '*',
+        },
     },
-    dap = {
+    ['lsp'] = {
     },
-    kruft = {
+    ['dap'] = {
     },
-    colorschemes = {
+    ['colorschemes'] = {
+    },
+    ['plugin-dev'] = {
+
     },
 }
 
