@@ -220,6 +220,15 @@ local plugins = {
             config = function () require('configs.symbols-outline') end,
         },
     },
+    ['general-editing'] = {
+        -- { 'mg979/vim-visual-multi' }                        -- Multiple cursor plugin fot vim/neovim}
+        -- TODO: add TS support with pre_hook
+        { 'numToStr/Comment.nvim',                          -- Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more 
+            config = true,
+        }
+    },
+    ['external-compat'] = {
+    },
     ['colorschemes'] = {
     },
     ['plugin-dev'] = {
