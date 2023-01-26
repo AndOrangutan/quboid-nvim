@@ -97,9 +97,68 @@ local plugins = {
             config = function() require('configs.mason-lspconfig') end,
         }
     },
-    ['lsp'] = {
+    ['language-server-protocol'] = {
+        { 'neovim/nvim-lspconfig',                          -- Quickstart configurations for the Neovim LSP client.
+            dependencies = {
+                'williamboman/mason-lspconfig',                 -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim. Strongly recommended for Windows users. 
+                'ray-x/lsp_signature.nvim',                     -- LSP signature hint as you type 
+                'smjonas/inc-rename.nvim',                      -- Incremental LSP renaming based on Neovim's command-preview feature.
+            },
+            event = 'BufRead',
+            config = function () require('configs.lspconfig') end,
+        },
+        { "weilbith/nvim-code-action-menu",                 -- A floating pop-up menu for code actions to show code action information and a diff preview.
+            cmd = "CodeActionMenu",
+            config = function() vim.g.code_action_menu_window_border = vim.g.quboid_border vim.g.code_action_menu_show_details = false end,
+        },
+        --use { "kosayoda/nvim-lightbulb",
+        --    event = "BufRead",
+        --    requires = "antoinemadec/FixCursorHold.nvim",
+        --    config = function() require("configs.lightbulb") end,
+        --}
+        { 'RRethy/vim-illuminate',                          -- (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
+            event = 'BufRead',
+            config = function() require('illuminate').configure() end,
+        },
     },
-    ['dap'] = {
+    ['completion'] = {
+
+        { 'L3MON4D3/LuaSnip',                               -- Snippet Engine for Neovim written in Lua.
+            dependencies = {
+                'rafamadriz/friendly-snippets',                 -- Set of preconfigured snippets for different languages.
+                { 'dsznajder/vscode-es7-javascript-react-snippets', -- Extension for React/Javascript snippets with search supporting ES7+ and babel features 
+                    build = 'yarn install --frozen-lockfile && yarn compile' 
+                },
+            },
+            event = 'InsertEnter',
+            config = function() require('configs.luasnip') end,
+        },
+        { 'hrsh7th/nvim-cmp',                               -- A completion plugin for Neovim written in Lua. New version of nvim-compe.
+            requires = {
+                'hrsh7th/cmp-path',                             -- nvim-cmp source for path 
+                'kdheepak/cmp-latex-symbols',                   -- Add latex symbol support for nvim-cmp. 
+                "hrsh7th/cmp-calc",                             -- nvim-cmp source for math calculation
+
+                'saadparwaiz1/cmp_luasnip',                     -- nvim-cmp source for luasnip.
+                'hrsh7th/cmp-nvim-lsp',                         -- nvim-cmp source for neovim builtin LSP client
+                "andersevenrud/cmp-tmux",                       -- Tmux completion source for nvim-cmp and nvim-compe 
+
+                'hrsh7th/cmp-buffer',                           -- nvim-cmp source for buffer words 
+                'hrsh7th/cmp-cmdline',                          -- nvim-cmp source for vim's cmdline 
+                { "petertriho/cmp-git",                         -- Git source for nvim-cmp 
+                    dependencies = "nvim-lua/plenary.nvim" 
+                },
+            },
+            -- after = 'LuaSnip',
+            config = function() require('configs.cmp') end,
+        },
+    },
+    ['general'] = {
+        { 'echasnovski/mini.nvim',  -- Mini, multi purpose plugin, used for minimap and indent scope 
+            --event = 'VimEnter',
+            config = function () require('configs.mini') end,
+        },
+    ['debug-adapter-protocol'] = {
     },
     ['colorschemes'] = {
     },

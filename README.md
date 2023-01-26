@@ -9,6 +9,8 @@ Main Goals:
 ## TODO
 
 - Plugins
+    - Change statusline
+    - better lists
     - [x] Fix autopairs
     - [x] Mini ? 
     - [ ] Spelling 
