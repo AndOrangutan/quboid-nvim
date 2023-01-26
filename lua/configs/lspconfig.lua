@@ -54,6 +54,7 @@ end
 -- LSP Signature --
 -------------------
 
+-- TODO: Setup proper, removing hint, adding toggle key, adding select key
 -- Setup lsp signature
 local lspsig_config
 if lspsig_ok then
