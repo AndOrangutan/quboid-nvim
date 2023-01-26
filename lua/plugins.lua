@@ -245,8 +245,6 @@ local plugins = {
 
         },
     },
-    ['colorschemes'] = {
-    },
     ['plugin-dev'] = {
         { 'milisims/nvim-luaref' },                         -- Add a vim :help reference for lua
     },
@@ -309,7 +307,15 @@ local plugins = {
             config = function() require('config.due') end,
         },
 
-    }
+    },
+    ['colorschemes'] = {
+
+        { 'navarasu/onedark.nvim',                          -- One dark and light colorscheme for neovim >= 0.5.0 written in lua based on Atom's One Dark and Light theme. Additionally, it comes with 5 color variant styles
+            config = function () require('configs.onedark') end,
+        },
+
+        { 'neanias/everforest-nvim' },                     -- Lua port: A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
+    },
 }
 
 -- Condense tables
