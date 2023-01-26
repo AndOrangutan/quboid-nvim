@@ -29,6 +29,7 @@ local plugins = {
         },
         { 'antoinemadec/FixCursorHold.nvim' },              -- Fix CursorHold Performance.
         { 'nvim-lua/plenary.nvim' },                        -- plenary: full; complete; entire; absolute; unqualified. All the lua functions I don't want to write twice.
+        { 'MunifTanjim/nui.nvim' }                          -- UI Component Library for Neovim. 
     },
     ['treesitter'] = {
         { 'nvim-treesitter/nvim-treesitter',                -- Neovim Treesitter configurations and abstraction layer.
@@ -86,7 +87,6 @@ local plugins = {
         },
     },
     ['external-package-manager'] = {
-
         { 'williamboman/mason.nvim',                        -- Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.
             event = 'BufRead',
             config = function() require('configs.mason') end,
@@ -122,19 +122,18 @@ local plugins = {
         },
     },
     ['completion'] = {
-
         { 'L3MON4D3/LuaSnip',                               -- Snippet Engine for Neovim written in Lua.
             dependencies = {
                 'rafamadriz/friendly-snippets',                 -- Set of preconfigured snippets for different languages.
                 { 'dsznajder/vscode-es7-javascript-react-snippets', -- Extension for React/Javascript snippets with search supporting ES7+ and babel features 
-                    build = 'yarn install --frozen-lockfile && yarn compile' 
+                    build = 'yarn install --frozen-lockfile && yarn compile',
                 },
             },
             event = 'InsertEnter',
             config = function() require('configs.luasnip') end,
         },
         { 'hrsh7th/nvim-cmp',                               -- A completion plugin for Neovim written in Lua. New version of nvim-compe.
-            requires = {
+            dependencies = {
                 'hrsh7th/cmp-path',                             -- nvim-cmp source for path 
                 'kdheepak/cmp-latex-symbols',                   -- Add latex symbol support for nvim-cmp. 
                 "hrsh7th/cmp-calc",                             -- nvim-cmp source for math calculation
@@ -146,34 +145,102 @@ local plugins = {
                 'hrsh7th/cmp-buffer',                           -- nvim-cmp source for buffer words 
                 'hrsh7th/cmp-cmdline',                          -- nvim-cmp source for vim's cmdline 
                 { "petertriho/cmp-git",                         -- Git source for nvim-cmp 
-                    dependencies = "nvim-lua/plenary.nvim" 
+                    dependencies = "nvim-lua/plenary.nvim"
                 },
             },
             -- after = 'LuaSnip',
             config = function() require('configs.cmp') end,
         },
     },
-    ['general'] = {
+    ['debug-adapter-protocol'] = {
+    },
+    ['multi-purpose'] = {
+        -- TODO: Replace cinnamon and windows.nvim with this https://github.com/echasnovski/mini.nvim/issues/177#issuecomment-1364064915
         { 'echasnovski/mini.nvim',  -- Mini, multi purpose plugin, used for minimap and indent scope 
             --event = 'VimEnter',
             config = function () require('configs.mini') end,
         },
-    ['debug-adapter-protocol'] = {
+    },
+    ['core-ui'] = {
+        { 'stevearc/dressing.nvim',                         -- Neovim plugin to improve the default vim.ui interfaces
+            event = 'VimEnter',
+            config = function () require('configs.dressing') end,
+        },
+        { 'rcarriga/nvim-notify',                           -- A fancy, configurable, notification manager for Neovim.
+            event = 'VimEnter',
+            config = function() require('configs.notify') end,
+        },
+        -- TODO: Convert to https://github.com/rebelot/heirline.nvim
+        { 'nvim-lualine/lualine.nvim',                      -- A blazing fast and easy to configure Neovim statusline.
+            dependencies = {
+                'WhoIsSethDaniel/lualine-lsp-progress',
+                'kyazdani42/nvim-web-devicons',
+                'DaikyXendo/nvim-material-icon',
+            },
+            config = function() require('configs.lualine') end
+        },
+        { 'akinsho/bufferline.nvim',                        --  A snazzy bufferline for Neovim 
+            config = function () require('configs.bufferline') end,
+        },
+        { 'ibhagwan/fzf-lua',                               -- Improved fzf.vim written in lua
+            dependencies = { 'DaikyXendo/nvim-material-icon' },
+            --event = 'VimEnter',
+            config = function() require('configs.fzf-lua') end,
+        },
+    },
+    ['core-ui-buffers'] = {
+        -- Startup 
+        { "goolord/alpha-nvim",                             -- A lua powered greeter like vim-startify / dashboard-nvim.
+            -- TODO: Fix yucky config
+            config = function() require("plugins.alpha") end,
+        },
+
+        -- File tree
+        { 'nvim-neo-tree/neo-tree.nvim',                    -- Neovim plugin to manage the file system and other tree like structures. 
+            dependencies = {
+                'nvim-lua/plenary.nvim',
+                'DaikyXendo/nvim-material-icon',
+                'MunifTanjim/nui.nvim',
+            },
+            -- cmd = 'Neotree',
+            branch = 'v2.x',
+            config = function () require('configs.neo-tree') end,
+        },
+        -- TODO: Add todo https://github.com/folke/todo-comments.nvim
+        { 'folke/trouble.nvim',                             -- A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+            dependencies = { 'DaikyXendo/nvim-material-icon' },
+            event = 'VimEnter',
+            config = function() require('configs.trouble') end,
+        },
+
+        -- TODO: Once over config
+        { 'simrat39/symbols-outline.nvim',                  -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
+            dependencies = { 'kyazdani42/nvim-web-devicons', 'DaikyXendo/nvim-material-icon' },
+            cmd = 'SymbolsOutline',
+            config = function () require('configs.symbols-outline') end,
+        },
     },
     ['colorschemes'] = {
     },
     ['plugin-dev'] = {
-        { 'milisims/nvim-luaref' }                          -- Add a vim :help reference for lua
+        { 'milisims/nvim-luaref' },                         -- Add a vim :help reference for lua
     },
+    ['ft-markdown'] = {
+        { 'prncss-xyz/neo-tree-zk.nvim',                    -- neo-tree source for zk-nvim 
+            requires = {
+                'nvim-neo-tree/neo-tree.nvim',
+                'mickael-menu/zk-nvim'
+            }
+        },
+
+    }
 }
 
 -- Condense tables
 local plugins_spec = {}
 for group, specs in pairs(plugins) do
-    if not table.contains(groups_to_skip, group) then
-        for _, spec in ipairs(specs) do
-            table.insert(plugins_spec, spec)
-        end
+    for _, spec in ipairs(specs) do
+        table.insert(plugins_spec, spec)
     end
 end
 

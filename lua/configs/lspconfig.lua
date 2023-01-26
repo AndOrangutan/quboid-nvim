@@ -111,6 +111,7 @@ vim.g.quboid_lsp_on_attach = function(client, bufnr)
 
 
     util.keymap('n', 'gD', vim.lsp.buf.declaration(), { desc = 'Lsp [g]oto [D]eclaration', buffer = bufnr})
+    -- TODO: Open in split
     util.keymap('n', 'gd', vim.lsp.buf.definition(), { desc = 'Lsp [g]oto [d]efintion', buffer = bufnr })
     util.keymap('n', 'gr', vim.lsp.buf.references(), { desc = 'Lsp [g]ather [r]eferences', buffer = bufnr})
     util.keymap('n', 'K', vim.lsp.buf.hover(), { desc = 'Lsp [k]ick up Hover', buffer = bufnr})
