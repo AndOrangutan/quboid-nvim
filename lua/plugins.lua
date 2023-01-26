@@ -220,21 +220,48 @@ local plugins = {
             config = function () require('configs.symbols-outline') end,
         },
     },
-    ['general-editing'] = {
+    ['editing'] = {
         -- { 'mg979/vim-visual-multi' }                        -- Multiple cursor plugin fot vim/neovim}
         -- TODO: add TS support with pre_hook
         { 'numToStr/Comment.nvim',                          -- Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more 
             config = true,
         }
     },
+    ['navigation'] = {
+        { 'jinh0/eyeliner.nvim',                            -- Move faster with unique f/F and t/T indicators. 
+            config = function () require('configs.eyeliner') end,
+        }
+
+    },
     ['external-compat'] = {
+        { 'aserowy/tmux.nvim',                              -- Tmux integration for Neovim features pane movement and resizing from within Neovim.
+            config = function() require('configs.tmux') end,
+        },
+    },
+    ['coderunners'] = {
+        { 'michaelb/sniprun',                               -- A neovim plugin to run lines/blocs of code (independently of the rest of the file), supporting multiples languages
+            build = 'bash ./install.sh',
+            config = function () require('configs.sniprun') end,
+
+        },
     },
     ['colorschemes'] = {
     },
     ['plugin-dev'] = {
         { 'milisims/nvim-luaref' },                         -- Add a vim :help reference for lua
     },
+    ['ft-java'] = {
+        -- TODO: Config JDTLS
+        -- { 'mfussenegger/nvim-jdtls',                        -- Extensions for the built-in LSP support in Neovim for eclipse.jdt.ls 
+        --     -- config = function() end,
+        -- },
+    },
     ['ft-markdown'] = {
+        -- TODO: Rewrite zk config
+        { 'mickael-menu/zk-nvim',                           -- Neovim extension for zk 
+            --ft = 'markdown',
+            config = function () require('configs.zk') end,
+        },
         { 'prncss-xyz/neo-tree-zk.nvim',                    -- neo-tree source for zk-nvim 
             requires = {
                 'nvim-neo-tree/neo-tree.nvim',
