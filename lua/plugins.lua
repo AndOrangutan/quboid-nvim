@@ -126,8 +126,6 @@ return packer.startup(function(use)
     use { 'TimUntersberger/neogit',                         -- A Magit clone for Neovim that may change some things to fit the Vim philosophy.
         config = function() require('plugins.neogit') end,
         event = 'VimEnter',
-        commit = '8adf22f',
-        --branch = 'nanozuki:master',
         requires = 'nvim-lua/plenary.nvim',
     }
     use { 'sindrets/diffview.nvim',                         -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
@@ -181,10 +179,10 @@ return packer.startup(function(use)
     --    requires = "antoinemadec/FixCursorHold.nvim",
     --    config = function() require("configs.lightbulb") end,
     --}
-    use { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',   -- Show nvim diagnostics using virtual lines
-        event = 'BufRead',
-        config = function() require('plugins.lsp_lines') end,
-    }
+    -- use { 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',   -- Show nvim diagnostics using virtual lines
+    --     event = 'BufRead',
+    --     config = function() require('plugins.lsp_lines') end,
+    -- }
     use { 'RRethy/vim-illuminate',                          -- (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
         event = 'BufRead',
         config = function() require('illuminate').configure() end,
@@ -325,7 +323,7 @@ return packer.startup(function(use)
 
     -- Highlighting
     use { 'jinh0/eyeliner.nvim',                            -- Move faster with unique f/F indicators. 
-        config = function () require('eyeliner').setup({ highlight_on_key = true }) end,
+        config = function () require('eyeliner').setup({ highlight_on_key = true, dim = false }) end,
     }
     -------------------
     -- Code Runners --
@@ -333,7 +331,6 @@ return packer.startup(function(use)
 
     -- General
     use { 'michaelb/sniprun',                               -- A neovim plugin to run lines/blocs of code (independently of the rest of the file), supporting multiples languages
-
         run = 'bash ./install.sh',
         config = function () require('plugins.sniprun') end,
 

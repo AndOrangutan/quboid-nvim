@@ -1,5 +1,4 @@
 vim.cmd[[
-
 " Create missing directories on save
 function s:MkNonExDir(file, buf)
     if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'

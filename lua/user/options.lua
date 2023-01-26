@@ -12,6 +12,7 @@ g.mapleader = " "
 
 --o.concealcursor="nc"
 
+
 -- Sane(er) defaults
 o.termguicolors     = true
 o.timeoutlen        = 500

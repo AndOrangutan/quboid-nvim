@@ -22,6 +22,7 @@ local lspsig_config = {
     },
 }
 
+
 -- Setup Rename
 require("inc_rename").setup({
       input_buffer_type = "dressing",
@@ -34,6 +35,7 @@ local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts = opts or {}
     opts.border = opts.border or G.quboid_border
+    -- opts.border = opts.border or G.quboid_border
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
@@ -60,7 +62,8 @@ for type, icon in pairs(signs) do
 end
 
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 --capabilities.textDocument.foldingRange = {
 --    dynamicRegistration = false,
@@ -80,6 +83,7 @@ vim.g.quboid_lsp_on_attach = function(client, bufnr)
     --    navic.attach(client, bufnr)
     --end
 
+
     lspsig.on_attach(lspsig_config, bufnr)
 
     vim.keymap.set("n", "<leader>rn", function()
@@ -89,7 +93,8 @@ vim.g.quboid_lsp_on_attach = function(client, bufnr)
     -- Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     wk.register({
-        -- TODO: Rebuind to something sensible -- ["<space>e"] = { "<cmd>lua vim.diagnostic.open_float(nil, {focus=false})<CR>", "LSP [e]xamine Diag" },
+       -- TODO: Rebuind to something sensible 
+        ["<space>e"] = { "<cmd>lua vim.diagnostic.open_float({}, {focus=false})<CR>", "LSP [e]xamine Diag" },
         ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "LSP Goto Prev Diag" },
         ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "LSP Goto Next Diag" },
         ["<space>q"] = { "<cmd>lua vim.diagnostic.setloclist()<CR>", "LSP Diag Loclist" },
@@ -110,6 +115,8 @@ vim.g.quboid_lsp_on_attach = function(client, bufnr)
         ["gr"] = { "<cmd>lua vim.lsp.buf.references()<CR>", "LSP [g]ather [r]eferences" },
         ["<space>F"] = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "LSP [F]ormat Buffer" },
         -- WARN: This is technically not the most correct way to setup this binding since lsp might not get loaded for some things
+
+
     }, { buffer = bufnr })
 end
 
@@ -122,32 +129,33 @@ masonlsp.setup_handlers({
         require("lspconfig")[server_name].setup({
             on_attach = vim.g.quboid_lsp_on_attach,
             capabilities = capabilities,
-            handlers = {
-                ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = vim.g.quboid_border}),
-                ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = vim.g.quboid_border }),
-            },
+            -- handlers = {
+            --     ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = 'shadow'}),
+            --     ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = vim.g.quboid_border }),
+            -- },
         })
     end,
     -- Next, you can provide targeted overrides for specific servers.
-    -- ["sumneko_lua"] = function()
-    --     lspconfig.sumneko_lua.setup {
-    --         on_attach = vim.g.quboid_lsp_on_attach,
-    --         handlers = {
-    --             ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = vim.g.quboid_border}),
-    --             ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = vim.g.quboid_border }),
-    --         },
-    --
-    --         settings = {
-    --             runtime = {
-    --                 -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-    --                 version = 'LuaJIT',
-    --             },
-    --             Lua = {
-    --                 diagnostics = {
-    --                     globals = { "vim" }
-    --                 }
-    --             }
-    --         }
-    --     }
-    -- end,
+    ["sumneko_lua"] = function()
+        lspconfig.sumneko_lua.setup {
+            on_attach = vim.g.quboid_lsp_on_attach,
+            -- handlers = {
+            --     ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = 'shadow'}),
+            --     ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = vim.g.quboid_border }),
+            -- },
+
+            settings = {
+                runtime = {
+                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                    version = 'LuaJIT',
+                },
+                Lua = {
+                    diagnostics = {
+                        globals = { "vim" } -- to remove "unknown global 'vim'"
+                    }
+                }
+            }
+        }
+    end,
 })
+
