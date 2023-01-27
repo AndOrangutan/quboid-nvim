@@ -76,5 +76,5 @@ require("bufferline").setup{
 }
 
 
-util.keymap('n', '<M-.>', '<cmd>BufferLineCycleNext', 'Bufferline Cycle Next')
-util.keymap('n', '<M-,>', '<cmd>BufferLineCyclePrev', 'Bufferline Cycle Prev')
+util.keymap('n', '<M-.>', '<cmd>BufferLineCycleNext<cr>', 'Bufferline Cycle Next')
+util.keymap('n', '<M-,>', '<cmd>BufferLineCyclePrev<cr>', 'Bufferline Cycle Prev')

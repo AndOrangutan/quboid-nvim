@@ -3,7 +3,7 @@ local util = require('util')
 local indentscope = require('mini.indentscope')
 local map = require('mini.map')
 local autopairs = require('mini.pairs')
--- local animate = require("mini.animate")
+local animate = require("mini.animate")
 
 local wk_ok wk = pcall(require, 'which-key')
 ------------------
@@ -66,22 +66,55 @@ autopairs.setup({
     },
 })
 
--- animate.setup()
---
--- local map_scroll_with_center = function(lhs)
---   local center_command =
---     [[if MiniAnimate ~= nil then MiniAnimate.execute_after('scroll', 'normal! zz') else vim.cmd('normal! zz') end]]
---
---   local rhs = string.format([[<Cmd>lua pcall(vim.cmd, 'normal! %s'); %s<CR>]], lhs, center_command)
---   vim.keymap.set('n', lhs, rhs, {})
--- end
---
--- map_scroll_with_center('<C-d>')
--- map_scroll_with_center('<C-u>')
--- map_scroll_with_center('gg')
--- map_scroll_with_center('G')
--- map_scroll_with_center('n')
--- map_scroll_with_center('N')
+
+local mouse_scrolled = false
+for _, scroll in ipairs({ 'Up', 'Down' }) do
+    local key = '<ScrollWheel'..'>'
+    vim.keymap.set('', key, function ()
+        mouse_scrolled = true
+        return key
+    end, { noremap = true, expr = true })
+end
+
+local map_scroll_with_center = function(lhs)
+  local center_command =
+    [[if MiniAnimate ~= nil then MiniAnimate.execute_after('scroll', 'normal! zz') else vim.cmd('normal! zz') end]]
+
+  local rhs = string.format([[<Cmd>lua pcall(vim.cmd, 'normal! %s'); %s<CR>]], lhs, center_command)
+  vim.keymap.set('n', lhs, rhs, {})
+end
+
+animate.setup({
+    scroll = {
+        timing = animate.gen_timing.linear({ duration = 150, unit = "total" }),
+        subscroll = animate.gen_subscroll.equal({
+            predicate = function(total_scroll)
+                if mouse_scrolled then
+                    mouse_scrolled = false
+                    return false
+                end
+                return total_scroll > 1
+            end,
+        }),
+    },
+})
+
+map_scroll_with_center('<C-d>')
+map_scroll_with_center('<C-u>')
+map_scroll_with_center('gg')
+map_scroll_with_center('G')
+map_scroll_with_center('n')
+map_scroll_with_center('N')
+
+-- Animate windows
+local function sizes()
+    vim.go.winwidth = math.max(64, math.floor(vim.go.columns * 0.5))
+    vim.go.winminwidth = 32
+    vim.go.winheight = math.max(40, math.floor(vim.go.lines * 0.5))
+    vim.go.winminheight = 8
+end
+sizes()
+vim.api.nvim_create_autocmd("VimResized", { callback = sizes })
 
 util.keymap('n', '<leader>mm', map.toggle, '[m]ini [m]Map Toggle')
 util.keymap('n', '<leader>mf', map.toggle_focus, 'Mini [m]ap [t]oggle')

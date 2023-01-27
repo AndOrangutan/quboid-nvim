@@ -1,7 +1,7 @@
 
 local cmp = require('cmp')
 
-local luasnip_ok luasnip = pcall(require, 'luasnip')
+local luasnip_ok, luasnip = pcall(require, 'luasnip')
 if not luasnip then
     return
 end

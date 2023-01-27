@@ -15,7 +15,12 @@ return {
     },
     -- TODO: Add todo https://github.com/folke/todo-comments.nvim
     { 'folke/trouble.nvim',                             -- A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-        dependencies = { 'DaikyXendo/nvim-material-icon' },
+        dependencies = { 
+            'DaikyXendo/nvim-material-icon',
+            { 'folke/todo-comments.nvim',
+                config = function () require('configs.todo-comments') end,
+            }
+        },
         event = 'VimEnter',
         config = function() require('configs.trouble') end,
     },
