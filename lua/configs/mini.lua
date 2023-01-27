@@ -109,12 +109,29 @@ map_scroll_with_center('N')
 -- Animate windows
 local function sizes()
     vim.go.winwidth = math.max(64, math.floor(vim.go.columns * 0.5))
-    vim.go.winminwidth = 32
-    vim.go.winheight = math.max(40, math.floor(vim.go.lines * 0.5))
+    vim.go.winminwidth = 24
+    -- vim.go.winheight = math.max(40, math.floor(vim.go.lines * 0.5))
+    vim.go.winheight = 8
     vim.go.winminheight = 8
 end
+
 sizes()
-vim.api.nvim_create_autocmd("VimResized", { callback = sizes })
+
+vim.api.nvim_create_autocmd("VimResized", { 
+    callback = function ()
+        for i, ft in pairs(vim.g.quboid_ft_exclude) do
+            if vim.bo.filetype == ft then
+                -- vim.o.winwidth = 10
+                -- vim.o.winminwidth = 10
+                -- vim.o.winheight = 8
+                -- vim.o.winminheight = 8
+
+                return
+            end
+            sizes()
+        end
+    end
+})
 
 util.keymap('n', '<leader>mm', map.toggle, '[m]ini [m]Map Toggle')
 util.keymap('n', '<leader>mf', map.toggle_focus, 'Mini [m]ap [t]oggle')

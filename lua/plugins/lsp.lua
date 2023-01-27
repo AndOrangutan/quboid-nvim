@@ -2,11 +2,20 @@ return {
     { 'neovim/nvim-lspconfig',                          -- Quickstart configurations for the Neovim LSP client.
         dependencies = {
             'williamboman/mason-lspconfig',                 -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim. Strongly recommended for Windows users. 
+            'SmiteshP/nvim-navic',
             'ray-x/lsp_signature.nvim',                     -- LSP signature hint as you type 
             'smjonas/inc-rename.nvim',                      -- Incremental LSP renaming based on Neovim's command-preview feature.
         },
         event = 'BufRead',
         config = function () require('configs.lspconfig') end,
+    },
+    { 'utilyre/barbecue.nvim',                          -- A VS Code like winbar for Neovim ,
+        config = function () require('configs.barbecue') end,
+        dependencies = {
+            'SmiteshP/nvim-navic',
+            'DaikyXendo/nvim-material-icon',
+            'neovim/nvim-lspconfig',
+        },
     },
     { "weilbith/nvim-code-action-menu",                 -- A floating pop-up menu for code actions to show code action information and a diff preview.
         cmd = "CodeActionMenu",

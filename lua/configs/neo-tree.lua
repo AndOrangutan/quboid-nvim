@@ -94,10 +94,7 @@ require("neo-tree").setup({
                 state.commands["open"](state)
                 vim.cmd("Neotree reveal")
             end,
-            ["<space>"] = { 
-                "toggle_node", 
-                nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
-            },
+            ["<space>"] = false,
             ["<2-LeftMouse>"] = "open",
             ["<cr>"] = "open",
             ["<esc>"] = "revert_preview",

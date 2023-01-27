@@ -2,11 +2,10 @@ local lspconfig = require("lspconfig")
 local util = require('util')
 
 local masonlsp_ok, masonlsp = pcall(require, 'mason-lspconfig')
-local lspsig_ok,   lspsig = pcall(require, 'lsp_signature')
-local cmplsp_ok,   cmplsp = pcall(require, 'cmp_nvim_lsp')
+local lspsig_ok, lspsig = pcall(require, 'lsp_signature')
+local cmplsp_ok, cmplsp = pcall(require, 'cmp_nvim_lsp')
+local navic_ok, navic = pcall(require, 'nvim-navic')
 
--- TODO: Install Navic
--- local navic_ok navic = pcall(require, 'lsp_signature')
 -- TODO: Use ..._ok to loand sections safely.
 -- if not masonlsp_ok then return end
 
@@ -98,11 +97,16 @@ vim.g.quboid_lsp_on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+    if navic_ok then
+        if client.server_capabilities["documentSymbolProvider"] then
+            navic.attach(client, bufnr)
+        end
+    end
 
 
-    --if lspsig_ok then
+    if lspsig_ok then
         lspsig.on_attach(lspsig_config, bufnr)
-    --end
+    end
 
     vim.keymap.set("n", "<leader>rn", function()
         return ":IncRename " .. vim.fn.expand("<cword>")

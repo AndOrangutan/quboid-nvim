@@ -50,6 +50,8 @@ o.breakindentopt    = true
 -- Window
 o.winwidth = 10
 o.winminwidth = 10
+o.winheight = 8
+o.winminheight = 8
 o.equalalways = false
 
 -- Cursor
