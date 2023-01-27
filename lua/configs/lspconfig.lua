@@ -1,9 +1,10 @@
 local lspconfig = require("lspconfig")
 local util = require('util')
 
-local masonlsp_ok masonlsp = pcall(require, 'mason-lsp-config')
-local lspsig_ok lspsig = pcall(require, 'lsp_signature')
-local cmplsp_ok, cmplsp = pcall(require, 'cmp_nvim_lsp')
+local masonlsp_ok, masonlsp = pcall(require, 'mason-lspconfig')
+local lspsig_ok,   lspsig = pcall(require, 'lsp_signature')
+local cmplsp_ok,   cmplsp = pcall(require, 'cmp_nvim_lsp')
+
 -- TODO: Install Navic
 -- local navic_ok navic = pcall(require, 'lsp_signature')
 -- TODO: Use ..._ok to loand sections safely.
@@ -17,8 +18,8 @@ local cmplsp_ok, cmplsp = pcall(require, 'cmp_nvim_lsp')
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts = opts or {}
-    opts.border = opts.border or G.quboid_border
-    -- opts.border = opts.border or G.quboid_border
+    opts.border = opts.border or vim.g.quboid_border
+    -- opts.border = opts.border or vim.g.quboid_border
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
@@ -38,10 +39,10 @@ vim.diagnostic.config({
 
 -- Customize the sign columns
 local signs = { 
-    Error = G.quboid_icons["error"],
-    Warn = G.quboid_icons["warn"],
-    Hint = G.quboid_icons["hint"],
-    Info = G.quboid_icons["info"],
+    Error = vim.g.quboid_icons["error"],
+    Warn = vim.g.quboid_icons["warn"],
+    Hint = vim.g.quboid_icons["hint"],
+    Info = vim.g.quboid_icons["info"],
 }
 
 for type, icon in pairs(signs) do
@@ -57,7 +58,7 @@ end
 -- TODO: Setup proper, removing hint, adding toggle key, adding select key
 -- Setup lsp signature
 local lspsig_config
-if lspsig_ok then
+--if lspsig_ok then
     lspsig_config = {
         bind = true,
         hint_prefix = vim.g.quboid_eol_padding.." ",
@@ -73,16 +74,16 @@ if lspsig_ok then
         },
     }
     lspsig.setup(lspsig_config)
-end
+--end
 
 -----------------------------
 -- Extend LSP Capabilities --
 -----------------------------
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-if cmplsp_ok then
+--if cmplsp_ok then
     capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
-end
+--end
 
 ---------------
 -- On Attach --
@@ -90,8 +91,8 @@ end
 
 -- Bindings that work without lsp
 util.keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float({}, {focus=false})<CR>', '[e]xamine Diagnostics (2x to enter)')
-util.keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', 'Goto Prev [d]iagnostic')
-util.keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', 'Goto Next [d]iagnostic')
+util.keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', 'vim.g.to Prev [d]iagnostic')
+util.keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', 'vim.g.to Next [d]iagnostic')
 
 vim.g.quboid_lsp_on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
@@ -99,9 +100,9 @@ vim.g.quboid_lsp_on_attach = function(client, bufnr)
 
 
 
-    if lspsig_ok then
+    --if lspsig_ok then
         lspsig.on_attach(lspsig_config, bufnr)
-    end
+    --end
 
     vim.keymap.set("n", "<leader>rn", function()
         return ":IncRename " .. vim.fn.expand("<cword>")
@@ -111,24 +112,24 @@ vim.g.quboid_lsp_on_attach = function(client, bufnr)
     -- See `:help vim.lsp.*` for documentation on any of the below functions
 
 
-    util.keymap('n', 'gD', vim.lsp.buf.declaration(), { desc = 'Lsp [g]oto [D]eclaration', buffer = bufnr})
+    util.keymap('n', 'gD', '<cmd>vim.lsp.buf.declaration()<cr>', { desc = 'Lsp [g]oto [D]eclaration', buffer = bufnr})
     -- TODO: Open in split
-    util.keymap('n', 'gd', vim.lsp.buf.definition(), { desc = 'Lsp [g]oto [d]efintion', buffer = bufnr })
-    util.keymap('n', 'gr', vim.lsp.buf.references(), { desc = 'Lsp [g]ather [r]eferences', buffer = bufnr})
-    util.keymap('n', 'K', vim.lsp.buf.hover(), { desc = 'Lsp [k]ick up Hover', buffer = bufnr})
-    util.keymap('n', 'gi', vim.lsp.buf.implementation(), { desc = 'Lsp [g]ather [i]mplementation', buffer = bufnr})
-    util.keymap('n', '<c-k>', vim.lsp.buf.signature_help(), { desc = 'Lsp Signature Help', buffer = bufnr})
-    util.keymap('n', '<leader>wa', vim.lsp.buf.add_workspace_folder(), { desc = 'Lsp [w]orkspace [a]dd dir', buffer = bufnr})
-    util.keymap('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder(), { desc = 'Lsp [w]orkspace [r]emove dir', buffer = bufnr})
-    util.keymap('n', '<leader>wl', vim.notify(vim.inspect(vim.lsp.buf.remove_workspace_folder())), { desc = 'Lsp [w]orkspace [l]ist dir', buffer = bufnr})
-    util.keymap('n', '<leader>D', vim.lsp.buf.type_definition(), { desc = 'Lsp Goto Symbol Type Def.', buffer = bufnr})
-    util.keymap('n', '<leader>rn', vim.lsp.buf.rename(), { desc = 'Lsp [r]e[n]ame', buffer = bufnr})
-    util.keymap('n', '<leader>ca', vim.lsp.buf.code_action(), { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
-    util.keymap('n', '<leader>F', vim.lsp.buf.formatting(), { desc = 'Lsp [F]ormat', buffer = bufnr})
+    util.keymap('n', 'gd', '<cmd>vim.lsp.buf.definition()<cr>', { desc = 'Lsp [g]oto [d]efintion', buffer = bufnr })
+    util.keymap('n', 'gr', '<cmd>vim.lsp.buf.references()<cr>', { desc = 'Lsp [g]ather [r]eferences', buffer = bufnr})
+    util.keymap('n', 'K', '<cmd>vim.lsp.buf.hover()<cr>', { desc = 'Lsp [k]ick up Hover', buffer = bufnr})
+    util.keymap('n', 'gi', '<cmd>vim.lsp.buf.implementation()<cr>', { desc = 'Lsp [g]ather [i]mplementation', buffer = bufnr})
+    util.keymap('n', '<c-k>', '<cmd>vim.lsp.buf.signature_help()<cr>', { desc = 'Lsp Signature Help', buffer = bufnr})
+    util.keymap('n', '<leader>wa', '<cmd>vim.lsp.buf.add_workspace_folder()<cr>', { desc = 'Lsp [w]orkspace [a]dd dir', buffer = bufnr})
+    util.keymap('n', '<leader>wr', '<cmd>vim.lsp.buf.remove_workspace_folder()<cr>', { desc = 'Lsp [w]orkspace [r]emove dir', buffer = bufnr})
+    util.keymap('n', '<leader>wl', '<cmd>vim.notify(vim.inspect(vim.lsp.buf.remove_workspace_folder()))<cr>', { desc = 'Lsp [w]orkspace [l]ist dir', buffer = bufnr})
+    util.keymap('n', '<leader>D', '<cmd>vim.lsp.buf.type_definition()<cr>', { desc = 'Lsp vim.g.to Symbol Type Def.', buffer = bufnr})
+    util.keymap('n', '<leader>rn', '<cmd>vim.lsp.buf.rename()<cr>', { desc = 'Lsp [r]e[n]ame', buffer = bufnr})
+    util.keymap('n', '<leader>ca', '<cmd>vim.lsp.buf.code_action()<cr>', { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
+    util.keymap('n', '<leader>F', '<cmd>vim.lsp.buf.formatting()<cr>', { desc = 'Lsp [F]ormat', buffer = bufnr})
 
 end
 
-if masonlsp_ok then
+--if masonlsp_ok then
     masonlsp.setup_handlers({
         -- The first entry (without a key) will be the default handler
         -- and will be called for each installed server that doesn't have
@@ -167,5 +168,5 @@ if masonlsp_ok then
         end,
     })
 
-end
+--end
 

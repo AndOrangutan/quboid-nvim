@@ -59,15 +59,15 @@ tmux.setup({
     }
 })
 
-util.keymap('n', '<M-h>', tmux.move_left(), 'Tmux/Neovim [h]op Left')
-util.keymap('n', '<M-j>', tmux.move_bottom(), 'Tmux/Neovim [j]ump Down')
-util.keymap('n', '<M-k>', tmux.move_top(), 'Tmux/Neovim [k]ick Up')
-util.keymap('n', '<M-l>', tmux.move_top(), 'Tmux/Neovim [l]eap Right')
+util.keymap('n', '<M-h>', '<cmd>require("tmux").move_left()', 'Tmux/Neovim [h]op Left')
+util.keymap('n', '<M-j>', '<cmd>require("tmux").move_bottom()', 'Tmux/Neovim [j]ump Down')
+util.keymap('n', '<M-k>', '<cmd>require("tmux").move_top()', 'Tmux/Neovim [k]ick Up')
+util.keymap('n', '<M-l>', '<cmd>require("tmux").move_top()', 'Tmux/Neovim [l]eap Right')
 
-util.keymap('n', '<C-M-h>', tmux.resize_left(), 'Tmux/Neovim [c]rush Left')
-util.keymap('n', '<C-M-j>', tmux.resize_bottom(), 'Tmux/Neovim [c]rush Down')
-util.keymap('n', '<C-M-k>', tmux.resize_top(), 'Tmux/Neovim [c]rush Up')
-util.keymap('n', '<C-M-l>', tmux.resize_top(), 'Tmux/Neovim [c]rush Right')
+util.keymap('n', '<C-M-h>', '<cmd>require("tmux").resize_left()', 'Tmux/Neovim [c]rush Left')
+util.keymap('n', '<C-M-j>', '<cmd>require("tmux").resize_bottom()', 'Tmux/Neovim [c]rush Down')
+util.keymap('n', '<C-M-k>', '<cmd>require("tmux").resize_top()', 'Tmux/Neovim [c]rush Up')
+util.keymap('n', '<C-M-l>', '<cmd>require("tmux").resize_top()', 'Tmux/Neovim [c]rush Right')
 
 
 

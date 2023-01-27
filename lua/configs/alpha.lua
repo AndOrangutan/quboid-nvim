@@ -37,19 +37,33 @@ end
 local function footer ()
     local version = vim.version()
 
-    local pluginsSub = string.format("  %d", #vim.tbl_keys(packer_plugins))
+    -- local pluginsSub = string.format("  %d", #vim.tbl_keys(packer_plugins))
+    -- local dateSub = os.date("  %A %d %b %Y")
+    -- local versionSub = string.format("  v%d.%d.%d", version.major, version.minor, version.patch)
+    --
+    -- local length = 58
+    --
+    -- local infoSize = math.ceil((length - (#pluginsSub + #dateSub + #versionSub +2)) / 2)
+    --
+    -- local padding = ""
+    --
+    -- for i=1,infoSize do padding = padding.." " end
+    --
+    -- local subbanner = string.format('%s%s %s %s%s', padding, pluginsSub, dateSub, versionSub, padding)
+
+    -- local pluginsSub = string.format("  %d", #vim.tbl_keys(packer_plugins))
     local dateSub = os.date("  %A %d %b %Y")
     local versionSub = string.format("  v%d.%d.%d", version.major, version.minor, version.patch)
 
     local length = 58
 
-    local infoSize = math.ceil((length - (#pluginsSub + #dateSub + #versionSub +2)) / 2)
+    local infoSize = math.ceil((length - (#dateSub + #versionSub +2)) / 2)
 
     local padding = ""
 
     for i=1,infoSize do padding = padding.." " end
 
-    local subbanner = string.format('%s%s %s %s%s', padding, pluginsSub, dateSub, versionSub, padding)
+    local subbanner = string.format('%s%s %s%s', padding, dateSub, versionSub, padding)
 
     local banner = {
         ' ▄  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀',

@@ -27,7 +27,7 @@ require('fzf-lua').setup({
 -- TODO: Add More fzf
 util.keymap('n', '<leader>fa', '<cmd>FzfLua<cr>', '[f]zf [a]ll options')
 util.keymap('n', '<leader>ff', '<cmd>FzfLua files<cr>', '[f]zf [f]ind files')
-util.keymap('n', '<leader>fg', '<cmd>FzfLua grep_resume<cr>', '[f]zf [g]rep files')
+util.keymap('n', '<leader>fg', '<cmd>FzfLua live_grep_resume<cr>', '[f]zf [g]rep files')
 util.keymap('n', '<leader>fh', '<cmd>FzfLua help_tags<cr>', '[f]zf Neovim [h]elp tags')
 if legendary_ok then
     util.keymap('n', '<leader>fb', '<cmd>Legendary<cr>', '[f]zf Keymap [b]indings')
