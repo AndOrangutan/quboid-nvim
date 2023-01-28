@@ -127,11 +127,6 @@ dashboard.section.buttons.val = {
 }
 
 
--- TODO: Remove this lol
---vim.cmd([[
---    autocmd FileType alpha setlocal nofoldenable
---]])
-
 -- Subheader
 dashboard.section.header.val = header()
 dashboard.section.footer.val = footer()

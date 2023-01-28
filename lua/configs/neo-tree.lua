@@ -222,6 +222,17 @@ require("neo-tree").setup({
                 ["n"] = "change_query",
             },
         },
+    },
+    -- https://github.com/echasnovski/mini.nvim/issues/177#issuecomment-1406203745
+    event_handlers = {
+        {
+            event = 'neo_tree_window_after_open',
+            handler = function(data)
+                local winid = data.winid
+                vim.api.nvim_win_set_option(winid, 'winfixwidth', true)
+                vim.api.nvim_win_set_width(winid, 40)
+            end,
+        }
     }
 })
 

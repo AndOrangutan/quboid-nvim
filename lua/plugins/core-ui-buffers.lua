@@ -13,7 +13,6 @@ return {
         branch = 'v2.x',
         config = function () require('configs.neo-tree') end,
     },
-    -- TODO: Add todo https://github.com/folke/todo-comments.nvim
     { 'folke/trouble.nvim',                             -- A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
         dependencies = { 
             'DaikyXendo/nvim-material-icon',
@@ -24,7 +23,7 @@ return {
         event = 'VimEnter',
         config = function() require('configs.trouble') end,
     },
-    -- TODO: Once over config
+    -- TODO: Once over config and add bindings for symbol ouline
     { 'simrat39/symbols-outline.nvim',                  -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
         dependencies = { 'DaikyXendo/nvim-material-icon' },
         cmd = 'SymbolsOutline',

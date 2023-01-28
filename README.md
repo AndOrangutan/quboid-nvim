@@ -1,10 +1,47 @@
 # Quboid Nvim
 
-Main Goals:
+**Core Features:**
+
 - FAST
 - Dependable
 
+**Dependencies:**
 
+- **Hard**
+- **Soft**
+    - Tmux
+## Features
+
+### Git
+
+### Keymapping
+
+### General Editing
+
+### General UI
+
+### Treesitter and Textobj
+
+### Language Server Protocol (LSP)
+
+### Debug Adapter Protocol (DAP)
+
+### Filetype Specific
+
+#### Markdown
+
+```
+I.
+├── after
+│   └── syntax          Loaded after syntax
+│       ├── markdown
+│       └── tex
+├── ftplugin            filetype specific configs
+└── lua                 General Config
+    ├── configs         Plugin specific configs
+    ├── defaults        Mainly stock neovim settings
+    └── plugins         Plugin install specs
+```
  
 ## TODO
 

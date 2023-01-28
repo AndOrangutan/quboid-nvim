@@ -117,22 +117,6 @@ end
 
 sizes()
 
-vim.api.nvim_create_autocmd("VimResized", { 
-    callback = function ()
-        for i, ft in pairs(vim.g.quboid_ft_exclude) do
-            if vim.bo.filetype == ft then
-                -- vim.o.winwidth = 10
-                -- vim.o.winminwidth = 10
-                -- vim.o.winheight = 8
-                -- vim.o.winminheight = 8
-
-                return
-            end
-            sizes()
-        end
-    end
-})
-
 util.keymap('n', '<leader>mm', map.toggle, '[m]ini [m]Map Toggle')
 util.keymap('n', '<leader>mf', map.toggle_focus, 'Mini [m]ap [t]oggle')
 util.keymap('n', '<leader>ms', map.toggle_side, 'Mini [m]ap [s]witch sides')

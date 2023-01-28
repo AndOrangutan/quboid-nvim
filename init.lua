@@ -7,3 +7,4 @@ require('defaults.keymaps')
 require('plugin-management')      -- Load plugin manager
 --
 require('colorscheme')
+
