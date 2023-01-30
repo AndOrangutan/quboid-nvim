@@ -109,7 +109,7 @@ map_scroll_with_center('N')
 -- Animate windows
 local function sizes()
     vim.go.winwidth = math.max(64, math.floor(vim.go.columns * 0.5))
-    vim.go.winminwidth = 24
+    vim.go.winminwidth = 32
     -- vim.go.winheight = math.max(40, math.floor(vim.go.lines * 0.5))
     vim.go.winheight = 8
     vim.go.winminheight = 8

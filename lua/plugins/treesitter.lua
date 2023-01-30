@@ -16,7 +16,6 @@ return {
     },
     { 'kylechui/nvim-surround',                         -- Add/change/delete surrounding delimiter pairs with ease. Written with heart in Lua. 
         version = '*',
-        event = 'VimEnter',
         config = true,
     },
     { 'windwp/nvim-ts-autotag',                         -- Use treesitter to auto close and auto rename html tags.

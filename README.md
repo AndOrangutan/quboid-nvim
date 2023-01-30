@@ -10,11 +10,31 @@
 - **Hard**
 - **Soft**
     - Tmux
+## Directory
+
+```
+I.
+├── after
+│   └── syntax          Loaded after syntax
+│       ├── markdown
+│       └── tex
+├── ftplugin            filetype specific configs
+└── lua                 General Config
+    ├── configs         Plugin specific configs
+    ├── defaults        Mainly stock neovim settings
+    └── plugins         Plugin install specs
+```
+
 ## Features
 
 ### Git
 
 ### Keymapping
+
+Keymaps can be easily set with `vim.keymap.set()` or custom `util.keymap()`. Main plugins are [which-key.nvim](https://github.com/folke/which-key.nvim) for keymap preview and [legendary.nvim](https://github.com/mrjones2014/legendary.nvim) to search said mappings.
+
+<!-- TODO: Add preview here -->
+
 
 ### General Editing
 
@@ -30,19 +50,7 @@
 
 #### Markdown
 
-```
-I.
-├── after
-│   └── syntax          Loaded after syntax
-│       ├── markdown
-│       └── tex
-├── ftplugin            filetype specific configs
-└── lua                 General Config
-    ├── configs         Plugin specific configs
-    ├── defaults        Mainly stock neovim settings
-    └── plugins         Plugin install specs
-```
- 
+
 ## TODO
 
 - Plugins
