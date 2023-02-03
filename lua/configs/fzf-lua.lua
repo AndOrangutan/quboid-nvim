@@ -1,6 +1,6 @@
 local util = require('util')
 
-local legendary_ok legendary = pcall(require, 'legendary')
+local legendary_ok, legendary = pcall(require, 'legendary')
 
 require('fzf-lua.config')._devicons_setup = '~/.local/share/nvim/site/pack/packer/opt/nvim-material-icon/lua/nvim-material-icon.lua'
 
@@ -16,9 +16,18 @@ require('fzf-lua').setup({
             cursor         = 'Cursor',      -- cursor highlight (grep/LSP matches)
             cursorline     = 'CursorLine',  -- cursor line
             search         = 'Search',      -- search matches (ctags)
-            title       = 'FloatBorder',    -- preview border title (file/buffer)
+            title           = 'FloatBorder',    -- preview border title (file/buffer)
             -- scrollbar_f = 'PmenuThumb',  -- scrollbar "full" section highlight
             -- scrollbar_e = 'PmenuSbar',   -- scrollbar "empty" section highlight
+        },
+    },
+    previewers = {
+        builtin = {
+            extensions = {
+                ["png"] = { "viu", "-b" },
+                ["jpg"] = { "ueberzug" },
+            },
+            ueberzug_scaler = 'cover',
         },
     },
 })

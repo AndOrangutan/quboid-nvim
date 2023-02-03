@@ -5,6 +5,7 @@ local g = vim.g
 
 --local utils = require('utils')
 
+-- TODO: Move to quboid.lua
 local indentSize = 4
 
 g.mapleader = " "
@@ -15,7 +16,8 @@ g.mapleader = " "
 -- Sane(er) defaults
 o.termguicolors     = true
 o.timeoutlen        = 500
-o.clipboard         = "unnamed"
+-- TODO: Move to a workflow that includes use of all the clipboard buffers
+o.clipboard         = "unnamedplus"
 o.mouse             = "a"
 o.errorbells        = false
 o.encoding          = "utf-8"
@@ -23,7 +25,7 @@ o.completeopt       = "menu,menuone,noselect"
 
 -- Visual
 o.list              = true
-o.number            = true
+-- o.number            = true
 o.relativenumber    = true
 o.showmode          = false
 o.conceallevel      = 2

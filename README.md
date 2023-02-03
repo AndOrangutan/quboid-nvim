@@ -56,26 +56,23 @@ Keymaps can be easily set with `vim.keymap.set()` or custom `util.keymap()`. Mai
 - Plugins
     - Change statusline
     - better lists
-    - [x] Fix autopairs
+    - [x] Fix autopairs 
     - [x] Mini ? 
     - [ ] Spelling 
-    - [ ] LSP 
-    - [ ] Notebook
+    - [ ] Add guess-indent 
+    - [ ] Notebook 
         - Use this to create a template picker :) https://github.com/AndOrangutan/nvim-config/blob/main/lua/configs/alpha.lua
     - [ ] Null-ls 
-    - [ ] Investigate :Neogit Killing bufferline
-        - Incremental rename (other functions?)
-    - [ ] Gitsins extract icons to quboid 
+    - [ ] Convert from lualine -> heirline
+    - [ ] Investigate :Neogit Killing bufferline 
     - [ ] Bufferline toggle theme 
-    - [ ] Snippets 
-    - [ ] Convert to lazy.nvim
-    - [ ] Convert keybinds to `vim.keymap.set('n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', { desc = "format document [LSP]" })`
+    - [ ] Convert keybinds to `vim.keymap.set('n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', { desc = "format document [LSP]" })` 
     - [ ] Folds (ufo) 
     - [ ] TODO trouble 
         - [ ] also fix it so it doesn't jump when scrolling.
     - [ ] Testing 
     - [ ] Dap 
-    - [ ] Session 
+    - [ ] Session - https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-sessions.md
     - [ ] Mouse 
         - Menu items
             - LSP
@@ -93,7 +90,7 @@ Keymaps can be easily set with `vim.keymap.set()` or custom `util.keymap()`. Mai
         - Make items safe with pcalls for plug-in
     - [ ] https://github.com/mfussenegger/nvim-jdtls 
     - [ ] https://github.com/zbirenbaum/copilot.lua 
-    - [ ] https://www.reddit.com/r/neovim/comments/rw4imi/what_is_the_most_interesting_part_of_your_lua/
+    - [ ] https://www.reddit.com/r/neovim/comments/rw4imi/what_is_the_most_interesting_part_of_your_lua/ 
     - [ ] 
     - Note taking
         - [ ] Easy output

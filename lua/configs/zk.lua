@@ -2,6 +2,7 @@
 local wk = require('which-key')
 local zk = require('zk')
 local commands = require('zk.commands')
+local lsputil = require('lsp-util')
 --
 --     - [Z]k[I]nsert[I]dex
 --    - [Z]k[I]nsert[N]ote
@@ -22,7 +23,7 @@ zk.setup({
             -- etc, see `:h vim.lsp.start_client()`
         },
 
-        on_attach = vim.g.quboid_lsp_on_attach,
+        on_attach = lsputil.create_on_attach(),
 
         -- automatically attach buffers in a zk notebook that match the given filetypes
         auto_attach = {

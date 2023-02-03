@@ -67,15 +67,6 @@ autopairs.setup({
 })
 
 
-local mouse_scrolled = false
-for _, scroll in ipairs({ 'Up', 'Down' }) do
-    local key = '<ScrollWheel'..'>'
-    vim.keymap.set('', key, function ()
-        mouse_scrolled = true
-        return key
-    end, { noremap = true, expr = true })
-end
-
 local map_scroll_with_center = function(lhs)
   local center_command =
     [[if MiniAnimate ~= nil then MiniAnimate.execute_after('scroll', 'normal! zz') else vim.cmd('normal! zz') end]]
@@ -84,20 +75,31 @@ local map_scroll_with_center = function(lhs)
   vim.keymap.set('n', lhs, rhs, {})
 end
 
+local mouse_scrolled = false
+for _, scroll in ipairs({ "Up", "Down" }) do
+  local key = "<ScrollWheel" .. scroll .. ">"
+  vim.keymap.set("", key, function()
+    mouse_scrolled = true
+    return key
+  end, { noremap = true, expr = true })
+end
+
+local animate = require("mini.animate")
 animate.setup({
-    scroll = {
-        timing = animate.gen_timing.linear({ duration = 150, unit = "total" }),
-        subscroll = animate.gen_subscroll.equal({
-            predicate = function(total_scroll)
-                if mouse_scrolled then
-                    mouse_scrolled = false
-                    return false
-                end
-                return total_scroll > 1
-            end,
-        }),
-    },
+  scroll = {
+    timing = animate.gen_timing.linear({ duration = 150, unit = "total" }),
+    subscroll = animate.gen_subscroll.equal({
+      predicate = function(total_scroll)
+        if mouse_scrolled then
+          mouse_scrolled = false
+          return false
+        end
+        return total_scroll > 1
+      end,
+    }),
+  },
 })
+
 
 map_scroll_with_center('<C-d>')
 map_scroll_with_center('<C-u>')

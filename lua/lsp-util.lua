@@ -5,12 +5,12 @@ local util = require('util')
 local cmplsp_ok, cmplsp = pcall(require, 'cmp_nvim_lsp')
 local lspsig_ok, lspsig = pcall(require, 'lsp_signature')
 local wk_ok, wk = pcall(require, 'which-key')
+local ufo_ok, ufo = pcall(require, 'ufo')
 
 
 -- extend = fun(client, bufnr)
 M.create_on_attach = function (extend)
     -- Enable completion triggered by <c-x><c-o>
-
     --
     local on_attach  = function (client, bufnr)
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -38,6 +38,7 @@ M.create_on_attach = function (extend)
                 select_signature_key = '<M-n>', -- cycle to next signature, e.g. '<M-n>' function overloading
                 toggle_key = '<M-x>', -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
             }, bufnr)
+
             wk.register({
                 ['<M-x>'] = { 'LSP Signature Toggle' },
                 ['<M-n>'] = { 'LSP Signature Cycle' },
@@ -53,7 +54,11 @@ M.create_on_attach = function (extend)
         -- TODO: Open in split
         util.keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'Lsp [g]oto [d]efintion', buffer = bufnr })
         util.keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { desc = 'Lsp [g]ather [r]eferences', buffer = bufnr})
-        util.keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = 'Lsp [k]ick up Hover', buffer = bufnr})
+        util.keymap('n', 'K', function ()
+            local winid = nil
+            if ufo_ok then winid = require('ufo').peekFoldedLinesUnderCursor() end
+            if not winid then vim.lsp.buf.hover() end
+        end, { desc = 'Lsp [k]ick up Hover', buffer = bufnr})
         util.keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = 'Lsp [g]ather [i]mplementation', buffer = bufnr})
         util.keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { desc = 'Lsp Signature Help', buffer = bufnr})
         util.keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', { desc = 'Lsp [w]orkspace [a]dd dir', buffer = bufnr})
@@ -82,6 +87,14 @@ M.create_config = function (custom_on_attach)
     -- Extend LSP Capabilities
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+    -- Ultra FOlds in Neovim
+    if ufo_ok then
+        capabilities.textDocument.foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true,
+        }
+    end
+
     -- cmp lsp
     if cmplsp_ok then
         capabilities = cmplsp.default_capabilities(capabilities)
@@ -100,6 +113,54 @@ M.create_config = function (custom_on_attach)
         }
 
     }
+
+    if ufo_ok then
+        local handler = function(virtText, lnum, endLnum, width, truncate)
+            local newVirtText = {}
+            local suffix = ('  %d '):format(endLnum - lnum)
+            local sufWidth = vim.fn.strdisplaywidth(suffix)
+            local targetWidth = width - sufWidth
+            local curWidth = 0
+            for _, chunk in ipairs(virtText) do
+                local chunkText = chunk[1]
+                local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+                if targetWidth > curWidth + chunkWidth then
+                    table.insert(newVirtText, chunk)
+                else
+                    chunkText = truncate(chunkText, targetWidth - curWidth)
+                    local hlGroup = chunk[2]
+                    table.insert(newVirtText, {chunkText, hlGroup})
+                    chunkWidth = vim.fn.strdisplaywidth(chunkText)
+                    -- str width returned from truncate() may less than 2nd argument, need padding
+                    if curWidth + chunkWidth < targetWidth then
+                        suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
+                    end
+                    break
+                end
+                curWidth = curWidth + chunkWidth
+            end
+            table.insert(newVirtText, {suffix, 'MoreMsg'})
+            return newVirtText
+        end
+
+        ufo.setup({
+            close_fold_kinds = {'comment', 'imports'},
+            -- close_fold_kinds = {'comment', 'imports', 'region'},
+            fold_virt_text_handler = handler,
+            preview = {
+                win_config = {
+                    border = vim.g.quboid_border,
+                },
+                mappings = {
+                    scrollU = '<C-u>',
+                    scrollD = '<C-d>'
+                },
+            },
+        })
+
+        util.keymap('n', 'zR', require('ufo').openAllFolds, 'Open All Folds')
+        util.keymap('n', 'zM', require('ufo').closeAllFolds, 'Close All Folds')
+    end
 
     return config
 end

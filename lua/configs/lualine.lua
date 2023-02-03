@@ -96,7 +96,7 @@ ins_left {
     display_components = { 'lsp_client_name', 'spinner', { 'title', 'percentage', 'message' } },
     timer = { progress_enddelay = 500, spinner = 690, lsp_client_name_enddelay = 1000 },
     -- TODO: Extract to quboid.lua
-    spinner_symbols = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
+    spinner_symbols = { ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
     message = { commenced = 'In Progress', completed = 'Completed' },
     max_message_length = 50,
 }
