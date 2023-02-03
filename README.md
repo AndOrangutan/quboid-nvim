@@ -63,7 +63,23 @@ Keymaps can be easily set with `vim.keymap.set()` or custom `util.keymap()`. Mai
     - [ ] Notebook 
         - Use this to create a template picker :) https://github.com/AndOrangutan/nvim-config/blob/main/lua/configs/alpha.lua
     - [ ] Null-ls 
+    - [ ] https://github.com/tpope/vim-dadbod
     - [ ] Convert from lualine -> heirline 
+    - [ ] Copiolot.lua 
+    - [ ] cmp 
+        - https://github.com/uga-rosa/cmp-dictionary
+        - https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol
+        - https://github.com/lukas-reineke/cmp-rg
+        - https://github.com/David-Kunz/cmp-npm
+        - https://github.com/jcha0713/cmp-tw2css
+        - https://github.com/zbirenbaum/copilot-cmp
+        - https://github.com/rcarriga/cmp-dap
+        - https://github.com/chrisgrieser/cmp-nerdfont
+        - https://github.com/ray-x/cmp-treesitter
+        - https://github.com/kristijanhusak/vim-dadbod-completion
+    - [ ] git 
+        - octo
+        - diffview
     - [ ] Investigate :Neogit Killing bufferline 
     - [ ] Bufferline toggle theme 
     - [ ] Convert keybinds to `vim.keymap.set('n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', { desc = "format document [LSP]" })` 
