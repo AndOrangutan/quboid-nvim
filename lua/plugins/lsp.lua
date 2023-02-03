@@ -1,3 +1,4 @@
+local quboid = require('quboid')
 return {
     { 'neovim/nvim-lspconfig',                          -- Quickstart configurations for the Neovim LSP client.
         dependencies = {
@@ -19,7 +20,7 @@ return {
     },
     { "weilbith/nvim-code-action-menu",                 -- A floating pop-up menu for code actions to show code action information and a diff preview.
         cmd = "CodeActionMenu",
-        config = function() vim.g.code_action_menu_window_border = vim.g.quboid_border vim.g.code_action_menu_show_details = false end,
+        config = function() quboid.code_action_menu_window_border = quboid.quboid_border quboid.code_action_menu_show_details = false end,
     },
     --use { "kosayoda/nvim-lightbulb",
     --    event = "BufRead",
@@ -30,4 +31,7 @@ return {
         event = 'BufRead',
         config = function() require('illuminate').configure() end,
     },
+    { 'rmagatti/goto-preview',                          -- A small Neovim plugin for previewing definitions using floating windows. 
+        config = function () require('configs.goto-preview') end
+    }
 }

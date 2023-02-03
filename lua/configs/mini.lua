@@ -5,20 +5,18 @@ local map = require('mini.map')
 local autopairs = require('mini.pairs')
 local animate = require("mini.animate")
 
+local quboid = require('quboid')
+
 local wk_ok wk = pcall(require, 'which-key')
 ------------------
 -- Indent Scope --
 ------------------
-
-indentscope.setup()
-
--- Exclude for base exclude files
-for _, exludefile in pairs(vim.g.quboid_ft_exclude) do
-    vim.cmd('autocmd Filetype '..exludefile..' lua vim.b.miniindentscope_disable = true')
+for _, exludefile in pairs(quboid.quboid_ft_exclude) do
+    vim.cmd('autocmd filetype '..exludefile..' lua vim.b.miniindentscope_disable = true')
 end
 
-for _, exludefile in pairs(vim.g.quboid_ft_marktex) do
-    vim.cmd('autocmd Filetype '..exludefile..' lua vim.b.miniindentscope_disable = true')
+for _, exludefile in pairs(quboid.quboid_ft_marktex) do
+    vim.cmd('autocmd filetype '..exludefile..' lua vim.b.miniindentscope_disable = true')
 end
 
 ---------
@@ -31,7 +29,7 @@ map.setup({
     integrations = {
         map.gen_integration.builtin_search(
             {
-            search = 'ReverseSearch',
+            search = 'ReverseSearch',CurrentDir
         }),
         map.gen_integration.diagnostic(),
     }
@@ -110,11 +108,11 @@ map_scroll_with_center('N')
 
 -- Animate windows
 local function sizes()
-    vim.go.winwidth = math.max(64, math.floor(vim.go.columns * 0.5))
-    vim.go.winminwidth = 32
-    -- vim.go.winheight = math.max(40, math.floor(vim.go.lines * 0.5))
-    vim.go.winheight = 8
-    vim.go.winminheight = 8
+    vim.g.winwidth = math.max(64, math.floor(vim.go.columns * 0.5))
+    vim.g.winminwidth = 32
+    -- quboid..winheight = math.max(40, math.floor(quboid..lines * 0.5))
+    vim.g.winheight = 8
+    vim.g.winminheight = 8
 end
 
 sizes()

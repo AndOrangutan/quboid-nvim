@@ -1,13 +1,13 @@
-local G = vim.g
+local M = {}
 
-G.quboid_border = 'solid'
-G.quboid_eol_padding = '  '
-G.quboid_border_float = 'shadow'
-G.quboid_ft_exclude = { 'fzf', 'vim', 'alpha', 'neo-tree', 'mason', 'Outline', 'NvimTree', 'undotree', 'gundo'}
-G.quboid_ft_html = {'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx', 'rescript', 'xml', 'php', 'markdown', 'glimmer','handlebars','hbs'}
-G.quboid_ft_js = { 'typescript', 'typescriptreact', 'javashript' }
-G.quboid_ft_marktex = { 'tex', 'latex', 'markdown'}
-G.quboid_icons = {
+M.quboid_border = 'solid'
+M.quboid_eol_padding = '  '
+M.quboid_border_float = 'shadow'
+M.quboid_ft_exclude = { 'fzf', 'vim', 'alpha', 'neo-tree', 'mason', 'Outline', 'NvimTree', 'undotree', 'gundo'}
+M.quboid_ft_html = {'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx', 'rescript', 'xml', 'php', 'markdown', 'glimmer','handlebars','hbs'}
+M.quboid_ft_js = { 'typescript', 'typescriptreact', 'javashript' }
+M.quboid_ft_marktex = { 'tex', 'latex', 'markdown'}
+M.quboid_icons = {
     -- LSP
     Error           = ' ',
     Warn            = ' ',
@@ -69,4 +69,4 @@ G.quboid_icons = {
     --  
 }
 
-
+return M

@@ -1,11 +1,13 @@
 local M = {}
 
 local util = require('util')
+local quboid = require('quboid')
 
 local cmplsp_ok, cmplsp = pcall(require, 'cmp_nvim_lsp')
 local lspsig_ok, lspsig = pcall(require, 'lsp_signature')
 local wk_ok, wk = pcall(require, 'which-key')
 local ufo_ok, ufo = pcall(require, 'ufo')
+local gotodef_ok, gotodef = pcall(require, 'goto-preview')
 
 
 -- extend = fun(client, bufnr)
@@ -24,7 +26,7 @@ M.create_on_attach = function (extend)
         if lspsig_ok and wk_ok then
             lspsig.on_attach({
                 bind = true,
-                hint_prefix = vim.g.quboid_eol_padding.." ",
+                hint_prefix = quboid.quboid_eol_padding.." ",
                 hint_scheme = "Comment",
                 hi_parameter = "String",
                 doc_lines = 69,
@@ -50,24 +52,32 @@ M.create_on_attach = function (extend)
 
         -- LSP Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        util.keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = 'Lsp [g]oto [D]eclaration', buffer = bufnr})
         -- TODO: Open in split
         util.keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'Lsp [g]oto [d]efintion', buffer = bufnr })
+        util.keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { desc = 'Lsp [g]oto [t]ype Def.', buffer = bufnr})
+        util.keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = 'Lsp [g]ather [i]mplementation', buffer = bufnr})
         util.keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { desc = 'Lsp [g]ather [r]eferences', buffer = bufnr})
+        util.keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = 'Lsp [g]oto [D]eclaration', buffer = bufnr})
         util.keymap('n', 'K', function ()
             local winid = nil
             if ufo_ok then winid = require('ufo').peekFoldedLinesUnderCursor() end
             if not winid then vim.lsp.buf.hover() end
         end, { desc = 'Lsp [k]ick up Hover', buffer = bufnr})
-        util.keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = 'Lsp [g]ather [i]mplementation', buffer = bufnr})
         util.keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { desc = 'Lsp Signature Help', buffer = bufnr})
         util.keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', { desc = 'Lsp [w]orkspace [a]dd dir', buffer = bufnr})
         util.keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', { desc = 'Lsp [w]orkspace [r]emove dir', buffer = bufnr})
         util.keymap('n', '<leader>wl', '<cmd>lua vim.notify(vim.inspect(vim.lsp.buf.remove_workspace_folder()))<cr>', { desc = 'Lsp [w]orkspace [l]ist dir', buffer = bufnr})
-        util.keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { desc = 'Lsp vim.g.to Symbol Type Def.', buffer = bufnr})
         util.keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'Lsp [r]e[n]ame', buffer = bufnr})
         util.keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
         util.keymap('n', '<leader>F', '<cmd>lua vim.lsp.buf.formatting()<cr>', { desc = 'Lsp [F]ormat', buffer = bufnr})
+    
+        if gotodef_ok then
+            util.keymap('n', 'gpd', '<cmd>lua require("goto-preview").goto_preview_definition()<cr>', { desc = 'Lsp [g]oto [p]review of [d]efintion', buffer = bufnr })
+            util.keymap('n', 'gpt', '<cmd>lua require("goto-preview").goto_preview_type_definition()<cr>', { desc = 'Lsp [g]oto [p]review of [t]ype Def.', buffer = bufnr })
+            util.keymap('n', 'gpi', '<cmd>lua require("goto-preview").goto_preview_implementation()<cr>', { desc = 'Lsp [g]oto [p]review of [i]mplementation', buffer = bufnr })
+            util.keymap('n', 'gpr', '<cmd>lua require("goto-preview").goto_preview_references()<cr>', { desc = 'Lsp [g]oto [p]review of [r]eferences', buffer = bufnr })
+            util.keymap('n', 'gpq', '<cmd>lua require("goto-preview").close_all_win()<cr>', { desc = 'Lsp [g]oto Preview Close All Windows', buffer = bufnr })
+        end
 
     end
 
@@ -149,7 +159,7 @@ M.create_config = function (custom_on_attach)
             fold_virt_text_handler = handler,
             preview = {
                 win_config = {
-                    border = vim.g.quboid_border,
+                    border = quboid.quboid_border,
                 },
                 mappings = {
                     scrollU = '<C-u>',

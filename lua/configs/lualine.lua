@@ -1,5 +1,5 @@
 
-local G = vim.g
+local quboid = require('quboid')
 
 config = {
     options = {
@@ -24,7 +24,7 @@ config = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch',
             'diff',
-            { 'diagnostics', symbols = { error = G.quboid_icons['Error'], warn = G.quboid_icons['Warn'], info = G.quboid_icons['Info'], hint = G.quboid_icons['Hint']}}
+            { 'diagnostics', symbols = { error = quboid.quboid_icons['Error'], warn = quboid.quboid_icons['Warn'], info = quboid.quboid_icons['Info'], hint = quboid.quboid_icons['Hint']}}
         },
         lualine_c = {},
 

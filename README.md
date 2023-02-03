@@ -63,16 +63,13 @@ Keymaps can be easily set with `vim.keymap.set()` or custom `util.keymap()`. Mai
     - [ ] Notebook 
         - Use this to create a template picker :) https://github.com/AndOrangutan/nvim-config/blob/main/lua/configs/alpha.lua
     - [ ] Null-ls 
-    - [ ] Convert from lualine -> heirline
+    - [ ] Convert from lualine -> heirline 
     - [ ] Investigate :Neogit Killing bufferline 
     - [ ] Bufferline toggle theme 
     - [ ] Convert keybinds to `vim.keymap.set('n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', { desc = "format document [LSP]" })` 
     - [ ] Folds (ufo) 
-    - [ ] TODO trouble 
-        - [ ] also fix it so it doesn't jump when scrolling.
     - [ ] Testing 
     - [ ] Dap 
-    - [ ] Session - https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-sessions.md
     - [ ] Mouse 
         - Menu items
             - LSP

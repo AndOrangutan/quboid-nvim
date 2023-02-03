@@ -2,6 +2,8 @@ local lspconfig = require("lspconfig")
 local util = require('util')
 local lsp_util = require('lsp-util')
 
+local quboid = require('quboid')
+
 local masonlsp_ok, masonlsp = pcall(require, 'mason-lspconfig')
 if not masonlsp_ok then
     return
@@ -15,8 +17,8 @@ end
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
     opts = opts or {}
-    opts.border = opts.border or vim.g.quboid_border
-    -- opts.border = opts.border or vim.g.quboid_border
+    opts.border = opts.border or quboid.quboid_border
+    -- opts.border = opts.border or quboid.quboid_border
     return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
 
@@ -36,10 +38,10 @@ vim.diagnostic.config({
 
 -- Customize the sign columns
 local signs = { 
-    Error = vim.g.quboid_icons["error"],
-    Warn = vim.g.quboid_icons["warn"],
-    Hint = vim.g.quboid_icons["hint"],
-    Info = vim.g.quboid_icons["info"],
+    Error = quboid.quboid_icons["error"],
+    Warn = quboid.quboid_icons["warn"],
+    Hint = quboid.quboid_icons["hint"],
+    Info = quboid.quboid_icons["info"],
 }
 
 for type, icon in pairs(signs) do
@@ -91,8 +93,8 @@ end
 
 -- Bindings that work without lsp
 util.keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float({}, {focus=false})<CR>', '[e]xamine Diagnostics (2x to enter)')
-util.keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', 'vim.g.to Prev [d]iagnostic')
-util.keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', 'vim.g.to Next [d]iagnostic')
+util.keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', 'quboid.to Prev [d]iagnostic')
+util.keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', 'quboid.to Next [d]iagnostic')
 -- Rest of bindings included with lspconfig can be found in lsp-util.lua
 
 

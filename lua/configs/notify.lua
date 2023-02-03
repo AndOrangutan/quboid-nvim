@@ -1,7 +1,7 @@
 
 notify = require('notify')
 
-local G = vim.g
+local quboid = require('quboid')
 
 -- Overide default notification handler
 vim.notify = notify
@@ -10,18 +10,18 @@ notify.setup({
     background_colour = "NormalFloat",
     fps = 30,
     icons = {
-        DEBUG   = G.quboid_icons['Debug'],
-        ERROR   = G.quboid_icons['Error'],
-        INFO    = G.quboid_icons['Info'],
-        TRACE   = G.quboid_icons['Trace'],
-        WARN    = G.quboid_icons['Warn'],
+        DEBUG  = quboid.quboid_icons['Debug'],
+        ERROR   = quboid.quboid_icons['Error'],
+        INFO    = quboid.quboid_icons['Info'],
+        TRACE   = quboid.quboid_icons['Trace'],
+        WARN    = quboid.quboid_icons['Warn'],
     },
     level = "info",
     render = "default",
     stages = "fade_in_slide_out",
     timeout = 4000, -- from 5000
     on_open = function(win)
-        vim.api.nvim_win_set_config(win, { border = G.quboid_border_float })
+        vim.api.nvim_win_set_config(win, { border = quboid.quboid_border_float })
     end,
 })
 

@@ -1,8 +1,8 @@
 
 local luasnip = require('luasnip')
 local types = require('luasnip.util.types')
+local quboid = require('quboid')
 
-local G = vim.g
 
 luasnip.config.set_config {
     history = false,
@@ -17,12 +17,12 @@ luasnip.config.set_config {
     ext_opts = {
         [types.choiceNode] = {
             active = {
-                virt_text = { { ' '..G.quboid_icons['ChoiceNode']..' ', 'Comment' } }
+                virt_text = { { ' '..quboid.quboid_icons['ChoiceNode']..' ', 'Comment' } }
             },
         },
         [types.insertNode] = {
             active = {
-                virt_text = { { ' '..G.quboid_icons['InsertNode']..' ', 'Comment' } }
+                virt_text = { { ' '..quboid.quboid_icons['InsertNode']..' ', 'Comment' } }
             },
         },
     },

@@ -1,12 +1,13 @@
 local util = require('util')
 
-local G = vim.g
+local quboid = require('quboid')
 
 
-vim.fn.sign_define("DiagnosticSignError", {text = G.quboid_icons['Error'], texthl = "DiagnosticSignError"})
-vim.fn.sign_define("DiagnosticSignWarn", {text = G.quboid_icons['Warn'], texthl = "DiagnosticSignWarn"})
-vim.fn.sign_define("DiagnosticSignInfo", {text = G.quboid_icons['Info'], texthl = "DiagnosticSignInfo"})
-vim.fn.sign_define("DiagnosticSignHint", {text = G.quboid_icons['Hint'], texthl = "DiagnosticSignHint"})
+
+vim.fn.sign_define("DiagnosticSignError", {text = quboid.quboid_icons['Error'], texthl = "DiagnosticSignError"})
+vim.fn.sign_define("DiagnosticSignWarn", {text = quboid.quboid_icons['Warn'], texthl = "DiagnosticSignWarn"})
+vim.fn.sign_define("DiagnosticSignInfo", {text = quboid.quboid_icons['Info'], texthl = "DiagnosticSignInfo"})
+vim.fn.sign_define("DiagnosticSignHint", {text = quboid.quboid_icons['Hint'], texthl = "DiagnosticSignHint"})
 
 require("neo-tree").setup({
     sources = {
@@ -19,7 +20,7 @@ require("neo-tree").setup({
         statusline = false,
     },
     close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
-    popup_border_style = G.quboid_border,
+    popup_border_style = quboid.quboid_border,
     enable_git_status = true,
     enable_diagnostics = true,
     sort_case_insensitive = false, -- used when sorting files and directories in the tree

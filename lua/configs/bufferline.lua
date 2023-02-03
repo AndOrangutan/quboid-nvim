@@ -1,5 +1,5 @@
 local util = require('util')
-local G = vim.g
+local quboid = require('quboid')
 
 require("bufferline").setup{
     options = {
@@ -17,11 +17,11 @@ require("bufferline").setup{
             icon = " ",
             style = "none",
         },
-        buffer_close_icon   = G.quboid_icons['Close'],
-        modified_icon       = G.quboid_icons['Modified'],
-        close_icon          = G.quboid_icons['Close'],
-        left_trunc_marker   = G.quboid_icons['ArrowLeft'],
-        right_trunc_marker  = G.quboid_icons['ArrowRight'],
+        buffer_close_icon   = quboid.quboid_icons['Close'],
+        modified_icon       = quboid.quboid_icons['Modified'],
+        close_icon          = quboid.quboid_icons['Close'],
+        left_trunc_marker   = quboid.quboid_icons['ArrowLeft'],
+        right_trunc_marker  = quboid.quboid_icons['ArrowRight'],
         --- name_formatter can be used to change the buffer's label in the bufferline.
         --- Please note some names can/will break the
         --- bufferline so use this at your discretion knowing that it has

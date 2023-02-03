@@ -1,4 +1,4 @@
-
+local quboid = require('quboid')
 local cmp = require('cmp')
 
 local luasnip_ok, luasnip = pcall(require, 'luasnip')
@@ -34,11 +34,11 @@ cmp.setup({
     },
     window = {
         documentation = {
-            -- border = vim.g.quboid_border,
-            border = vim.g.quboid_border,
+            -- border = quboid.quboid_border,
+            border = quboid.quboid_border,
         },
        completion = {
-            border = vim.g.quboid_border,
+            border = quboid.quboid_border,
         },
 
     },
@@ -49,7 +49,7 @@ cmp.setup({
 
         format = function (entry, vim_item)
             vim_item.menu = menu_names[entry.source.name]
-            vim_item.kind = vim.g.quboid_icons[vim_item.kind]   -- Use built in icons
+            vim_item.kind = quboid.quboid_icons[vim_item.kind]   -- Use built in icons
             return vim_item
         end,
     },
