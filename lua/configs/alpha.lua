@@ -114,6 +114,7 @@ end
 dashboard.section.buttons.val = {
     --dashboard.button( "e", "   > New file" , ":ene <BAR> startinsert <CR>"),
     dashboard.button( "r", "  > Recent"   , ":FzfLua oldfiles<CR>"),
+    dashboard.button( "s", "  > Sessions" , ":SessionManager load_session<cr>"),
     --dashboard.button( "n", "   > Notebooks", ":cd $HOME/Dropbox/Notebook | :e index.md <CR> | :TZMinimalist <CR>"),
     --dashboard.button( "n", "   > Notebooks", [[:lua require("fzf-lua").files({ cwd = "~/Dropbox/Notebooks"})<cr> | :ZkCd<cr> | :TZMinimalist <CR>]]),
     --dashboard.button( "n", "   > Notebooks", [[:lua require'fzf-lua'.files({ cwd = "~/Dropbox/Notebooks", cmd = "fd -e md -g 'index.md'"})<cr>]]),
@@ -122,7 +123,7 @@ dashboard.section.buttons.val = {
     dashboard.button( "o", "  > Notebook Old", [[:cd $HOME/Dropbox/Notebooks/Compendium_Old | :e index.md | :ZkCd <cr>]]),
     --dashboard.button( "n", "   > Notebooks", [[:cd $HOME/Dropbox/Notebooks/Compendium | :e index.md <CR> | :ZkCd | :TZMinimalist <CR>]]),
     -- TODO: make the require here safe
-    dashboard.button( "s", "  > Settings" , ":cd $HOME/.config/nvim | lua require'fzf-lua'.files()<cr>"),
+    dashboard.button( "S", "  > Settings" , ":cd $HOME/.config/nvim | lua require'fzf-lua'.files()<cr>"),
     dashboard.button( "q", "  > Quit NVIM", ":qa<CR>"),
 }
 

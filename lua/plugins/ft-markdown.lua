@@ -48,9 +48,4 @@ return {
         dependencies = 'nvim-treesitter/nvim-treesitter',
         config = function() require('configs.due') end,
     },
-    { 'edluffy/hologram.nvim',                          -- A cross platform terminal image viewer for Neovim. Extensible and fast, written in Lua and C. Works on macOS and Linux. 
-        config = function () require('hologram').setup({
-            auto_display = true,
-        }) end,
-    }
 }
