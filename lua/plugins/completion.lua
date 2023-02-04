@@ -29,6 +29,10 @@ return {
                     requires = 'nvim-lua/plenary.nvim'          
                 },
                 'jcha0713/cmp-tw2css',                          -- A source for nvim-cmp to convert tailwindcss classes to pure css codes
+                { 'zbirenbaum/copilot-cmp',                     -- Lua plugin to turn github copilot into a cmp source
+                    dependencies = 'zbirenbaum/copilot.lua',
+                    config = function () require('configs.copilot-cmp') end,
+                },
 
                 'hrsh7th/cmp-buffer',                           -- nvim-cmp source for buffer words 
                 'hrsh7th/cmp-cmdline',                          -- nvim-cmp source for vim's cmdline 

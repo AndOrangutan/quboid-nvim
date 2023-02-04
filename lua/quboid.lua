@@ -54,6 +54,7 @@ M.quboid_icons = {
     Unit            = ' ',
     Value           = ' ',
     Variable        = ' ',
+    Copilot         = ' ',
 
     --         
     --         

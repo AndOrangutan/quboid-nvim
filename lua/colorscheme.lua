@@ -16,6 +16,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = '*',
     callback = function()
 
+        vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {link = 'CmpItemKindString'})
+
         vim.api.nvim_set_hl(0, 'FoldColumn', {link = 'Normal'})
 
         -- HACK: to change borders to solid by default
