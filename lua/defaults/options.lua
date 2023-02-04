@@ -95,18 +95,27 @@ endif
 ]]
 
 
-vim.cmd[[
-set formatlistpat=^\\s*                     " Optional leading whitespace
-set formatlistpat+=[                        " Start character class
-set formatlistpat+=\\[({]\\?                " |  Optionally match opening punctuation
-set formatlistpat+=\\(                      " |  Start group
-set formatlistpat+=[0-9]\\+                 " |  |  Numbers
-set formatlistpat+=\\\|                     " |  |  or
-set formatlistpat+=[a-zA-Z]\\+              " |  |  Letters
-set formatlistpat+=\\)                      " |  End group
-set formatlistpat+=[\\]:.)}                 " |  Closing punctuation
-set formatlistpat+=]                        " End character class
-set formatlistpat+=\\s\\+                   " One or more spaces
-set formatlistpat+=\\\|                     " or
-set formatlistpat+=^\\s*[-–+o*•]\\s\\+      " Bullet points
-]]
+-- disable language provider support (lua and vimscript plugins only).
+-- This is mostly just here because I am likely to want some other plugin.
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_python_provider = 0
+vim.g.loaded_python3_provider = 0
+
+
+-- vim.cmd[[
+-- set formatlistpat=^\\s*                     " Optional leading whitespace
+-- set formatlistpat+=[                        " Start character class
+-- set formatlistpat+=\\[({]\\?                " |  Optionally match opening punctuation
+-- set formatlistpat+=\\(                      " |  Start group
+-- set formatlistpat+=[0-9]\\+                 " |  |  Numbers
+-- set formatlistpat+=\\\|                     " |  |  or
+-- set formatlistpat+=[a-zA-Z]\\+              " |  |  Letters
+-- set formatlistpat+=\\)                      " |  End group
+-- set formatlistpat+=[\\]:.)}                 " |  Closing punctuation
+-- set formatlistpat+=]                        " End character class
+-- set formatlistpat+=\\s\\+                   " One or more spaces
+-- set formatlistpat+=\\\|                     " or
+-- set formatlistpat+=^\\s*[-–+o*•]\\s\\+      " Bullet points
+-- ]]

@@ -26,10 +26,12 @@ M.create_on_attach = function (extend)
         if lspsig_ok and wk_ok then
             lspsig.on_attach({
                 bind = true,
-                hint_prefix = quboid.quboid_eol_padding.." ",
+                -- hint_prefix = quboid.quboid_eol_padding.." ",
+                hint_prefix = '',
                 hint_scheme = "Comment",
                 hi_parameter = "String",
                 doc_lines = 69,
+                floating_window_above_cur_line = true,
                 max_height = 16,
                 handler_opts = {
                     border = {

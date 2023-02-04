@@ -89,35 +89,38 @@ end)
 -- for a list of options
 config.settings = {
     java = {
-        eclipse = {
-            downloadSources = true,
-        },
-        configuration = {
-            updateBuildConfiguration = "interactive",
-        },
-        maven = {
-            downloadSources = true,
-        },
-        implementationsCodeLens = {
-            enabled = true,
-        },
-        referencesCodeLens = {
-            enabled = true,
-        },
-        references = {
-            includeDecompiledSources = true,
-        },
+        -- eclipse = {
+        --     downloadSources = true,
+        -- },
+        -- configuration = {
+        --     updateBuildConfiguration = "interactive",
+        -- },
+        -- maven = {
+        --     downloadSources = true,
+        -- },
+        -- implementationsCodeLens = {
+        --     enabled = true,
+        -- },
+        -- referencesCodeLens = {
+        --     enabled = true,
+        -- },
+        -- references = {
+        --     includeDecompiledSources = true,
+        -- },
         inlayHints = {
             parameterNames = {
                 enabled = "all", -- literals, all, none
             },
         },
         format = {
-            enabled = false,
-            url = vim.fn.stdpath "config" .. "/lang-servers/intellij-java-google-style.xml",
-            profile = "GoogleStyle",
+            -- enabled = false,
+            settings = {
+                url = vim.fn.stdpath "config" .. "/lang-servers/intellij-java-google-style.xml",
+                profile = "GoogleStyle",
+            },
         },
         signatureHelp = { enabled = true },
+        contentProvider = { preferred = "quiltflower" }, -- use fernflower to decompile library code
         completion = {
             favoriteStaticMembers = {
                 "org.hamcrest.MatcherAssert.assertThat",
@@ -129,7 +132,6 @@ config.settings = {
                 "org.mockito.Mockito.*",
             },
         },
-        contentProvider = { preferred = "fernflower" },
         extendedClientCapabilities = extendedClientCapabilities,
         sources = {
             organizeImports = {
