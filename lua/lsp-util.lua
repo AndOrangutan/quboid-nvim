@@ -52,6 +52,7 @@ M.create_on_attach = function (extend)
             vim.notify('Failed to attach LSP Signature')
         end
 
+    
         -- LSP Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         -- TODO: Open in split
@@ -71,7 +72,7 @@ M.create_on_attach = function (extend)
         util.keymap('n', '<leader>wl', '<cmd>lua vim.notify(vim.inspect(vim.lsp.buf.remove_workspace_folder()))<cr>', { desc = 'Lsp [w]orkspace [l]ist dir', buffer = bufnr})
         util.keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'Lsp [r]e[n]ame', buffer = bufnr})
         util.keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
-        util.keymap('n', '<leader>F', '<cmd>lua vim.lsp.buf.formatting()<cr>', { desc = 'Lsp [F]ormat', buffer = bufnr})
+        util.keymap('n', '<leader>F', '<cmd>lua vim.lsp.buf.format()<cr>', { desc = 'Lsp [F]ormat', buffer = bufnr})
     
         if gotodef_ok then
             util.keymap('n', 'gpd', '<cmd>lua require("goto-preview").goto_preview_definition()<cr>', { desc = 'Lsp [g]oto [p]review of [d]efintion', buffer = bufnr })
@@ -129,7 +130,7 @@ M.create_config = function (custom_on_attach)
     if ufo_ok then
         local handler = function(virtText, lnum, endLnum, width, truncate)
             local newVirtText = {}
-            local suffix = ('  %d '):format(endLnum - lnum)
+            local suffix = ('   %d '):format(endLnum - lnum)
             local sufWidth = vim.fn.strdisplaywidth(suffix)
             local targetWidth = width - sufWidth
             local curWidth = 0

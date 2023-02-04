@@ -20,6 +20,7 @@ return {
 
                 'saadparwaiz1/cmp_luasnip',                     -- nvim-cmp source for luasnip.
                 'hrsh7th/cmp-nvim-lsp',                         -- nvim-cmp source for neovim builtin LSP client
+                'ray-x/cmp-treesitter',                         -- cmp source for treesitter 
                 "andersevenrud/cmp-tmux",                       -- Tmux completion source for nvim-cmp and nvim-compe 
                 { "petertriho/cmp-git",                         -- Git source for nvim-cmp 
                     dependencies = "nvim-lua/plenary.nvim"

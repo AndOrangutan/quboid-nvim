@@ -13,6 +13,8 @@ g.mapleader = " "
 --o.concealcursor="nc"
 
 
+o.spell             = true
+o.dictionary        = '/usr/share/dict/words'
 -- Sane(er) defaults
 o.termguicolors     = true
 o.timeoutlen        = 500
