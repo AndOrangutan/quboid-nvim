@@ -55,13 +55,17 @@ local menu_names = {
     latex_symbols           = "LaTeX",
     calc                    = "Math",
 
-    luasnip                 = "Snippets",
+    luasnip                 = "Snippet",
     nvim_lsp                = "LSP",
     tmux                    = "Tmux",
+    npm                     = 'NPM',
+    ['cmp-tw2css']          = 'TW->CSS',
+    cmp_git                 = "Git",
+    nvim_lsp_document_symbol= 'Symbols',
 
     buffer                  = "Buffer",
-    cmp_git                 = "Git",
-    dictionary              = 'Words'
+    dictionary              = 'Words',
+    rg                      = 'Ripgrep',
 
     --pandoc_references       = "Pandoc",
     --npm                     = "NPM",
@@ -138,13 +142,15 @@ cmp.setup({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'tmux' },
-
-        { name = "dictionary",
-            keyword_length = 2,
-        },
-
-
         { name = 'git' },
+        { name = 'npm', keyword_length = 4 },
+        { name = 'cmp-tw2css' },
+
+
+        { name = "rg", keyword_length = 2 },
+        { name = "dictionary", keyword_length = 2 },
+
+
     }, {
             { name = 'buffer' },
         })
@@ -163,9 +169,11 @@ cmp.setup.filetype('gitcommit', {
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
-    sources = {
-        { name = 'buffer' }
-    }
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp_document_symbol' }
+    }, {
+            { name = 'buffer' }
+        })
 })
 
 

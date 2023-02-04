@@ -9,15 +9,6 @@ require('cmp_dictionary').setup ({
 
 
 
-require('cmp_dictionary').register_dictionary = {
-    -- `aspell -d en dump master | sudo aspell -l en expand > en.dict`
-    -- `sudo mv en.dict /usr/share/dict/en.dict`
-
-    -- TODO: Extract config to quboid and add dependencies to todo
-    -- WARN: used arch `words` package to get dictionary
-    ["*"] = '/usr/share/dict/words',
-}
-
 local dict = require("cmp_dictionary")
 dict.switcher({
     -- ["*"] = "/usr/share/dict/words",

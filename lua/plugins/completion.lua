@@ -21,16 +21,21 @@ return {
                 'saadparwaiz1/cmp_luasnip',                     -- nvim-cmp source for luasnip.
                 'hrsh7th/cmp-nvim-lsp',                         -- nvim-cmp source for neovim builtin LSP client
                 "andersevenrud/cmp-tmux",                       -- Tmux completion source for nvim-cmp and nvim-compe 
-
-                'hrsh7th/cmp-buffer',                           -- nvim-cmp source for buffer words 
-                'hrsh7th/cmp-cmdline',                          -- nvim-cmp source for vim's cmdline 
                 { "petertriho/cmp-git",                         -- Git source for nvim-cmp 
                     dependencies = "nvim-lua/plenary.nvim"
                 },
+                'hrsh7th/cmp-nvim-lsp-document-symbol',         -- nvim-cmp source for textDocument/documentSymbol via nvim-lsp.
+                {'David-Kunz/cmp-npm',                              -- An additional source for nvim-cmp to autocomplete packages and its versions 
+                    requires = 'nvim-lua/plenary.nvim'          
+                },
+                'jcha0713/cmp-tw2css',                          -- A source for nvim-cmp to convert tailwindcss classes to pure css codes
 
+                'hrsh7th/cmp-buffer',                           -- nvim-cmp source for buffer words 
+                'hrsh7th/cmp-cmdline',                          -- nvim-cmp source for vim's cmdline 
                 { 'uga-rosa/cmp-dictionary',                    -- nvim-cmp source for dictionary.
                     config = function () require('configs.cmp-dictionary') end,
                 },
+                'lukas-reineke/cmp-rg',                         -- ripgrep source for nvim-cmp
             },
             -- after = 'LuaSnip',
             config = function() require('configs.cmp') end,
