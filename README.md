@@ -63,11 +63,10 @@ Keymaps can be easily set with `vim.keymap.set()` or custom `util.keymap()`. Mai
     - [ ] Notebook 
         - Use this to create a template picker :) https://github.com/AndOrangutan/nvim-config/blob/main/lua/configs/alpha.lua
     - [ ] Null-ls 
-    - [ ] https://github.com/tpope/vim-dadbod
+    - [ ] https://github.com/tpope/vim-dadbod 
     - [ ] Convert from lualine -> heirline 
     - [ ] Copiolot.lua 
     - [ ] cmp 
-        - https://github.com/uga-rosa/cmp-dictionary
         - https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol
         - https://github.com/lukas-reineke/cmp-rg
         - https://github.com/David-Kunz/cmp-npm

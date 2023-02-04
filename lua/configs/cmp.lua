@@ -1,9 +1,52 @@
 local quboid = require('quboid')
 local cmp = require('cmp')
 
+local cmp_autopairs_ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+
 local luasnip_ok, luasnip = pcall(require, 'luasnip')
 if not luasnip then
     return
+end
+
+
+-- Add pairs to functions
+if cmp_autopairs_ok then
+    cmp.event:on({
+        'confirm_done',
+
+        cmp_autopairs.on_confirm_done({
+            filetypes = {
+                -- "*" is a alias to all filetypes
+                ["*"] = {
+                    ["("] = {
+                        kind = {
+                            cmp.lsp.CompletionItemKind.Function,
+                            cmp.lsp.CompletionItemKind.Method,
+                        },
+                        handler = handlers
+                    }
+                },
+                lua = {
+                    ["("] = {
+                        kind = {
+                            cmp.lsp.CompletionItemKind.Function,
+                            cmp.lsp.CompletionItemKind.Method
+                        },
+                        ---@param char string
+                        ---@param item table item completion
+                        ---@param bufnr number buffer number
+                        ---@param rules table
+                        ---@param commit_character table<string>
+                        handler = function(char, item, bufnr, rules, commit_character)
+                            -- Your handler function. Inpect with print(vim.inspect{char, item, bufnr, rules, commit_character})
+                        end
+                    }
+                },
+                -- Disable for tex
+                tex = false
+            }
+        })
+    }) 
 end
 
 
@@ -18,6 +61,7 @@ local menu_names = {
 
     buffer                  = "Buffer",
     cmp_git                 = "Git",
+    dictionary              = 'Words'
 
     --pandoc_references       = "Pandoc",
     --npm                     = "NPM",
@@ -89,10 +133,16 @@ cmp.setup({
         { name = 'latex_symbols' },
         { name = 'calc' },
 
+
         -- General ranking
-        { name = 'luasnip' },
         { name = 'nvim_lsp' },
+        { name = 'luasnip' },
         { name = 'tmux' },
+
+        { name = "dictionary",
+            keyword_length = 2,
+        },
+
 
         { name = 'git' },
     }, {
@@ -107,6 +157,8 @@ cmp.setup.filetype('gitcommit', {
             { name = 'buffer' },
         })
 })
+
+
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
@@ -126,5 +178,6 @@ cmp.setup.cmdline(':', {
             { name = 'cmdline' }
         })
 })
+
 
 

@@ -1,3 +1,4 @@
+-- https://sookocheff.com/post/vim/neovim-java-ide/
 -- https://github.com/mfussenegger/dotfiles/blob/833d634251ebf3bf7e9899ed06ac710735d392da/vim/.config/nvim/lua/me/lsp/conf.lua
 -- https://github.com/mfussenegger/dotfiles/blob/833d634251ebf3bf7e9899ed06ac710735d392da/vim/.config/nvim/ftplugin/java.lua#L1-L149
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
@@ -92,9 +93,6 @@ config.settings = {
         -- eclipse = {
         --     downloadSources = true,
         -- },
-        -- configuration = {
-        --     updateBuildConfiguration = "interactive",
-        -- },
         -- maven = {
         --     downloadSources = true,
         -- },
@@ -131,6 +129,12 @@ config.settings = {
                 "java.util.Objects.requireNonNullElse",
                 "org.mockito.Mockito.*",
             },
+            filteredTypes = {
+                "com.sun.*",
+                "io.micrometer.shaded.*",
+                "java.awt.*",
+                "jdk.*", "sun.*",
+            },
         },
         extendedClientCapabilities = extendedClientCapabilities,
         sources = {
@@ -143,7 +147,26 @@ config.settings = {
             toString = {
                 template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
             },
+            hashCodeEquals = {
+                useJava7Objects = true,
+            },
             useBlocks = true,
+        },
+        configuration = {
+            runtimes = {
+                -- {
+                --     name = "JavaSE-17",
+                --     path = home .. "/.asdf/installs/java/corretto-17.0.4.9.1",
+                -- },
+                -- {
+                --     name = "JavaSE-11",
+                --     path = home .. "/.asdf/installs/java/corretto-11.0.16.9.1",
+                -- },
+                -- {
+                --     name = "JavaSE-1.8",
+                --     path = home .. "/.asdf/installs/java/corretto-8.352.08.1"
+                -- },
+            }
         },
     },
 }

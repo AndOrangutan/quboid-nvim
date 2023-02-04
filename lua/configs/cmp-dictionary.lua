@@ -1,0 +1,36 @@
+
+require('cmp_dictionary').setup ({
+    document = true,
+    -- WARN: uses `wordnet-cli`
+    document_command = 'wn %s -over',
+    -- debug = true,
+    async = true,
+})
+
+
+
+require('cmp_dictionary').register_dictionary = {
+    -- `aspell -d en dump master | sudo aspell -l en expand > en.dict`
+    -- `sudo mv en.dict /usr/share/dict/en.dict`
+
+    -- TODO: Extract config to quboid and add dependencies to todo
+    -- WARN: used arch `words` package to get dictionary
+    ["*"] = '/usr/share/dict/words',
+}
+
+local dict = require("cmp_dictionary")
+dict.switcher({
+    -- ["*"] = "/usr/share/dict/words",
+    filetype = {
+        markdown = "/usr/share/dict/words",
+        -- javascript = { "/path/to/js.dict", "/path/to/js2.dict" },
+    },
+    -- filepath = {
+    --     [".*xmake.lua"] = { "/path/to/xmake.dict", "/path/to/lua.dict" }
+    --     ["%.tmux.*%.conf"] = { "/path/to/js.dict", "/path/to/js2.dict" },
+    -- },
+    spelllang = {
+        en = '/usr/share/dict/words',
+    },
+})
+-- require("cmp_dictionary").update()

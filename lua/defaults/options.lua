@@ -25,7 +25,7 @@ o.completeopt       = "menu,menuone,noselect"
 
 -- Visual
 o.list              = true
--- o.number            = true
+o.number            = true
 o.relativenumber    = true
 o.showmode          = false
 o.conceallevel      = 2

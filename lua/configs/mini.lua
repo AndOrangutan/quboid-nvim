@@ -2,7 +2,6 @@ local util = require('util')
 
 local indentscope = require('mini.indentscope')
 local map = require('mini.map')
-local autopairs = require('mini.pairs')
 local animate = require("mini.animate")
 
 local quboid = require('quboid')
@@ -39,30 +38,6 @@ for _, key in ipairs({ 'n', 'N', '*', '#' }) do
     vim.keymap.set( 'n', key, key .. '<Cmd>lua MiniMap.refresh({}, {lines = false, scrollbar = false})<CR>'
     )
 end
-
-
----------------
--- Autopairs --
----------------
-
-autopairs.setup({
-    mappings = {
-        ['('] = { action = 'open', pair = '()', neigh_pattern = '[^\\].' },
-        ['['] = { action = 'open', pair = '[]', neigh_pattern = '[^\\].' },
-        ['{'] = { action = 'open', pair = '{}', neigh_pattern = '[^\\].' },
-
-        [')'] = { action = 'close', pair = '()', neigh_pattern = '[^\\].' },
-        [']'] = { action = 'close', pair = '[]', neigh_pattern = '[^\\].' },
-        ['}'] = { action = 'close', pair = '{}', neigh_pattern = '[^\\].' },
-
-        ['"'] = { action = 'closeopen', pair = '""', neigh_pattern = '[^\\].', register = { cr = false } },
-        ["'"] = { action = 'closeopen', pair = "''", neigh_pattern = '[^%a\\].', register = { cr = false } },
-        ['`'] = { action = 'closeopen', pair = '``', neigh_pattern = '[^\\].', register = { cr = false } },
-        [' '] = { action = 'open', pair = '  ', neigh_pattern = '[%(%[{][%)%]}]' },
-        ['<'] = { action = 'open', pair = '<>' },
-        ['>'] = { action = 'close', pair = '<>' },
-    },
-})
 
 
 local map_scroll_with_center = function(lhs)
