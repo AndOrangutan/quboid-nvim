@@ -5,6 +5,9 @@ local legendary_ok, legendary = pcall(require, 'legendary')
 require('fzf-lua.config')._devicons_setup = '~/.local/share/nvim/site/pack/packer/opt/nvim-material-icon/lua/nvim-material-icon.lua'
 
 require('fzf-lua').setup({
+    lsp = {
+        async_or_timeout = 3000,
+    },
     file_icon_padding = ' ',
     multiprocess=false,
     winopts = {

@@ -7,6 +7,8 @@ return {
     },
     { 'numToStr/Comment.nvim',                          -- Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more 
         config = true,
+    },
+    { 'NMAC427/guess-indent.nvim',                      -- Automatic indentation style detection for Neovim 
+        config = true,
     }
-
 }

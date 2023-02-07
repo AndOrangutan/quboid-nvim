@@ -8,3 +8,4 @@ require('plugin-management')      -- Load plugin manager
 --
 require('colorscheme')
 
+

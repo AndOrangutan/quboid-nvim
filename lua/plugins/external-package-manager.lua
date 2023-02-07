@@ -8,4 +8,7 @@ return {
         event = 'BufRead',
         config = function() require('configs.mason-lspconfig') end,
     },
+    { 'jay-babu/mason-null-ls.nvim',                    -- mason-null-ls bridges mason.nvim with the null-ls plugin - making it easier to use both plugins together.
+        config = function() require('configs.mason-null-ls') end,
+    },
 }

@@ -63,7 +63,7 @@ npairs.setup({
 
 
 -- Add spaces between parentheses
-local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' } }
+local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' }, }
 npairs.add_rules {
   Rule(' ', ' ')
     :with_pair(function (opts)

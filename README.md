@@ -62,6 +62,10 @@ Keymaps can be easily set with `vim.keymap.set()` or custom `util.keymap()`. Mai
     - [ ] Notebook 
         - Use this to create a template picker :) https://github.com/AndOrangutan/nvim-config/blob/main/lua/configs/alpha.lua
     - [ ] Null-ls 
+        - Add custom hover to use wame word lookup program as the dictionary cmp plugin
+            - https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/lua/null-ls/builtins/hover/dictionary.lua
+            - https://github.com/jose-elias-alvarez/null-ls.nvim#parsing-cli-program-output
+        - 
     - [ ] https://github.com/tpope/vim-dadbod 
     - [ ] Convert from lualine -> heirline 
     - [ ] cmp 

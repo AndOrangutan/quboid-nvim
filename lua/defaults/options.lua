@@ -13,7 +13,7 @@ g.mapleader = " "
 --o.concealcursor="nc"
 
 
-o.spell             = true
+-- o.spell             = true
 o.dictionary        = '/usr/share/dict/words'
 -- Sane(er) defaults
 o.termguicolors     = true
@@ -31,8 +31,8 @@ o.number            = true
 o.relativenumber    = true
 o.showmode          = false
 o.conceallevel      = 2
-o.listchars         = "eol:¬"
-o.fillchars         = "foldsep: ,foldopen:,foldclose:"
+vim.opt.listchars   = "tab:  ,eol:¬"
+vim.opt.fillchars   = "foldsep: ,foldopen:,foldclose:"
 o.signcolumn        = "yes:1"
 --o.background        = "dark" -- Moved to colorscheme
 o.laststatus        = 3

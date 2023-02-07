@@ -8,15 +8,40 @@ local lspsig_ok, lspsig = pcall(require, 'lsp_signature')
 local wk_ok, wk = pcall(require, 'which-key')
 local ufo_ok, ufo = pcall(require, 'ufo')
 local gotodef_ok, gotodef = pcall(require, 'goto-preview')
+local null_ls_ok, null_ls = pcall(require, 'null-ls')
 
+
+local lsp_formatting = function(bufnr)
+    vim.lsp.buf.format({
+        filter = function(client)
+            -- apply whatever logic you want (in this example, we'll only use null-ls)
+            return client.name == "null-ls"
+        end,
+        bufnr = bufnr,
+    })
+end
+
+-- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 -- extend = fun(client, bufnr)
 M.create_on_attach = function (extend)
-    -- Enable completion triggered by <c-x><c-o>
-    --
+
     local on_attach  = function (client, bufnr)
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+
+        if null_ls_ok then
+            if client.supports_method("textDocument/formatting") then
+                -- vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+                -- vim.api.nvim_create_autocmd("BufWritePre", {
+                --     group = augroup,
+                --     buffer = bufnr,
+                --     callback = function()
+                --         lsp_formatting(bufnr)
+                --     end,
+                -- })
+            end
+        end
 
         if (type(extend)=='function') then
             extend(client, bufnr)
@@ -52,7 +77,7 @@ M.create_on_attach = function (extend)
             vim.notify('Failed to attach LSP Signature')
         end
 
-    
+
         -- LSP Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         -- TODO: Open in split
@@ -162,7 +187,7 @@ M.create_config = function (custom_on_attach)
             fold_virt_text_handler = handler,
             preview = {
                 win_config = {
-                    border = quboid.quboid_border,
+                    border = quboid.quboid_border_float,
                 },
                 mappings = {
                     scrollU = '<C-u>',
