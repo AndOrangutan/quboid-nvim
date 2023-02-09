@@ -97,7 +97,6 @@ Keymaps can be easily set with `vim.keymap.set()` or custom `util.keymap()`. Mai
             - Refactoring
         - Make items safe with pcalls for plug-in
     - [ ] https://github.com/mfussenegger/nvim-jdtls 
-    - [ ] https://github.com/zbirenbaum/copilot.lua 
     - [ ] https://www.reddit.com/r/neovim/comments/rw4imi/what_is_the_most_interesting_part_of_your_lua/ 
     - [ ] 
     - Note taking

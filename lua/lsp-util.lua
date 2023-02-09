@@ -71,7 +71,7 @@ M.create_on_attach = function (extend)
             wk.register({
                 ['<M-x>'] = { 'LSP Signature Toggle' },
                 ['<M-n>'] = { 'LSP Signature Cycle' },
-            })
+            },{})
             -- TODO: Setup bindings to toggle signature
         else
             vim.notify('Failed to attach LSP Signature')

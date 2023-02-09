@@ -314,6 +314,6 @@ wk.register({
 
     },
     --['<leader>zni'] = { [[<cmd>ZkNew { dir = vim.fn.expand('%:p:h')..vim.fn.input('Subdir: '), title = vim.fn.input('Title: '), extra = { user-tags = vim.fn.input('Additional Tags: ):)') }}<cr>]], '[z]k [n]ew [i]ndex'},
-})
+}, {})
 
 

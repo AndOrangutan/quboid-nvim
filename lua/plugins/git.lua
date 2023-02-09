@@ -10,10 +10,14 @@ return {
         event = 'VimEnter',
     },
     -- TODO: Add/config diffview
-    -- { 'sindrets/diffview.nvim',                         -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
-    --     config = function() require('configs.diffview') end,
-    --     event = 'BufRead',
-    -- },
+    { 'sindrets/diffview.nvim',                         -- Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
+        config = function() require('configs.diffview') end,
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            'DaikyXendo/nvim-material-icon',
+        },
+        event = 'BufRead',
+    },
     { 'akinsho/git-conflict.nvim',                      -- A plugin to visualise and resolve merge conflicts in neovim.
         config = true,
         event = 'BufRead',

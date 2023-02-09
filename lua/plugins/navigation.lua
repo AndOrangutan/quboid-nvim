@@ -4,5 +4,8 @@ return {
     },
     { 'ThePrimeagen/harpoon',                           -- A per project, auto updating and editable marks utility for fast file navigation.
         config = function () require('configs.harpoon') end,
+        dependencies = {
+            'folke/which-key.nvim',
+        },
     },
 }

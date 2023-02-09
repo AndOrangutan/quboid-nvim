@@ -13,7 +13,9 @@ return {
     { 'utilyre/barbecue.nvim',                          -- A VS Code like winbar for Neovim ,
         config = function () require('configs.barbecue') end,
         dependencies = {
-            'SmiteshP/nvim-navic',
+            { 'SmiteshP/nvim-navic', 
+                config = function () require('configs.navic') end,
+            },
             'DaikyXendo/nvim-material-icon',
             'neovim/nvim-lspconfig',
         },

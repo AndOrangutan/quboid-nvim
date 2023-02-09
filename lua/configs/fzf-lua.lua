@@ -2,6 +2,8 @@ local util = require('util')
 
 local legendary_ok, legendary = pcall(require, 'legendary')
 
+local img_previewer = vim.fn.executable("ueberzug") == 1 and { "ueberzug" } or { "viu", "-b" }
+
 require('fzf-lua.config')._devicons_setup = '~/.local/share/nvim/site/pack/packer/opt/nvim-material-icon/lua/nvim-material-icon.lua'
 
 require('fzf-lua').setup({
@@ -27,8 +29,12 @@ require('fzf-lua').setup({
     previewers = {
         builtin = {
             extensions = {
-                ["png"] = { "viu", "-b" },
-                ["jpg"] = { "ueberzug" },
+                -- ["png"] = { "viu", "-b" },
+                -- ["jpg"] = { "ueberzug" },
+                ['gif'] = 'ueberzug',
+                ['png'] = 'ueberzug',
+                ['jpg'] = 'ueberzug',
+                ['jpeg'] = 'ueberzug',
             },
             ueberzug_scaler = 'cover',
         },

@@ -1,4 +1,5 @@
-local util = require("util")
+local util = require('util')
+local wk = require('which-key')
 
 require("harpoon").setup({
 
@@ -14,6 +15,12 @@ require("harpoon").setup({
 -- },
 
 })
+
+
+wk.register({
+    ['<leader>h'] = { '[h]arpoon' },
+},{mode = "n"})
+
 
 util.keymap("n", "<leader>hf", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "[h]arpoon Toggle [f]ind Menu")
 util.keymap("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<CR>", "[h]arpoon [a]dd File")
