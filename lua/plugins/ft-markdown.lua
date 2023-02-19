@@ -4,6 +4,9 @@ return {
         -- TODO: Fix ft lazyload for md stuffs
         --ft = 'markdown',
         config = function () require('configs.zk') end,
+        dependencies = {
+            'junegunn/fzf',
+        },
     },
     { 'prncss-xyz/neo-tree-zk.nvim',                    -- neo-tree source for zk-nvim 
         requires = {
@@ -11,7 +14,7 @@ return {
             'mickael-menu/zk-nvim'
         }
     },
-    { 'lukas-reineke/headlines.nvim',                   -- This plugin adds horizontal highlights for text filetypes, like markdown, orgmode, and neorg.
+    { 'lukas-reineke/headlines.nvim',                   -- This plugin add horizontal highlights for text filetypes, like markdown, orgmode, and neorg.
         ft =  'markdown',
         config = function ()  require('configs.headlines') end,
     },
@@ -48,4 +51,15 @@ return {
         dependencies = 'nvim-treesitter/nvim-treesitter',
         config = function() require('configs.due') end,
     },
+    -- { 'bytesnake/vim-graphical-preview',
+    --     build = 'make -C autoload',
+    --     dependencies = { 
+    --         {'mattn/libcallex-vim',
+    --             build = 'cargo build --release',
+    --         },
+    --     },
+    -- }
+    -- { 'edluffy/hologram.nvim',                          -- A cross platform terminal image viewer for Neovim. Extensible and fast, written in Lua and C. Works on macOS and Linux.
+    --     config = function () require('hologram').setup({ auto_display = true }) end,
+    -- },
 }

@@ -2,8 +2,10 @@ local M = {}
 
 M.quboid_border = 'solid'
 M.quboid_eol_padding = '  '
+M.quboid_ft_javascript_package_manager = 'yarn'
 M.quboid_border_float = 'shadow'
-M.quboid_ft_exclude = { 'fzf', 'vim', 'alpha', 'neo-tree', 'mason', 'Outline', 'NvimTree', 'undotree', 'gundo'}
+M.quboid_ft_exclude = { 'fzf', 'vim', 'alpha', 'neo-tree', 'mason', 'Outline', 'NvimTree', 'undotree', 'gundo' }
+M.quboid_ft_exclude_strict = { 'fzf', 'vim', 'alpha', 'neo-tree', 'mason', 'Outline', 'NvimTree', 'undotree', 'gundo', 'help', 'markdown' }
 M.quboid_ft_html = {'html', 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'svelte', 'vue', 'tsx', 'jsx', 'rescript', 'xml', 'php', 'markdown', 'glimmer','handlebars','hbs'}
 M.quboid_ft_js = { 'typescript', 'typescriptreact', 'javashript' }
 M.quboid_ft_marktex = { 'tex', 'latex', 'markdown'}

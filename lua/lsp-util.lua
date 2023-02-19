@@ -9,6 +9,7 @@ local wk_ok, wk = pcall(require, 'which-key')
 local ufo_ok, ufo = pcall(require, 'ufo')
 local gotodef_ok, gotodef = pcall(require, 'goto-preview')
 local null_ls_ok, null_ls = pcall(require, 'null-ls')
+local codeaction_ok, codeaction = pcall(require, 'nvim-code-action-menu')
 
 
 local lsp_formatting = function(bufnr)
@@ -21,30 +22,33 @@ local lsp_formatting = function(bufnr)
     })
 end
 
+
 -- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
--- extend = fun(client, bufnr)
-M.create_on_attach = function (extend)
+-- Extend On attach by providing a function(client, buffer)
+M.create_on_attach = function (extend_on_attach)
 
+    
     local on_attach  = function (client, bufnr)
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 
-        if null_ls_ok then
-            if client.supports_method("textDocument/formatting") then
-                -- vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-                -- vim.api.nvim_create_autocmd("BufWritePre", {
-                --     group = augroup,
-                --     buffer = bufnr,
-                --     callback = function()
-                --         lsp_formatting(bufnr)
-                --     end,
-                -- })
-            end
-        end
+        -- if null_ls_ok then
+        --     if client.supports_method("textDocument/formatting") then
+        --         -- vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+        --         -- vim.api.nvim_create_autocmd("BufWritePre", {
+        --         --     group = augroup,
+        --         --     buffer = bufnr,
+        --         --     callback = function()
+        --         --         lsp_formatting(bufnr)
+        --         --     end,
+        --         -- })
+        --         
+        --     end
+        -- end
 
-        if (type(extend)=='function') then
-            extend(client, bufnr)
+        if (type(extend_on_attach)=='function') then
+            extend_on_attach(client, bufnr)
         end
 
         -- LSP Signature
@@ -55,7 +59,7 @@ M.create_on_attach = function (extend)
                 hint_prefix = '',
                 hint_scheme = "Comment",
                 hi_parameter = "String",
-                doc_lines = 69,
+                doc_lines = 10,
                 floating_window_above_cur_line = true,
                 max_height = 16,
                 handler_opts = {
@@ -72,7 +76,6 @@ M.create_on_attach = function (extend)
                 ['<M-x>'] = { 'LSP Signature Toggle' },
                 ['<M-n>'] = { 'LSP Signature Cycle' },
             },{})
-            -- TODO: Setup bindings to toggle signature
         else
             vim.notify('Failed to attach LSP Signature')
         end
@@ -96,9 +99,10 @@ M.create_on_attach = function (extend)
         util.keymap('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', { desc = 'Lsp [w]orkspace [r]emove dir', buffer = bufnr})
         util.keymap('n', '<leader>wl', '<cmd>lua vim.notify(vim.inspect(vim.lsp.buf.remove_workspace_folder()))<cr>', { desc = 'Lsp [w]orkspace [l]ist dir', buffer = bufnr})
         util.keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'Lsp [r]e[n]ame', buffer = bufnr})
-        util.keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
         util.keymap('n', '<leader>F', '<cmd>lua vim.lsp.buf.format()<cr>', { desc = 'Lsp [F]ormat', buffer = bufnr})
-    
+        util.keymap('n', '<leader>ca', '<cmd>CodeActionMenu<cr>', { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
+        --util.keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
+
         if gotodef_ok then
             util.keymap('n', 'gpd', '<cmd>lua require("goto-preview").goto_preview_definition()<cr>', { desc = 'Lsp [g]oto [p]review of [d]efintion', buffer = bufnr })
             util.keymap('n', 'gpt', '<cmd>lua require("goto-preview").goto_preview_type_definition()<cr>', { desc = 'Lsp [g]oto [p]review of [t]ype Def.', buffer = bufnr })
@@ -114,12 +118,14 @@ M.create_on_attach = function (extend)
     return on_attach
 end
 
-M.create_config = function (custom_on_attach)
+M.create_config = function (extend_on_attach)
+
     local on_attach
-    if not custom_on_attach then
-        on_attach = M.create_on_attach()
+
+    if (type(extend_on_attach)=='function') then
+        on_attach = M.create_on_attach(extend_on_attach)
     else
-        on_attach = custom_on_attach
+        on_attach = M.create_on_attach()
     end
 
     -- Extend LSP Capabilities
@@ -140,8 +146,12 @@ M.create_config = function (custom_on_attach)
 
     -- Create config
     local config = {
-        handlers = {},
+        handlers = {
+            -- ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = quboid.quboid_border}),
+            -- ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = quboid.quboid_border }),
+        },
         capabilities = capabilities,
+
         on_attach = on_attach,
         settings = {},
         init_options = {},
@@ -195,6 +205,7 @@ M.create_config = function (custom_on_attach)
                 },
             },
         })
+
 
         util.keymap('n', 'zR', require('ufo').openAllFolds, 'Open All Folds')
         util.keymap('n', 'zM', require('ufo').closeAllFolds, 'Close All Folds')

@@ -9,6 +9,6 @@ return {
         config = true,
     },
     { 'NMAC427/guess-indent.nvim',                      -- Automatic indentation style detection for Neovim 
-        config = true,
+        config = function () require('guess-indent').setup() end,
     }
 }

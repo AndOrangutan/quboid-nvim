@@ -1,4 +1,3 @@
--- https://sookocheff.com/post/vim/neovim-java-ide/
 -- https://github.com/mfussenegger/dotfiles/blob/833d634251ebf3bf7e9899ed06ac710735d392da/vim/.config/nvim/lua/me/lsp/conf.lua
 -- https://github.com/mfussenegger/dotfiles/blob/833d634251ebf3bf7e9899ed06ac710735d392da/vim/.config/nvim/ftplugin/java.lua#L1-L149
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
@@ -45,9 +44,18 @@ end
 
 local bundles = {}
 
-config.cmd = {
+-- Create config and extend on_attach with keybinds
+local config = lsp_util.create_config(function (client, bufnr)
+    -- extend on_attach
+    util.keymap('n', '<M-o>', '<Cmd>lua require"jdtls".organize_imports()<CR>', { desc = 'JDTLS [o]rganize Imports', buffer = bufnr })
+    util.keymap('n', 'crv','<Cmd>lua require("jdtls").extract_variable()<CR>', { desc = 'JDTLS [cr]eate Extracted Variable', buffer = bufnr })
+    util.keymap('v', 'crv', '<Esc><Cmd>lua require("jdtls").extract_variable(true)<CR>', { desc = 'JDTLS [cr]eate Extracted Variable', buffer = bufnr })
+    util.keymap('n', 'crc', '<Cmd>lua require("jdtls").extract_constant()<CR>', { desc = 'JDTLS [cr]eate Extracted Constant', buffer = bufnr })
+    util.keymap('v', 'crc', '<Esc><Cmd>lua require("jdtls").extract_constant(true)<CR>', { desc = 'JDTLS [cr]eate Extracted Constant', buffer = bufnr })
+    util.keymap('v', 'crm', '<Esc><Cmd>lua require("jdtls").extract_method(true)<CR>', { desc = 'JDTLS [cr]eate Extracted Method', buffer = bufnr })
+end)
 
-
+config['cmd'] = {
     'java', -- NOTE: Configuration Required
     -- depends on if `java` is in your $PATH env variable and if it points to the right version.
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
@@ -71,111 +79,134 @@ config.cmd = {
     '-data', workspace_dir
 }
 
--- This is the default if not provided, you can remove it. Or adjust as needed.
--- One dedicated LSP server & client will be started per unique root_dir
-config.root_dir = root_dir
+config['root_dir'] = root_dir
 
-config.on_attach = lsp_util.create_on_attach(function (client, bufnr)
-    -- extend on_attach
-    util.keymap('n', '<M-o>', '<Cmd>lua require"jdtls".organize_imports()<CR>', { desc = 'JDTLS [o]rganize Imports', buffer = bufnr })
-    util.keymap('n', 'crv','<Cmd>lua require("jdtls").extract_variable()<CR>', { desc = 'JDTLS [cr]eate Extracted Variable', buffer = bufnr })
-    util.keymap('v', 'crv', '<Esc><Cmd>lua require("jdtls").extract_variable(true)<CR>', { desc = 'JDTLS [cr]eate Extracted Variable', buffer = bufnr })
-    util.keymap('n', 'crc', '<Cmd>lua require("jdtls").extract_constant()<CR>', { desc = 'JDTLS [cr]eate Extracted Constant', buffer = bufnr })
-    util.keymap('v', 'crc', '<Esc><Cmd>lua require("jdtls").extract_constant(true)<CR>', { desc = 'JDTLS [cr]eate Extracted Constant', buffer = bufnr })
-    util.keymap('v', 'crm', '<Esc><Cmd>lua require("jdtls").extract_method(true)<CR>', { desc = 'JDTLS [cr]eate Extracted Method', buffer = bufnr })
-end)
-
--- Here you can configure eclipse.jdt.ls specific settings
--- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
--- for a list of options
-config.settings = {
-    java = {
-        -- eclipse = {
-        --     downloadSources = true,
-        -- },
-        -- maven = {
-        --     downloadSources = true,
-        -- },
-        -- implementationsCodeLens = {
-        --     enabled = true,
-        -- },
-        -- referencesCodeLens = {
-        --     enabled = true,
-        -- },
-        -- references = {
-        --     includeDecompiledSources = true,
-        -- },
-        inlayHints = {
-            parameterNames = {
-                enabled = "all", -- literals, all, none
-            },
-        },
-        format = {
-            -- enabled = false,
-            settings = {
-                url = vim.fn.stdpath "config" .. "/lang-servers/intellij-java-google-style.xml",
-                profile = "GoogleStyle",
-            },
-        },
-        signatureHelp = { enabled = true },
-        contentProvider = { preferred = "quiltflower" }, -- use fernflower to decompile library code
-        completion = {
-            favoriteStaticMembers = {
-                "org.hamcrest.MatcherAssert.assertThat",
-                "org.hamcrest.Matchers.*",
-                "org.hamcrest.CoreMatchers.*",
-                "org.junit.jupiter.api.Assertions.*",
-                "java.util.Objects.requireNonNull",
-                "java.util.Objects.requireNonNullElse",
-                "org.mockito.Mockito.*",
-            },
-            filteredTypes = {
-                "com.sun.*",
-                "io.micrometer.shaded.*",
-                "java.awt.*",
-                "jdk.*", "sun.*",
-            },
-        },
-        extendedClientCapabilities = extendedClientCapabilities,
-        sources = {
-            organizeImports = {
-                starThreshold = 9999,
-                staticStarThreshold = 9999,
-            },
-        },
-        codeGeneration = {
-            toString = {
-                template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
-            },
-            hashCodeEquals = {
-                useJava7Objects = true,
-            },
-            useBlocks = true,
-        },
-        configuration = {
-            runtimes = {
-                -- {
-                --     name = "JavaSE-17",
-                --     path = home .. "/.asdf/installs/java/corretto-17.0.4.9.1",
-                -- },
-                -- {
-                --     name = "JavaSE-11",
-                --     path = home .. "/.asdf/installs/java/corretto-11.0.16.9.1",
-                -- },
-                -- {
-                --     name = "JavaSE-1.8",
-                --     path = home .. "/.asdf/installs/java/corretto-8.352.08.1"
-                -- },
-            }
-        },
-    },
-}
-
-config.on_init = function(client)
+config['on_init'] = function(client)
     if client.config.settings then
         client.notify('workspace/didChangeConfiguration', {settings = client.config.settings})
     end
 end
+
+config['settings'] = {
+    java = {
+         java = {
+            signatureHelp = {
+                enabled = true
+            },
+            saveActions = {
+                organizeImports = true
+            },
+            completion = {
+                maxResults = 20,
+                favoriteStaticMembers = {
+                    "org.hamcrest.MatcherAssert.assertThat",
+                    "org.hamcrest.Matchers.*",
+                    "org.hamcrest.CoreMatchers.*",
+                    "org.junit.jupiter.api.Assertions.*",
+                    "java.util.Objects.requireNonNull",
+                    "java.util.Objects.requireNonNullElse",
+                    "org.mockito.Mockito.*"
+                }
+            },
+            sources = {
+                organizeImports = {
+                    starThreshold = 9999,
+                    staticStarThreshold = 9999
+                }
+            },
+            codeGeneration = {
+                toString = {
+                    template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
+                }
+            }
+        }
+    },
+}
+-- config.settings = {
+--     java = {
+--         -- eclipse = {
+--         --     downloadSources = true,
+--         -- },
+--         -- maven = {
+--         --     downloadSources = true,
+--         -- },
+--         -- implementationsCodeLens = {
+--         --     enabled = true,
+--         -- },
+--         -- referencesCodeLens = {
+--         --     enabled = true,
+--         -- },
+--         -- references = {
+--         --     includeDecompiledSources = true,
+--         -- },
+--         inlayHints = {
+--             parameterNames = {
+--                 enabled = "all", -- literals, all, none
+--             },
+--         },
+--         format = {
+--             -- enabled = false,
+--             settings = {
+--                 url = vim.fn.stdpath "config" .. "/lang-servers/intellij-java-google-style.xml",
+--                 profile = "GoogleStyle",
+--             },
+--         },
+--         signatureHelp = { enabled = true },
+--         contentProvider = { preferred = "fernflower" }, -- use fernflower to decompile library code
+--         completion = {
+--             favoriteStaticMembers = {
+--                 "org.hamcrest.MatcherAssert.assertThat",
+--                 "org.hamcrest.Matchers.*",
+--                 "org.hamcrest.CoreMatchers.*",
+--                 "org.junit.jupiter.api.Assertions.*",
+--                 "java.util.Objects.requireNonNull",
+--                 "java.util.Objects.requireNonNullElse",
+--                 "org.mockito.Mockito.*",
+--             },
+--             filteredTypes = {
+--                 "com.sun.*",
+--                 "io.micrometer.shaded.*",
+--                 "java.awt.*",
+--                 "jdk.*", "sun.*",
+--             },
+--         },
+--         extendedClientCapabilities = extendedClientCapabilities,
+--         sources = {
+--             organizeImports = {
+--                 starThreshold = 9999,
+--                 staticStarThreshold = 9999,
+--             },
+--         },
+--         codeGeneration = {
+--             toString = {
+--                 template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
+--             },
+--             useBlocks = true,
+--         },
+--         configuration = {
+--             runtimes = {
+--                 -- {
+--                 --     name = "JavaSE-17",
+--                 --     path = home .. "/.asdf/installs/java/corretto-17.0.4.9.1",
+--                 -- },
+--                 -- {
+--                 --     name = "JavaSE-11",
+--                 --     path = home .. "/.asdf/installs/java/corretto-11.0.16.9.1",
+--                 -- },
+--                 -- {
+--                 --     name = "JavaSE-1.8",
+--                 --     path = home .. "/.asdf/installs/java/corretto-8.352.08.1"
+--                 -- },
+--             }
+--         },
+--     },
+-- }
+
+-- config.on_init = function(client)
+--     if client.config.settings then
+--         client.notify('workspace/didChangeConfiguration', {settings = client.config.settings})
+--     end
+-- end
     -- Language server `initializationOptions`
     -- You need to extend the `bundles` with paths to jar files
     -- if you want to use additional eclipse.jdt.ls plugins.

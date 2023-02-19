@@ -37,6 +37,7 @@ return {
         config = function () require('configs.goto-preview') end
     },
     { 'jose-elias-alvarez/null-ls.nvim',                -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua. 
+        dependencies = 'ckolkey/ts-node-action',
         config = function () require('configs.null-ls') end,
     },
 }

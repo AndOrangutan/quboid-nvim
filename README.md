@@ -36,6 +36,7 @@ Keymaps can be easily set with `vim.keymap.set()` or custom `util.keymap()`. Mai
 <!-- TODO: Add preview here -->
 
 
+
 ### General Editing
 
 ### General UI
@@ -56,7 +57,10 @@ Keymaps can be easily set with `vim.keymap.set()` or custom `util.keymap()`. Mai
 - Plugins
     - Change statusline
     - better lists
-    - [x] Fix autopairs 
+    - [ ] https://github.com/jcdickinson/wpm.nvim 
+    - [ ] https://github.com/monaqa/dial.nvim 
+    - [ ] https://github.com/m4xshen/smartcolumn.nvim 
+    - [ ] https://github.com/ThePrimeagen/git-worktree.nvim 
     - [ ] Spelling 
     - [ ] Add guess-indent 
     - [ ] Notebook 
@@ -77,7 +81,7 @@ Keymaps can be easily set with `vim.keymap.set()` or custom `util.keymap()`. Mai
         - diffview
     - [ ] Investigate :Neogit Killing bufferline 
     - [ ] Bufferline toggle theme 
-    - [ ] Convert keybinds to `vim.keymap.set('n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', { desc = "format document [LSP]" })` 
+    - [x] Convert keybinds to `vim.keymap.set('n', 'gq', '<cmd>lua vim.lsp.buf.formatting()<CR>', { desc = "format document [LSP]" })` 
     - [ ] Folds (ufo) 
     - [ ] Testing 
     - [ ] Dap 

@@ -111,8 +111,8 @@ util.keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', 'quboid.to Nex
         -- Next, you can provide targeted overrides for specific servers.
         ["jdtls"] = function()
         end,
-        ["sumneko_lua"] = function()
-            lspconfig.sumneko_lua.setup {
+        ["lua_ls"] = function()
+            lspconfig.lua_ls.setup {
                 on_attach = lsp_util.create_on_attach(),
                 settings = {
                     runtime = {

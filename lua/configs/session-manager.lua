@@ -27,3 +27,4 @@ vim.api.nvim_create_autocmd({ 'User' }, {
   end,
 })
 
+-- TODO: Add commands for sessions

@@ -23,4 +23,8 @@ return {
         --event = 'VimEnter',
         config = function() require('configs.fzf-lua') end,
     },
+    { 'm4xshen/smartcolumn.nvim',                       -- A Neovim plugin hiding your colorcolumn when unneeded.
+        config = function() require('configs.smartcolumn') end,
+
+    }
 }

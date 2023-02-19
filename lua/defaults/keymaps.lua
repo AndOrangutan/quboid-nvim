@@ -1,3 +1,18 @@
 local util = require('util')
 
 util.keymap('n', 'Q', '<cmd>w | bd<cr>', 'Save and Close Buffer')
+util.keymap('n', 'Q', function ()
+   local write_ok, write = pcall(vim.api.nvim_command, 'write')
+   if not write_ok then
+       local confirm_val = vim.fn.confirm("Buffer couldn't write, CLOSE ANYWAY?", "&No\n&Yes")
+       if 1 == confirm_val then
+           return
+       elseif 2 == confirm_val then
+           vim.api.nvim_command('bdelete')
+       end
+
+   else
+       vim.api.nvim_command('bdelete')
+    end
+   --vim.api.nvim_command('write')
+end, 'Save and Close Buffer')

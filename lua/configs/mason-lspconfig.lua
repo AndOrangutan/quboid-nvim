@@ -24,7 +24,7 @@ require("mason-lspconfig").setup({
         "kotlin_language_server",   -- Kotlin
         "ltex",
         --"texlab",                   -- LaTeX
-        "sumneko_lua",              -- Lua
+        "lua_ls",              -- Lua
         "rnix",                     -- Nix
         "intelephense",             -- PHP
         "pyright",                  -- Python

@@ -21,10 +21,10 @@ M.keymap = function (mode, binding, cmd, opt)
     if (type(opt) == 'table') then
         vim.keymap.set(mode, binding, cmd, opt)
     elseif (type(opt) == 'string') then
-
+        local desc = opt
+        vim.keymap.set(mode, binding, cmd, {desc = desc})
     end
 
-    vim.keymap.set(mode, binding, cmd, {desc = desc})
 end
 
 return M
