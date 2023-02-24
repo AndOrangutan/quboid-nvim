@@ -33,13 +33,6 @@ zk.setup({
     },
 })
 
-local groups = {
-    'base',
-    'index',
-    'dir-calendar',
-    'dir-title',
-    'date-title'
-}
 --
 -- -- local function selectNote(options, picker_options)
 -- --     zk.pick_notes(options, picker_options, function (notes)
@@ -149,6 +142,15 @@ local groups = {
 -- end
 --
 --
+
+local groups = {
+    'base',
+    'index',
+    'dir-calendar',
+    'dir-title',
+    'date-title'
+}
+
 wk.register({
 
 
@@ -165,27 +167,102 @@ wk.register({
 
     ['<leader>zn'] = {
         function ()
-
+            -- local note = {dir, title, extra, group, template}
+            --
+            -- function select_group(note)
+            --     vim.ui.select(groups, {
+            --         prompt = 'Select Group: ',
+            --     }, function (choice)
+            --         note.group = choice
+            --         if 'base' == choice then
+            --             note.dir = vim.fn.expand('%:p:h')
+            --             note.title = vim.fn.input('Title: ')
+            --         elseif 'index' ==  group_choice then
+            --             local dirtocheck = vim.fn.expand('%:p:h')..'/'..vim.fn.input('Subdir: ')
+            --
+            --             -- Create (sub)directory if needed
+            --             if vim.fn.isdirectory(dirtocheck) == 0 then
+            --                 vim.fn.mkdir(dirtocheck, 'p')
+            --             end
+            --
+            --             note.dir = dirtocheck
+            --             note.title = vim.fn.input('Title: ')
+            --             note.extra = {
+            --                 ['type-tags'] = '#index',
+            --             }
+            --         elseif 'dir-calendar' == group_choice then
+            --         elseif 'dir-title' == group_choice then
+            --             note.dir = vim.fn.expand('%:p:h')
+            --             note.title = vim.fn.input('Title: ')
+            --         elseif 'date-title' == group_choice then
+            --             note.dir = vim.fn.expand('%:p:h')
+            --             note.title = vim.fn.input('Title: ')
+            --         end 
+            --     end)
+            --     return note
+            -- end
+            --
+            -- function select_template(note)
+            --     local confirm_val = vim.fn.confirm("Use Custom Template?", "&No\n&Yes")
+            --         -- No need since defualt to keeping the normal one
+            --     if 1 == confirm_val then
+            --         -- Change template
+            --     elseif 2 == confirm_val then
+            --         -- Templates in group_choice/*
+            --         local templates = vim.split(vim.fn.system('ls -A '..vim.fn.expand('$ZK_NOTEBOOK_DIR')..'/.zk/templates'..'/'..note.group), '\n')
+            --         -- Add group_choice/
+            --
+            --         for i, v in ipairs(templates) do if v == "" then table.remove(templates, i) end end
+            --         for k, v in pairs(templates) do templates[k] = note.group..'/'..v end
+            --
+            --         -- Include base template
+            --         table.insert(templates, note.group..'.md')
+            --
+            --         vim.ui.select(templates, {
+            --             prompt = 'Select Template: '
+            --         }, function (template_choice) 
+            --             note.template = template_choice
+            --         end )
+            --     end
+            --     return note
+            -- end
+            --
+            -- note = select_group(note)
+            -- note = select_template(note)
+            --
+            -- -- create a table with each non-nil index in note assigning it to the note. value
+            --
+            -- local options = {}
+            --
+            -- for key, value in pairs(note) do
+            --     if value ~= nil then
+            --         options[key] = value
+            --     end
+            -- end
+            --
+            --
+            -- require('zk').new(options)
+            
             -- 1 Select Group
             vim.ui.select( groups, {
                 prompt = 'Select Group: '
             }, function (group_choice) 
-
+            
                 local dir, title, extra, group
                     -- General
-
+            
                     -- 2 Group Specific Config
                     if 'base' ==  group_choice then
                         dir = vim.fn.expand('%:p:h')
                         title = vim.fn.input('Title: ')
                     elseif 'index' ==  group_choice then
                         local dirtocheck = vim.fn.expand('%:p:h')..'/'..vim.fn.input('Subdir: ')
-
+            
                         -- Create (sub)directory if needed
                         if vim.fn.isdirectory(dirtocheck) == 0 then
                             vim.fn.mkdir(dirtocheck, 'p')
                         end
-
+            
                         dir = dirtocheck
                         title = vim.fn.input('Title: ')
                         extra = {
@@ -199,7 +276,7 @@ wk.register({
                         dir = vim.fn.expand('%:p:h')
                         title = vim.fn.input('Title: ')
                     end
-
+            
                     -- 3 Conrim Template Modificaiton
                     local confirm_val = vim.fn.confirm("Use Custom Template?", "&No\n&Yes")
                     -- No need since defualt to keeping the normal one
@@ -210,25 +287,25 @@ wk.register({
                             group = group_choice,
                             extra = extra,
                         })
-
+            
                     -- Change template
                     elseif 2 == confirm_val then
                         -- Templates in group_choice/*
                         local templates = vim.split(vim.fn.system('ls -A '..vim.fn.expand('$ZK_NOTEBOOK_DIR')..'/.zk/templates'..'/'..group_choice), '\n')
                         -- Add group_choice/
-
+            
                         for i, v in ipairs(templates) do if v == "" then table.remove(templates, i) end end
                         for k, v in pairs(templates) do templates[k] = group_choice..'/'..v end
-
+            
                         -- Include base template
                         table.insert(templates, group_choice..'.md')
-
-
-
+            
+            
+            
                         vim.ui.select(templates, {
                             prompt = 'Select Template: '
                         }, function (template_choice) 
-
+            
                                 require('zk').new({
                                     title = title,
                                     dir = dir,
@@ -236,21 +313,21 @@ wk.register({
                                     template = template_choice,
                                 })
                             end )
-
+            
                     end
-
+            
                 end )
 
-            -- require('fzf-lua').files({
-            --     actions = {
-            --         ['default'] = function(selected)
-            --             vim.notify("selected item: ", selected[0])
-            --         end
-            --
-            --     },
-            --     prompt='LS> ', 
-            --     cwd='$ZK_NOTEBOOK_DIR/.zk/templates'
-            -- })
+            require('fzf-lua').files({
+                actions = {
+                    ['default'] = function(selected)
+                        vim.notify("selected item: ", selected[0])
+                    end
+            
+                },
+                prompt='LS> ', 
+                cwd='$ZK_NOTEBOOK_DIR/.zk/templates'
+            })
         end, '[z]k [n]ew [t]emplate'
     },
     ['<CR>'] = { '<cmd>lua vim.lsp.buf.definition()<cr>', 'ZK Open Link' },

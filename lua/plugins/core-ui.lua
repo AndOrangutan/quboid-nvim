@@ -10,10 +10,18 @@ return {
     -- TODO: Convert to https://github.com/rebelot/heirline.nvim
     { 'nvim-lualine/lualine.nvim',                      -- A blazing fast and easy to configure Neovim statusline.
         dependencies = {
-            'WhoIsSethDaniel/lualine-lsp-progress',
             'DaikyXendo/nvim-material-icon',
+            { 'linrongbin16/lsp-progress.nvim',
+                branch = 'main',
+                event = { 'VimEnter' },
+                dependencies = {
+                    'nvim-tree/nvim-web-devicons',
+                },
+                config = function() require('configs.lsp-progress') end 
+            }
         },
-        config = function() require('configs.lualine') end
+        config = function() require('configs.lualine') end,
+        event = { 'VimEnter' },
     },
     { 'akinsho/bufferline.nvim',                        --  A snazzy bufferline for Neovim 
         config = function () require('configs.bufferline') end,

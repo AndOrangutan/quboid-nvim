@@ -51,6 +51,11 @@ return {
         dependencies = 'nvim-treesitter/nvim-treesitter',
         config = function() require('configs.due') end,
     },
+    { "andrewferrier/wrapping.nvim",                    -- Plugin to make it easier to switch between 'soft' and 'hard' line wrapping in NeoVim 
+        config = function()
+            require("wrapping").setup()
+        end
+    },
     -- { 'bytesnake/vim-graphical-preview',
     --     build = 'make -C autoload',
     --     dependencies = { 

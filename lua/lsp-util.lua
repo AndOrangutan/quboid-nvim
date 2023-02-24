@@ -10,6 +10,7 @@ local ufo_ok, ufo = pcall(require, 'ufo')
 local gotodef_ok, gotodef = pcall(require, 'goto-preview')
 local null_ls_ok, null_ls = pcall(require, 'null-ls')
 local codeaction_ok, codeaction = pcall(require, 'nvim-code-action-menu')
+local lsp_lines_ok, lsp_lines = pcall(require, 'lsp_lines')
 
 
 local lsp_formatting = function(bufnr)
@@ -102,6 +103,10 @@ M.create_on_attach = function (extend_on_attach)
         util.keymap('n', '<leader>F', '<cmd>lua vim.lsp.buf.format()<cr>', { desc = 'Lsp [F]ormat', buffer = bufnr})
         util.keymap('n', '<leader>ca', '<cmd>CodeActionMenu<cr>', { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
         --util.keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
+
+        if lsp_lines_ok then
+            util.keymap('n', '<leader>ll', '<cmd>lua require("lsp_lines").toggle()<cr>', { desc = '[L]sp [l]ines Toggle', buffer = bufnr})
+        end
 
         if gotodef_ok then
             util.keymap('n', 'gpd', '<cmd>lua require("goto-preview").goto_preview_definition()<cr>', { desc = 'Lsp [g]oto [p]review of [d]efintion', buffer = bufnr })

@@ -29,4 +29,8 @@ return {
         cmd = 'SymbolsOutline',
         config = function () require('configs.symbols-outline') end,
     },
+    { 'mbbill/undotree',                                --  The undo history visualizer for VIM
+        cmd = 'UndotreeToggle',
+        config = function () vim.g.undotree_SplitWidth = 40 end;
+    }
 }

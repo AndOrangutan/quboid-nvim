@@ -1,6 +1,8 @@
 
 local quboid = require('quboid')
 
+local lsp_progress_ok, lsp_progress = pcall(require, 'lsp-progress')
+
 config = {
     options = {
         icons_enabled = true,
@@ -26,7 +28,7 @@ config = {
             'diff',
             { 'diagnostics', symbols = { error = quboid.quboid_icons['Error'], warn = quboid.quboid_icons['Warn'], info = quboid.quboid_icons['Info'], hint = quboid.quboid_icons['Hint']}}
         },
-        lualine_c = {},
+        lualine_c = { lsp_progress.progress },
 
         lualine_x = {},
         lualine_y = {'filesize', 'encoding', 'filetype'}, --progress
@@ -60,46 +62,6 @@ local colors = {
 }
 
 
--- Inserts a component in lualine_c at left section
-local function ins_left(component)
-  table.insert(config.sections.lualine_c, component)
-end
-
--- Inserts a component in lualine_x ot right section
-local function ins_right(component)
-  table.insert(config.sections.lualine_x, component)
-end
-
-ins_left {
-    'lsp_progress',
-    display_components = { 'lsp_client_name', { 'title', 'percentage', 'message' }},
-    -- With spinner
-    -- display_components = { 'lsp_client_name', 'spinner', { 'title', 'percentage', 'message' }},
-    colors = {
-      percentage  = colors.cyan,
-      title  = colors.cyan,
-      message  = colors.cyan,
-      spinner = colors.cyan,
-      lsp_client_name = colors.magenta,
-      use = true,
-    },
-    separators = {
-        component = ' ',
-        progress = ' | ',
-        message = { pre = '(', post = ')'},
-        percentage = { pre = '', post = '%% ' },
-        title = { pre = '', post = ': ' },
-        lsp_client_name = { pre = '[', post = ']' },
-        spinner = { pre = '', post = '' },
-        message = { commenced = 'In Progress', completed = 'Completed' },
-    },
-    display_components = { 'lsp_client_name', 'spinner', { 'title', 'percentage', 'message' } },
-    timer = { progress_enddelay = 500, spinner = 690, lsp_client_name_enddelay = 1000 },
-    -- TODO: Extract to quboid.lua
-    spinner_symbols = { ' ', ' ', ' ', ' ', ' ', ' ', ' ' },
-    message = { commenced = 'In Progress', completed = 'Completed' },
-    max_message_length = 50,
-}
 
 
 

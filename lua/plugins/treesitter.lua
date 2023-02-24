@@ -15,11 +15,11 @@ return {
         event = 'VimEnter',
     },
     { 'kylechui/nvim-surround',                         -- Add/change/delete surrounding delimiter pairs with ease. Written with heart in Lua. 
-        version = '*',
+        -- version = '*',
         config = function() require('nvim-surround').setup() end,
     },
     { 'windwp/nvim-ts-autotag',                         -- Use treesitter to auto close and auto rename html tags.
-        config = true,
+        config = function() require('nvim-ts-autotag').setup() end,
     },
     { 'ckolkey/ts-node-action',                         --  Neovim Plugin for running functions on nodes. 
         dependencies = { 'nvim-treesitter' },

@@ -163,7 +163,7 @@ cmp.setup({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
         { name = 'copilot' },
-        { name = 'tmux' },
+        { name = 'tmux' },  -- TODO: Remove cmp tmux integration
         { name = 'treesitter' },
         { name = 'git' },
         { name = 'npm', keyword_length = 4 },
@@ -171,7 +171,6 @@ cmp.setup({
 
 
         { name = "rg", keyword_length = 2 },
-        { name = "dictionary", keyword_length = 2 },
 
 
     }, {
@@ -210,4 +209,19 @@ cmp.setup.cmdline(':', {
         })
 })
 
+cmp.setup.filetype(quboid.quboid_ft_marktex, {
+    sources = cmp.config.sources({
+            { name = 'path' },
+            { name = 'latex_symbols' },
+
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' },
+
+
+            { name = "dictionary", keyword_length = 2 },
+            { name = "rg", keyword_length = 2 },
+        }, {
+            { name = 'buffer' },
+        })
+})
 

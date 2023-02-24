@@ -14,7 +14,7 @@ return {
         config = function () require('configs.barbecue') end,
         dependencies = {
             { 'SmiteshP/nvim-navic', 
-                config = function () require('configs.navic') end,
+                -- config = function () require('configs.navic') end,
             },
             'DaikyXendo/nvim-material-icon',
             'neovim/nvim-lspconfig',
@@ -23,6 +23,9 @@ return {
     { "weilbith/nvim-code-action-menu",                 -- A floating pop-up menu for code actions to show code action information and a diff preview.
         cmd = "CodeActionMenu",
         config = function() quboid.code_action_menu_window_border = quboid.quboid_border quboid.code_action_menu_show_details = false end,
+    },
+    { url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',      -- lsp_lines is a simple neovim plugin that renders diagnostics using virtual lines on top of the real line of code.
+        config = function() require('lsp_lines').setup() end,
     },
     --use { "kosayoda/nvim-lightbulb",
     --    event = "BufRead",
