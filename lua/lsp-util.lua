@@ -29,7 +29,7 @@ end
 -- Extend On attach by providing a function(client, buffer)
 M.create_on_attach = function (extend_on_attach)
 
-    
+
     local on_attach  = function (client, bufnr)
         vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 

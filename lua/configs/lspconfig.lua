@@ -111,6 +111,15 @@ util.keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', 'quboid.to Nex
         -- Next, you can provide targeted overrides for specific servers.
         ["jdtls"] = function()
         end,
+        ["tsserver"] = function()
+        end,
+        ["eslint"] = function()
+            local config = lsp_util.create_config()
+
+            config.settings.packageManager = quboid.quboid_ft_javascript_package_manager,
+
+            lspconfig.eslint.setup(config)
+        end,
         ["lua_ls"] = function()
             lspconfig.lua_ls.setup {
                 on_attach = lsp_util.create_on_attach(),

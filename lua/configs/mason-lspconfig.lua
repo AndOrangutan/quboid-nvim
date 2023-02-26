@@ -22,7 +22,7 @@ require("mason-lspconfig").setup({
         "jdtls",                    -- JAVA
         "tsserver",                 -- Javascript, Typescript
         "kotlin_language_server",   -- Kotlin
-        "ltex",
+        -- "ltex",
         --"texlab",                   -- LaTeX
         "lua_ls",              -- Lua
         "rnix",                     -- Nix
