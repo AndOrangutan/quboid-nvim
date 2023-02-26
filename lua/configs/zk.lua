@@ -1,8 +1,10 @@
 
+local util = require('util')
+
 local wk = require('which-key')
 local zk = require('zk')
 local commands = require('zk.commands')
-local lsputil = require('lsp-util')
+local lsp_util = require('lsp-util')
 
 
 --     - [Z]k[I]nsert[I]dex
@@ -19,7 +21,9 @@ zk.setup({
         config = {
             cmd = { "zk", "lsp" },
             name = "zk",
-            -- on_attach = lsputil.create_on_attach(),
+            on_attach = function (client, bufnr)
+                lsp_util.on_attach(client, bufnr)
+            end,
             -- on_attach = ...
             -- etc, see `:h vim.lsp.start_client()`
         },

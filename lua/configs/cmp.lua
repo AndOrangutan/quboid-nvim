@@ -99,16 +99,17 @@ cmp.setup({
             require("copilot_cmp.comparators").score,
 
             -- Below is the default comparitor list and order for nvim-cmp
-            cmp.config.compare.offset,
+            -- cmp.config.compare.offset,
             -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-            cmp.config.compare.exact,
-            cmp.config.compare.score,
-            cmp.config.compare.recently_used,
+            -- cmp.config.compare.exact,
             cmp.config.compare.locality,
-            cmp.config.compare.kind,
-            cmp.config.compare.sort_text,
-            cmp.config.compare.length,
+            cmp.config.compare.recently_used,
+            cmp.config.compare.score,
+            cmp.config.offset,
             cmp.config.compare.order,
+            -- cmp.config.compare.kind,
+            -- cmp.config.compare.sort_text,
+            -- cmp.config.compare.length,
         },
     },
     formatting = {
@@ -148,7 +149,7 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
     sources = cmp.config.sources({
         -- Default Sources
@@ -160,21 +161,22 @@ cmp.setup({
 
 
         -- General ranking
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
-        { name = 'copilot' },
-        { name = 'tmux' },  -- TODO: Remove cmp tmux integration
-        { name = 'treesitter' },
+        { name = 'nvim_lsp', priority = 9 },
+        { name = 'luasnip', priority = 7 },
+        { name = 'copilot', priority = 6 },
+        -- { name = 'tmux' },  -- TODO: Remove cmp tmux integration
+        { name = 'treesitter', priority = 5 },
+
         { name = 'git' },
         { name = 'npm', keyword_length = 4 },
-        { name = 'cmp-tw2css' },
+        { name = 'cmp-tw2css', priority = 6 },
 
 
-        { name = "rg", keyword_length = 2 },
+        { name = "rg", keyword_length = 2, priority = 6 },
 
 
     }, {
-            { name = 'buffer' },
+            { name = 'buffer', priority = 7 },
         })
 })
 

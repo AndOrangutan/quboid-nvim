@@ -2,6 +2,11 @@ local lspconfig = require("lspconfig")
 local util = require('util')
 local lsp_util = require('lsp-util')
 
+local cmplsp_ok, cmplsp = pcall(require, 'cmp_nvim_lsp')
+local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
+local wk_ok, wk = pcall(require, 'which-key')
+local ufo_ok, ufo = pcall(require, 'ufo')
+local gotodef_ok, gotodef = pcall(require, 'goto-preview')
 local quboid = require('quboid')
 
 local masonlsp_ok, masonlsp = pcall(require, 'mason-lspconfig')
@@ -86,6 +91,7 @@ end
 -- vim.lsp.handlers["textDocument/definition"] = goto_definition('vsplit')
 
 
+
 -----------------------------
 -- Extend LSP Capabilities --
 -----------------------------
@@ -98,48 +104,57 @@ util.keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', 'quboid.to Nex
 -- Rest of bindings included with lspconfig can be found in lsp-util.lua
 
 
---if masonlsp_ok then
-    masonlsp.setup_handlers({
-        -- The first entry (without a key) will be the default handler
-        -- and will be called for each installed server that doesn't have
-        -- a dedicated handler.
-        -- default handler (optional)
 
-        function(server_name) 
-            require("lspconfig")[server_name].setup(lsp_util.create_config())
-        end,
-        -- Next, you can provide targeted overrides for specific servers.
-        ["jdtls"] = function()
-        end,
-        ["tsserver"] = function()
-        end,
-        ["eslint"] = function()
-            local config = lsp_util.create_config()
+local base_config 
 
-            config.settings.packageManager = quboid.quboid_ft_javascript_package_manager,
 
-            lspconfig.eslint.setup(config)
-        end,
-        ["lua_ls"] = function()
-            lspconfig.lua_ls.setup {
-                on_attach = lsp_util.create_on_attach(),
-                settings = {
-                    runtime = {
-                        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                        version = 'LuaJIT',
+masonlsp.setup_handlers({
+    -- The first entry (without a key) will be the default handler
+    -- and will be called for each installed server that doesn't have
+    -- a dedicated handler.
+    -- default handler (optional)
+
+    function(server_name) 
+        -- vim.notify("config: " .. vim.inspect(lsp_util))
+        -- vim.notify("config: " .. vim.inspect(lsp_util))
+        require("lspconfig")[server_name].setup(lsp_util.new_config())
+    end,
+    -- Next, you canprovide targeted overrides for specific servers.
+    ["jdtls"] = function()
+    end,
+    ["tsserver"] = function()
+    end,
+    ["eslint"] = function()
+        local config = lsp_util.new_config()
+
+        config.settings = {
+            packageManager = quboid.quboid_ft_javascript_package_manager,
+        },
+
+        lspconfig.eslint.setup(config)
+    end,
+    ["lua_ls"] = function()
+        lspconfig.lua_ls.setup {
+            on_attach = function (client, bufnr)
+                lsp_util.on_attach(client, bufnr)
+            end,
+            settings = {
+                runtime = {
+                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                    version = 'LuaJIT',
+                },
+                Lua = {
+                    completion = {
+                        callSnippet = "Replace"
                     },
-                    Lua = {
-                        completion = {
-                            callSnippet = "Replace"
-                        },
-                        diagnostics = {
-                            globals = { "vim" } -- to remove "unknown global 'vim'"
-                        }
+                    diagnostics = {
+                        globals = { "vim" } -- to remove "unknown global 'vim'"
                     }
                 }
             }
-        end,
-    })
+        }
+    end,
+})
 
 --end
 

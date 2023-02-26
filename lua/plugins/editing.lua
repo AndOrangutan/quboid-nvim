@@ -5,9 +5,6 @@ return {
     { 'windwp/nvim-autopairs',                          -- Autopairs for neovim written by !ua
         config = function () require('configs.nvim-autopairs') end,
     },
-    { 'numToStr/Comment.nvim',                          -- Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more 
-        config = true,
-    },
     { 'NMAC427/guess-indent.nvim',                      -- Automatic indentation style detection for Neovim 
         config = function () require('guess-indent').setup() end,
     }

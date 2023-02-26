@@ -13,7 +13,6 @@ if not jdtls_ok then
     return
 end
 
-local config = lsp_util.create_config()
 
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
@@ -45,7 +44,7 @@ end
 local bundles = {}
 
 -- Create config and extend on_attach with keybinds
-local config = lsp_util.create_config(function (client, bufnr)
+local config = lsp_util.new_config(function (client, bufnr)
     -- extend on_attach
     util.keymap('n', '<M-o>', '<Cmd>lua require"jdtls".organize_imports()<CR>', { desc = 'JDTLS [o]rganize Imports', buffer = bufnr })
     util.keymap('n', 'crv','<Cmd>lua require("jdtls").extract_variable()<CR>', { desc = 'JDTLS [cr]eate Extracted Variable', buffer = bufnr })

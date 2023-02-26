@@ -14,7 +14,6 @@ require("mason-lspconfig").setup({
         "emmet_ls",                 -- Emmet: The essential toolkit for web-developers 
         "fortls",                   -- Fortran
         "gopls",                    -- Go
-        "graphql",                  -- GraphQL
         "html",                     -- HTML
         "eslint",                   -- Javascript
         --"hls",                      -- Haskell
