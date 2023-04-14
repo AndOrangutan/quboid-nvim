@@ -39,6 +39,8 @@ $ tree -d
 
 ## Plugins
 
+- [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
+
 ### Colorschemes
 
 #### Onedark
@@ -61,7 +63,8 @@ $ tree -d
 
 ### Keybinding
 
-- [folke/which-key.nvim](https://github.com/folke/which-key.nvim) Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
+- [folke/which-key.nvim](https://github.com/folke/which-key.nvim) - Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
+- [mrjones2014/legendary.nvim] - A legend for your keymaps, commands, and autocmds, with which-key.nvim integration
 
 ### LSP (Language Server Protocol)
 
@@ -72,3 +75,5 @@ $ tree -d
 ## Tips
 
 ## Resources
+
+- [awesome-nvim](https://github.com/rockerBOO/awesome-neovim)
