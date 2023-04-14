@@ -65,6 +65,10 @@ $ tree -d
 
 ### LSP (Language Server Protocol)
 
+### Picker
+
+- [stevearc/dressing.nvim](https://github.com/stevearc/dressing.nvim) Neovim plugin to improve the default vim.ui interfaces.
+
 ## Tips
 
 ## Resources
