@@ -3,7 +3,9 @@ return {
         config = function ()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
-            require('which-key').setup()
+            local wk = require("which-key")
+            wk.setup()
+            wk.register()
         end
     },
     { 'mrjones2014/legendary.nvim',
