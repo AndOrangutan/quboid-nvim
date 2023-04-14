@@ -65,6 +65,7 @@ $ tree -d
 
 - [folke/which-key.nvim](https://github.com/folke/which-key.nvim) - Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
 - [mrjones2014/legendary.nvim] - A legend for your keymaps, commands, and autocmds, with which-key.nvim integration
+    - [kkharji/sqlite.lua](https://github.com/kkharji/sqlite.lua) -  SQLite LuaJIT binding with a very simple api.
 
 ### LSP (Language Server Protocol)
 
