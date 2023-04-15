@@ -3,6 +3,7 @@ local util = require('util')
 
 return {
     { 'echasnovski/mini.ai',
+        config = function () require('mini.ai').setup() end,
         version = false,
     },
     { 'echasnovski/mini.animate',
@@ -64,6 +65,8 @@ return {
         version = false,
     },
     { 'echasnovski/mini.comment',
+        config = function () require('mini.comment').setup() end,
         version = false,
-    }
+    },
+
 }
