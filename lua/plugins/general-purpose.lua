@@ -63,4 +63,7 @@ return {
         end,
         version = false,
     },
+    { 'echasnovski/mini.comment',
+        version = false,
+    }
 }
