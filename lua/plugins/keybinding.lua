@@ -8,11 +8,4 @@ return {
             wk.register()
         end
     },
-    { 'mrjones2014/legendary.nvim',
-        config = function () require('configs.legendary') end,
-        dependencies = {
-            'kkharji/sqlite.lua',
-            'folke/which-key.nvim',
-        },
-    },
 }
