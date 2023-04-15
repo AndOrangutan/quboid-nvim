@@ -1,5 +1,6 @@
 local util = require('util')
 local quboid = require('quboid')
+local icons = quboid.icons
 
 
 return {
@@ -77,7 +78,7 @@ return {
                     indent_at_cursor = true,
                     try_as_border = true,
                 },
-                symbol = quboid.icons.indentscope,
+                symbol = icons.bar_thick_split,
             })
 
             for _, exludefile in pairs(quboid.ft_marktex) do
@@ -90,5 +91,36 @@ return {
 
         end,
         version = false
+    },
+    { 'echasnovski/mini.map',
+        config = function ()
+            local map = require('mini.map')
+            map.setup({
+                symbols = {
+                    scroll_line = icons.triangle_cursor,
+                    scroll_view = icons.bar_thick,
+                },
+                window = { show_integration_count = false },
+                integrations = {
+                    map.gen_integration.builtin_search({
+                        search = 'Search'
+                        -- TODO: Add 'ReverseSearch' highlight for minimap
+                        -- search = 'ReverseSearch'
+                    }),
+                    map.gen_integration.diagnostic(),
+                    map.gen_integration.gitsigns(),
+                },
+            })
+
+            for _, key in ipairs({ 'n', 'N', '*', '#' }) do
+                vim.keymap.set( 'n', key, key .. '<Cmd>lua MiniMap.refresh({}, {lines = false, scrollbar = false})<CR>'
+                )
+            end
+            util.keymap('n', '<leader>mm', map.toggle, '[m]ini [m]Map Toggle')
+            util.keymap('n', '<leader>mf', map.toggle_focus, 'Mini [m]ap Tggl. [f]ocus')
+            util.keymap('n', '<leader>ms', map.toggle_side, 'Mini [m]ap [s]witch sides')
+
+        end,
+        version = false,
     },
 }
