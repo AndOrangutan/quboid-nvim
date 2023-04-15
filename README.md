@@ -95,6 +95,7 @@ $ tree -d
     |   | or whitespace)|                  |        |        |        |        |
     |---|---------------|-1234567890123456-|--------|--------|--------|--------|
     ```
+    - [mini.animate](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-animate.md) - Animate common Neovim actions
     - 
 #### Java
 

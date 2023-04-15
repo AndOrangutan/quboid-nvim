@@ -13,7 +13,7 @@ g.mapleader = " "
 
 --o.concealcursor="nc"
 
-
+o.splitkeep = 'screen'
 -- o.spell             = true
 o.dictionary        = '/usr/share/dict/words'
 -- Sane(er) defaults
