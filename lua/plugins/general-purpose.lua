@@ -70,7 +70,6 @@ return {
     },
     { 'echasnovski/mini.comment',
         config = function () require('mini.comment').setup() end,
-        event = { 'BufReadPre', 'BufNewFile' },
         version = false,
     },
     { 'echasnovski/mini.indentscope',

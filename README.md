@@ -6,6 +6,14 @@ Resiliant, fast, text-based Personal Development Environment
 
 <!-- fill in  -->
 
+## Requirements 
+
+- fd
+- rg
+- chafa
+- viu
+- ueberzug
+
 ## Todo 
 
 - Look up best way to store global variables ()
@@ -117,6 +125,7 @@ $ tree -d
 ### Picker
 
 - [stevearc/dressing.nvim](https://github.com/stevearc/dressing.nvim) - Neovim plugin to improve the default vim.ui interfaces.
+- [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua) - Improved fzf.vim written in lua
 
 ### Window Management
 
