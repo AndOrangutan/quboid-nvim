@@ -64,15 +64,17 @@ $ tree -d
 ### Keybinding
 
 - [folke/which-key.nvim](https://github.com/folke/which-key.nvim) - Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
-- [mrjones2014/legendary.nvim] - A legend for your keymaps, commands, and autocmds, with which-key.nvim integration
-    - [kkharji/sqlite.lua](https://github.com/kkharji/sqlite.lua) -  SQLite LuaJIT binding with a very simple api.
 
 ### LSP (Language Server Protocol)
 
 ### Picker
 
-- [stevearc/dressing.nvim](https://github.com/stevearc/dressing.nvim) Neovim plugin to improve the default vim.ui interfaces.
+- [stevearc/dressing.nvim](https://github.com/stevearc/dressing.nvim) - Neovim plugin to improve the default vim.ui interfaces.
 
+### Window Management
+
+- [mrjones2014/smart-split.nvim](https://github.com/mrjones2014/smart-splits.nvim) - Smart, seamless, directional navigation and resizing of Neovim + terminal multiplexer splits. Supports tmux, Wezterm, and Kitty. Think about splits in terms of "up/down/left/right".
+- 
 ## Tips
 
 ## Resources
