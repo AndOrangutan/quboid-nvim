@@ -6,6 +6,7 @@ local icons = quboid.icons
 return {
     { 'echasnovski/mini.ai',
         config = function () require('mini.ai').setup() end,
+        event = { 'BufReadPre', 'BufNewFile' },
         version = false,
     },
     { 'echasnovski/mini.animate',
@@ -64,32 +65,37 @@ return {
             vim.api.nvim_create_autocmd("VimResized", { callback = sizes })
 
         end,
+        event = 'VeryLazy',
         version = false,
     },
     { 'echasnovski/mini.comment',
         config = function () require('mini.comment').setup() end,
+        event = { 'BufReadPre', 'BufNewFile' },
         version = false,
     },
     { 'echasnovski/mini.indentscope',
         config = function () 
             require('mini.indentscope').setup({
-                options = {
-                    border = 'both',
-                    indent_at_cursor = true,
-                    try_as_border = true,
-                },
+                options = { try_as_border = true },
                 symbol = icons.bar_thick_split,
             })
 
-            for _, exludefile in pairs(quboid.ft_marktex) do
-                vim.cmd('autocmd filetype '..exludefile..' lua vim.b.miniindentscope_disable = true')
-            end
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = quboid.ft_exclude,
+                callback = function ()
+                    vim.b.miniindentscope_disable = true
+                end,
+            })
 
-            for _, exludefile in pairs(quboid.ft_exclude) do
-                vim.cmd('autocmd filetype '..exludefile..' lua vim.b.miniindentscope_disable = true')
-            end
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = quboid.ft_marktex,
+                callback = function ()
+                    vim.b.miniindentscope_disable = true
+                end,
+            })
 
         end,
+        event = { 'BufReadPre', 'BufNewFile' },
         version = false
     },
     { 'echasnovski/mini.map',
@@ -121,6 +127,7 @@ return {
             util.keymap('n', '<leader>ms', map.toggle_side, 'Mini [m]ap [s]witch sides')
 
         end,
+        event = 'VeryLazy',
         version = false,
     },
 }
