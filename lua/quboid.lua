@@ -10,6 +10,7 @@ M.ft_rigid = { 'neo-tree' }
 M.ft_marktex = { 'tex', 'latex', 'markdown'}
 M.icons = {
     -- TODO: add lsp icons and such
+    indentscope = '╏',
 }
 M.icon_end_padding = ' '
 

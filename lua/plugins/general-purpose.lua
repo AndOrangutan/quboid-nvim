@@ -1,4 +1,5 @@
 local util = require('util')
+local quboid = require('quboid')
 
 
 return {
@@ -68,5 +69,26 @@ return {
         config = function () require('mini.comment').setup() end,
         version = false,
     },
+    { 'echasnovski/mini.indentscope',
+        config = function () 
+            require('mini.indentscope').setup({
+                options = {
+                    border = 'both',
+                    indent_at_cursor = true,
+                    try_as_border = true,
+                },
+                symbol = quboid.icons.indentscope,
+            })
 
+            for _, exludefile in pairs(quboid.ft_marktex) do
+                vim.cmd('autocmd filetype '..exludefile..' lua vim.b.miniindentscope_disable = true')
+            end
+
+            for _, exludefile in pairs(quboid.ft_exclude) do
+                vim.cmd('autocmd filetype '..exludefile..' lua vim.b.miniindentscope_disable = true')
+            end
+
+        end,
+        version = false
+    },
 }
