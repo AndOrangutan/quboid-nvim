@@ -13,7 +13,7 @@ M.icons = {
 
     -- General single chars
     pad = ' ',
-    triangle_cursor = '⏵',
+    triangle_cursor = '▮',
     bar_thick = '┃',
     bar_thick_split = '╏',
 
