@@ -55,6 +55,12 @@ $ tree -d
 
 ### Completion
 
+### Core Ui
+
+- [rcarriga/nvim-notify](https://github.com/rcarriga/nvim-notify) - A fancy, configurable, notification manager for NeoVim 
+
+### Core Ui Buffers
+
 ### DAP (Debug Adapter Protocol)
 
 ### Filetype Specific
