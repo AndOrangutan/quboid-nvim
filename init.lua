@@ -13,4 +13,6 @@ require('defaults.keymaps')
 require('plugin-management')      -- Load plugin manager
 
 -- Stage 3 - Load plugin dependent files
-require('colorscheme')
+
+-- colorscheme and highlights
+require('highlights')

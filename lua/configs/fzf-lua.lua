@@ -19,8 +19,8 @@ require('fzf-lua').setup({
             cursorline     = 'NormalFloat',  -- cursor line
             search         = 'Search',      -- search matches (ctags)
             title           = 'FloatBorder',    -- preview border title (file/buffer)
-            scrollbar_f = 'PmenuThumb',  -- scrollbar "full" section highlight
-            scrollbar_e = 'PmenuSbar',   -- scrollbar "empty" section highlight
+            -- scrollbar_f = 'PmenuThumb',  -- scrollbar "full" section highlight
+            -- scrollbar_e = 'PmenuSbar',   -- scrollbar "empty" section highlight
         },
     },
     winopts_fn = function ()

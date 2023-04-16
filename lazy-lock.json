@@ -9,6 +9,7 @@
   "mini.map": { "branch": "main", "commit": "806e343943aa51dec368d5cfc46d0c6311ab27c2" },
   "nvim-material-icon": { "branch": "main", "commit": "602088c2682e61cbebd7191de7dc88bfa90c6890" },
   "nvim-web-devicons": { "branch": "master", "commit": "4ec26d67d419c12a4abaea02f1b6c57b40c08d7e" },
+  "onedark.nvim": { "branch": "master", "commit": "dd640f6cfb0e370cfd3db389f04b172508848bd3" },
   "smart-splits.nvim": { "branch": "master", "commit": "773eb3bfd330da9504dfb2ca1fb87d3e5a6a9c1c" },
   "which-key.nvim": { "branch": "main", "commit": "4b73390eec680b4c061ea175eb32c0ff3412271d" }
 }

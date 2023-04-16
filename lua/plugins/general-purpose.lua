@@ -108,9 +108,7 @@ return {
                 window = { show_integration_count = false },
                 integrations = {
                     map.gen_integration.builtin_search({
-                        search = 'Search'
-                        -- TODO: Add 'ReverseSearch' highlight for minimap
-                        -- search = 'ReverseSearch'
+                        search = 'ReverseSearch',
                     }),
                     map.gen_integration.diagnostic(),
                     map.gen_integration.gitsigns(),
