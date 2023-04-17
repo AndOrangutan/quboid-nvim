@@ -154,7 +154,7 @@ $ tree -d
 
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Nvim Treesitter configurations and abstraction layer 
     - [RRethy/nvim-treesitter-endwise](https://github.com/RRethy/nvim-treesitter-endwise) - Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise 
-    - 
+    - [JoosepAlviste/nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring) - Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
 
 ### Window Management
 
