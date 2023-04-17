@@ -113,7 +113,18 @@ $ tree -d
 
 ### Git
 
+- [sindrets/diffview.nvim](https://github.com/sindrets/diffview.nvim) - Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
 - [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Git integration for buffers
+- [akinsho/git-conflict.nvim](https://github.com/akinsho/git-conflict.nvim) - A plugin to visualise and resolve merge conflicts in neovim
+    - Keymaps
+        - `c` `o` — choose ours
+        - `c` `t` — choose theirs
+        - `c` `b` — choose both
+        - `c` `0` — choose none
+        - `]` `x` — move to previous conflict
+        - `[` `x` — move to next conflict
+
+- [TimUntersberger/neogit](https://github.com/TimUntersberger/neogit) - magit for neovim
 
 ### Filetype Specific
 
