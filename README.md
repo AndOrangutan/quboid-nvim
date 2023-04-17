@@ -18,6 +18,8 @@ Resiliant, fast, text-based Personal Development Environment
 
 - Look up best way to store global variables ()
 - Lead with documentation.
+- Add
+    - https://github.com/ThePrimeagen/git-worktree.nvim
 
 ## File Structure
 
@@ -61,6 +63,10 @@ $ tree -d
 - [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) - A fancy, configurable, notification manager for NeoVim
 
 ### Core Ui Buffers
+
+### Cosmetic Bloat
+
+- [mvllow/modes.nvim](https://github.com/mvllow/modes.nvim) - Prismatic line decorations for the adventurous vim user
 
 ### DAP (Debug Adapter Protocol)
 
@@ -123,7 +129,6 @@ $ tree -d
         - `c` `0` — choose none
         - `]` `x` — move to previous conflict
         - `[` `x` — move to next conflict
-
 - [TimUntersberger/neogit](https://github.com/TimUntersberger/neogit) - magit for neovim
 
 ### Filetype Specific
@@ -144,6 +149,12 @@ $ tree -d
 
 - [stevearc/dressing.nvim](https://github.com/stevearc/dressing.nvim) - Neovim plugin to improve the default vim.ui interfaces.
 - [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua) - Improved fzf.vim written in lua
+
+### Treesitter
+
+- [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Nvim Treesitter configurations and abstraction layer 
+    - [RRethy/nvim-treesitter-endwise](https://github.com/RRethy/nvim-treesitter-endwise) - Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise 
+    - 
 
 ### Window Management
 
