@@ -6,6 +6,7 @@ M.border_float = 'shadow'
 -- M.ft_exclude_strict = { 'fzf', 'vim', 'alpha', 'neo-tree', 'mason', 'NeogitStatus', 'Outline', 'NvimTree', 'undotree', 'gundo', 'help', 'markdown' }
 M.ft_exclude = { 'fzf', 'minimap', 'neo-tree', 'notify' }
 M.ft_exclude_srict = { 'fzf', 'minimap', 'neo-tree', 'notify' }
+M.ft_git = { 'gitcommit', 'octo', 'NeogitCommitMessage' }
 M.ft_rigid = { 'neo-tree', 'minimap' }
 M.ft_marktex = { 'tex', 'latex', 'markdown'}
 M.icons = {

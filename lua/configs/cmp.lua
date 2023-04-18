@@ -20,7 +20,6 @@ local menu_names = {
     latex_symbols           = "LaTeX",
     calc                    = "Math",
 
-    copilot                 = 'Copilot',
     luasnip                 = "Snippet",
     nvim_lsp                = "LSP",
     treesitter              = "Treesitter",
@@ -125,7 +124,6 @@ cmp.setup({
         -- General ranking
         { name = 'nvim_lsp', priority = 9 },
         { name = 'luasnip', priority = 7 },
-        { name = 'copilot', priority = 6 },
         -- { name = 'tmux' },  -- TODO: Remove cmp tmux integration
         { name = 'treesitter', priority = 5 },
 
@@ -182,7 +180,7 @@ cmp.setup.filetype(quboid.ft_marktex, {
             { name = 'luasnip' },
 
 
-            { name = "dictionary", keyword_length = 2 },
+            { name = "dictionary", keyword_length = 1 },
             { name = "rg", keyword_length = 2 },
         }, {
             { name = 'buffer' },
