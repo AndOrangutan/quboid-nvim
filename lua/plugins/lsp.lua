@@ -17,6 +17,9 @@ return {
                     })
                 end
             },
+            { url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+                config = function() require('lsp_lines').setup() end,
+            },
         },
         config = function () require('configs.lspconfig') end,
         event = 'BufRead',
