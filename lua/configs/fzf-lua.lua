@@ -43,7 +43,6 @@ require('fzf-lua').setup({
 })
 
 util.keymap('n', '<leader>f', '<cmd>FzfLua<Cr>', '[f]zf')
-util.keymap('n', '<C-P>', '<cmd>FzfLua<Cr>', '[f]zf')
 util.keymap('n', '<leader>ff', '<cmd>FzfLua files<cr>', '[f]zf [f]ind files')
 util.keymap('n', '<leader>fg', '<cmd>FzfLua live_grep_resume<cr>', '[f]zf [g]rep files')
 util.keymap('n', '<leader>fh', '<cmd>FzfLua help_tags<cr>', '[f]zf Neovim [h]elp tags')
