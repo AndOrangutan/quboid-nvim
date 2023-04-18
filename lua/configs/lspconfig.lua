@@ -1,9 +1,12 @@
 local util = require('util')
-local quboid = require('quboid')
 local lsp_util = require('lsp-util')
+local quboid = require('quboid')
 
 local lspconfig = require("lspconfig")
-
+local masonlsp_ok, masonlsp = pcall(require, 'mason-lspconfig')
+if not masonlsp_ok then
+    return
+end
 -- Overide border globally
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
@@ -38,3 +41,114 @@ for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+
+masonlsp.setup({
+    ensure_installed = { 
+        "awk_ls",                   -- Awk
+        "angularls",                -- Angular
+        "arduino_language_server",  -- Aruino
+        --"asm_lsp",                  -- GAS/NASM and GO Assembly
+        "bashls",                   -- Bash
+        "clangd",                   -- C, C++
+        "omnisharp",                -- C#
+        "cmake",                    -- CMake
+        "cssls",                    -- CSS
+        "clojure_lsp",              -- Clojure
+        "dockerls",                 -- Docker
+        "emmet_ls",                 -- Emmet: The essential toolkit for web-developers 
+        "fortls",                   -- Fortran
+        "gopls",                    -- Go
+        "html",                     -- HTML
+        "eslint",                   -- Javascript
+        --"hls",                      -- Haskell
+        "jsonls",                   -- JSON
+        "jdtls",                    -- JAVA
+        "tsserver",                 -- Javascript, Typescript
+        "kotlin_language_server",   -- Kotlin
+        -- "ltex",
+        --"texlab",                   -- LaTeX
+        "lua_ls",              -- Lua
+        "rnix",                     -- Nix
+        "intelephense",             -- PHP
+        "pyright",                  -- Python
+        --"solargraph",               -- Ruby
+        --"Rust",                     -- Rust
+        "sqlls",                     -- SQL
+        --"Svelte",                   -- Svelte
+        "taplo",                    -- TOML
+        "tailwindcss",              -- Tailwind CSS
+        "vimls",                    -- VimL
+        "vuels",                    -- Vue
+        "lemminx",                  -- XML
+        "yamlls",                   -- YAML
+        "zls",                      -- Zig
+    }
+})
+
+-- Bindings that work without lsp
+util.keymap('n', '<leader>e', '<cmd>lua vim.diagnostic.open_float({}, {focus=false})<CR>', '[e]xamine Diagnostics (2x to enter)')
+util.keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', 'quboid.to Prev [d]iagnostic')
+util.keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', 'quboid.to Next [d]iagnostic')
+-- Rest of bindings included with lspconfig can be found in lsp-util.lua
+
+masonlsp.setup_handlers({
+    -- The first entry (without a key) will be the default handler
+    -- and will be called for each installed server that doesn't have
+    -- a dedicated handler.
+    -- default handler (optional)
+
+    function(server_name) 
+        -- vim.notify("config: " .. vim.inspect(lsp_util))
+        -- vim.notify("config: " .. vim.inspect(lsp_util))
+        require("lspconfig")[server_name].setup(lsp_util.new_config())
+    end,
+    -- Next, you canprovide targeted overrides for specific servers.
+    ["jdtls"] = function()
+    end,
+    ["tsserver"] = function()
+    end,
+    ["eslint"] = function()
+        local config = lsp_util.new_config()
+
+        config.settings = {
+            packageManager = quboid.quboid_ft_javascript_package_manager,
+        },
+
+        lspconfig.eslint.setup(config)
+    end,
+    ["lua_ls"] = function()
+        lspconfig.lua_ls.setup {
+            on_attach = function (client, bufnr)
+                lsp_util.on_attach(client, bufnr)
+            end,
+            settings = {
+                runtime = {
+                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                    version = 'LuaJIT',
+                },
+                Lua = {
+                    completion = {
+                        callSnippet = "Replace"
+                    },
+                    diagnostics = {
+                        globals = {
+                            "vim" -- to remove "unknown global 'vim'"
+                        }
+                    }
+                },
+                workspace = {
+                    library = {
+                        -- [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                        -- [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+                        -- TODO: Extract to quboid.lua
+                        ["/usr/share/awesome/lib"] = true
+                    },
+                },
+                telemetry = {
+                    enable = false,
+                },
+            }
+        }
+    end,
+})
