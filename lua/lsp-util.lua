@@ -3,11 +3,18 @@ local M = {}
 local util = require('util')
 
 local goto_lsp_ok, goto_lsp = pcall(require, 'goto-preview')
+local navic_ok, navic = pcall(require, 'navic')
 
 -- Used to generate lsp on attach
 M.on_attach = function (client, bufnr)
 
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    if navic_ok then
+        if client.server_capabilities.documentSymbolProvider then
+            navic.attach(client, bufnr)
+        end
+    end
 
     -- LSP Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functionsk

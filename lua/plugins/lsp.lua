@@ -20,8 +20,18 @@ return {
             { url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
                 config = function() require('lsp_lines').setup() end,
             },
+            'SmiteshP/nvim-navic',
         },
         config = function () require('configs.lspconfig') end,
         event = 'BufRead',
+    },
+    { 'utilyre/barbecue.nvim',
+        dependencies = {
+            'SmiteshP/nvim-navic',
+            'DaikyXendo/nvim-material-icon',
+        },
+        config = function () require('configs.barbecue') end,
+        name = 'barbecue',
+        version = '*',
     },
 }
