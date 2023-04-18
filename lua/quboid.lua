@@ -14,53 +14,59 @@ M.icons = {
 
     -- General single chars
     pad = ' ',
-    triangle_cursor     = '▮',
-    bar_thick           = '┃',
-    bar_thick_split     = '╏',
+    triangle_cursor = '▮',
+    bar_thick       = '┃',
+    bar_thick_split = '╏',
 
     -- LSP
-    Error               = ' ',
-    Warn                = ' ',
-    Info                = ' ',
-    Hint                = ' ',
+    Error           = ' ',
+    Warn            = ' ',
+    Info            = ' ',
+    Hint            = ' ',
 
-    Debug               = ' ',
-    Trace               = ' ',
+    Debug           = ' ',
+    Trace           = ' ',
 
     -- Completion kind
     --
         -- CMP completion kind
-    Class               = ' ',
-    Color               = ' ',
-    Constant            = ' ',
-    Constructor         = ' ',
-    Enum                = ' ',
-    EnumMember          = ' ',
-    Event               = ' ',
-    Field               = ' ',
-    File                = ' ',
-    Folder              = ' ',
-    Function            = 'x',
-    Interface           = ' ',
-    Keyword             = ' ',
-    Method              = ' ',
-    Module              = ' ',
-    Operator            = ' ',
-    Property            = ' ',
-    Reference           = ' ',
-    Snippet             = ' ',
-    Struct              = " ",
-    Text                = ' ',
-    TypeParameter       = ' ',
-    Unit                = ' ',
-    Value               = ' ',
-    Variable            = ' ',
-    Copilot             = ' ',
-
+    Class           = ' ',
+    Color           = ' ',
+    Constant        = ' ',
+    Constructor     = ' ',
+    Enum            = ' ',
+    EnumMember      = ' ',
+    Event           = ' ',
+    Field           = ' ',
+    File            = ' ',
+    Folder          = ' ',
+    Function        = 'x',
+    Interface       = ' ',
+    Keyword         = ' ',
+    Method          = ' ',
+    Module          = ' ',
+    Operator        = ' ',
+    Property        = ' ',
+    Reference       = ' ',
+    Snippet         = ' ',
+    Struct          = " ",
+    Text            = ' ',
+    TypeParameter   = ' ',
+    Unit            = ' ',
+    Value           = ' ',
+    Variable        = ' ',
+    Copilot         = ' ',
 
     -- Luasnip
     ChoiceNode      = ' ',
     InsertNode      = ' ',
+
+    -- Bufferline
+    Close           = ' ',
+    Modified        = ' ',
+    ArrowLeft       = ' ',
+    ArrowRight      = ' ',
 }
+
 
 return M

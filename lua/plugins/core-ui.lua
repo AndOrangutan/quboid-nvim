@@ -1,4 +1,10 @@
 return {
+    { 'akinsho/bufferline.nvim',
+        dependencies = {
+            'DaikyXendo/nvim-material-icon',
+        },
+        config = function () require('configs.bufferline') end,
+    },
     { 'rcarriga/nvim-notify',
         config = function () require('configs.notify') end,
     },
