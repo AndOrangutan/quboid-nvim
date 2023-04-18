@@ -34,4 +34,8 @@ return {
         name = 'barbecue',
         version = '*',
     },
+    { 'RRethy/vim-illuminate',
+        event = 'BufRead',
+        config = function() require('illuminate').configure() end,
+    },
 }
