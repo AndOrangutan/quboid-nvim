@@ -38,4 +38,11 @@ return {
         event = 'BufRead',
         config = function() require('illuminate').configure() end,
     },
+    { 'jose-elias-alvarez/null-ls.nvim',
+        dependencies = {
+            'jay-babu/mason-null-ls.nvim',
+            'ckolkey/ts-node-action',
+        },
+        config = function () require('configs.null-ls') end,
+    },
 }
