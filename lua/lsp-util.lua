@@ -2,6 +2,8 @@ local M = {}
 
 local util = require('util')
 
+local goto_lsp_ok, goto_lsp = pcall(require, 'goto-preview')
+
 -- Used to generate lsp on attach
 M.on_attach = function (client, bufnr)
 
@@ -27,6 +29,14 @@ M.on_attach = function (client, bufnr)
     util.keymap('n', '<leader>F', '<cmd>lua vim.lsp.buf.format()<cr>', { desc = 'Lsp [F]ormat', buffer = bufnr})
     util.keymap('n', '<leader>ca', '<cmd>CodeActionMenu<cr>', { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
     --util.keymap('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
+
+    if goto_lsp_ok then
+        util.keymap('n', 'gpd', '<cmd>lua require("goto-preview").goto_preview_definition()<cr>', { desc = 'Lsp [g]oto [p]review of [d]efintion', buffer = bufnr })
+        util.keymap('n', 'gpt', '<cmd>lua require("goto-preview").goto_preview_type_definition()<cr>', { desc = 'Lsp [g]oto [p]review of [t]ype Def.', buffer = bufnr })
+        util.keymap('n', 'gpi', '<cmd>lua require("goto-preview").goto_preview_implementation()<cr>', { desc = 'Lsp [g]oto [p]review of [i]mplementation', buffer = bufnr })
+        util.keymap('n', 'gpr', '<cmd>lua require("goto-preview").goto_preview_references()<cr>', { desc = 'Lsp [g]oto [p]review of [r]eferences', buffer = bufnr })
+        util.keymap('n', 'gpq', '<cmd>lua require("goto-preview").close_all_win()<cr>', { desc = 'Lsp [g]oto Preview Close All Windows', buffer = bufnr })
+    end
 
 end
 
