@@ -56,6 +56,10 @@ M.icons = {
     Variable            = ' ',
     Copilot             = ' ',
 
+
+    -- Luasnip
+    ChoiceNode      = ' ',
+    InsertNode      = ' ',
 }
 
 return M

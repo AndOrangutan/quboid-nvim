@@ -4,6 +4,7 @@ local util = require('util')
 
 local goto_lsp_ok, goto_lsp = pcall(require, 'goto-preview')
 local navic_ok, navic = pcall(require, 'navic')
+local cmp_lsp_ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
 
 -- Used to generate lsp on attach
 M.on_attach = function (client, bufnr)
@@ -49,13 +50,26 @@ end
 
 M.new_config = function (extend_on_attach)
 
+
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+    -- cmp lsp
+    if cmp_lsp_ok then
+        capabilities = cmp_lsp.default_capabilities(capabilities)
+    end
+
     local config = {
+        capabilities = capabilities,
         on_attach = function (client, bufnr)
             if (type(extend_on_attach) == 'function') then
                 extend_on_attach(client, bufnr)
             end
             M.on_attach(client, bufnr)
         end,
+        -- flags = {
+        --     debounce_text_changes = 80,
+        --     allow_incremental_sync = true,
+        -- }
     }
 
     return config
