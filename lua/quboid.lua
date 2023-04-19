@@ -15,6 +15,7 @@ M.icons = {
     -- General single chars
     pad = ' ',
     triangle_cursor = '▮',
+    bar_thin        = '｜',
     bar_thick       = '┃',
     bar_thick_split = '╏',
 
@@ -23,6 +24,7 @@ M.icons = {
     Warn            = ' ',
     Info            = ' ',
     Hint            = ' ',
+    LSP             = ' ',
 
     Debug           = ' ',
     Trace           = ' ',
