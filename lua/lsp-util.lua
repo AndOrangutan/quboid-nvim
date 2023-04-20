@@ -56,7 +56,9 @@ M.new_config = function (extend_on_attach)
     -- cmp lsp
     if cmp_lsp_ok then
         capabilities = cmp_lsp.default_capabilities(capabilities)
+        capabilities = vim.tbl_extend('keep', capabilities or {}, cmp_lsp.default_capabilities(capabilities))
     end
+
 
     local config = {
         capabilities = capabilities,

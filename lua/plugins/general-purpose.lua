@@ -13,6 +13,26 @@ return {
         config = function ()
             local m_animate = require('mini.animate')
 
+            -- Smooth mouse
+            local mouse_scrolled = false
+            for _, scroll in ipairs({ "Up", "Down" }) do
+                local key = "<ScrollWheel" .. scroll .. ">"
+                vim.keymap.set("", key, function()
+                    mouse_scrolled = true
+                    return key
+                end, { noremap = true, expr = true })
+            end
+
+            -- Auto resize windows
+            local function sizes()
+                vim.go.winwidth = math.max(80, math.floor(vim.go.columns * 0.5))
+                vim.go.winminwidth = 36
+                vim.go.winheight = math.max(20, math.floor(vim.go.lines * 0.5))
+                vim.go.winminheight = 5
+            end
+
+            sizes()
+            vim.api.nvim_create_autocmd("VimResized", { callback = sizes })
             m_animate.setup({
                 scroll = {
                     timing = m_animate.gen_timing.linear({ duration = 150, unit = "total" }),
@@ -43,26 +63,6 @@ return {
             -- map_scroll_with_center('n')
             -- map_scroll_with_center('N')
 
-            -- Smooth mouse
-            local mouse_scrolled = false
-            for _, scroll in ipairs({ "Up", "Down" }) do
-                local key = "<ScrollWheel" .. scroll .. ">"
-                vim.keymap.set("", key, function()
-                    mouse_scrolled = true
-                    return key
-                end, { noremap = true, expr = true })
-            end
-
-            -- Auto resize windows
-            local function sizes()
-                vim.go.winwidth = math.max(80, math.floor(vim.go.columns * 0.5))
-                vim.go.winminwidth = 36
-                vim.go.winheight = math.max(20, math.floor(vim.go.lines * 0.5))
-                vim.go.winminheight = 5
-            end
-
-            sizes()
-            vim.api.nvim_create_autocmd("VimResized", { callback = sizes })
 
         end,
         event = 'VeryLazy',

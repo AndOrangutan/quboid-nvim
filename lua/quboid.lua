@@ -24,6 +24,7 @@ M.icons = {
     Warn            = ' ',
     Info            = ' ',
     Hint            = ' ',
+    Ok              = ' ',
     LSP             = ' ',
 
     Debug           = ' ',

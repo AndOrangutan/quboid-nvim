@@ -22,14 +22,8 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.api.nvim_set_hl(0, 'MiniIndentscopeSymbol', {link = 'Comment'})
         vim.api.nvim_set_hl(0, 'ReverseSearch', { fg = util.get_hl_val('Search', 'background'), bg = util.get_hl_val('Normal', 'background') })
         vim.api.nvim_set_hl(0, 'StatusLineNCSearch', { fg = util.get_hl_val('Search', 'background'), bg = util.get_hl_val('StatusLineNC', 'background') })
-        vim.api.nvim_set_hl(
-            0,
-            'StatusLineNCVisual',
-            {
-                -- fg = util.get_hl_val('Visual', 'foreground'),
-                bg = util.get_hl_val('StatusLineNC', 'background')
-            }
-        )
+        vim.api.nvim_set_hl(0, 'StatusLineNCVisual', { fg = util.get_hl_val('Visual', 'background'), bg = util.get_hl_val('StatusLineNC', 'background') })
+        vim.api.nvim_set_hl(0, 'StatusLineNCComment', { fg = util.get_hl_val('Comment', 'foreground'), bg = util.get_hl_val('StatusLineNC', 'background') })
 
         vim.api.nvim_set_hl(0, 'EyelinerPrimary', { bold = true, underline = true })
         vim.api.nvim_set_hl(0, 'EyelinerSecondary', { underline = true })

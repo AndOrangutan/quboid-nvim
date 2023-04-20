@@ -1,6 +1,8 @@
 local quboid = require('quboid')
 local util = require('util')
 
+local lsp_progress = require('lsp-progress')
+
 require('lualine').setup {
     options = {
         icons_enabled = true,
@@ -37,7 +39,12 @@ require('lualine').setup {
                     info = quboid.icons.Info,
                     hint = quboid.icons.Hint
                 }
-            }
+            },
+            -- TODO: Confirm funcitonality
+            { lsp_progress.progress,
+                icon = quboid.icons.LSP,
+                color = 'StatusLineNCComment',
+            },
         },
         lualine_x = {
             { 'searchcount',
@@ -67,3 +74,12 @@ require('lualine').setup {
     inactive_winbar = {},
     extensions = {}
 }
+
+
+-- listen to user event and trigger lualine refresh
+vim.cmd([[
+augroup lualine_augroup
+    autocmd!
+    autocmd User LspProgressStatusUpdated lua require("lualine").refresh()
+augroup END
+]])
