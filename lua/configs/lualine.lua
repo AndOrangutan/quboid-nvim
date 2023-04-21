@@ -40,7 +40,8 @@ require('lualine').setup {
                     warn = quboid.icons.Warn,
                     info = quboid.icons.Info,
                     hint = quboid.icons.Hint
-                }
+                },
+                on_click = function() vim.cmd('TroubleToggle document_diagnostics') end,
             },
             -- TODO: Confirm funcitonality
             { lsp_progress.progress,
