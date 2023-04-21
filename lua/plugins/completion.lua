@@ -19,7 +19,7 @@ return {
             },
             'hrsh7th/cmp-nvim-lsp-document-symbol',
             { 'David-Kunz/cmp-npm',
-                requires = 'nvim-lua/plenary.nvim'
+                dependencies = 'nvim-lua/plenary.nvim'
             },
             'jcha0713/cmp-tw2css',
 

@@ -1,7 +1,7 @@
 local quboid = require('quboid')
 local util = require('util')
 
-local lsp_progress = require('lsp-progress')
+local lsp_progress_ok, lsp_progress = pcall(require, 'lsp-progress')
 
 require('lualine').setup {
     options = {
@@ -28,7 +28,9 @@ require('lualine').setup {
         },
         lualine_b = {
             'branch',
-            'diff',
+            { 'diff',
+                on_click = function() vim.cmd('Neogit') end,
+            },
         },
         lualine_c = {
             { 'diagnostics',

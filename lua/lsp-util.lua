@@ -55,10 +55,10 @@ M.new_config = function (extend_on_attach)
 
     -- cmp lsp
     if cmp_lsp_ok then
-        capabilities = cmp_lsp.default_capabilities(capabilities)
         capabilities = vim.tbl_extend('keep', capabilities or {}, cmp_lsp.default_capabilities(capabilities))
     end
 
+    capabilities.offsetEncoding = { "utf-16" }
 
     local config = {
         capabilities = capabilities,
@@ -68,10 +68,10 @@ M.new_config = function (extend_on_attach)
             end
             M.on_attach(client, bufnr)
         end,
-        -- flags = {
-        --     debounce_text_changes = 80,
-        --     allow_incremental_sync = true,
-        -- }
+        flags = {
+            debounce_text_changes = 80,
+            allow_incremental_sync = true,
+        }
     }
 
     return config

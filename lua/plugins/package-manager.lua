@@ -12,4 +12,9 @@ return {
         }) end,
         event = 'BufRead',
     },
+    { 'williamboman/mason-lspconfig.nvim',              -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim
+        dependencies = 'williamboman/mason.nvim',
+        event = 'BufRead',
+        config = function() require('configs.mason-lspconfig') end,
+    },
 }
