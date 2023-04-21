@@ -87,7 +87,7 @@ $ tree -d
 
 ### Cosmetic Bloat
 
-- [mvllow/modes.nvim](https://github.com/mvllow/modes.nvim) - Prismatic line decorations for the adventurous vim user
+- [m4xshen/smartcolumn.nvim](https://github.com/m4xshen/smartcolumn.nvim) - A Neovim plugin hiding your colorcolumn when unneeded.
 
 ### DAP (Debug Adapter Protocol)
 
@@ -150,6 +150,7 @@ $ tree -d
         - `c` `0` — choose none
         - `]` `x` — move to previous conflict
         - `[` `x` — move to next conflict
+- [ThePrimeagen/git-worktree.nvim](https://github.com/ThePrimeagen/git-worktree.nvim) - A simple wrapper around git worktree operations, create, switch, and delete.
 - [TimUntersberger/neogit](https://github.com/TimUntersberger/neogit) - magit for neovim
 
 ### Filetype Specific

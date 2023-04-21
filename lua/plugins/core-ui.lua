@@ -34,7 +34,8 @@ return {
         },
         config = function () require('configs.neo-tree') end,
     },
-    { 'folke/trouble.nvim',                             -- A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
+
+    { 'folke/trouble.nvim',
         dependencies = { 
             'DaikyXendo/nvim-material-icon',
             { 'folke/todo-comments.nvim',

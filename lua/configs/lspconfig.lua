@@ -57,8 +57,6 @@ masonlsp.setup_handlers({
     -- default handler (optional)
 
     function(server_name) 
-        -- vim.notify("config: " .. vim.inspect(lsp_util))
-        -- vim.notify("config: " .. vim.inspect(lsp_util))
         require("lspconfig")[server_name].setup(lsp_util.new_config())
     end,
     -- Next, you canprovide targeted overrides for specific servers.
