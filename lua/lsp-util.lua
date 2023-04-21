@@ -5,6 +5,7 @@ local util = require('util')
 local goto_lsp_ok, goto_lsp = pcall(require, 'goto-preview')
 local navic_ok, navic = pcall(require, 'navic')
 local cmp_lsp_ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
 
 -- Used to generate lsp on attach
 M.on_attach = function (client, bufnr)
@@ -15,6 +16,27 @@ M.on_attach = function (client, bufnr)
         if client.server_capabilities.documentSymbolProvider then
             navic.attach(client, bufnr)
         end
+    end
+
+    if lsp_signature_ok then
+        lsp_signature.on_attach({
+            bind = true,
+            hint_prefix = '',
+            hi_parameter = "String",
+            -- doc_lines = 10,
+            floating_window_above_cur_line = true,
+            max_height = 16,
+            handler_opts = {
+                border = {
+                    {'╭', 'FloatBorder'}, {'─', 'FloatBorder'}, {'╮', 'FloatBorder'}, {'│', 'FloatBorder'},
+                    {'╯', 'FloatBorder'}, {'─', 'FloatBorder'}, {'╰', 'FloatBorder'}, {'│', 'FloatBorder'}
+                },
+            },
+            select_signature_key = '<M-n>', -- cycle to next signature, e.g. '<M-n>' function overloading
+            toggle_key = '<M-x>', -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
+        }, bufnr)
+    else
+        vim.notify('Failed to attach LSP Signature')
     end
 
     -- LSP Mappings.
