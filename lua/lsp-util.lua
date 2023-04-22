@@ -5,6 +5,7 @@ local util = require('util')
 local goto_lsp_ok, goto_lsp = pcall(require, 'goto-preview')
 local navic_ok, navic = pcall(require, 'navic')
 local cmp_lsp_ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+local ufo_ok, ufo = pcall(require, 'ufo')
 local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
 
 -- Used to generate lsp on attach
@@ -48,7 +49,7 @@ M.on_attach = function (client, bufnr)
     util.keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = 'Lsp [g]oto [D]eclaration', buffer = bufnr})
     util.keymap('n', 'K', function ()
         local winid = nil
-        -- if ufo_ok then winid = require('ufo').peekFoldedLinesUnderCursor() end
+        if ufo_ok then winid = require('ufo').peekFoldedLinesUnderCursor() end
         if not winid then vim.lsp.buf.hover() end
     end, { desc = 'Lsp [k]ick up Hover', buffer = bufnr})
     util.keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { desc = 'Lsp Signature Help', buffer = bufnr})

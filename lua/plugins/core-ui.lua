@@ -26,5 +26,10 @@ return {
     { 'rcarriga/nvim-notify',
         config = function () require('configs.notify') end,
     },
-
+    { 'kevinhwang91/nvim-ufo',
+        dependencies = {
+            'kevinhwang91/promise-async',
+        },
+        config = function () require('configs.ufo') end,
+    },
 }
