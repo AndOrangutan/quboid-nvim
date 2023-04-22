@@ -50,7 +50,7 @@ return {
 
             -- local map_scroll_with_center = function(lhs)
             --     local center_command =
-            --     [[if MiniAnimate ~= nil then MiniAnimate.execute_after('scroll', 'normal! zz') else vim.cmd('normal! zz') end]]
+                -- [[if MiniAnimate ~= nil then MiniAnimate.execute_after('scroll', 'normal! zz') else vim.cmd('normal! zz') end]]
             --
             --     local rhs = string.format([[<Cmd>lua pcall(vim.cmd, 'normal! %s'); %s<CR>]], lhs, center_command)
             --     vim.keymap.set('n', lhs, rhs, {})
