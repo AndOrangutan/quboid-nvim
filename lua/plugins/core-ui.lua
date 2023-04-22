@@ -1,4 +1,3 @@
-local quboid = require('quboid')
 return {
     { 'akinsho/bufferline.nvim',
         dependencies = {
@@ -25,6 +24,28 @@ return {
     },
     { 'rcarriga/nvim-notify',
         config = function () require('configs.notify') end,
+    },
+    { 'luukvbaal/statuscol.nvim',
+        config = function()
+            local builtin = require("statuscol.builtin")
+            require("statuscol").setup({
+                foldfunc = "builtin",
+                setopt = true,
+                thousands = false,
+                relculright = true,
+                segments = {
+                    { text = { "%s" }, click = "v:lua.ScSa" },
+                    { text = { builtin.lnumfunc }, click = "v:lua.ScLa" },
+                    -- { sign = { name = { "Diagnostic" }, maxwidth = 2, auto = true },
+                    --     click = "v:lua.ScSa"
+                    -- },
+                    { text = { builtin.foldfunc, " " },
+                        condition = { builtin.not_empty, true, builtin.not_empty },
+                        click = "v:lua.ScFa"
+                    },
+                }
+            })
+        end
     },
     { 'kevinhwang91/nvim-ufo',
         dependencies = {
