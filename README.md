@@ -96,6 +96,10 @@ $ tree -d
 
 ### DAP (Debug Adapter Protocol)
 
+### Editing
+
+- [NMAC427/guess-indent.nvim](https://github.com/NMAC427/guess-indent.nvim) - Automatic indentation style detection for Neovim
+
 ### Filetype Specific
 
 ### General Purpose
