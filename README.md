@@ -19,7 +19,7 @@ Resiliant, fast, text-based Personal Development Environment
 - Look up best way to store global variables ()
 - Lead with documentation.
 - Add
-    - https://github.com/ThePrimeagen/git-worktree.nvim
+    - https://github.com/jcdickinson/wpm.nvim
 
 ## File Structure
 

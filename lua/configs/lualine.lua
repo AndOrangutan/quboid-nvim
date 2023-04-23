@@ -3,12 +3,28 @@ local util = require('util')
 
 local lsp_progress_ok, lsp_progress = pcall(require, 'lsp-progress')
 
+local bar = { '', icon = quboid.icons.bar_thin }
+
+local function min_window_width(width)
+  return function() return vim.fn.winwidth(0) > width end
+end
+
+local function encoding()
+  local ret, _ = (vim.bo.fenc or vim.go.enc):gsub("^utf%-8$", "")
+  return ret
+end
+
+local function bar()
+    return quboid.icons.bar_thin
+end
+
 require('lualine').setup {
     options = {
         icons_enabled = true,
         theme = 'auto',
         section_separators = { left = '', right = ''},
-        component_separators = { left = quboid.icons.bar_thin, right = quboid.icons.bar_thin},
+        -- component_separators = { left = quboid.icons.bar_thin, right = quboid.icons.bar_thin},
+        component_separators = { left = '', right = '',},
         disabled_filetypes = {
             statusline = {},
             winbar = {},
@@ -24,11 +40,16 @@ require('lualine').setup {
     },
     sections = {
         lualine_a = {
-            {'mode', fmt = function(str) return str:sub(1,1) end },
+            {'mode', fmt = function(str) return string.lower(str:sub(1,1)) end },
         },
         lualine_b = {
-            'branch',
+            { 'branch', 
+                cond = min_window_width(120),
+                icon = quboid.icons.Git_Branch,
+            },
             { 'diff',
+                symbols = {added = quboid.icons.Git_Added, modified = quboid.icons.Git_Modified, removed = quboid.icons.Git_Removed}, -- Changes the symbols used by the diff.
+                cond = min_window_width(120),
                 on_click = function() vim.cmd('Neogit') end,
             },
         },
@@ -46,7 +67,9 @@ require('lualine').setup {
             -- TODO: Confirm funcitonality
             { lsp_progress.progress,
                 icon = quboid.icons.LSP,
+                cond = min_window_width(80),
                 color = 'StatusLineNCComment',
+            on_click = function() vim.cmd('LspInfo') end,
             },
         },
         lualine_x = {
@@ -59,7 +82,21 @@ require('lualine').setup {
                 color = 'StatusLineNCVisual',
             },
         },
-        lualine_y = {'filesize', 'encoding', 'filetype'},
+        lualine_y = {
+            { 'filesize',
+                cond = min_window_width(120)
+            },
+            { bar,
+                padding = false,
+                cond = min_window_width(120)
+            },
+            { encoding,
+                cond = min_window_width(120)
+            },
+            { 'filetype',
+                cond = min_window_width(120)
+            },
+        },
         lualine_z = {
             { 'location' },
         },

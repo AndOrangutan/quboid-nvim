@@ -3,6 +3,7 @@ local M = {}
 -- sauce https://www.reddit.com/r/neovim/comments/oxddk9/how_do_i_get_the_value_from_a_highlight_group/
 M.get_hl_val = function(name,val)
     local ok, hl = pcall(vim.api.nvim_get_hl_by_name, name, true)
+    -- local ok, hl = pcall(vim.api.nvim_get_hl(0, {name = name}))
     if not ok then
         return
     end

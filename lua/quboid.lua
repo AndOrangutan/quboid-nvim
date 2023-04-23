@@ -69,6 +69,12 @@ M.icons = {
     Modified        = ' ',
     ArrowLeft       = ' ',
     ArrowRight      = ' ',
+
+    -- Git
+    Git_Branch      = ' ',
+    Git_Added       = ' ',
+    Git_Modified    = ' ',
+    Git_Removed     = ' ',
 }
 
 
