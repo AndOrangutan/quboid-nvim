@@ -27,10 +27,10 @@ local function footer()
     local w = quboid.dashboard_width
 
     local date = os.date('%A, %b %d, %Y')
-    local version = string.format("v%d.%d.%d", version.major, version.minor, version.patch)
+    local ver = string.format("v%d.%d.%d", version.major, version.minor, version.patch)
     local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
 
-    local details1 = quboid.icons.Calendar .. ' ' .. date .. '  ' .. quboid.icons.Beaker .. ' ' .. version
+    local details1 = quboid.icons.Calendar .. ' ' .. date .. '  ' .. quboid.icons.Beaker .. ' ' .. ver
     details1 = pad_to_width(details1, w)
     table.insert(footer, details1)
 
@@ -46,7 +46,10 @@ end
 
 
 dashboard.section.buttons.val = {
+    dashboard.button( "r", "  > Recent"   , ":FzfLua oldfiles<CR>"),
+    dashboard.button( "s", "  > Sessions" , ":SessionManager load_session<cr>"),
     dashboard.button( "n", "  > Notebooks", [[:cd $HOME/Dropbox/Notebooks/ | :lua require'fzf-lua'.files({ cwd = "~/Dropbox/Notebooks", cmd = "fd -e md -g 'index.md'", actions = { ['default'] = _G.my_notebook_open }})<cr>]]),
+    dashboard.button( "S", "  > Settings" , ":cd $HOME/.config/nvim | lua require'fzf-lua'.files()<cr>"),
     dashboard.button( "q", "  > Quit NVIM", "<cmd>qa<cr>"),
 }
 

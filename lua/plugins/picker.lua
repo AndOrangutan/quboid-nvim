@@ -8,6 +8,6 @@ return {
             'DaikyXendo/nvim-material-icon',
         },
         config = function () require('configs.fzf-lua') end,
-        event = { 'BufReadPre', 'BufNewFile' },
+        -- event = { 'BufReadPre', 'BufNewFile' },
     }
 }
