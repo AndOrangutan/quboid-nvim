@@ -5,6 +5,10 @@ local lsp_progress_ok, lsp_progress = pcall(require, 'lsp-progress')
 
 local bar = { '', icon = quboid.icons.bar_thin }
 
+local function filetype_name()
+    return vim.bo.filetype
+end
+
 local function min_window_width(width)
   return function() return vim.fn.winwidth(0) > width end
 end
@@ -23,8 +27,7 @@ require('lualine').setup {
         icons_enabled = true,
         theme = 'auto',
         section_separators = { left = '', right = ''},
-        -- component_separators = { left = quboid.icons.bar_thin, right = quboid.icons.bar_thin},
-        component_separators = { left = '', right = '',},
+        component_separators = { left = quboid.icons.bar_thin, right = quboid.icons.bar_thin},
         disabled_filetypes = {
             statusline = {},
             winbar = {},
@@ -46,6 +49,7 @@ require('lualine').setup {
             { 'branch', 
                 cond = min_window_width(120),
                 icon = quboid.icons.Git_Branch,
+                separator = '',
             },
             { 'diff',
                 symbols = {added = quboid.icons.Git_Added, modified = quboid.icons.Git_Modified, removed = quboid.icons.Git_Removed}, -- Changes the symbols used by the diff.
@@ -81,19 +85,20 @@ require('lualine').setup {
                 icon = ' ',
                 color = 'StatusLineNCVisual',
             },
+            { require('lazy.status').updates,
+                cond = require('lazy.status').has_updates,
+                color = 'StatusLineNCString',
+                on_click = function() vim.cmd('Lazy') end,
+            },
         },
         lualine_y = {
+            { 'filetype',
+                cond = min_window_width(120),
+            },
             { 'filesize',
                 cond = min_window_width(120)
             },
-            { bar,
-                padding = false,
-                cond = min_window_width(120)
-            },
             { encoding,
-                cond = min_window_width(120)
-            },
-            { 'filetype',
                 cond = min_window_width(120)
             },
         },

@@ -1,5 +1,8 @@
 local util = require('util')
 return {
+    { "goolord/alpha-nvim",
+        config = function() require("configs.alpha") end,
+    },
     { 'nvim-neo-tree/neo-tree.nvim',
         dependencies = {
             'nvim-lua/plenary.nvim',
@@ -8,7 +11,7 @@ return {
         },
         config = function () require('configs.neo-tree') end,
     },
-    { 'simrat39/symbols-outline.nvim',                  -- A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favourite languages.
+    { 'simrat39/symbols-outline.nvim',
         dependencies = { 'DaikyXendo/nvim-material-icon' },
         config = function()
             require('symbols-outline').setup({

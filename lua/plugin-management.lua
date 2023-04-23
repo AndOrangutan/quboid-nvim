@@ -18,6 +18,10 @@ if not status_ok then
     return
 end
 
-
 -- Send final table to lazy
-lazy.setup('plugins')
+lazy.setup('plugins', {
+    checker = {
+        enabled = true,
+        notify = false,
+    },
+})
