@@ -71,10 +71,15 @@ M.on_attach = function (client, bufnr)
 
 end
 
-M.new_config = function (extend_on_attach)
+M.new_config = function (extend_on_attach, extend_capabilities)
 
+    local capabilities
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    if (type(extend_capabilities) ~= 'table') then
+        capabilities = extend_capabilities
+    else
+        capabilities = vim.lsp.protocol.make_client_capabilities()
+    end
 
     -- cmp lsp
     if cmp_lsp_ok then
