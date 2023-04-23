@@ -97,9 +97,16 @@ $ tree -d
 
 ### DAP (Debug Adapter Protocol)
 
+- [mfussenegger/nvim-dap](https://github.com/mfussenegger/nvim-dap) - Debug Adapter Protocol client implementation for Neovim
+    - [jay-babu/mason-nvim-dap.nvim](https://github.com/jay-babu/mason-nvim-dap.nvim) - mason-nvim-dap bridges mason.nvim with the nvim-dap plugin - making it easier to use both plugins together.
+    - [rcarriga/nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) - A UI for nvim-dap
+    - [theHamsta/nvim-dap-virtual-text](https://github.com/theHamsta/nvim-dap-virtual-text) - This plugin adds virtual text support to nvim-dap.
+    - FT Specific
+        - [jbyuki/one-small-step-for-vimkind](https://github.com/jbyuki/one-small-step-for-vimkind) - Debug adapter for Neovim plugins
+
 ### Editing
 
-- [NMAC427/guess-indent.nvim](https://github.com/NMAC427/guess-indent.nvim) - Automatic indentation style detection for Neovim
+- [](https://github.com/NMAC427/guess-indent.nvim) - Automatic indentation style detection for Neovim
 
 ### Filetype Specific
 
