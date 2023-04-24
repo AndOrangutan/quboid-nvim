@@ -66,28 +66,39 @@ require('lualine').setup {
                     info = quboid.icons.Info,
                     hint = quboid.icons.Hint
                 },
+                separator = '',
                 on_click = function() vim.cmd('TroubleToggle document_diagnostics') end,
             },
             -- TODO: Confirm funcitonality
             { lsp_progress.progress,
                 icon = quboid.icons.LSP,
                 cond = min_window_width(80),
-                color = 'StatusLineNCComment',
-            on_click = function() vim.cmd('LspInfo') end,
+                color = function (section)
+                    return { fg = util.get_hl_val('Comment', 'foreground') }
+                end,
+                seperator = '',
+                on_click = function() vim.cmd('LspInfo') end,
             },
         },
         lualine_x = {
             { 'searchcount',
                 icon = ' ',
-                color = 'StatusLineNCSearch',
+                color = function (section)
+                    return { fg = util.get_hl_val('Search', 'background') }
+                end,
+                on_click = function() vim.cmd('noh') end,
             },
             { 'selectioncount',
                 icon = ' ',
-                color = 'StatusLineNCVisual',
+                color = function (section)
+                    return { fg = util.get_hl_val('Constant', 'foreground') }
+                end,
             },
             { require('lazy.status').updates,
                 cond = require('lazy.status').has_updates,
-                color = 'StatusLineNCString',
+                color = function (section)
+                    return { fg = util.get_hl_val('String', 'foreground') }
+                end,
                 on_click = function() vim.cmd('Lazy') end,
             },
         },
