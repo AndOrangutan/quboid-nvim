@@ -3,6 +3,7 @@ local lsp_util = require('lsp-util')
 local quboid = require('quboid')
 
 local lspconfig = require("lspconfig")
+local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
 local masonlsp_ok, masonlsp = pcall(require, 'mason-lspconfig')
 if not masonlsp_ok then
     return

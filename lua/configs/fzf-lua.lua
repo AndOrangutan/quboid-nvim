@@ -44,6 +44,7 @@ require('fzf-lua').setup({
 
 util.keymap('n', '<leader>f', '<cmd>FzfLua<Cr>', '[f]zf')
 util.keymap('n', '<leader>ff', '<cmd>FzfLua files<cr>', '[f]zf [f]ind files')
+util.keymap('n', '<leader>fc', '<cmd>FzfLua colorschemes<cr>', '[f]zf [c]olorscheme')
 util.keymap('n', '<leader>fg', '<cmd>FzfLua live_grep_resume<cr>', '[f]zf [g]rep files')
 util.keymap('n', '<leader>fh', '<cmd>FzfLua help_tags<cr>', '[f]zf Neovim [h]elp tags')
 -- TODO: Add Ctrl + Shift + p binding to mimic vschoads command pallet

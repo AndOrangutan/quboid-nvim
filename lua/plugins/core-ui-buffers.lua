@@ -18,7 +18,7 @@ return {
                 auto_close = true,
                 relative_width = false,
                 width  = 40,
-                show_guides = false,
+                show_guides = true,
             })
             util.keymap('n', '<leader>bs', '<cmd>SymbolsOutline<cr>', '[b]uffer [s]symbol Outline Toggle')
             vim.cmd[[autocmd FileType Outline setlocal signcolumn=no]]

@@ -6,12 +6,13 @@ local goto_lsp_ok, goto_lsp = pcall(require, 'goto-preview')
 local navic_ok, navic = pcall(require, 'navic')
 local cmp_lsp_ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
 local ufo_ok, ufo = pcall(require, 'ufo')
-local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
+-- local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
+local lsp_signature_ok, lsp_signature = true, require('lsp_signature')
 
 -- Used to generate lsp on attach
 M.on_attach = function (client, bufnr)
 
-    -- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     if navic_ok then
         if client.server_capabilities.documentSymbolProvider then

@@ -25,7 +25,7 @@ require('lsp-progress').setup({
     event_update_time_limit = 100,
 
     --- Max progress string length, by default -1 is unlimit.
-    max_size = -1,
+    max_size = 60,
 
     -- Format series message.
     --
