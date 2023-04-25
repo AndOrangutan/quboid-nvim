@@ -11,6 +11,15 @@ M.get_hl_val = function(name,val)
 end
 
 
+M.table_contains = function(table, element)
+    for _, value in pairs(table) do
+        if value == element then
+            return true
+        end
+    end
+    return false
+end
+
 --- This beauty uses your mom as its weekend ride
 -- Given a table like:
 -- ```

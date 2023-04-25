@@ -7,8 +7,9 @@ return {
     },
     { 'famiu/bufdelete.nvim',
         config = function () 
-            require('util').keymap('n', 'Q', function ()
+            require('util').keymap('n', '<C-q>', function ()
                 require('bufdelete').bufdelete(0)
+                --vim.api.nvim_command('write')
             end, 'Save and Close Buffer')
         end,
     },
