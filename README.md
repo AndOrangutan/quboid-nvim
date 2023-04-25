@@ -20,6 +20,9 @@ Resiliant, fast, text-based Personal Development Environment
 - Lead with documentation.
 - Add
     - https://github.com/jcdickinson/wpm.nvim
+-   Symbol Outline (_)
+-   Fuzzy Search (_f)
+-   Quickfix (_xx)
 
 ## File Structure
 
@@ -110,8 +113,8 @@ $ tree -d
 ### Editing
 
 - [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Autopairs for neovim written by lua 
+- [famiu/bufdelete.nvim](https://github.com/famiu/bufdelete.nvim) - Delete Neovim buffers without losing window layout.
 - [NMAC427/guess-indent.nvim](https://github.com/NMAC427/guess-indent.nvim) - Automatic indentation style detection for Neovim
-
 
 ### General Purpose
 
