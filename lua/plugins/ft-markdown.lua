@@ -83,4 +83,10 @@ return {
         end,
         ft = quboid.ft_marktex,
     },
+    { 'mickael-menu/zk-nvim',
+        dependencies = {
+            'junegunn/fzf',
+        },
+        config = function () require('configs.zk') end,
+    }
  }

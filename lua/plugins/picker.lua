@@ -1,7 +1,6 @@
 return {
     { 'stevearc/dressing.nvim',
-        config = function () require('configs.dressing') end,
-        lazy = true,
+        config = true,
     },
     { 'ibhagwan/fzf-lua',
         dependencies = {
