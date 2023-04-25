@@ -109,7 +109,8 @@ $ tree -d
 
 ### Editing
 
-- [](https://github.com/NMAC427/guess-indent.nvim) - Automatic indentation style detection for Neovim
+- [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Autopairs for neovim written by lua 
+- [NMAC427/guess-indent.nvim](https://github.com/NMAC427/guess-indent.nvim) - Automatic indentation style detection for Neovim
 
 
 ### General Purpose
