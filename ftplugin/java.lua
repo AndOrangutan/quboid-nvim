@@ -11,6 +11,10 @@ if not jdtls_ok then
     return
 end
 
+local function get_files_from_mason_package(package_name, file_pattern)
+    local install_path = mason_registry.get_package(package_name):get_install_path()
+    return vim.split(vim.fn.glob(install_path .. file_pattern, true), "\n")
+end
 
 -- Determine OS
 local workspace_path, os_config
@@ -37,7 +41,10 @@ if root_dir == '' then
     return
 end
 
-local bundles = {}
+local bundles = {
+    -- get_files_from_mason_package("java-debug-adapter", "/extension/server/*.jar"),
+    -- get_files_from_mason_package("java-test", "/extension/server/*.jar"),
+}
 
 
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
@@ -52,10 +59,10 @@ local config = lsp_util.new_config(function (client, bufnr)
     util.keymap('n', 'crc', '<Cmd>lua require("jdtls").extract_constant()<CR>', { desc = 'JDTLS [cr]eate Extracted Constant', buffer = bufnr })
     util.keymap('v', 'crc', '<Esc><Cmd>lua require("jdtls").extract_constant(true)<CR>', { desc = 'JDTLS [cr]eate Extracted Constant', buffer = bufnr })
     util.keymap('v', 'crm', '<Esc><Cmd>lua require("jdtls").extract_method(true)<CR>', { desc = 'JDTLS [cr]eate Extracted Method', buffer = bufnr })
-end, 
-    -- extend capabilities
-    extendedClientCapabilities)
+end, extendedClientCapabilities) -- extend capabilities
 
+
+-- https://www.reddit.com/r/neovim/comments/12wypuf/comment/jhj5u6b/?utm_source=share&utm_medium=web2x&context=3
 config['cmd'] = {
     'java', -- NOTE: Configuration Required
     -- depends on if `java` is in your $PATH env variable and if it points to the right version.
@@ -91,12 +98,12 @@ end
 config['settings'] = {
     -- java = {
     java = {
-        signatureHelp = {
-            enabled = true
-        },
-        saveActions = {
-            organizeImports = true
-        },
+        signatureHelp = { enabled = true },
+        referencesCodeLens = { enabled = true },
+        saveActions = { organizeImports = true },
+        implementationsCodeLens = { enabled = true },
+        progressReports = { enabled = true },
+        contentProvider = { preferred = "fernflower" },
         completion = {
             maxResults = 20,
             favoriteStaticMembers = {
