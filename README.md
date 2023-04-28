@@ -20,6 +20,8 @@ Resiliant, fast, text-based Personal Development Environment
 - Lead with documentation.
 - Add
     - https://github.com/jcdickinson/wpm.nvim
+    - https://github.com/nvim-neotest/neotest
+    - https://github.com/smjonas/inc-rename.nvim
 -   Symbol Outline (_)
 -   Fuzzy Search (_f)
 -   Quickfix (_xx)
@@ -109,6 +111,10 @@ $ tree -d
     - [theHamsta/nvim-dap-virtual-text](https://github.com/theHamsta/nvim-dap-virtual-text) - This plugin adds virtual text support to nvim-dap.
     - FT Specific
         - [jbyuki/one-small-step-for-vimkind](https://github.com/jbyuki/one-small-step-for-vimkind) - Debug adapter for Neovim plugins
+
+### Documentation
+
+- [danymat/neogen](https://github.com/danymat/neogen) - A better annotation generator. Supports multiple languages and annotation conventions. 
 
 ### Editing
 

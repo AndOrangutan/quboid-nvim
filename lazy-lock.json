@@ -52,6 +52,7 @@
   "mini.map": { "branch": "main", "commit": "806e343943aa51dec368d5cfc46d0c6311ab27c2" },
   "neo-tree.nvim": { "branch": "v2.x", "commit": "7a6b0d43d70636edfec183fb49c02f725765da73" },
   "neodev.nvim": { "branch": "main", "commit": "c44d78e9a04a6d5a150a14e83c1d5fc1ba209a82" },
+  "neogen": { "branch": "main", "commit": "9c17225aac94bdbf93baf16e1b2d2c6dcffb0901" },
   "neogit": { "branch": "master", "commit": "69a6ca7c41b023ebf9cad70778e227b3209b40c4" },
   "neovim-ayu": { "branch": "master", "commit": "762ff24bd429fbb1c1e20b13043b4c8f0266bcf1" },
   "neovim-session-manager": { "branch": "master", "commit": "d1883f30921193f3cff4537e27514e454e0331e9" },
