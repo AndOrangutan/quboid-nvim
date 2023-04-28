@@ -4,6 +4,7 @@ return {
     { 'sindrets/diffview.nvim',
         dependencies = { 'nvim-lua/plenary.nvim' },
     },
+    { 'tpope/vim-fugitive' },
     { 'akinsho/git-conflict.nvim',
         config = true,
         event = 'BufRead',
