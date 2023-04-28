@@ -42,10 +42,10 @@ zk.setup({
 -- Input tree for input_builder
 local groups_main = {
     ['base'] = {
-        { 'title', 'Title: ', nil, function(input) return input ~= '' or input ~= nil end},
+        { { prompt = 'Title: ' }, 'title', nil, function(input) return input ~= '' or input ~= nil end},
     },
     ['index'] = {
-        { 'dir', 'Subdiretory: ', function(input) 
+        { { prompt = 'Subdiretory: ' }, 'dir',  function(input)
             local dirtocheck = vim.fn.expand('%:p:h')..'/'..input
 
             -- Create (sub)directory if needed
@@ -56,14 +56,14 @@ local groups_main = {
             opts.extra = { ['type-tags'] = '#index' }
             return opts ~= '' or opts ~= nil
         end},
-        { 'title', 'Title: ', nil, function(input) return input ~= '' or input ~= nil end},
+        { { prmpt = 'Title: ' }, 'title',  nil, function(input) return input ~= '' or input ~= nil end},
     },
     ['dir-calendar'] = {},
     ['dir-title'] = {
-        { 'title', 'Title: ', nil, function(input) return input ~= '' or input ~= nil end},
+        { { prmpt = 'Title: ' }, 'title',  nil, function(input) return input ~= '' or input ~= nil end},
     },
     ['date-title'] = {
-        { 'title', 'Title: ', nil, function(input) return input ~= '' or input ~= nil end},
+        { { prmpt = 'Title: ' }, 'title',  nil, function(input) return input ~= '' or input ~= nil end},
     },
 }
 

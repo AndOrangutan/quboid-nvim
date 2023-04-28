@@ -57,30 +57,36 @@ M.input_builder = function(main_opts, main_input_table, main_callback, main_outp
 
             return output
         else
-            local loc_opts = opts
 
             local input_branch =  table.remove(copied_table, 1) -- pop
+
 
             if type(input_branch) ~= 'table' then
                 vim.notify("Improper Syntax: got "..type(input_branch))
                 return
             end
 
-            -- 1 index to store data at
-            -- 2 Prompt
+            -- 1 Loc_opts table or fuction(prev_output) return {opts}
+            -- 2 tabile index
             -- 3 Mod Function
             -- 4 Condition function
 
-            loc_opts.prompt = input_branch[2]
+            local loc_opts = {}
+            if 'table' == type(input_branch[1]) then
+                 loc_opts = vim.tbl_extend('force', opts, input_branch[1]) -- keep right
+            elseif 'function' == type(input_branch[1]) then
+                 loc_opts = vim.tbl_extend('force', opts, input_branch[1](output)) -- keep right
+            end
+
 
             vim.ui.input(loc_opts, function (input)
 
-                local temp_thing = { [input_branch[1]] = input}
+                local temp_thing = { [input_branch[2]] = input}
 
 
                 -- input modification funciton
                 if type(input_branch[3]) == 'function' then
-                    temp_thing = { [input_branch[1]] = input_branch[3](input) }
+                    temp_thing = { [input_branch[2]] = input_branch[3](input) }
                 end
 
                 local continue, ret_opts = true, {}
