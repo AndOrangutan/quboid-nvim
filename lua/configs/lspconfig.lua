@@ -4,9 +4,14 @@ local quboid = require('quboid')
 
 local lspconfig = require("lspconfig")
 local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
+local neodev_ok, neodev = pcall(require, 'neodev')
 local masonlsp_ok, masonlsp = pcall(require, 'mason-lspconfig')
 if not masonlsp_ok then
     return
+end
+
+if neodev_ok then
+    neodev.setup({})
 end
 -- Overide border globally
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
@@ -96,8 +101,8 @@ masonlsp.setup_handlers({
                 },
                 workspace = {
                     library = {
-                        -- [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                        -- [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+                        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
                         -- TODO: Extract to quboid.lua
                         ["/usr/share/awesome/lib"] = true
                     },
