@@ -38,7 +38,6 @@ M.on_attach = function (client, bufnr)
 
     -- LSP Mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functionsk
-    -- TODO: Open in split
     util.keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', { desc = 'Lsp [g]oto [d]efintion', buffer = bufnr })
     util.keymap('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { desc = 'Lsp [g]oto [t]ype Def.', buffer = bufnr})
     util.keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = 'Lsp [g]ather [i]mplementation', buffer = bufnr})

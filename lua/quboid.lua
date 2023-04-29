@@ -11,17 +11,17 @@ M.quboid_ft_js = { 'typescript', 'typescriptreact', 'javashript' }
 M.quboid_ft_marktex = { 'tex', 'latex', 'markdown'}
 M.quboid_icons = {
     -- LSP
-    Error           = ' ',
-    Warn            = ' ',
+    Error           = ' ',
+    Warn            = ' ',
     Info            = ' ',
-    Hint            = ' ',
+    Hint            = ' ',
 
     -- Notify
     Debug           = ' ',
     Trace           = ' ',
 
     -- Luasnip
-    ChoiceNode      = ' ',
+    ChoiceNode      = ' ',
     InsertNode      = ' ',
 
     -- Bufferline

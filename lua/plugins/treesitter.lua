@@ -1,3 +1,4 @@
+local quboid = require('quboid')
 return {
     { 'nvim-treesitter/nvim-treesitter',                -- Neovim Treesitter configurations and abstraction layer.
         dependencies = {
@@ -15,11 +16,17 @@ return {
         event = 'VimEnter',
     },
     { 'kylechui/nvim-surround',                         -- Add/change/delete surrounding delimiter pairs with ease. Written with heart in Lua. 
-        -- version = '*',
+        version = '*',
+        dependencies = {
+            'tpope/vim-repeat',
+        },
         config = function() require('nvim-surround').setup() end,
     },
     { 'windwp/nvim-ts-autotag',                         -- Use treesitter to auto close and auto rename html tags.
-        config = function() require('nvim-ts-autotag').setup() end,
+        config = function() require('nvim-ts-autotag').setup({
+            autotag={enable=true},
+            filetypes = quboid.quboid_ft_html,
+        }) end,
     },
     { 'ckolkey/ts-node-action',                         --  Neovim Plugin for running functions on nodes. 
         dependencies = { 'nvim-treesitter' },

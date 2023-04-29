@@ -5,6 +5,7 @@ return {
             'williamboman/mason-lspconfig',                 -- Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim. Strongly recommended for Windows users. 
             { 'SmiteshP/nvim-navic',
             },
+            { 'folke/neodev.nvim' },
             { 'ray-x/lsp_signature.nvim',                   -- LSP signature hint as you type 
                 -- needs bufnr to toggle
                 -- config = function() require('configs.lsp-signature').setup() end,

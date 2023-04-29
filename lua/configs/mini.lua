@@ -24,11 +24,10 @@ indentscope.setup()
 ---------
 
 map.setup({ 
-    symbols = { scroll_line = '▶ ', scroll_view = '┃' },
+    symbols = { scroll_line = '⏵', scroll_view = '┃' },
     window = { show_integration_count = false },
     integrations = {
-        map.gen_integration.builtin_search(
-            {
+        map.gen_integration.builtin_search( {
             search = 'ReverseSearch',CurrentDir
         }),
         map.gen_integration.diagnostic(),

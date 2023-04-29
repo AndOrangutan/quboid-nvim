@@ -62,6 +62,7 @@ Keymaps can be easily set with `vim.keymap.set()` or custom `util.keymap()`. Mai
     - [ ] https://github.com/m4xshen/smartcolumn.nvim 
     - [ ] https://github.com/ThePrimeagen/git-worktree.nvim 
     - [ ] Spelling 
+    - [ ] integrate neogit with cmp
     - [ ] Add guess-indent 
     - [ ] Notebook 
         - Use this to create a template picker :) https://github.com/AndOrangutan/nvim-config/blob/main/lua/configs/alpha.lua

@@ -12,7 +12,7 @@ local M = {}
 --     end
 -- end
 
--- Function to use `vim.keymap.set` easier
+-- Function to use `vim.keymap.set` easier.
 -- mode String: Mode to be set
 -- binding String: Key to be set
 -- cmd String|Function: Command to run

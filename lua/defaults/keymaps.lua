@@ -1,6 +1,6 @@
 local util = require('util')
 
-util.keymap('n', 'Q', '<cmd>w | bd<cr>', 'Save and Close Buffer')
+-- util.keymap('n', 'p', 'p=`]', '[p]aste and auto format')
 util.keymap('n', 'Q', function ()
    local write_ok, write = pcall(vim.api.nvim_command, 'write')
    if not write_ok then

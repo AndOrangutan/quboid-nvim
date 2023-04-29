@@ -1,5 +1,5 @@
 return {
-    { 'echasnovski/mini.nvim',  -- Mini, multi purpose plugin, used for minimap and indent scope 
+    { 'echasnovski/mini.nvim',
         --event = 'VimEnter',
         config = function () require('configs.mini') end,
     },

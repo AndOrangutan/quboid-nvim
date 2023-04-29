@@ -3,7 +3,6 @@ local util = require('util')
 local lsp_util = require('lsp-util')
 
 local cmplsp_ok, cmplsp = pcall(require, 'cmp_nvim_lsp')
-local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
 local wk_ok, wk = pcall(require, 'which-key')
 local ufo_ok, ufo = pcall(require, 'ufo')
 local gotodef_ok, gotodef = pcall(require, 'goto-preview')
@@ -104,10 +103,6 @@ util.keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', 'quboid.to Nex
 -- Rest of bindings included with lspconfig can be found in lsp-util.lua
 
 
-
-local base_config 
-
-
 masonlsp.setup_handlers({
     -- The first entry (without a key) will be the default handler
     -- and will be called for each installed server that doesn't have
@@ -148,9 +143,22 @@ masonlsp.setup_handlers({
                         callSnippet = "Replace"
                     },
                     diagnostics = {
-                        globals = { "vim" } -- to remove "unknown global 'vim'"
+                        globals = {
+                            "vim" -- to remove "unknown global 'vim'"
+                        }
                     }
-                }
+                },
+                workspace = {
+                    library = {
+                        -- [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                        -- [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+                        -- TODO: Extract to quboid.lua
+                        ["/usr/share/awesome/lib"] = true
+                    },
+                },
+                telemetry = {
+                    enable = false,
+                },
             }
         }
     end,

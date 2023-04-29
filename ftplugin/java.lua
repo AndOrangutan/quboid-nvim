@@ -35,7 +35,7 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = workspace_path .. project_name
 
 -- Find root of project
-local root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle' }   -- TODO: extract to quboid?
+local root_markers = { '.git', 'mvnw', 'gradlew', 'pom.xml', 'build.gradle', 'lua_*' }   -- TODO: extract to quboid?
 local root_dir = require("jdtls.setup").find_root(root_markers)
 if root_dir == '' then
     return
@@ -87,39 +87,64 @@ config['on_init'] = function(client)
 end
 
 config['settings'] = {
+    -- java = {
     java = {
-         java = {
-            signatureHelp = {
-                enabled = true
-            },
-            saveActions = {
-                organizeImports = true
-            },
-            completion = {
-                maxResults = 20,
-                favoriteStaticMembers = {
-                    "org.hamcrest.MatcherAssert.assertThat",
-                    "org.hamcrest.Matchers.*",
-                    "org.hamcrest.CoreMatchers.*",
-                    "org.junit.jupiter.api.Assertions.*",
-                    "java.util.Objects.requireNonNull",
-                    "java.util.Objects.requireNonNullElse",
-                    "org.mockito.Mockito.*"
-                }
-            },
-            sources = {
-                organizeImports = {
-                    starThreshold = 9999,
-                    staticStarThreshold = 9999
-                }
-            },
-            codeGeneration = {
-                toString = {
-                    template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
+        signatureHelp = {
+            enabled = true
+        },
+        saveActions = {
+            organizeImports = true
+        },
+        completion = {
+            maxResults = 20,
+            favoriteStaticMembers = {
+                "org.hamcrest.MatcherAssert.assertThat",
+                "org.hamcrest.Matchers.*",
+                "org.hamcrest.CoreMatchers.*",
+                "org.junit.jupiter.api.Assertions.*",
+                "java.util.Objects.requireNonNull",
+                "java.util.Objects.requireNonNullElse",
+                "org.mockito.Mockito.*"
+            }
+        },
+        sources = {
+            organizeImports = {
+                starThreshold = 9999,
+                staticStarThreshold = 9999
+            }
+        },
+        codeGeneration = {
+            toString = {
+                template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
+            }
+        },
+        configuration = {
+            runtimes = {
+                {
+                    name = "JavaSE-1.8",
+                    path = "/usr/lib/jvm/java-8-openjdk/"
+
+                    -- J2SE_1_5 = 'J2SE-1.5',
+                    -- JavaSE_1_6 = 'JavaSE-1.6',
+                    -- JavaSE_1_7 = 'JavaSE-1.7',
+                    -- JavaSE_1_8 = 'JavaSE-1.8',
+                    -- JavaSE_9  = 'JavaSE-9',
+                    -- JavaSE_10 = 'JavaSE-10',
+                    -- JavaSE_11 = 'JavaSE-11',
+                    -- JavaSE_12 = 'JavaSE-12',
+                    -- JavaSE_13 = 'JavaSE-13',
+                    -- JavaSE_14 = 'JavaSE-14',
+                    -- JavaSE_15 = 'JavaSE-15',
+                    -- JavaSE_16 = 'JavaSE-16',
+                    -- JavaSE_17 = 'JavaSE-17',
+                    -- JavaSE_18 = 'JavaSE-18',
+                    -- JAVASE_19 = 'JavaSE-19'
+
                 }
             }
-        }
-    },
+        },
+    }
+    -- },
 }
 -- config.settings = {
 --     java = {
@@ -206,13 +231,13 @@ config['settings'] = {
 --         client.notify('workspace/didChangeConfiguration', {settings = client.config.settings})
 --     end
 -- end
-    -- Language server `initializationOptions`
-    -- You need to extend the `bundles` with paths to jar files
-    -- if you want to use additional eclipse.jdt.ls plugins.
-    --
-    -- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
-    --
-    -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
+-- Language server `initializationOptions`
+-- You need to extend the `bundles` with paths to jar files
+-- if you want to use additional eclipse.jdt.ls plugins.
+--
+-- See https://github.com/mfussenegger/nvim-jdtls#java-debug-installation
+--
+-- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
 config.init_options = {
     bundles = bundles
 }
