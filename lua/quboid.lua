@@ -8,7 +8,7 @@ M.ft_exclude = { 'fzf', 'minimap', 'neo-tree', 'NeogitStatus',  'notify', 'Troub
 M.ft_exclude_srict = { 'fzf', 'minimap', 'neo-tree', 'notify', 'Trouble', 'undotree', 'Outline', 'alpha' }
 M.ft_javascript_package_manager = 'yarn'
 M.ft_git = { 'gitcommit', 'octo', 'NeogitCommitMessage' }
-M.ft_rigid = { 'neo-tree', 'minimap', 'undotree', 'Outline', 'NeogitStatus', 'NeogitCommitMessage' }
+M.ft_rigid = { 'neo-tree', 'minimap', 'undotree', 'Outline', 'NeogitStatus', 'NeogitCommitMessage', 'Terminal' }
 M.ft_marktex = { 'tex', 'latex', 'markdown'}
 M.icons = {
     -- TODO: add lsp icons and such
