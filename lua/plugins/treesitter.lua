@@ -1,15 +1,6 @@
 local util = require('util')
 
 return {
-    { 'kylechui/nvim-surround',
-        version = "*", -- Use for stability; omit to use `main` branch for the latest features
-        event = "VeryLazy",
-        config = function()
-            require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
-            })
-        end
-    },
     { 'nvim-treesitter/nvim-treesitter',
         dependencies = {
             'nvim-treesitter/nvim-treesitter-context',
@@ -33,6 +24,17 @@ return {
             if null_ls_ok then
                 null_ls.register({ name = 'more_actions', method = { require'null-ls'.methods.CODE_ACTION }, filetypes = { '_all' }, generator = { fn = require('ts-node-action').available_actions } })
             end
+        end
+    },
+    { 'nvim-treesitter/nvim-treesitter-textobjects',
+        dependencies = 'nvim-treesitter/nvim-treesitter',
+    },
+    { 'kylechui/nvim-surround',
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
         end
     },
 }
