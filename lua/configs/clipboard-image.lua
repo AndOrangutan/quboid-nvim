@@ -1,7 +1,7 @@
 local util = require('util')
 
 require('clipboard-image').setup({
-    markdown = {
+    default = {
         img_dir = { '%:p:h' },
         img_dir_txt = '',
         img_name = function ()
