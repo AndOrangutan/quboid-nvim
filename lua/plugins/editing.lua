@@ -3,7 +3,7 @@ return {
         config = function () require('configs.autopairs') end,
     },
     { 'NMAC427/guess-indent.nvim',
-        config = function () require('guess-indent') end,
+        config = function () require('guess-indent').setup({}) end,
     },
     { 'famiu/bufdelete.nvim',
         config = function () 
