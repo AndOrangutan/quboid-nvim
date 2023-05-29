@@ -18,10 +18,23 @@ Resiliant, fast, text-based Personal Development Environment
 
 - Look up best way to store global variables ()
 - Lead with documentation.
+- Refactor CMP
+- [testing 1](https://alpha2phi.medium.com/neovim-for-beginners-testing-2a9fe8359f1e)
+- [testing 2](https://alpha2phi.medium.com/neovim-for-beginners-testing-part-2-10d4aa8f25d6)
 - Add
     - https://github.com/jcdickinson/wpm.nvim
     - https://github.com/nvim-neotest/neotest
     - https://github.com/smjonas/inc-rename.nvim
+    - https://github.com/koenverburg/peepsight.nvim
+    - https://github.com/uga-rosa/ccc.nvim d d
+    - https://github.com/jbyuki/nabla.nvim
+    - https://github.com/VidocqH/lsp-lens.nvim
+    - https://github.com/chrisgrieser/nvim-early-retirement
+    - https://github.com/t-troebst/perfanno.nvim
+    - https://github.com/ThePrimeagen/refactoring.nvim
+    - https://github.com/zbirenbaum/copilot.lua
+    - https://github.com/zbirenbaum/copilot-cmp
+    - https://github.com/jmbuhr/otter.nvim
 -   Symbol Outline (_)
 -   Fuzzy Search (_f)
 -   Quickfix (_xx)
@@ -56,6 +69,16 @@ $ tree -d
 
 - [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
 
+### Code Runner
+
+- [metakirby5/codi.vim](https://github.com/metakirby5/codi.vim) - The interactive scratchpad for hackers.
+- 
+
+### Colors
+
+- [norcalli/nvim-colorizer.lua](https://github.com/norcalli/nvim-colorizer.lua) - The fastest Neovim colorizer.
+<!-- - [uga-rosa/ccc.nvim](https://github.com/uga-rosa/ccc.nvim) - Color picker and highlighter plugin for Neovim. -->
+- 
 ### Colorschemes
 
 - [Shatur/neovim-ayu](https://github.com/Shatur/neovim-ayu) - Ayu theme for Neovim.
@@ -254,6 +277,7 @@ $ tree -d
     - [RRethy/nvim-treesitter-endwise](https://github.com/RRethy/nvim-treesitter-endwise) - Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise
     - [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) - Use treesitter to auto close and auto rename html tag
     - [JoosepAlviste/nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring) - Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
+- [nvim-treesitter/nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) - Syntax aware text-objects, select, move, swap, and peek support.
 - [ckolkey/ts-node-action](https://github.com/CKolkey/ts-node-action) - Neovim Plugin for running functions on nodes.
 
 ### Window Management
