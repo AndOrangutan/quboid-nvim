@@ -79,38 +79,48 @@ masonlsp.setup_handlers({
 
         lspconfig.eslint.setup(config)
     end,
+    
     ["lua_ls"] = function()
         lspconfig.lua_ls.setup {
-            on_attach = function (client, bufnr)
-                lsp_util.on_attach(client, bufnr)
-            end,
+            on_attach = function (client, bufnr) lsp_util.on_attach(client, bufnr) end,
             settings = {
-                runtime = {
-                    -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-                    version = 'LuaJIT',
-                },
                 Lua = {
+                    runtime = {
+                        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                        version = 'LuaJIT',
+                    },
                     completion = {
                         callSnippet = "Replace"
                     },
                     diagnostics = {
                         globals = {
-                            "vim" -- to remove "unknown global 'vim'"
+                            "vim", -- to remove "unknown global 'vim'"
+                            "awesome",
                         }
-                    }
-                },
-                workspace = {
-                    library = {
-                        [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                        [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-                        -- TODO: Extract to quboid.lua
-                        ["/usr/share/awesome/lib"] = true
                     },
-                },
-                telemetry = {
-                    enable = false,
+                    workspace = {
+                        checkThirdParty = false,
+                        library = {
+                            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+                            [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
+                            ["/usr/share/awesome/lib"] = true,
+                            require("neodev.config").types(),
+                        },
+                    },
+                    telemetry = {
+                        enable = false,
+                    },
                 },
             }
         }
     end,
 })
+
+-- https://www.reddit.com/r/neovim/comments/vdc7uo/enabling_function_call_snippets_with/
+-- require('lspconfig').tsserver.setup({
+--   settings = {
+--     completions = {
+--       completeFunctionCalls = true
+--     }
+--   }
+-- })
