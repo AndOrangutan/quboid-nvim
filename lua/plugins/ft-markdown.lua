@@ -67,6 +67,25 @@ return {
         build = "cd app && yarn install",
         ft = quboid.ft_marktex,
     },
+    { 'jmbuhr/otter.nvim',
+        config = function () require('otter').dev_setup({}) 
+            otter = require'otter'
+
+            vim.api.nvim_create_autocmd({ "BufEnter" }, {
+                pattern = { "*.md" },
+                callback = function()
+                    otter.activate({ 'r', 'python', 'lua' }, true)
+                    vim.api.nvim_buf_set_keymap(0, 'n', 'gd', ":lua require'otter'.ask_definition()<cr>", { silent = true })
+                    vim.api.nvim_buf_set_keymap(0, 'n', 'K', ":lua require'otter'.ask_hover()<cr>", { silent = true })
+                end,
+})
+        end,
+        dependencies = {
+            'hrsh7th/nvim-cmp',
+            'neovim/nvim-lspconfig',
+            'nvim-treesitter/nvim-treesitter'
+        },
+    },
     { 'dhruvasagar/vim-table-mode',
         init = function()
             vim.g.table_mode_corner_corner = '|'

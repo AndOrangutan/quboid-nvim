@@ -15,7 +15,31 @@ if cmp_autopairs_ok then
     cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done())
 end
 
+local cmp_config = {
+ -- { 'name', 'Menu Name', { priority = 5 },
+}
+
+local def_sources = {
+    -- Syntax specific (rank independent)
+    { name = 'otter', priority = 10 },
+    { name = 'path', priority = 10 },
+    { name = 'latex_symbols', priority = 10 },
+    { name = 'calc', priority = 10},
+
+    -- General ranking
+    { name = 'nvim_lsp', priority = 9 },
+    { name = 'luasnip', priority = 7, max_item_count = 3 },
+    { name = "rg", priority = 6, keyword_length = 2 },
+    { name = 'treesitter', priority = 5 },
+    { name = 'buffer', max_item_count = 3 },
+
+    { name = 'git' },
+    { name = 'npm', keyword_length = 4 },
+    { name = 'cmp-tw2css', priority = 6 },
+}
+
 local menu_names = {
+    otter                   = "LSP Pass",
     path                    = "Path",
     latex_symbols           = "LaTeX",
     calc                    = "Math",
@@ -57,20 +81,31 @@ cmp.setup({
 
     },
     sorting = {
-        priority_weight = 2,
+    --     priority_weight = 2,
         comparators = {
-            -- Below is the default comparitor list and order for nvim-cmp
-            -- cmp.config.compare.offset,
-            -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-            -- cmp.config.compare.exact,
-            cmp.config.compare.locality,
-            cmp.config.compare.recently_used,
+            -- https://github.com/tjdevries/config_manager/blob/83b6897e83525efdfdc24001453137c40373aa00/xdg_config/nvim/after/plugin/completion.lua#L129-L155
+            cmp.config.compare.offset,
+            cmp.config.compare.exact,
             cmp.config.compare.score,
-            cmp.config.offset,
+
+            -- copied from cmp-under, but I don't think I need the plugin for this.
+            -- I might add some more of my own.
+            function(entry1, entry2)
+                  local _, entry1_under = entry1.completion_item.label:find "^_+"
+                  local _, entry2_under = entry2.completion_item.label:find "^_+"
+                  entry1_under = entry1_under or 0
+                  entry2_under = entry2_under or 0
+                  if entry1_under > entry2_under then
+                      return false
+                  elseif entry1_under < entry2_under then
+                      return true
+                  end
+            end,
+
+            cmp.config.compare.kind,
+            cmp.config.compare.sort_text,
+            cmp.config.compare.length,
             cmp.config.compare.order,
-            -- cmp.config.compare.kind,
-            -- cmp.config.compare.sort_text,
-            -- cmp.config.compare.length,
         },
     },
     formatting = {
@@ -112,32 +147,7 @@ cmp.setup({
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     }),
-    sources = cmp.config.sources({
-        -- Default Sources
-        --
-        -- Syntax specific (rank independent)
-        { name = 'path' },
-        { name = 'latex_symbols' },
-        { name = 'calc' },
-
-
-        -- General ranking
-        { name = 'nvim_lsp', priority = 9 },
-        { name = 'luasnip', priority = 7 },
-        -- { name = 'tmux' },  -- TODO: Remove cmp tmux integration
-        { name = 'treesitter', priority = 5 },
-
-        { name = 'git' },
-        { name = 'npm', keyword_length = 4 },
-        { name = 'cmp-tw2css', priority = 6 },
-
-
-        { name = "rg", keyword_length = 2, priority = 6 },
-
-
-    }, {
-            { name = 'buffer', priority = 7 },
-        })
+    sources = cmp.config.sources(def_sources),
 })
 
 cmp.setup.filetype('gitcommit', {
@@ -148,8 +158,6 @@ cmp.setup.filetype('gitcommit', {
         })
 })
 
-
-
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
     mapping = cmp.mapping.preset.cmdline(),
@@ -159,7 +167,6 @@ cmp.setup.cmdline({ '/', '?' }, {
             { name = 'buffer' }
         })
 })
-
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
@@ -173,17 +180,21 @@ cmp.setup.cmdline(':', {
 
 cmp.setup.filetype(quboid.ft_marktex, {
     sources = cmp.config.sources({
-            { name = 'path' },
-            { name = 'latex_symbols' },
+        { name = 'otter', priority = 10 },
+        { name = 'path', priority = 10 },
+        { name = 'latex_symbols', priority = 10 },
+        { name = 'calc', priority = 10},
 
-            { name = 'nvim_lsp' },
-            { name = 'luasnip' },
+
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
 
 
-            { name = "dictionary", keyword_length = 1 },
-            { name = "rg", keyword_length = 2 },
-        }, {
+        { name = "dictionary", keyword_length = 1 },
+        { name = "rg", keyword_length = 2 },
+    }, {
             { name = 'buffer' },
         })
 })
+
 
