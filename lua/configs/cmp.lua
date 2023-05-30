@@ -21,6 +21,7 @@ local cmp_config = {
 
 local def_sources = {
     -- Syntax specific (rank independent)
+    { name = 'copilot', priority = 10 },
     { name = 'otter', priority = 10 },
     { name = 'path', priority = 10 },
     { name = 'latex_symbols', priority = 10 },
@@ -39,6 +40,7 @@ local def_sources = {
 }
 
 local menu_names = {
+    copilot                 = "Copilot",
     otter                   = "LSP Pass",
     path                    = "Path",
     latex_symbols           = "LaTeX",
@@ -62,7 +64,11 @@ local menu_names = {
 }
 
 
+
 cmp.setup({
+    experimental = {
+        ghost_text = true,
+    },
 
     snippet = {
         -- REQUIRED - you must specify a snippet engine
@@ -84,6 +90,8 @@ cmp.setup({
     --     priority_weight = 2,
         comparators = {
             -- https://github.com/tjdevries/config_manager/blob/83b6897e83525efdfdc24001453137c40373aa00/xdg_config/nvim/after/plugin/completion.lua#L129-L155
+            require("copilot_cmp.comparators").prioritize,
+            require("copilot_cmp.comparators").score,
             cmp.config.compare.offset,
             cmp.config.compare.exact,
             cmp.config.compare.score,

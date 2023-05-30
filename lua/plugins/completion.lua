@@ -1,11 +1,27 @@
 local quboid = require('quboid')
 
+-- write a function that generates a random function
+
+
 return {
     { 'hrsh7th/nvim-cmp',
         dependencies = {
             'L3MON4D3/LuaSnip',
             'windwp/nvim-autopairs',
 
+            {'zbirenbaum/copilot-cmp',
+                -- dependencies = 'copilot.lua',
+                config = function () 
+                    require('copilot_cmp').setup({
+                        method = "getCompletionsCycling",
+                        formatters = {
+                            label = require("copilot_cmp.format").format_label_text,
+                            insert_text = require("copilot_cmp.format").remove_existing,
+                            preview = require("copilot_cmp.format").deindent,
+                        },
+                    })
+                end,
+            },
             'hrsh7th/cmp-path',
             'kdheepak/cmp-latex-symbols',
             'hrsh7th/cmp-calc',
@@ -39,7 +55,7 @@ return {
             { 'dsznajder/vscode-es7-javascript-react-snippets',
                 build = 'yarn install --frozen-lockfile && yarn compile',
             },
-        },
+        }, 
         event = 'InsertEnter',
         config = function() require('configs.luasnip') end,
     },
