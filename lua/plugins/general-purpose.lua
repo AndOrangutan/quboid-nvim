@@ -23,30 +23,20 @@ return {
                 end, { noremap = true, expr = true })
             end
 
-            -- -- Auto resize windows
-            -- local function sizes()
-            --     vim.go.winwidth = math.max(80, math.floor(vim.go.columns * 0.5))
-            --     vim.go.winminwidth = 36
-            --     vim.go.winheight = math.max(20, math.floor(vim.go.lines * 0.5))
-            --     vim.go.winminheight = 5
-            -- end
-            --
-            -- sizes()
-            -- vim.api.nvim_create_autocmd("VimResized", { callback = sizes })
-            -- m_animate.setup({
-            --     scroll = {
-            --         timing = m_animate.gen_timing.linear({ duration = 150, unit = "total" }),
-            --         subscroll = m_animate.gen_subscroll.equal({
-            --             predicate = function(total_scroll)
-            --                 if mouse_scrolled then
-            --                     mouse_scrolled = false
-            --                     return false
-            --                 end
-            --                 return total_scroll > 1
-            --             end,
-            --         }),
-            --     },
-            -- })
+            m_animate.setup({
+                scroll = {
+                    timing = m_animate.gen_timing.linear({ duration = 150, unit = "total" }),
+                    subscroll = m_animate.gen_subscroll.equal({
+                        predicate = function(total_scroll)
+                            if mouse_scrolled then
+                                mouse_scrolled = false
+                                return false
+                            end
+                            return total_scroll > 1
+                        end,
+                    }),
+                },
+            })
 
 
         end,
