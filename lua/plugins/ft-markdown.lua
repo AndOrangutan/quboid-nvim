@@ -2,22 +2,22 @@ local quboid = require('quboid')
 local util = require('util')
 
 return {
-    { 'gaoDean/autolist.nvim',
-        config = function () 
-            local autolist = require("autolist")
-            autolist.setup()
-            autolist.create_mapping_hook("i", "<CR>", autolist.new)
-            autolist.create_mapping_hook("i", "<Tab>", autolist.indent)
-            autolist.create_mapping_hook("i", "<S-Tab>", autolist.indent, "<C-D>")
-            autolist.create_mapping_hook("n", "o", autolist.new)
-            autolist.create_mapping_hook("n", "O", autolist.new_before)
-            autolist.create_mapping_hook("n", ">>", autolist.indent)
-            autolist.create_mapping_hook("n", "<<", autolist.indent)
-            autolist.create_mapping_hook("n", "<C-r>", autolist.force_recalculate)
-            autolist.create_mapping_hook("n", "<leader>x", autolist.invert_entry, "")
-        end,
-        ft = quboid.ft_marktex,
-    },
+    -- { 'gaoDean/autolist.nvim',
+    --     config = function () 
+    --         local autolist = require("autolist")
+    --         autolist.setup()
+    --         autolist.create_mapping_hook("i", "<CR>", autolist.new)
+    --         autolist.create_mapping_hook("i", "<Tab>", autolist.indent)
+    --         autolist.create_mapping_hook("i", "<S-Tab>", autolist.indent, "<C-D>")
+    --         -- autolist.create_mapping_hook("n", "o", autolist.new)
+    --         -- autolist.create_mapping_hook("n", "O", autolist.new_before)
+    --         autolist.create_mapping_hook("n", ">>", autolist.indent)
+    --         autolist.create_mapping_hook("n", "<<", autolist.indent)
+    --         autolist.create_mapping_hook("n", "<C-r>", autolist.force_recalculate)
+    --         autolist.create_mapping_hook("n", "<leader>x", autolist.invert_entry, "")
+    --     end,
+    --     ft = quboid.ft_marktex,
+    -- },
     { 'postfen/clipboard-image.nvim',
     -- { 'ekickx/clipboard-image.nvim',
         config = function () require('configs.clipboard-image') end,

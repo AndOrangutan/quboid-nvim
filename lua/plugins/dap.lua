@@ -6,5 +6,7 @@ return {
             'theHamsta/nvim-dap-virtual-text',
             'jbyuki/one-small-step-for-vimkind',
         },
+        config = function () require('configs.dap') end,
+        -- lazy = true,
     }
 }

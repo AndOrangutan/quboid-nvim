@@ -26,7 +26,7 @@ Resiliant, fast, text-based Personal Development Environment
     - https://github.com/nvim-neotest/neotest
     - https://github.com/smjonas/inc-rename.nvim
     - https://github.com/koenverburg/peepsight.nvim
-    - https://github.com/uga-rosa/ccc.nvim d d
+    - https://github.com/uga-rosa/ccc.nvim
     - https://github.com/jbyuki/nabla.nvim
     - https://github.com/VidocqH/lsp-lens.nvim
     - https://github.com/chrisgrieser/nvim-early-retirement
@@ -67,7 +67,12 @@ $ tree -d
 
 ## Plugins
 
-- [folke/lazy.nvim](https://github.com/folke/lazy.nvim)
+- [folke/lazy.nvim](https://github.com/folke/lazy.nvim) - Plugin Manager, best one I have tried.
+
+
+### AI !!! :o
+
+- [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua) - Fully featured & enhanced replacement for copilot.vim complete with API for interacting with Github Copilot 
 
 ### Code Runner
 
@@ -89,7 +94,8 @@ $ tree -d
 ### Completion
 
 - [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - A completion plugin for neovim coded in Lua.
-    - [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path) - nvim-cmp source for path 
+    - [zbirenbaum/copilot-cmp](https://github.com/zbirenbaum/copilot-cmp) - Lua plugin to turn github copilot into a cmp source.
+    - [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path) - nvim-cmp source for path
     - [kdheepak/cmp-latex-symbols](https://github.com/kdheepak/cmp-latex-symbols) -  Add latex symbol support for nvim-cmp
     - [hrsh7th/cmp-calc](https://github.com/hrsh7th/cmp-calc) - nvim-cmp source for math calculation
     - [saadparwaiz1/cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) - luasnip completion source for nvim-cmp
@@ -148,43 +154,6 @@ $ tree -d
 ### General Purpose
 
 - [echasnovski/mini.nvim](https://github.com/echasnovski/mini.nvim/) - Library of 25+ independent Lua modules improving overall Neovim (version 0.7 and higher) experience with minimal effort.
-    - [mini.ai](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md) - Extend and create a/i textobjects.
-    ```
-    |Key|     Name      |   Example line   |   a    |   i    |   2a   |   2i   |
-    |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-    | ( |  Balanced ()  | (( *a (bb) ))    |        |        |        |        |
-    | [ |  Balanced []  | [[ *a [bb] ]]    | [2;12] | [4;10] | [1;13] | [2;12] |
-    | { |  Balanced {}  | {{ *a {bb} }}    |        |        |        |        |
-    | < |  Balanced <>  | << *a <bb> >>    |        |        |        |        |
-    |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-    | ) |  Balanced ()  | (( *a (bb) ))    |        |        |        |        |
-    | ] |  Balanced []  | [[ *a [bb] ]]    |        |        |        |        |
-    | } |  Balanced {}  | {{ *a {bb} }}    | [2;12] | [3;11] | [1;13] | [2;12] |
-    | > |  Balanced <>  | << *a <bb> >>    |        |        |        |        |
-    | b |  Alias for    | [( *a {bb} )]    |        |        |        |        |
-    |   |  ), ], or }   |                  |        |        |        |        |
-    |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-    | " |  Balanced "   | "*a" " bb "      |        |        |        |        |
-    | ' |  Balanced '   | '*a' ' bb '      |        |        |        |        |
-    | ` |  Balanced `   | `*a` ` bb `      | [1;4]  | [2;3]  | [6;11] | [7;10] |
-    | q |  Alias for    | '*a' " bb "      |        |        |        |        |
-    |   |  ", ', or `   |                  |        |        |        |        |
-    |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-    | ? |  User prompt  | e*e o e o o      | [3;5]  | [4;4]  | [7;9]  | [8;8]  |
-    |   |(typed e and o)|                  |        |        |        |        |
-    |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-    | t |      Tag      | <x>*</x><y>b</y> | [1;8]  | [4;4]  | [9;16] |[12;12] |
-    |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-    | f | Function call | f(a, g(*b, c) )  | [6;13] | [8;12] | [1;15] | [3;14] |
-    |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-    | a |   Argument    | f(*a, g(b, c) )  | [3;5]  | [3;4]  | [5;14] | [7;13] |
-    |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-    |   |    Default    |                  |        |        |        |        |
-    |   |   (digits,    | aa_*b__cc___     | [4;7]  | [4;5]  | [8;12] | [8;9]  |
-    |   | punctuation,  | (example for _)  |        |        |        |        |
-    |   | or whitespace)|                  |        |        |        |        |
-    |---|---------------|-1234567890123456-|--------|--------|--------|--------|
-    ```
     - [mini.animate](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-animate.md) - Animate common Neovim actions
     - [mini.comment](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-comment.md) - Comment lines
     - [mini.indentscope](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-indentscope.md) - Visualize and work with indent scope
@@ -225,6 +194,7 @@ $ tree -d
 - [lukas-reineke/headlines.nvim](https://github.com/lukas-reineke/headlines.nvim) - This plugin adds horizontal highlights for text filetypes, like markdown, orgmode, and neorg.
 - [preservim/vim-markdown](https://github.com/preservim/vim-markdown) - Markdown Vim Mode
 - [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) - markdown preview plugin for (neo)vim
+- [jmbuhr/otter.nvim](https://github.com/jmbuhr/otter.nvim) - Just ask an otter!
 - [dhruvasagar/vim-table-mode](https://github.com/dhruvasagar/vim-table-mode) - VIM Table Mode for instant table creation.
 - [mickael-menu/zk-nvim](https://github.com/mickael-menu/zk-nvim) - Neovim extension for zk
 
@@ -243,6 +213,7 @@ $ tree -d
     - [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim. Strongly recommended for Windows users.
     - [weilbith/nvim-code-action-menu](https://github.com/weilbith/nvim-code-action-menu) - Pop-up menu for code actions to show meta-information and diff preview
     - [rmagatti/goto-preview](https://github.com/rmagatti/goto-preview) - A small Neovim plugin for previewing definitions using floating windows
+    - [Fildo7525/pretty_hover](https://github.com/Fildo7525/pretty_hover) - A light weight plugin that parses the hover message before opening the popup window
     - [whynothugo/lsp_lines.nvim](https://sr.ht/~whynothugo/lsp_lines.nvim/) - A simple neovim plugin that renders diagnostics using virtual lines on top of the real line of code.
     - [ray-x/lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) - LSP signature hint as you type
 - [utilyre/barbecue.nvim](https://github.com/utilyre/barbecue.nvim) - A VS Code like winbar for Neovim

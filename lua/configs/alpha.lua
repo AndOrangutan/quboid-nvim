@@ -44,6 +44,15 @@ local function footer()
 end
 
 
+vim.g.my_notebook_open = function (selected, opts)
+    local slctd = selected
+
+    require('fzf-lua').actions.file_edit(slctd,opts)
+
+    vim.wait(200)
+    -- require("zk").cd()
+    vim.cmd([[ZkCd]])
+end
 
 dashboard.section.buttons.val = {
     dashboard.button( "r", "  > Recent"   , ":FzfLua oldfiles<CR>"),

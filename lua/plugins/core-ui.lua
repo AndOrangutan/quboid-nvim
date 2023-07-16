@@ -11,7 +11,7 @@ return {
             'linrongbin16/lsp-progress.nvim'
         },
         config = function () require('configs.lualine') end,
-        event = { 'VimEnter' },
+        -- event = { 'VimEnter' },
     },
 
     { 'linrongbin16/lsp-progress.nvim',

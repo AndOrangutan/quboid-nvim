@@ -50,7 +50,9 @@ o.smartindent       = true
 o.autoindent        = true
 o.wrap              = false
 o.breakindent       = true
-o.breakindentopt    = true
+o.breakindentopt    = "list:-1"
+o.formatoptions     = "tcqj"
+-- o.formatlistpat     = "^\s*\d\+[\]:.)}\t ]\s*"
 
 -- Window
 o.winwidth = 10

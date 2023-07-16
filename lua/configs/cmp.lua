@@ -26,10 +26,12 @@ local def_sources = {
     { name = 'path', priority = 10 },
     { name = 'latex_symbols', priority = 10 },
     { name = 'calc', priority = 10},
+    { name = 'cmp_luasnip_choice', priority = 10, max_item_count = 5 },
+    { name = 'luasnip', priority = 10, max_item_count = 5 },
 
     -- General ranking
     { name = 'nvim_lsp', priority = 9 },
-    { name = 'luasnip', priority = 7, max_item_count = 3 },
+    { name = "dictionary", keyword_length = 1 },
     { name = "rg", priority = 6, keyword_length = 2 },
     { name = 'treesitter', priority = 5 },
     { name = 'buffer', max_item_count = 3 },
@@ -129,14 +131,14 @@ cmp.setup({
     },
     mapping = cmp.mapping.preset.insert({
         ['<TAB>'] = cmp.mapping(function(fallback)
-            if luasnip.expand_or_jumpable() then
+            if luasnip.expand_or_locally_jumpable() then
                 luasnip.expand_or_jump()
             else
                 fallback()
             end
         end, { 'i', 's' }),
         ['<S-TAB>'] = cmp.mapping(function (fallback)
-            if luasnip.jumpable(-1) then
+            if luasnip.expand_or_locally_jumpable(-1) then
                 luasnip.jump(-1)
             else
                 fallback()
@@ -153,7 +155,10 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        ['<CR>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+        }),
     }),
     sources = cmp.config.sources(def_sources),
 })

@@ -4,11 +4,25 @@ local quboid = require('quboid')
 
 
 return {
+    { 'L3MON4D3/LuaSnip',
+        dependencies = {
+            'rafamadriz/friendly-snippets',
+            { 'dsznajder/vscode-es7-javascript-react-snippets',
+                build = 'yarn install --frozen-lockfile && yarn compile',
+            },
+        }, 
+        version = '1.2.1.*',
+        build = 'make install_jsregexp',
+        event = 'InsertEnter',
+        config = function() require('configs.luasnip') end,
+    },
     { 'hrsh7th/nvim-cmp',
         dependencies = {
-            'L3MON4D3/LuaSnip',
             'windwp/nvim-autopairs',
 
+            { 'doxnit/cmp-luasnip-choice',
+                config = function () require('cmp_luasnip_choice').setup({ auto_open = true }) end,
+            },
             {'zbirenbaum/copilot-cmp',
                 -- dependencies = 'copilot.lua',
                 config = function () 
@@ -41,22 +55,12 @@ return {
 
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-cmdline',
-            { 'uga-rosa/cmp-dictionary',
-                config = function () require('configs.cmp-dictionary') end,
-            },
+            -- { 'uga-rosa/cmp-dictionary',
+            --     config = function () require('configs.cmp-dictionary') end,
+            -- },
             'lukas-reineke/cmp-rg',
         },
         event = 'InsertEnter',
         config = function () require('configs.cmp') end,
-    },
-    { 'L3MON4D3/LuaSnip',
-        dependencies = {
-            'rafamadriz/friendly-snippets',
-            { 'dsznajder/vscode-es7-javascript-react-snippets',
-                build = 'yarn install --frozen-lockfile && yarn compile',
-            },
-        }, 
-        event = 'InsertEnter',
-        config = function() require('configs.luasnip') end,
     },
 }

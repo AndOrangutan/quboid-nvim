@@ -51,7 +51,8 @@ M.on_attach = function (client, bufnr)
     util.keymap('n', 'K', function ()
         local winid = nil
         if ufo_ok then winid = require('ufo').peekFoldedLinesUnderCursor() end
-        if not winid then vim.lsp.buf.hover() end
+        -- if not winid then vim.lsp.buf.hover() end
+        if not winid then require("pretty_hover").hover() end
     end, { desc = 'Lsp [k]ick up Hover', buffer = bufnr})
     util.keymap('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { desc = 'Lsp Signature Help', buffer = bufnr})
     util.keymap('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', { desc = 'Lsp [w]orkspace [a]dd dir', buffer = bufnr})
