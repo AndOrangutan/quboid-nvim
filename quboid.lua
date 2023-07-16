@@ -1,7 +1,13 @@
 local M = {}
 
-M.base_colorscheme = 'solid'
+M.base_colorscheme = 'onedark'
 M.border = 'solid'
+M.border_float = 'shadow'
+M.ft_exclude = {
+    'lazy',
+}
+M.ft_rigid = {
+}
 M.icons = {
     -- General
     bolt            = ' ',
