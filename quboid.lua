@@ -9,6 +9,13 @@ M.ft_exclude = {
 M.ft_rigid = {
 }
 M.icons = {
+    -- Shapes
+    pad = ' ',
+    bar_thin        = '｜',
+    bar_cursor      = '▮',
+    bar_thick       = '┃',
+    bar_thick_split = '╏',
+
     -- General
     bolt            = ' ',
     cog             = '󰒓 ',
