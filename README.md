@@ -10,6 +10,51 @@ Resiliant, fast, text-based Personal Development Environment
 
 ### Features
 
+#### LSP (Language Server Protocol)
+
+This is what makes modern languages and IDEs feel like a well oiled machine. Completion allows us to use longer and more descriptive names, goto-definition allows us to navigate quickly, proper renaming, and diagnostics. 
+
+Many of these are the exact same ones you can use in VSCode, except the configuration differs largely, so they are not always feature equivalent.
+
+| Language                  | Server            | Extension     |
+|---------------------------|-------------------|---------------|
+|  swk_ls                   | Awk               |               |
+|  angularls                | Angular           |               |
+|  arduino_language_server  | Aruino            |               |
+|  bashls                   | Bash              |               |
+|  clangd                   | C, C++            |               |
+|  omnisharp                | C#                |               |
+|  cmake                    | CMake             |               |
+|  cssls                    | CSS               |               |
+|  clojure_lsp              | Clojure           |               |
+|  dockerls                 | Docker            |               |
+|  emmet_ls                 | Emmet             |               |
+|  fortls                   | Fortran           |               |
+|  gopls                    | Go                |               |
+|  html                     | HTML              |               |
+|  eslint                   | Javascript        |               |
+|  jsonls                   | JSON              |               |
+|  jdtls                    | JAVA              |               |
+|  tsserver                 | Typescript        |               |
+|  kotlin_language_server   | Kotlin            |               |
+|  lua_ls                   | Lua               |               |
+|  rnix                     | Nix               |               |
+|  intelephense             | PHP               |               |
+|  pyright                  | Python            |               |
+|  Rust                     | Rust              |               |
+|  sqlls                    | SQL               |               |
+|  Svelte                   | Svelte            |               |
+|  taplo                    | TOML              |               |
+|  tailwindcss              | Tailwind CSS      |               |
+|  vimls                    | VimL              |               |
+|  vuels                    | Vue               |               |
+|  lemminx                  | XML               |               |
+|  yamlls                   | YAML              |               |
+|  zls                      | Zig               |               |
+
+
+<!-- #### DAP (Debug Adapter Protocol) -->
+
 #### By Language
 
 ##### Go
@@ -44,6 +89,11 @@ Resiliant, fast, text-based Personal Development Environment
 
 - [folke/which-key.nvim](https://github.com/folke/which-key.nvim) - Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
 
+### LSP (Language Server Protocol)
+
+- [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - Quickstart configs for Nvim LSP 
+- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim. Strongly recommended for Windows users.
+
 #### Package Manager
 
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) - Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.
@@ -53,3 +103,9 @@ Resiliant, fast, text-based Personal Development Environment
 - [romainl/vim-cool](https://github.com/romainl/vim-cool) - A very simple plugin that makes hlsearch more useful. 
 
 ## Custom
+
+## TODO
+
+- LSP
+    - Toggle underlines
+    - Toggle autoformat
