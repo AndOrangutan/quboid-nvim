@@ -39,4 +39,8 @@ Resiliant, fast, text-based Personal Development Environment
 
 - [folke/which-key.nvim](https://github.com/folke/which-key.nvim) - Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
 
+#### Search
+
+- [romainl/vim-cool](https://github.com/romainl/vim-cool) - A very simple plugin that makes hlsearch more useful. 
+
 ## Custom
