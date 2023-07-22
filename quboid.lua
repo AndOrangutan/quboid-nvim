@@ -1,13 +1,13 @@
 local M = {}
 
-M.base_colorscheme = 'onedark'
+M.colorscheme = 'onedark'
 M.border = 'solid'
 M.border_float = 'shadow'
 M.ft_exclude = {
     'lazy',
 }
-M.ft_rigid = {
-}
+M.ft_rigid = {  }
+M.ft_markup = { 'latex', 'markdown', 'tex',  }
 M.icons = {
     -- Shapes
     pad = ' ',
@@ -29,8 +29,13 @@ M.icons = {
     keyboard        = ' ',
     server          = ' ',
     vim             = ' ',
-
+    hourglass_0     = ' ',
+    hourglass_1     = ' ',
+    hourglass_2     = ' ',
+    hourglass_3     = ' ',
+    hourglass_100   = ' ',
     code            = ' ',
+    cmd             = ' ',
     circle_play     = ' ',
 
     -- LSP

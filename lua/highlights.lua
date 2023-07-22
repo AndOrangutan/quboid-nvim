@@ -1,4 +1,5 @@
 local util = require('util')
+local quboid = require('quboid')
 
 local lualine_ok, lualine = pcall(require, 'lualine')
 
@@ -43,4 +44,4 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
 vim.o.background = 'dark'
 -- vim.cmd('colorscheme ayu')
-vim.cmd('colorscheme onedark')
+vim.cmd('colorscheme '..quboid.colorscheme)

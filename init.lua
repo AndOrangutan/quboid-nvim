@@ -37,7 +37,7 @@ lazy.setup('plugins', {
     ui = {
         border = quboid.border,
         icons = {
-            cmd         = " ",
+            cmd         = quboid.icons.cmd,
             config      = quboid.icons.cog,
             vent       = quboid.icons.bolt,
             ft          = quboid.icons.file,
@@ -45,8 +45,8 @@ lazy.setup('plugins', {
             import      = quboid.icons.file_import,
             keys        = quboid.icons.keyboard,
             lazy        = "󰒲 ",
-            loaded      = "●",
-            not_loaded  = "○",
+            loaded      = quboid.icons.hourglass_100,
+            not_loaded  = quboid.icons.hourglass_0,
             plugin      = quboid.icons.cube,
             runtime     = quboid.icons.vim,
             source      = quboid.icons.code,
@@ -69,4 +69,4 @@ require('defaults.autocmds')
 require('custom.autocmds')
 
 -- colorscheme and highlights
--- require('highlights')
+require('highlights')
