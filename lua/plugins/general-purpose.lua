@@ -37,27 +37,35 @@ return {
         version = false,
     },
     { 'echasnovski/mini.indentscope',
-        config = function () 
+        config = function ()
             local quboid = require('quboid')
+
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = quboid.ft_exclude,
+                callback = function ()
+                    vim.b.miniindentscope_disable = true
+                end,
+            })
+
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = quboid.ft_markup,
+                callback = function ()
+                    vim.b.miniindentscope_disable = true
+                end,
+            })
 
             require('mini.indentscope').setup({
                 options = { try_as_border = true },
                 symbol = quboid.icons.bar_thick_split,
             })
 
-            vim.api.nvim_create_autocmd('FileType', {
-                pattern = quboid.ft_marktex,
-                callback = function ()
-                    vim.b.miniindentscope_disable = true
-                end,
-            })
-
         end,
-        -- event = { 'BufReadPre', 'BufNewFile' },
-        event = 'VeryLazy',
+        event = { 'BufReadPre', 'BufNewFile' }, -- NOTE: Needed for autocmd to work
+        -- event = 'VeryLazy',
         version = false
     },
     { 'echasnovski/mini.map',
+        -- main = 'mini.map',
         config = function ()
             local quboid = require('quboid')
 
@@ -78,15 +86,15 @@ return {
             })
         end,
         keys = {
-            { '<leader>mm', require('mini.map').toggle, desc = '[m]ini [m]ap Toggle' },
-            { '<leader>mf', require('mini.map').toggle_focus, desc = 'Mini [m]ap Switch [f]ocus' },
-            { '<leader>ms', require('mini.map').toggle_side, desc = 'Mini [m]ap Switch [s]ides' },
-            { 'n', 'n'..'<cmd>lua MiniMap.refresh({}, {lines = false, scrollbar = false})<cr>' },
-            { 'N', 'N'..'<cmd>lua MiniMap.refresh({}, {lines = false, scrollbar = false})<cr>' },
-            { '*', '*'..'<cmd>lua MiniMap.refresh({}, {lines = false, scrollbar = false})<cr>' },
-            { '#', '#'..'<cmd>lua MiniMap.refresh({}, {lines = false, scrollbar = false})<cr>' },
+            { '<leader>mm', '<cmd>lua require("mini.map").toggle()<cr>' },
+            { '<leader>mf', '<cmd>lua require("mini.map").toggle_focus()<cr>', desc = 'Mini [m]ap Switch [f]ocus' },
+            { '<leader>ms', '<cmd>lua require("mini.map").toggle_side()<cr>', desc = 'Mini [m]ap Switch [s]ides' },
+            { 'n', 'n'..'<cmd>lua require("mini.map").refresh({}, {lines = false, scrollbar = false})<cr>' },
+            { 'N', 'N'..'<cmd>lua require("mini.map").refresh({}, {lines = false, scrollbar = false})<cr>' },
+            { '*', '*'..'<cmd>lua require("mini.map").refresh({}, {lines = false, scrollbar = false})<cr>' },
+            { '#', '#'..'<cmd>lua require("mini.map").refresh({}, {lines = false, scrollbar = false})<cr>' },
         },
-        event = 'VeryLazy',
-        version = false,
+        -- event = 'VeryLazy',
+        -- version = false,
     },
 }
