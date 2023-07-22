@@ -1,5 +1,4 @@
-local M
-
+local M = {}
 
 -- sauce https://www.reddit.com/r/neovim/comments/oxddk9/how_do_i_get_the_value_from_a_highlight_group/
 M.get_hl_val = function(name,val)
@@ -10,7 +9,6 @@ M.get_hl_val = function(name,val)
     end
     return string.format("#%06x",hl[val])
 end
-
 
 --- Determines whether a table contains a value
 ---@param table [TODO:parameter]
@@ -24,4 +22,5 @@ M.table_contains = function(table, val)
     end
     return false
 end
+
 return M
