@@ -17,8 +17,8 @@ M.icons = {
     bar_thick_split = '╏',
 
     close           = ' ',
-    arrowLeft       = ' ',
-    arrowRight      = ' ',
+    arrow_left      = ' ',
+    arrow_right     = ' ',
 
     -- General
     bolt            = ' ',

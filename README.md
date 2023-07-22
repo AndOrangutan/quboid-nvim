@@ -2,6 +2,10 @@
 
 Resiliant, fast, text-based Personal Development Environment
 
+## What is quboid
+
+## Requirements
+
 ## Core
 
 ### Features
@@ -39,6 +43,10 @@ Resiliant, fast, text-based Personal Development Environment
 #### Keybinding
 
 - [folke/which-key.nvim](https://github.com/folke/which-key.nvim) - Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
+
+#### Package Manager
+
+- [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) - Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.
 
 #### Search
 
