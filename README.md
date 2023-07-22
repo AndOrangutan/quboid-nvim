@@ -25,6 +25,7 @@ Resiliant, fast, text-based Personal Development Environment
 
 #### Core UI
 
+- [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) - A snazzy bufferline for Neovim
 - [rcarriga/nvim-notify](https://github.com/rcarriga/nvim-notify) - A fancy, configurable, notification manager for NeoVim
 
 #### General Purpose

@@ -16,6 +16,10 @@ M.icons = {
     bar_thick       = '┃',
     bar_thick_split = '╏',
 
+    close           = ' ',
+    arrowLeft       = ' ',
+    arrowRight      = ' ',
+
     -- General
     bolt            = ' ',
     cog             = '󰒓 ',
@@ -37,6 +41,7 @@ M.icons = {
     code            = ' ',
     cmd             = ' ',
     circle_play     = ' ',
+    pencil          = ' ',
 
     -- LSP
     circle_error    = ' ',
