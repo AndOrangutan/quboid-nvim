@@ -32,7 +32,7 @@ return {
             end
 
             -- Customize the sign columns
-            local signs = { 
+            local signs = {
                 Error = quboid.icons.circle_error,
                 Warn = quboid.icons.circle_warn,
                 Hint = quboid.icons.circle_hint,
@@ -49,7 +49,7 @@ return {
                 -- a dedicated handler.
                 -- default handler (optional)
 
-                function(server_name) 
+                function(server_name)
                     require("lspconfig")[server_name].setup(lsp_util.gen_config())
                 end,
                 -- Next, you canprovide targeted overrides for specific servers.
@@ -66,7 +66,6 @@ return {
 
                     lspconfig.eslint.setup(config)
                 end,
-
                 ["lua_ls"] = function()
                     lspconfig.lua_ls.setup({
                         on_attach = function (client, bufnr) lsp_util.call_on_attach(client, bufnr) end,
@@ -118,19 +117,21 @@ return {
                 -- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
                 'awk_ls',
                 'angularls',
-                'arduino_language_server',
+                -- 'arduino_language_server',
                 'bashls',
                 'clangd',
                 'omnisharp',
                 'cmake',
                 'cssls',
-                'clojure_lsp',
+                -- 'clojure_lsp',
                 'dockerls',
-                'emmet_ls',
+                'emmet_language_server',
+                'eslint',
                 'fortls',
                 'gopls',
+                'gradle_ls',
+                'graphql',
                 'html',
-                'eslint',
                 'jsonls',
                 'jdtls',
                 'tsserver',
@@ -139,9 +140,8 @@ return {
                 'rnix',
                 'intelephense',
                 'pyright',
-                'Rust',
                 'sqlls',
-                'Svelte',
+                'svelte',
                 'taplo',
                 'tailwindcss',
                 'vimls',
