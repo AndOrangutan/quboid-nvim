@@ -52,7 +52,6 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 |  yamlls                   | YAML              |               |
 |  zls                      | Zig               |               |
 
-
 <!-- #### DAP (Debug Adapter Protocol) -->
 
 #### By Language
@@ -106,6 +105,21 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 
 ## TODO
 
+- Plugins
+    - https://github.com/DNLHC/glance.nvim
+    - https://github.com/jcdickinson/wpm.nvim
+    - https://github.com/nvim-neotest/neotest
+    - https://github.com/smjonas/inc-rename.nvim
+    - https://github.com/koenverburg/peepsight.nvim
+    - https://github.com/uga-rosa/ccc.nvim
+    - https://github.com/jbyuki/nabla.nvim
+    - https://github.com/VidocqH/lsp-lens.nvim
+    - https://github.com/chrisgrieser/nvim-early-retirement
+    - https://github.com/t-troebst/perfanno.nvim
+    - https://github.com/ThePrimeagen/refactoring.nvim
+    - https://github.com/zbirenbaum/copilot.lua
+    - https://github.com/zbirenbaum/copilot-cmp
+    - https://github.com/jmbuhr/otter.nvim
 - LSP
     - Toggle underlines
     - Toggle autoformat
