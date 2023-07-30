@@ -7,7 +7,7 @@ return {
                 build = 'yarn install --frozen-lockfile && yarn compile',
             },
         },
-        build = 'make install_jsregexp',
+        build = 'make install_sregexp',
         config =  function ()
             local luasnip = require('luasnip')
 
@@ -23,7 +23,12 @@ return {
     },
     { 'hrsh7th/nvim-cmp',
         dependencies = {
+            'windwp/nvim-autopairs',
+
             'saadparwaiz1/cmp_luasnip',
+            { 'doxnit/cmp-luasnip-choice',
+                opts = { auto_open = true },
+            },
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
@@ -35,9 +40,13 @@ return {
             local quboid = require('quboid')
             local luasnip_ok, luasnip = pcall(require, 'luasnip')
             if not luasnip_ok then vim.notify('Failed due to luasnip not being present!', 'Error') return end
+            local cmp_autopairs_ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+            if cmp_autopairs_ok then cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done()) end
+
 
             local sources = {
                 { name = 'luasnip', priority = 10, max_item_count = 8 },
+                { name = 'luasnip_choice', priority = 10, max_item_count = 8 },
                 { name = 'path', priority = 10 },
 
                 { name = 'nvim_lsp', priority = 9 },
@@ -47,6 +56,7 @@ return {
             local completion_names = {
                 path                    = 'Path',
                 luasnip                 = 'Snippet',
+                luasnip_choice          = 'Choice',
                 nvim_lsp                = 'LSP',
                 buffer                  = 'Buffer',
             }
