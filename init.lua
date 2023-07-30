@@ -39,7 +39,7 @@ lazy.setup('plugins', {
         icons = {
             cmd         = quboid.icons.cmd,
             config      = quboid.icons.cog,
-            vent       = quboid.icons.bolt,
+            vent        = quboid.icons.bolt,
             ft          = quboid.icons.file,
             init        = quboid.icons.cog,
             import      = quboid.icons.file_import,

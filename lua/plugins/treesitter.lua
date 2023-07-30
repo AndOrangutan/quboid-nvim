@@ -40,4 +40,13 @@ return {
         event = 'VeryLazy',
         build = ':TSUpdate',
     },
+    { 'nvim-treesitter/nvim-treesitter-context',
+        config = function ()
+            require('treesitter-context').setup({
+
+                enable = true,
+                zindex = 1,     -- Prevent conflicts with minimap ;p
+            })
+        end,
+    },
 }
