@@ -71,6 +71,10 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 - [rebelot/kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim) - NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai.
 - [navarasu/onedark.nvim](https://github.com/navarasu/onedark.nvim) - One dark and light colorscheme for neovim >= 0.5.0 written in lua based on Atom's One Dark and Light theme. Additionally, it comes with 5 color variant styles
 
+#### Completion
+
+- [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - A completion plugin for neovim coded in Lua.
+
 #### Core UI
 
 - [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) - A snazzy bufferline for Neovim
@@ -109,6 +113,8 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 
 ## TODO
 
+- Completion
+    - fix luasnip node shit
 - Plugins
     - https://github.com/DNLHC/glance.nvim
     - https://github.com/jcdickinson/wpm.nvim
@@ -127,3 +133,5 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 - LSP
     - Toggle underlines
     - Toggle autoformat
+- Treesitter
+    - keymaps

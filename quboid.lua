@@ -50,4 +50,32 @@ M.icons = {
     circle_ok       = ' ',
 }
 
+M.lsp_kind = {
+    Class           = ' ',
+    Color           = ' ',
+    Constant        = ' ',
+    Constructor     = ' ',
+    Enum            = ' ',
+    EnumMember      = ' ',
+    Event           = ' ',
+    Field           = ' ',
+    File            = ' ',
+    Folder          = ' ',
+    Function        = '󰊕x',
+    Interface       = ' ',
+    Keyword         = ' ',
+    Method          = ' ',
+    Module          = ' ',
+    Operator        = ' ',
+    Property        = ' ',
+    Reference       = ' ',
+    Snippet         = ' ',
+    Struct          = " ",
+    Text            = ' ',
+    TypeParameter   = ' ',
+    Unit            = ' ',
+    Value           = ' ',
+    Variable        = ' ',
+    Copilot         = ' ',
+}
 return M
