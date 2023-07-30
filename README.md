@@ -79,6 +79,10 @@ Many of these are the exact same ones you can use in VSCode, except the configur
     - [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - nvim-cmp source for neovim builtin LSP client
     - [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path) - nvim-cmp source for path
     - [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - nvim-cmp source for buffer words 
+    - [kdheepak/cmp-latex-symbols](https://github.com/kdheepak/cmp-latex-symbols) -  Add latex symbol support for nvim-cmp
+    - https://github.com/hrsh7th/cmp-calc
+    - https://github.com/petertriho/cmp-git
+    - https://github.com/kdheepak/cmp-latex-symbols
 
 #### Core UI
 
@@ -117,6 +121,8 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 #### Treesitter
 
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Nvim Treesitter configurations and abstraction layer
+    - [nvim-treesitter/playground](https://github.com/nvim-treesitter/playground) - Treesitter playground integrated into Neovim
+    
 
 ## Custom
 

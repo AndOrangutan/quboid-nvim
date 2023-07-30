@@ -24,6 +24,7 @@
   "nvim-notify": { "branch": "master", "commit": "ea9c8ce7a37f2238f934e087c255758659948e0f" },
   "nvim-treesitter": { "branch": "master", "commit": "ee107fc759647293a84ad42b867f518331364fbe" },
   "onedark.nvim": { "branch": "master", "commit": "cae5fdf035ee92c407a29ee2ccfcff503d2be7f1" },
+  "playground": { "branch": "master", "commit": "2b81a018a49f8e476341dfcb228b7b808baba68b" },
   "vim-cool": { "branch": "master", "commit": "04bb7f5dade175a81b47abf4e87aeb30b05b33d8" },
   "vscode-es7-javascript-react-snippets": { "branch": "master", "commit": "185bb91a0b692c54136663464e8225872c434637" },
   "which-key.nvim": { "branch": "main", "commit": "7ccf476ebe0445a741b64e36c78a682c1c6118b7" }
