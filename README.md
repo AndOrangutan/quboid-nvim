@@ -151,3 +151,5 @@ Many of these are the exact same ones you can use in VSCode, except the configur
     - Toggle autoformat
 - Treesitter
     - keymaps
+    - https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+    - https://github.com/RRethy/nvim-treesitter-textsubjects

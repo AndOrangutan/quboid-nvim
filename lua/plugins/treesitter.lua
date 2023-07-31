@@ -35,7 +35,8 @@ return {
             })
         end,
         keys = {
-            { '<leader>tsp,', '<cmd>Tree<cr>', desc = 'Bufferline Cycle Next' },
+            { '<leader>tsp', '<cmd>TSPlaygroundToggle<cr>', desc = '[t]ree[s]itter [p]layground Toggle' },
+            { '<leader>tsc', '<cmd>TSContextToggle<cr>', desc = '[t]ree[s]itter [c]layground Toggle' },
         },
         event = 'VeryLazy',
         build = ':TSUpdate',
