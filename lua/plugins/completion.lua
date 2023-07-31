@@ -31,6 +31,7 @@ return {
             },
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-calc',
             'hrsh7th/cmp-buffer',
         },
         opts = {
@@ -48,17 +49,35 @@ return {
                 { name = 'luasnip', priority = 10, max_item_count = 8 },
                 { name = 'luasnip_choice', priority = 10, max_item_count = 8 },
                 { name = 'path', priority = 10 },
+                { name = 'calc', priority = 10},
+
+                { name = 'nvim_lsp', priority = 9 },
+                { name = 'buffer', max_item_count = 3 },
+            }
+            local sorces_markup = {
+                { name = 'luasnip', priority = 10, max_item_count = 8 },
+                { name = 'luasnip_choice', priority = 10, max_item_count = 8 },
+                { name = 'calc', priority = 10},
+                { name = 'nvim_lsp', priority = 9 },
+                { name = 'buffer', max_item_count = 3 },
+            }
+
+            local sources_git = {
+                { name = 'luasnip', priority = 10, max_item_count = 8 },
+                { name = 'luasnip_choice', priority = 10, max_item_count = 8 },
+                { name = 'path', priority = 10 },
 
                 { name = 'nvim_lsp', priority = 9 },
                 { name = 'buffer', max_item_count = 3 },
             }
 
             local completion_names = {
-                path                    = 'Path',
+                buffer                  = 'Buffer',
+                calc                    = 'Math',
                 luasnip                 = 'Snippet',
                 luasnip_choice          = 'Choice',
                 nvim_lsp                = 'LSP',
-                buffer                  = 'Buffer',
+                path                    = 'Path',
             }
 
             cmp.setup({
