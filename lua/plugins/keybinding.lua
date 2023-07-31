@@ -10,6 +10,6 @@ return {
         keys = {
             { '<space>' },
         },
-        -- event = 'VeryLazy',
+        event = 'VeryLazy',
     },
 }
