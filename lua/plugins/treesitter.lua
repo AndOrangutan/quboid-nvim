@@ -2,6 +2,7 @@ return {
     { 'nvim-treesitter/nvim-treesitter',
         dependencies = {
             'nvim-treesitter/playground',
+            'nvim-treesitter/nvim-treesitter-textobjects',
         },
         config = function ()
             local quboid = require('quboid')
@@ -31,6 +32,42 @@ return {
                         goto_node = '<cr>',
                         show_help = '?',
                     },
+                },
+                textobjects = {
+                    select = {
+                        enable = true,
+                        lookahead = true,
+                        keymaps = {
+                            ['agc'] = '@comment.outer',
+                            ['igc'] = '@comment.inner',
+                            ['af'] = '@function.outer',
+                            ['if'] = '@function.inner',
+                            ['ac'] = '@class.outer',
+                            ['ic'] = '@class.inner',
+                            ['ab'] = '@block.outer',
+                            ['ib'] = '@block.inner',
+                        },
+                    },
+                    move = {
+                        enable = true,
+                        set_jumps = true, -- whether to set jumps in the jumplist
+                        goto_next_start = {
+                            [']m'] = '@function.outer',
+                            [']]'] = { query = '@class.outer', desc = 'Next class start' },
+                        },
+                        goto_next_end = {
+                            [']M'] = '@function.outer',
+                            [']['] = '@class.outer',
+                        },
+                        goto_previous_start = {
+                            ['[m'] = '@function.outer',
+                            ['[['] = '@class.outer',
+                        },
+                        goto_previous_end = {
+                            ['[M'] = '@function.outer',
+                            ['[]'] = '@class.outer',
+                        },
+                    },
                 }
             })
         end,
@@ -42,6 +79,7 @@ return {
         build = ':TSUpdate',
     },
     { 'nvim-treesitter/nvim-treesitter-context',
+        dependencies = 'nvim-treesitter/nvim-treesitter',
         config = function ()
             require('treesitter-context').setup({
 
