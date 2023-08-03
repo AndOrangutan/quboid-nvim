@@ -13,6 +13,7 @@ g.mapleader = " "
 
 --o.concealcursor="nc"
 
+
 o.splitkeep = 'screen'
 -- o.spell             = true
 o.dictionary        = '/usr/share/dict/words'
@@ -62,7 +63,7 @@ o.winminheight = 8
 o.equalalways = false
 
 -- Cursor
-o.cursorline        = false
+o.cursorline        = true
 o.scrolloff         = 999
 o.sidescrolloff     = 16
 o.pumheight         = 16
