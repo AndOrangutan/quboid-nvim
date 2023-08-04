@@ -15,4 +15,14 @@ return {
         config = true,
         event = { "BufReadPre", "BufNewFile" },
     },
+    { 'TimUntersberger/neogit',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        config = {
+            integrations = { diffview = true },
+        },
+        keys = {
+            { '<leader>gg', '<cmd>Neogit<cr>', 'Neo[g]it Toggle [g]oodness' }
+        },
+        event = 'VeryLazy',
+    },
 }
