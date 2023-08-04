@@ -9,5 +9,6 @@ return {
         keys = {
             { '<leader>gd', function () require('util').toggle_cmd('DiffviewOpen', 'DiffviewClose') end, desc = '[d]iffview Toggle' },
         }
-    }
+    },
+    { 'tpope/vim-fugitive' },
 }
