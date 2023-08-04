@@ -64,6 +64,8 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 
 - [folke/lazy.nvim](https://github.com/folke/lazy.nvim) - Plugin Manager, best one I have tried.
 
+#### Bloat (Totally deserves to be this high up haha)
+
 #### Colorschemes
 
 - [Shatur/neovim-ayu](https://github.com/Shatur/neovim-ayu) - Ayu theme for Neovim
@@ -100,6 +102,10 @@ Many of these are the exact same ones you can use in VSCode, except the configur
     - [mini.comment](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-comment.md) - Comment lines.
     - [mini.indentscope](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-indentscope.md) - Visualize and work with indent scope.
     - [mini.map](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-map.md) - Window with buffer text overview, scrollbar, and highlights.
+
+#### Git
+
+- [sindrets/diffview.nvim](https://github.com/sindrets/diffview.nvim) - Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
 
 #### Keybinding
 
@@ -151,6 +157,8 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 - LSP
     - Toggle underlines
     - Toggle autoformat
+    - Java
+        - Add runtime select
 - Treesitter
     - keymaps
     - https://github.com/nvim-treesitter/nvim-treesitter-textobjects
