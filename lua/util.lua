@@ -10,17 +10,20 @@ M.get_hl_val = function(name,val)
     return string.format("#%06x",hl[val])
 end
 
---- Determines whether a table contains a value
----@param table [TODO:parameter]
----@param val [TODO:parameter]
----@return [TODO:return]
-M.table_contains = function(table, val)
-    for _, value in pairs(table) do
-        if value == val then
-            return true
-        end
+M.toggle_cmd = function (cmd1, cmd2)
+    if type(vim.g[cmd1..'_'..cmd2..'_toggle']) == 'nil' then
+        vim.cmd(cmd1)
+        vim.g[cmd1..'_'..cmd2..'_toggle'] = cmd1
+    elseif vim.g[cmd1..'_'..cmd2..'_toggle'] == cmd1 then
+        vim.cmd(cmd2)
+        vim.notify("Toggled to "..cmd2, vim.log.levels['INFO'])
+        vim.g[cmd1..'_'..cmd2..'_toggle'] = cmd2
+    else
+        vim.cmd(cmd1)
+        vim.notify("Toggled to "..cmd1, vim.log.levels['INFO'])
+        vim.g[cmd1..'_'..cmd2..'_toggle'] = cmd1
     end
-    return false
 end
 
 return M
+
