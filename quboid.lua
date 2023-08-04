@@ -4,6 +4,7 @@ M.colorscheme = 'onedark'
 M.border = 'solid'
 M.border_float = 'shadow'
 M.ft_exclude = { 'lazy',  }
+M.ft_git = { 'gitcommit', 'octo', 'NeogitCommitMessage' }
 M.ft_javascript_package_manager = 'yarn'
 M.ft_markup = { 'latex', 'markdown', 'tex',  }
 M.ft_rigid = {  }

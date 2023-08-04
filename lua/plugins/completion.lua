@@ -1,3 +1,4 @@
+local quboid = require('quboid')
 return {
 
     { 'L3MON4D3/LuaSnip',
@@ -25,6 +26,9 @@ return {
         dependencies = {
             'windwp/nvim-autopairs',
 
+            { 'petertriho/cmp-git',
+                opts = { fyletypes = quboid.ft_git },
+            },
             'saadparwaiz1/cmp_luasnip',
             { 'doxnit/cmp-luasnip-choice',
                 opts = { auto_open = true },
@@ -259,9 +263,9 @@ return {
             --     sources = cmp.config.sources(sources),
             -- })
 
-            cmp.setup.filetype('gitcommit', {
+            cmp.setup.filetype(quboid.ft_git, {
                 sources = cmp.config.sources({
-                    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+                    { name = 'git' }, -- You can specify the `cmp_git` source if you were installed it.
                 }, {
                         { name = 'buffer' },
                     })
@@ -298,6 +302,9 @@ return {
                         { name = 'buffer' },
                     })
             })
+
+
+            require("cmp_git").setup()
 
         end,
         event = 'InsertEnter',
