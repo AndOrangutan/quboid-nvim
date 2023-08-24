@@ -14,6 +14,14 @@ Resiliant, fast, text-based Personal Development Environment
 
 ### Features
 
+#### Git workflow
+
+##### Fugative
+
+##### Neogetting into a UI
+
+##### Conflict Resolution
+
 #### LSP (Language Server Protocol)
 
 This is what makes modern languages and IDEs feel like a well oiled machine. Completion allows us to use longer and more descriptive names, goto-definition allows us to navigate quickly, proper renaming, and diagnostics. 
@@ -94,6 +102,14 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 - [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) - A snazzy bufferline for Neovim.
 - [rcarriga/nvim-notify](https://github.com/rcarriga/nvim-notify) - A fancy, configurable, notification manager for NeoVim.
 
+#### Core UI Buffers
+
+- [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) - Neovim plugin to manage the file system and other tree like structures.
+
+#### Dependencies
+
+- [DaikyXendo/nvim-web-devicons](https://github.com/DaikyXendo/nvim-web-devicons) - lua `fork` of vim-web-devicons for neovim.
+
 #### Editing
 
 - [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Autopairs for neovim written by lua.
@@ -161,6 +177,10 @@ Many of these are the exact same ones you can use in VSCode, except the configur
     - https://github.com/zbirenbaum/copilot.lua
     - https://github.com/zbirenbaum/copilot-cmp
     - https://github.com/jmbuhr/otter.nvim
+    - https://github.com/dkarter/bullets.vim
+    - https://github.com/martineausimon/nvim-xresources
+    https://www.reddit.com/r/neovim/comments/15cza0z/created_a_little_utility_for_tailwind_to_get_all/
+    - https://github.com/MaximilianLloyd/tw-values.nvim
 - LSP
     - Toggle underlines
     - Toggle autoformat
