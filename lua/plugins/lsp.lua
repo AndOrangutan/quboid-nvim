@@ -2,6 +2,9 @@ return {
         { 'neovim/nvim-lspconfig',
         dependencies = {
             'williamboman/mason-lspconfig.nvim',
+            { url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
+                config = function() require('lsp_lines').setup() end,
+            },
         },
         config = function ()
             local quboid = require('quboid')
