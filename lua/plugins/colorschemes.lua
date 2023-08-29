@@ -15,19 +15,20 @@ return {
                 undercurl = false,
             }
         },
-        lazy = true,
+        priority = 1000,
     },
     { 'neanias/everforest-nvim',
-        lazy = true,
+        config = function () require('everforest').setup() end,
+        priority = 1000,
     },
     { 'rebelot/kanagawa.nvim',
-        lazy = true,
+        config = function () require('kanagawa').setup() end,
+        priority = 1000,
     },
     { "Shatur/neovim-ayu",
         config = function()
             require('ayu').setup({ mirage = true })
         end,
-        lazy = true,
         priority = 1000,
     },
 }
