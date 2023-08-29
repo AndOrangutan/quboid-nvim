@@ -2,16 +2,16 @@ return {
     { 'nvim-neo-tree/neo-tree.nvim',
         dependencies = {
             'nvim-lua/plenary.nvim',
-            'DaikyXendo/nvim-material-icon',
+            'nvim-tree/nvim-web-devicons',
             'MunifTanjim/nui.nvim',
         },
         config = function () 
             local quboid = require('quboid')
 
-            vim.fn.sign_define("DiagnosticSignError", {text = quboid.icons.Error, texthl = "DiagnosticSignError"})
-            vim.fn.sign_define("DiagnosticSignWarn", {text = quboid.icons.Warn, texthl = "DiagnosticSignWarn"})
-            vim.fn.sign_define("DiagnosticSignInfo", {text = quboid.icons.Info, texthl = "DiagnosticSignInfo"})
-            vim.fn.sign_define("DiagnosticSignHint", {text = quboid.icons.Hint, texthl = "DiagnosticSignHint"})
+            vim.fn.sign_define("DiagnosticSignError", {text = quboid.icons.circle_error, texthl = "DiagnosticSignError"})
+            vim.fn.sign_define("DiagnosticSignWarn", {text = quboid.icons.circle_warn, texthl = "DiagnosticSignWarn"})
+            vim.fn.sign_define("DiagnosticSignInfo", {text = quboid.icons.circle_info, texthl = "DiagnosticSignInfo"})
+            vim.fn.sign_define("DiagnosticSignHint", {text = quboid.icons.circle_hint, texthl = "DiagnosticSignHint"})
 
             require('neo-tree').setup({
                 close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
@@ -52,18 +52,17 @@ return {
                     },
                     git_status = {
                         symbols = {
-                            -- TODO: Fix icons
-                            -- -- Change type
-                            -- added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
-                            -- modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-                            -- deleted   = " ",-- this can only be used in the git_status source
-                            -- renamed   = " ",-- this can only be used in the git_status source
-                            -- -- Status type
-                            -- untracked = " ",
-                            -- ignored   = " ",
-                            -- unstaged  = " ",
-                            -- staged    = " ",
-                            -- conflict  = " ",
+                            -- Change type
+                            added     = quboid.icons.git_added, -- or "✚", but this is redundant info if you use git_status_colors on the name
+                            modified  = quboid.icons.git_modified, -- or "", but this is redundant info if you use git_status_colors on the name
+                            deleted   = quboid.icons.git_deleted,-- this can only be used in the git_status source
+                            renamed   = quboid.icons.git_renamed,-- this can only be used in the git_status source
+                            -- Status type
+                            untracked = quboid.icons.git_untracked,
+                            ignored   = quboid.icons.git_ignored,
+                            unstaged  = quboid.icons.git_unstaged,
+                            staged    = quboid.icons.git_staged,
+                            conflict  = quboid.icons.git_conflict,
                         }
                     },
                 },

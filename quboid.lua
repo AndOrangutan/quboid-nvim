@@ -19,6 +19,7 @@ M.icons = {
     bar_thick_split = '╏',
 
     close           = ' ',
+    question        = '',
     arrow_left      = ' ',
     arrow_right     = ' ',
 
@@ -54,6 +55,17 @@ M.icons = {
     circle_info     = ' ',
     circle_hint     = ' ',
     circle_ok       = ' ',
+
+    git_branch      = ' ',
+    git_added       = ' ',
+    git_modified    = ' ',
+    git_deleted     = ' ',
+    git_renamed     = ' ',
+    git_untracked   = ' ',
+    git_ignored     = ' ',
+    git_staged      = ' ',
+    git_unstaged    = ' ',
+    git_conflict    = ' ',
 }
 
 M.lsp_kind = {
