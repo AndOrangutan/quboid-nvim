@@ -1,7 +1,7 @@
 return {
     { 'akinsho/bufferline.nvim',
         dependencies = {
-            'DaikyXendo/nvim-material-icon',
+            'nvim-tree/nvim-web-devicons',
         },
         config = function ()
 
