@@ -18,6 +18,7 @@ M.icons = {
     bar_thick_elbow = '┗',
     bar_thick_split = '╏',
 
+    pound           = ' ',
     close           = ' ',
     question        = '',
     arrow_left      = ' ',

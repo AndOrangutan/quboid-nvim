@@ -1,5 +1,7 @@
 local M = {}
 
+local cmp_lsp_ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+
 -- M.set_keymaps = function (client, bufnr)
 M.set_keymaps = function (_, bufnr)
     -- LSP Mappings.
@@ -45,16 +47,21 @@ M.gen_capabilities = function (ext_capabilities)
 
     local capabilities = {}
 
-    if (type(ext_capabilities) ~= 'table') then
-        capabilities = vim.lsp.protocol.make_client_capabilities()
-    else
-        capabilities = ext_capabilities
+    capabilities = vim.lsp.protocol.make_client_capabilities()
+
+    if (type(ext_capabilities) == 'table') then
+        capabilities = vim.tbl_extend('keep', capabilities or {}, ext_capabilities)
     end
 
     -- cmp lsp
-    -- if cmp_lsp_ok then
-    --     capabilities = vim.tbl_extend('keep', capabilities or {}, cmp_lsp.default_capabilities(capabilities))
-    -- end
+    if cmp_lsp_ok then
+        capabilities = vim.tbl_extend('keep', capabilities or {}, cmp_lsp.default_capabilities(capabilities))
+    end
+
+    capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true
+    }
 
     capabilities.offsetEncoding = { "utf-16" }
 

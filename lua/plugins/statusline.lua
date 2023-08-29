@@ -91,15 +91,11 @@ return {
                         },
                     },
                     lualine_y = {
-                        { 'filetype',
-                            cond = min_window_width(120),
-                        },
-                        { 'filesize',
-                            cond = min_window_width(120)
-                        },
-                        { encoding,
-                            cond = min_window_width(120)
-                        },
+                        { 'filetype'  },
+                        { 'filesize' },
+                        -- { 'encoding',
+                        --     cond = min_window_width(120)
+                        -- },
                     },
                     lualine_z = {
                         { 'location' },
