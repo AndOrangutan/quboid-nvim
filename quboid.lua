@@ -97,4 +97,5 @@ M.lsp_kind = {
     Variable        = ' ',
     Copilot         = ' ',
 }
+
 return M

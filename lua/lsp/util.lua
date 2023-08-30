@@ -38,7 +38,7 @@ M.call_on_attach = function (client, bufnr)
     --     vim.cmd("autocmd BufWritePre lua vim.lsp.buf.format()")
     -- end
 
-    M.keymaps(client, bufnr)
+    M.set_keymaps(client, bufnr)
 
 
 end

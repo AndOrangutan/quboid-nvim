@@ -12,13 +12,19 @@ return {
             local masonlsp = require('mason-lspconfig')
             local lsp_util = require('lsp.util')
 
+            -- Set icons
+            local kinds = vim.lsp.protocol.CompletionItemKind
+            for i, kind in ipairs(kinds) do
+                kinds[i] = quboid.lsp_kind[i] or kind
+            end
+
             -- Customize diagnostics also influences lsp_lines
             vim.diagnostic.config({
                 virtual_text = false,
                 update_in_insert = false,
                 virtual_lines = { only_current_line = true },
                 -- signs = true,
-                underline = true,
+                underline = false,
                 -- update_in_insert = false,
                 severity_sort = true,
                 float = {
