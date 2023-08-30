@@ -138,4 +138,10 @@ return {
             { '<leader>xt', '<cmd>TodoTrouble<cr>', desc = 'Trouble E[x]plore [t]odoComments' },
         },
     },
+    { 'mbbill/undotree',
+        config = function () vim.g.undotree_SplitWidth = 40 end,
+        keys = {
+            { '<leader>bu', '<cmd>UndotreeToggle<cr>', '[b]uffer [u]ndotree toggle' }
+        },
+    },
 }
