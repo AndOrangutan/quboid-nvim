@@ -1,3 +1,5 @@
+local quboid = require('quboid')
+
 return {
         { 'neovim/nvim-lspconfig',
         dependencies = {
@@ -5,6 +7,18 @@ return {
             { url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
                 config = function() require('lsp_lines').setup() end,
             },
+            { 'ray-x/lsp_signature.nvim',
+                opts = {
+                    hint_prefix = '',
+                    hi_parameter = 'String',
+                    floating_window_above_cur_line = true,
+                    handler_opts = {
+                        border = quboid.border,
+                    },
+                },
+                config = function(_, opts) require'lsp_signature'.setup(opts) end
+            },
+
         },
         config = function ()
             local quboid = require('quboid')

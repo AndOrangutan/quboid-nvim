@@ -1,5 +1,7 @@
 local M = {}
 
+local quboid = require('quboid')
+local lsp_signature_ok, lsp_signature = pcall(require, 'lsp_signature')
 local cmp_lsp_ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
 local glance_ok, glance = pcall(require, 'glance')
 local ufo_ok, ufo = pcall(require, 'ufo')
@@ -52,20 +54,21 @@ M.call_on_attach = function (client, bufnr)
 
     M.set_keymaps(client, bufnr)
 
+    if lsp_signature_ok then
+        lsp_signature.on_attach({}, bufnr)
+    end
 
 end
 
 M.gen_capabilities = function (ext_capabilities)
 
-    local capabilities = {}
-
-    capabilities = vim.lsp.protocol.make_client_capabilities()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
 
     if (type(ext_capabilities) == 'table') then
         capabilities = vim.tbl_extend('keep', capabilities or {}, ext_capabilities)
     end
 
-    -- cmp lsp
+    -- cmp lsp 
     if cmp_lsp_ok then
         capabilities = vim.tbl_extend('keep', capabilities or {}, cmp_lsp.default_capabilities(capabilities))
     end
