@@ -1,3 +1,5 @@
+local quboid = require('quboid')
+
 return {
     { 'nvim-neo-tree/neo-tree.nvim',
         dependencies = {
@@ -92,5 +94,48 @@ return {
         keys = {
             { '<leader>nn', '<cmd>Neotree toggle<cr>', desc = 'Neo-tree Toggle' },
         },
-    }
+    },
+
+    { 'folke/trouble.nvim',
+        dependencies = { 
+            'DaikyXendo/nvim-material-icon',
+            { 'folke/todo-comments.nvim',
+                dependencies = { "nvim-lua/plenary.nvim" },
+                opts = {
+                    keywords = {
+                        FIX =  { icon = quboid.icons.bug, color = "error", alt = { "FIXME", "BUG", "FIXIT", "ISSUE" },  },
+                        TODO = { icon = quboid.icons.check, color = "info" },
+                        HACK = { icon = quboid.icons.estinguisher, color = "warning" },
+                        WARN = { icon = quboid.icons.exclamation, color = "warning", alt = { "WARNING", "XXX" } },
+                        PERF = { icon = quboid.icons.flag_checkered, alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+                        NOTE = { icon = quboid.icons.pin, color = "hint", alt = { "INFO" } },
+                        TEST = { icon = quboid.icons.beaker, color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+                    },
+                },
+                event = 'VeryLazy',
+                keys = {
+
+                    { ']t', function () require('todo-comments').jump_next() end, desc = 'Next [t]odo' },
+                    { '[t', function () require('todo-comments').jump_prev() end, desc = 'Prev [t]odo' },
+                },
+            }
+        },
+        event = 'VimEnter',
+        opts = {
+            -- fold_open   = "",
+            -- fold_closed = "",
+            padding = false,
+            auto_preview = false,
+            indent_lines = false,
+            use_diagnostic_signs = true,
+        },
+        keys = {
+            { '<leader>xx', '<cmd>TroubleToggle<cr>', desc = 'Trouble E[x]plore E[x]tensive (workspace)' },
+            { '<leader>xw', '<cmd>TroubleToggle workspace_diagnostics<cr>', desc = 'Trouble E[x]plore [w]orkspace Diagnostics' },
+            { '<leader>xd', '<cmd>TroubleToggle document_diagnostics<cr>', desc = 'Trouble E[x]plore [d]ocument Diagnostics' },
+            { '<leader>xq', '<cmd>TroubleToggle quickfix<cr>', desc = 'Trouble E[x]plore [q]uickfix Diagnostics' },
+            { '<leader>xl', '<cmd>TroubleToggle loclist<cr>', desc = 'Trouble E[x]plore [l]oclist Diagnostics' },
+            { '<leader>xt', '<cmd>TodoTrouble<cr>', desc = 'Trouble E[x]plore [t]odoComments' },
+        },
+    },
 }
