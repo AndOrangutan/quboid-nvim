@@ -1,6 +1,8 @@
 local M = {}
 
 local cmp_lsp_ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+local glance_ok, glance = pcall(require, 'glance')
+local ufo_ok, ufo = pcall(require, 'ufo')
 
 -- M.set_keymaps = function (client, bufnr)
 M.set_keymaps = function (_, bufnr)
@@ -10,10 +12,20 @@ M.set_keymaps = function (_, bufnr)
     vim.keymap.set('n', 'gt', '<cmd>lua vim.lsp.buf.type_definition()<cr>', { desc = 'Lsp [g]oto [t]ype Def.', buffer = bufnr})
     vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = 'Lsp [g]ather [i]mplementation', buffer = bufnr})
     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { desc = 'Lsp [g]ather [r]eferences', buffer = bufnr})
-    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = 'Lsp [g]oto [D]eclaration', buffer = bufnr})
+
+    if glance_ok then
+        vim.keymap.set('n', 'gD', '<cmd>Glance definitions<cr>', { desc = 'Lsp [g]oto Glance [d]efintion', buffer = bufnr })
+        vim.keymap.set('n', 'gT', '<cmd>Glance type_definitions<cr>', { desc = 'Lsp [g]oto Glance [t]ype Def.', buffer = bufnr})
+        vim.keymap.set('n', 'gI', '<cmd>Glance implementations<cr>', { desc = 'Lsp [g]ather Glance [i]mplementation', buffer = bufnr})
+        vim.keymap.set('n', 'gR', '<cmd>Glance references<cr>', { desc = 'Lsp [g]ather Glance [r]eferences', buffer = bufnr})
+    end
+
+    -- TODO: Rebind to something I'll actually use
+    -- vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = 'Lsp [g]oto [D]eclaration', buffer = bufnr})
     vim.keymap.set('n', 'K', function ()
         local winid = nil
         if not winid then vim.lsp.buf.hover() end
+        if ufo_ok then winid = require('ufo').peekFoldedLinesUnderCursor() end
         -- if not winid then require("pretty_hover").hover() end
     end, { desc = 'Lsp [k]ick up Hover', buffer = bufnr})
     vim.keymap.set('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { desc = 'Lsp Signature Help', buffer = bufnr})

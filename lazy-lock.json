@@ -13,6 +13,7 @@
   "friendly-snippets": { "branch": "main", "commit": "00e191fea2cfbbdd378243f35b5953296537a116" },
   "git-worktree.nvim": { "branch": "master", "commit": "d7f4e2584e81670154f07ca9fa5dd791d9c1b458" },
   "gitsigns.nvim": { "branch": "main", "commit": "d8590288417fef2430f85bc8b312fae8b1cf2c40" },
+  "glance.nvim": { "branch": "master", "commit": "8ed5cf3b3b1231ea696d88c9efd977027429d869" },
   "kanagawa.nvim": { "branch": "master", "commit": "0a24e504a3a278849ad0aef31cd6dd24c73ca3db" },
   "lazy.nvim": { "branch": "main", "commit": "2a9354c7d2368d78cbd5575a51a2af5bd8a6ad01" },
   "lsp-progress.nvim": { "branch": "main", "commit": "7e03aebae632425efddff29638e5471258740f35" },
