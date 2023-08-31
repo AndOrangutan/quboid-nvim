@@ -113,7 +113,7 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 
 #### Dependencies
 
-- [DaikyXendo/nvim-web-devicons](https://github.com/DaikyXendo/nvim-web-devicons) - lua `fork` of vim-web-devicons for neovim.
+- [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) - lua `fork` of vim-web-devicons for neovim.
 
 #### Editing
 
@@ -154,6 +154,11 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) - Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.
 
+#### Picker
+
+- [stevearc/dressing.nvim](https://github.com/stevearc/dressing.nvim) - Neovim plugin to improve the default vim.ui interfaces.
+- [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua) - Improved fzf.vim written in lua
+
 #### Search
 
 - [romainl/vim-cool](https://github.com/romainl/vim-cool) - A very simple plugin that makes hlsearch more useful.
@@ -180,6 +185,10 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 - Completion
     - fix luasnip node shit
 - Plugins
+    - https://github.com/JMarkin/cmp-diag-codes
+    - https://github.com/tpope/vim-dadbod
+    - https://github.com/kristijanhusak/vim-dadbod-completion
+    - https://github.com/paopaol/cmp-doxygen
     - https://github.com/DNLHC/glance.nvim
     - https://github.com/jcdickinson/wpm.nvim
     - https://github.com/nvim-neotest/neotest

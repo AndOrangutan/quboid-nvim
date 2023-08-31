@@ -98,7 +98,7 @@ return {
 
     { 'folke/trouble.nvim',
         dependencies = { 
-            'DaikyXendo/nvim-material-icon',
+            'nvim-tree/nvim-material-icon',
             { 'folke/todo-comments.nvim',
                 dependencies = { "nvim-lua/plenary.nvim" },
                 opts = {
