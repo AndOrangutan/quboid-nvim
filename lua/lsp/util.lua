@@ -64,13 +64,14 @@ M.gen_capabilities = function (ext_capabilities)
 
     local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-    if (type(ext_capabilities) == 'table') then
-        capabilities = vim.tbl_extend('keep', capabilities or {}, ext_capabilities)
-    end
 
     -- cmp lsp 
     if cmp_lsp_ok then
-        capabilities = vim.tbl_extend('keep', capabilities or {}, cmp_lsp.default_capabilities(capabilities))
+        capabilities = require('cmp_nvim_lsp').default_capabilities()
+    end
+
+    if (type(ext_capabilities) == 'table') then
+        capabilities = vim.tbl_extend('keep', capabilities or {}, ext_capabilities)
     end
 
     capabilities.textDocument.foldingRange = {
