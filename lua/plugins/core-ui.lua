@@ -73,8 +73,8 @@ return {
         end,
         event = 'VeryLazy',
         keys = {
-            { '<M-.>', '<cmd>BufferlineCycleNext<cr>', desc = 'Bufferline Cycle Next' },
-            { '<M-,>', '<cmd>BufferlineCyclePrev<cr>', desc = 'Bufferline Cycle Prev' },
+            { '<M-.>', '<cmd>BufferLineCycleNext<cr>', desc = 'Bufferline Cycle Next' },
+            { '<M-,>', '<cmd>BufferLineCyclePrev<cr>', desc = 'Bufferline Cycle Prev' },
         },
     },
     { 'rcarriga/nvim-notify',
