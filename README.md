@@ -109,7 +109,6 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 #### Core UI Buffers
 
 - [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) - Neovim plugin to manage the file system and other tree like structures.
-- [simrat39/symbols-outline.nvim](https://github.com/simrat39/symbols-outline.nvim) - A tree like view for symbols in Neovim using the Language Server Protocol. Supports all your favorite languages.
 - [folke/trouble.nvim](https://github.com/folke/trouble.nvim) - A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
     - [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim) - Highlight, list and search todo comments in your projects.
 - [mbbill/undotree](https://github.com/mbbill/undotree) - The undo history visualizer for VIM.
@@ -121,8 +120,7 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 #### Editing
 
 - [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Autopairs for neovim written by lua.
-- [NMAC427/guess-indent.nvim](https://github.com/NMAC427/guess-indent.nvim) - Automatic indentation style detection for Neovim
-- [kylechui/nvim-surround](https://github.com/kylechui/nvim-surround) - Syntax aware text-objects, select, move, swap, and peek support.
+- [famiu/bufdelete.nvim](https://github.com/famiu/bufdelete.nvim) - Delete Neovim buffers without losing window layout.
 
 #### General Purpose
 
@@ -158,6 +156,10 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 
 - [williamboman/mason.nvim](https://github.com/williamboman/mason.nvim) - Portable package manager for Neovim that runs everywhere Neovim runs. Easily install and manage LSP servers, DAP servers, linters, and formatters.
 
+#### Navigation
+
+- [jinh0/eyeliner.nvim](https://github.com/jinh0/eyeliner.nvim) - Move faster with unique f/F indicators.
+
 #### Picker
 
 - [stevearc/dressing.nvim](https://github.com/stevearc/dressing.nvim) - Neovim plugin to improve the default vim.ui interfaces.
@@ -181,9 +183,6 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 - [RRethy/nvim-treesitter-textsubjects)](https://github.com/RRethy/nvim-treesitter-textsubjects) - Location and syntax aware text objects which *do what you mean*.
 - [hiphish/rainbow-delimiters.nvim](https://github.com/hiphish/rainbow-delimiters.nvim) - Rainbow delimiters for Neovim with Tree-sitter.
 
-#### Window Management
-
-- [famiu/bufdelete.nvim](https://github.com/famiu/bufdelete.nvim) - Delete Neovim buffers without losing window layout.
 
 ## Custom
 
