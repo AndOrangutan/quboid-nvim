@@ -177,6 +177,7 @@ return {
             -- fold_open   = '',
             -- fold_closed = '',
             padding = false,
+            cycle_results = false,
             auto_preview = false,
             indent_lines = false,
             use_diagnostic_signs = true,

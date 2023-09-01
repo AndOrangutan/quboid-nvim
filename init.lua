@@ -4,6 +4,8 @@ local quboid = require('quboid')
 -- Load pre-plugin settings
 require('defaults.options')
 require('custom.options')
+require('defaults.keymaps')
+require('custom.keymaps')
 
 -- Bootstrap Lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'

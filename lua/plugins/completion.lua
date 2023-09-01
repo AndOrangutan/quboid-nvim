@@ -1,4 +1,4 @@
-local quboid = require('quboid')
+
 return {
 
     { 'L3MON4D3/LuaSnip',
@@ -27,7 +27,7 @@ return {
             'windwp/nvim-autopairs',
 
             { 'petertriho/cmp-git',
-                opts = { fyletypes = quboid.ft_git },
+                opts = { fyletypes = require('quboid').ft_git },
             },
             'saadparwaiz1/cmp_luasnip',
             { 'doxnit/cmp-luasnip-choice',
@@ -42,14 +42,11 @@ return {
         opts = {
         },
         config = function ()
-            -- local cmp = require('cmp')
-            -- local quboid = require('quboid')
-            -- local luasnip_ok, luasnip = pcall(require, 'luasnip')
-            -- if not luasnip_ok then vim.notify('Failed due to luasnip not being present!', 'Error') return end
-            -- local cmp_autopairs_ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
-            -- if cmp_autopairs_ok then cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done()) end
-            --
-            --
+            local quboid = require('quboid')  -- lol
+            local cmp = require('cmp')
+            local luasnip_ok, luasnip = pcall(require, 'luasnip')
+            local cmp_autopairs_ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+
             local sources = {
                 { name = 'luasnip', priority = 10, max_item_count = 8 },
                 { name = 'luasnip_choice', priority = 10, max_item_count = 8 },
@@ -85,7 +82,6 @@ return {
                 path                    = 'Path',
             }
 
-              local cmp = require'cmp'
 
             cmp.setup({
                 -- experimental = {
