@@ -82,7 +82,6 @@ return {
             local quboid = require('quboid')
             local notify = require('notify')
 
-            -- Overide default notification handler
             vim.notify = notify
 
             notify.setup({

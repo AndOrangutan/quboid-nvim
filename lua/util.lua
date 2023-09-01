@@ -25,5 +25,43 @@ M.toggle_cmd = function (cmd1, cmd2)
     end
 end
 
+
+M.input_builder = function (big_tbl_in, callback)
+    local output = {}
+
+    local recurse
+    recurse = function (tbl_in,out_in)
+        local input_opts = {}
+
+        local entry = table.remove(tbl_in, 1)
+
+        if entry == nil then
+            callback(out_in)
+            return
+        end
+
+        if type(entry[2]) == 'table' then
+            input_opts = entry[2]
+        elseif type(entry[2]) == 'string' then
+            input_opts = {
+                prompt = entry[2]
+            }
+        end
+
+        vim.ui.input(input_opts, function (input)
+            -- if type(entry[3]) == 'function' and entry[3](input) ~= nil then
+            --     input = entry[3](input)
+            -- end
+
+            out_in[entry[1]] = input
+
+            recurse(tbl_in, out_in)
+        end)
+    end
+
+    recurse(big_tbl_in, output)
+end
+
+
 return M
 
