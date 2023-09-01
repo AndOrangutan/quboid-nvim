@@ -6,12 +6,12 @@ local M = {}
 --- Retrieve highlight values
 ---@param name string of the highlight
 ---@param val string 'foreground' or 'background'
----@return hex string representation in hex
+---@return string|nil represented in hex
 M.get_hl_val = function(name,val)
     local ok, hl = pcall(vim.api.nvim_get_hl_by_name, name, true)
     -- local ok, hl = pcall(vim.api.nvim_get_hl(0, {name = name}))
     if not ok then
-        return
+        return nil
     end
     return string.format("#%06x",hl[val])
 end

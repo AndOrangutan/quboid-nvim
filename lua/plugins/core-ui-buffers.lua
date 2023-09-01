@@ -1,13 +1,97 @@
-local quboid = require('quboid')
-
 return {
+    { 'goolord/alpha-nvim',
+        config = function()
+
+            local quboid = require('quboid')
+
+            local alpha = require('alpha')
+            local dashboard = require('alpha.themes.dashboard')
+
+            math.randomseed(os.time())
+
+            local function pick_color()
+                local colors = {"String", "Identifier", "Keyword", "Constant", "Statement", "Type"}
+                return colors[math.random(#colors)]
+            end
+
+            local function pad_to_width(str, wid_to_match)
+                local add_pad = (wid_to_match - #str) / 2
+                return string.rep(" ", add_pad) .. str .. string.rep(" ", add_pad)
+            end
+
+            local function header()
+                return quboid.dashboard_header
+            end
+
+            local function footer()
+                local version = vim.version()
+                local stats = require('lazy').stats()
+
+                local feet = quboid.dashboard_footer
+                local w = quboid.dashboard_width
+
+                local date = os.date('%A, %b %d, %Y')
+                local ver = string.format("v%d.%d.%d", version.major, version.minor, version.patch)
+                local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+
+                local details1 = quboid.icons.calendar .. ' ' .. date .. '  ' .. quboid.icons.beaker .. ' ' .. ver
+                details1 = pad_to_width(details1, w)
+                table.insert(feet, details1)
+
+                local details2 = quboid.icons.startup .. ' Loaded ' .. stats.count .. ' Plugins in ' .. ms .. 'ms'
+                details2 = pad_to_width(details2, w)
+                table.insert(feet, details2)
+
+
+                -- return footer
+                return feet
+            end
+
+
+            vim.g.my_notebook_open = function (selected, opts)
+                local slctd = selected
+
+                require('fzf-lua').actions.file_edit(slctd,opts)
+
+                vim.wait(200)
+                -- require("zk").cd()
+                vim.cmd([[ZkCd]])
+            end
+
+            dashboard.section.buttons.val = {
+                dashboard.button( "r", "  > Recent"   , ":FzfLua oldfiles<CR>"),
+                dashboard.button( "s", "  > Sessions" , ":SessionManager load_session<cr>"),
+                dashboard.button( "n", "  > Notebooks", [[:cd $HOME/Dropbox/Notebooks/ | :lua require'fzf-lua'.files({ cwd = "~/Dropbox/Notebooks", cmd = "fd -e md -g 'index.md'", actions = { ['default'] = _G.my_notebook_open }})<cr>]]),
+                dashboard.button( "S", "  > Settings" , ":cd $HOME/.config/nvim | lua require'fzf-lua'.files()<cr>"),
+                dashboard.button( "q", "  > Quit NVIM", "<cmd>qa<cr>"),
+            }
+
+
+            -- Subheader
+            dashboard.section.header.val = header()
+            -- dashboard.section.footer.val = footer()
+            dashboard.section.header.opts.hl = pick_color()
+            dashboard.section.footer.opts.hl = pick_color()
+
+            dashboard.opts.opts.noautocmd = true
+            alpha.setup(dashboard.opts)
+
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "LazyVimStarted",
+                callback = function()
+                    dashboard.section.footer.val = footer()
+                    pcall(vim.cmd.AlphaRedraw)
+                end,
+            })
+        end,
+    },
     { 'nvim-neo-tree/neo-tree.nvim',
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-tree/nvim-web-devicons',
             'MunifTanjim/nui.nvim',
         },
-        config = function () 
+        config = function ()
             local quboid = require('quboid')
 
             vim.fn.sign_define('DiagnosticSignError', {text = quboid.icons.circle_error, texthl = 'DiagnosticSignError'})
@@ -100,7 +184,7 @@ return {
                     -- ['C'] = 'close_all_subnodes',
                     ['z'] = 'close_all_nodes',
                     --['Z'] = 'expand_all_nodes',
-                    ['a'] = { 
+                    ['a'] = {
                         'add',
                         -- this command supports BASH style brace expansion ('x{a,b,c}' -> xa,xb,xc). see `:h neo-tree-file-actions` for details
                         -- some commands may take optional config options, see `:h neo-tree-mappings` for details
@@ -161,19 +245,19 @@ return {
         },
     },
     { 'folke/trouble.nvim',
-        dependencies = { 
+        dependencies = {
             'nvim-tree/nvim-web-devicons',
             { 'folke/todo-comments.nvim',
                 dependencies = { 'nvim-lua/plenary.nvim' },
                 opts = {
                     keywords = {
-                        FIX =  { icon = quboid.icons.bug, color = 'error', alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' },  },
-                        TODO = { icon = quboid.icons.check, color = 'info' },
-                        HACK = { icon = quboid.icons.estinguisher, color = 'warning' },
-                        WARN = { icon = quboid.icons.exclamation, color = 'warning', alt = { 'WARNING', 'XXX' } },
-                        PERF = { icon = quboid.icons.flag_checkered, alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
-                        NOTE = { icon = quboid.icons.pin, color = 'hint', alt = { 'INFO' } },
-                        TEST = { icon = quboid.icons.beaker, color = 'test', alt = { 'TESTING', 'PASSED', 'FAILED' } },
+                        FIX =  { icon = require('quboid').icons.bug, color = 'error', alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' },  },
+                        TODO = { icon = require('quboid').icons.check, color = 'info' },
+                        HACK = { icon = require('quboid').icons.estinguisher, color = 'warning' },
+                        WARN = { icon = require('quboid').icons.exclamation, color = 'warning', alt = { 'WARNING', 'XXX' } },
+                        PERF = { icon = require('quboid').icons.flag_checkered, alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' } },
+                        NOTE = { icon = require('quboid').icons.pin, color = 'hint', alt = { 'INFO' } },
+                        TEST = { icon = require('quboid').icons.beaker, color = 'test', alt = { 'TESTING', 'PASSED', 'FAILED' } },
                     },
                 },
                 event = 'VeryLazy',

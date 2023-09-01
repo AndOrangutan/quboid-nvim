@@ -108,6 +108,7 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 
 #### Core UI Buffers
 
+- [goolord/alpha-nvim](https://github.com/goolord/alpha-nvim) - a lua powered greeter like vim-startify / dashboard-nvim 
 - [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) - Neovim plugin to manage the file system and other tree like structures.
 - [folke/trouble.nvim](https://github.com/folke/trouble.nvim) - A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
     - [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim) - Highlight, list and search todo comments in your projects.
@@ -197,6 +198,8 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 - Completion
     - fix luasnip node shit
 - Plugins
+    - https://github.com/nvim-neotest/neotest
+    - https://github.com/andythigpen/nvim-coverage
     - https://github.com/JMarkin/cmp-diag-codes
     - https://github.com/tpope/vim-dadbod
     - https://github.com/kristijanhusak/vim-dadbod-completion
