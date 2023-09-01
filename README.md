@@ -120,6 +120,7 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 #### Editing
 
 - [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Autopairs for neovim written by lua.
+- [kylechui/nvim-surround](https://github.com/kylechui/nvim-surround) - Syntax aware text-objects, select, move, swap, and peek support.
 
 #### General Purpose
 
