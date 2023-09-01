@@ -1,10 +1,11 @@
 return {
     { 'nvim-treesitter/nvim-treesitter',
         dependencies = {
-            'nvim-treesitter/playground',
+            'windwp/nvim-ts-autotag',
             'RRethy/nvim-treesitter-endwise',
+            'nvim-treesitter/playground',
             'nvim-treesitter/nvim-treesitter-textobjects',
-            'RRethy/nvim-treesitter-textsubjects'
+            'RRethy/nvim-treesitter-textsubjects',
         },
         config = function ()
             local quboid = require('quboid')
@@ -19,6 +20,9 @@ return {
                 indent = { enable = true },
 
                 -- Extensions
+                autotag = {
+                    enable = true,
+                },
                 playground = {
                     enable = true,
                     disable = quboid.ft_exclude,
