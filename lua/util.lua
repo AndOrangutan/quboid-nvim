@@ -1,6 +1,12 @@
 local M = {}
 
 -- sauce https://www.reddit.com/r/neovim/comments/oxddk9/how_do_i_get_the_value_from_a_highlight_group/
+
+
+--- Retrieve highlight values
+---@param name string of the highlight
+---@param val string 'foreground' or 'background'
+---@return hex string representation in hex
 M.get_hl_val = function(name,val)
     local ok, hl = pcall(vim.api.nvim_get_hl_by_name, name, true)
     -- local ok, hl = pcall(vim.api.nvim_get_hl(0, {name = name}))
@@ -10,6 +16,9 @@ M.get_hl_val = function(name,val)
     return string.format("#%06x",hl[val])
 end
 
+--- Toggle between two commands
+---@param cmd1 string command one
+---@param cmd2 string command two
 M.toggle_cmd = function (cmd1, cmd2)
     if type(vim.g[cmd1..'_'..cmd2..'_toggle']) == 'nil' then
         vim.cmd(cmd1)

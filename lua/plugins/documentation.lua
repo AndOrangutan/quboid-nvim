@@ -1,0 +1,14 @@
+return {
+    { 'danymat/neogen',
+        dependencies = 'nvim-treesitter/nvim-treesitter',
+        config = function()
+            local neogen = require('neogen')
+           neogen.setup({ input_after_comment = true,
+                snippet_engine = 'luasnip',
+            })
+        end,
+        keys = {
+            { 'gcd', function () require('neogen').generate() end, '[g]enerate [c]omment [d]ocumentaiton' },
+        },
+    },
+}

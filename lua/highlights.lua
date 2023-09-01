@@ -44,6 +44,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     end,
 })
 
+
 vim.o.background = 'dark'
 -- vim.cmd('colorscheme ayu')
 vim.cmd('colorscheme '..quboid.colorscheme)
