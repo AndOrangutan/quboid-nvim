@@ -147,7 +147,19 @@ return {
             { '<leader>nn', '<cmd>Neotree toggle<cr>', desc = 'Neo-tree Toggle' },
         },
     },
+    { 'simrat39/symbols-outline.nvim',
+        opts = {
 
+            auto_close = true,
+            relative_width = false,
+            width  = 40,
+            show_guides = true,
+        },
+        event = 'VeryLazy',
+        keys = {
+            { '<leader>bs', '<cmd>SymbolsOutline<cr>', '[b]uffer [s]symbol Outline Toggle' }
+        },
+    },
     { 'folke/trouble.nvim',
         dependencies = { 
             'nvim-tree/nvim-web-devicons',
