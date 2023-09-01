@@ -116,6 +116,7 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 
 #### Dependencies
 
+- [stefanlogue/hydrate.nvim](https://github.com/stefanlogue/hydrate.nvim) - Reminders to keep hydrated while you code.
 - [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) - lua `fork` of vim-web-devicons for neovim.
 
 #### Editing
@@ -169,6 +170,10 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 
 - [romainl/vim-cool](https://github.com/romainl/vim-cool) - A very simple plugin that makes hlsearch more useful.
 
+### Sessions
+
+- [Shatur/neovim-session-manager](https://github.com/Shatur/neovim-session-manager) - A simple wrapper around :mksession.
+
 #### Statusline
 
 - [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - A blazing fast and easy to configure neovim statusline plugin written in pure lua.
@@ -198,6 +203,7 @@ Many of these are the exact same ones you can use in VSCode, except the configur
 - Completion
     - fix luasnip node shit
 - Plugins
+    - https://github.com/m4xshen/hardtime.nvim
     - https://github.com/nvim-neotest/neotest
     - https://github.com/andythigpen/nvim-coverage
     - https://github.com/JMarkin/cmp-diag-codes
