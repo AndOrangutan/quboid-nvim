@@ -2,6 +2,7 @@ return {
     { 'nvim-treesitter/nvim-treesitter',
         dependencies = {
             'nvim-treesitter/playground',
+            'RRethy/nvim-treesitter-endwise',
             'nvim-treesitter/nvim-treesitter-textobjects',
             'RRethy/nvim-treesitter-textsubjects'
         },
@@ -33,6 +34,9 @@ return {
                         goto_node = '<cr>',
                         show_help = '?',
                     },
+                },
+                endwise = {
+                    enable = true,
                 },
                 textobjects = {
                     enable = true,
