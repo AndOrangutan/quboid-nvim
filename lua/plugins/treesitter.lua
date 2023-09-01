@@ -2,6 +2,7 @@ return {
     { 'nvim-treesitter/nvim-treesitter',
         dependencies = {
             'windwp/nvim-ts-autotag',
+            'JoosepAlviste/nvim-ts-context-commentstring',
             'RRethy/nvim-treesitter-endwise',
             'nvim-treesitter/playground',
             'nvim-treesitter/nvim-treesitter-textobjects',
@@ -22,6 +23,9 @@ return {
                 -- Extensions
                 autotag = {
                     enable = true,
+                },
+                context_commentstring = {
+                    enable = true
                 },
                 playground = {
                     enable = true,
