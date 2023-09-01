@@ -1,4 +1,5 @@
 return {
+    { 'rktjmp/lush.nvim' },
     { 'navarasu/onedark.nvim',
         opts = {
             code_style = {
@@ -31,4 +32,5 @@ return {
         end,
         priority = 1000,
     },
+    { 'scysta/pink-panic.nvim' },
 }
