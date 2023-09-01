@@ -64,6 +64,12 @@ return {
         end,
         event = 'InsertEnter',
     },
+    { 'NMAC427/guess-indent.nvim',
+        opts = {
+            filetype_exclude = require('quboid').ft_exclude
+        },
+        event = 'VeryLazy',
+    },
     { 'kylechui/nvim-surround',
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = 'VeryLazy',
