@@ -6,7 +6,7 @@ M.border_float = 'shadow'
 M.ft_exclude = { 'NeogitStatus', 'fzf', 'lazy', 'neo-tree', 'netrw', 'tutor', 'undotree',  }
 M.ft_git = { 'gitcommit', 'octo', 'NeogitCommitMessage' }
 M.ft_javascript_package_manager = 'yarn'
-M.ft_markup = { 'latex', 'markdown', 'tex',  }
+M.ft_markup = { 'markdown' }
 M.ft_rigid = {  }
 M.icons = {
     -- Shapes
