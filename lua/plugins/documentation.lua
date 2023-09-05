@@ -7,6 +7,7 @@ return {
                 snippet_engine = 'luasnip',
             })
         end,
+        cmd = { 'Neogen' },
         keys = {
             { 'gcd', function () require('neogen').generate() end, '[g]enerate [c]omment [d]ocumentaiton' },
         },
