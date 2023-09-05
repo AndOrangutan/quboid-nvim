@@ -4,6 +4,7 @@ return {
         { 'neovim/nvim-lspconfig',
         dependencies = {
             'williamboman/mason-lspconfig.nvim',
+            'folke/neodev.nvim',
             { url = 'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
                 config = function() require('lsp_lines').setup() end,
             },
@@ -264,6 +265,25 @@ return {
                 }
             })
         end,
-    }
-
+    },
+    {  'zbirenbaum/neodim',
+        event = 'LspAttach',
+        config = function()
+            require('neodim').setup({
+                alpha = 0.5,
+                blend_color = '#000000',
+                hide = {
+                    underline = true,
+                    virtual_text = true,
+                    signs = true,
+                },
+                regex = {
+                    '[uU]nused',
+                    '[nN]ever [rR]ead',
+                    '[nN]ot [rR]ead',
+                },
+                disable = {},
+            })
+        end
+    },
 }
