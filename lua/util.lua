@@ -35,20 +35,27 @@ M.toggle_cmd = function (cmd1, cmd2)
 end
 
 
-M.input_builder = function (big_tbl_in, callback)
-    local output = {}
+--- Gather multiple inputs using a table
+---@param big_tbl_in table Consisting of { index, prompt, validator, post_input }
+---@param callback function Callback function
+-- local tmp_tbl = {
+--     { 'index', 'Prmpt: ', function (input) return true end, function (table) return table end },
+-- }
+M.input_builder = function (builder_tbl, callback)
+    local output_tbl = {}
 
     local recurse
-    recurse = function (tbl_in,out_in)
+    recurse = function (tbl, output)
         local input_opts = {}
 
-        local entry = table.remove(tbl_in, 1)
-
+        -- Return case
+        local entry = table.remove(tbl, 1)
         if entry == nil then
-            callback(out_in)
+            callback(output)
             return
         end
 
+        -- Assign prompt
         if type(entry[2]) == 'table' then
             input_opts = entry[2]
         elseif type(entry[2]) == 'string' then
@@ -57,20 +64,30 @@ M.input_builder = function (big_tbl_in, callback)
             }
         end
 
+        -- Gather input
         vim.ui.input(input_opts, function (input)
-            -- if type(entry[3]) == 'function' and entry[3](input) ~= nil then
-            --     input = entry[3](input)
-            -- end
 
-            out_in[entry[1]] = input
+            if type(entry[3]) == 'function' then
+                if entry[3](input) == false then
+                    table.insert(tbl, 1, entry)
+                end
+            elseif input == '' then
+                table.insert(tbl, 1, entry)
+            else
+                output[entry[1]] = input
+            end
 
-            recurse(tbl_in, out_in)
+            if type(entry[4]) ~= 'nil' and type(entry[4]) == 'function' then
+                output = entry[4](output)
+            end
+
+            recurse(tbl, output)
+
         end)
     end
 
-    recurse(big_tbl_in, output)
+    recurse(builder_tbl, output_tbl)
 end
-
 
 return M
 
