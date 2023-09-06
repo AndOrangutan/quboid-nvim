@@ -26,6 +26,16 @@ return {
             { '<c-P>', '<cmd>PasteImg<cr>', { desc = '[p]aste Image from Clipboard', mode = 'i'} }
         },
     },
+    { 'NFrid/due.nvim',
+        dependencies = 'nvim-treesitter/nvim-treesitter',
+        opts = {
+            prescript = '  due in ',             -- prescript to due data
+            use_clock_time = true,         -- display also hours and minutes
+            use_clock_today = true,        -- do it instead of TODAY
+            use_seconds = false,            -- if use_clock_time == true, display seconds
+        },
+        ft = require('quboid').ft_markup,
+    },
     { 'AckslD/nvim-FeMaco.lua',
         opts = {
             border = require('quboid').border,
