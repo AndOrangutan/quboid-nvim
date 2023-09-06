@@ -1,7 +1,38 @@
 return {
+
+    -- { 'ekickx/clipboard-image.nvim',
+    --     config = function ()
+    --
+    --         require('clipboard-image').setup({
+    --             default = {
+    --                 img_dir = { '%:p:h' },
+    --                 img_dir_txt = '',
+    --                 img_name = function ()
+    --                     return vim.fn.expand('%:t:r')..'-'..os.date('%Y-%m-%d-%H-%M-%S')
+    --                 end,
+    --                 img_handler = function (img)
+    --                     -- Add in alt text
+    --                     vim.cmd('normal! f[') -- go vo [
+    --                     vim.cmd('normal! a' .. vim.fn.input('Alt-text: ')) -- append text with image name
+    --
+    --                     -- Compress image
+    --                     --local script = string.format('~/.scripts/tinypng.sh -s f %s &', img.path)
+    --                     --return os.execute(script)
+    --                 end,
+    --                 affix = '![](%s)',
+    --             },
+    --         })
+    --     end,
+    --     opts = {
+    --     },
+    --     keys = {
+    --         { '<leader>p', '<cmd>PasteImg<cr>', desc = '[p]aste Image from Clipboard' },
+    --         { '<c-P>', '<cmd>PasteImg<cr>', { desc = '[p]aste Image from Clipboard', mode = 'i'} }
+    --     },
+    -- },
+
     { 'lukas-reineke/headlines.nvim',
         opts = {
-
             markdown = {
                 headline_highlights = { "Headline" },
                 codeblock_highlight = "CodeBlock",
@@ -14,6 +45,17 @@ return {
                 fat_headline_lower_string = "🬂",
             },
         },
+        ft = require('quboid').ft_markup,
+    },
+    { 'iamcco/markdown-preview.nvim',
+        init = function()
+            vim.g.mkdp_auto_start = 0
+            vim.g.mkdp_auto_close = 1
+            vim.g.mkdp_browser = 'chromium'
+            vim.g.mkdp_echo_preview_url = 1
+            vim.g.mkdp_theme = 'light'
+        end,
+        build = "cd app && yarn install",
         ft = require('quboid').ft_markup,
     },
     { 'mickael-menu/zk-nvim',
