@@ -179,6 +179,7 @@ return {
             vim.lsp.buf.rename = qf_rename
 
         end,
+        event = { 'BufReadPre', 'BufNewFile' },
         keys = {
             { '<leader>nd', function() require("notify").dismiss({ silent = true, pending = true }) end, desc = '[n]otification [d]ismiss' },
             { '<leader>nl', '<cmd>Notifications<cr>', desc = '[n]otification [l]ist' },

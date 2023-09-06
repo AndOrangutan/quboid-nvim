@@ -38,7 +38,7 @@ vim.opt.fillchars   = "foldsep: ,foldopen:,foldclose:"
 o.signcolumn        = "yes:1"
 --o.background        = "dark" -- Moved to colorscheme
 o.laststatus        = 3
-o.cmdheight         = 0
+o.cmdheight         = 1
 
 -- Tabbing, breaking, wraping and indentation
 o.tabstop           = indentSize
