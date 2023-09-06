@@ -61,6 +61,22 @@ return {
         },
         ft = require('quboid').ft_markup,
     },
+    { 'preservim/vim-markdown',
+        dependencies = {
+            'godlygeek/tabular',
+        },
+        init = function ()
+            vim.g.vim_markdown_folding_disabled = 1
+            vim.g.vim_markdown_conceal_code_blocks = 0
+            vim.g.vim_markdown_math = 1
+            vim.g.vim_markdown_frontmatter = 1
+            vim.g.vim_markdown_strikethrough = 1
+            vim.g.vim_markdown_new_list_item_indent = 1
+            vim.g.vim_markdown_auto_insert_bullets = 1
+            vim.g.vim_markdown_no_default_key_mappings = 1
+        end,
+        ft = require('quboid').ft_markup,
+    },
     { 'iamcco/markdown-preview.nvim',
         init = function()
             vim.g.mkdp_auto_start = 0
