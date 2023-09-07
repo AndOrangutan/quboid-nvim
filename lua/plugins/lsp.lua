@@ -79,8 +79,8 @@ return {
                 -- Next, you canprovide targeted overrides for specific servers.
                 ["jdtls"] = function()
                 end,
-                -- ["tsserver"] = function()
-                -- end,
+                ["tsserver"] = function()
+                end,
                 ["eslint"] = function()
                     local config = lsp_util.gen_config()
 
