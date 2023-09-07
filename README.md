@@ -250,6 +250,13 @@ Keymaps:
 - Completion
     - fix luasnip node shit
 - Plugins
+    - [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua) - Fully featured & enhanced replacement for copilot.vim complete with API for interacting with Github Copilot 
+    - [metakirby5/codi.vim](https://github.com/metakirby5/codi.vim) - The interactive scratchpad for hackers.
+    - [lukas-reineke/cmp-rg](https://github.com/lukas-reineke/cmp-rg) - ripgrep source for nvim-cmp
+    - [uga-rosa/cmp-dictionary](https://github.com/uga-rosa/cmp-dictionary) - nvim-cmp source for dictionary
+    - [jcha0713/cmp-tw2css](https://github.com/jcha0713/cmp-tw2css) - A source for nvim-cmp to convert tailwindcss classes to pure css codes
+    - [David-Kunz/cmp-npm](https://github.com/David-Kunz/cmp-npm) - An additional source for nvim-cmp to autocomplete packages and its versions
+    - [zbirenbaum/copilot-cmp](https://github.com/zbirenbaum/copilot-cmp) - Lua plugin to turn github copilot into a cmp source.
     - https://github.com/nvim-neotest/neotest
     - https://github.com/andythigpen/nvim-coverage
     - https://github.com/JMarkin/cmp-diag-codes

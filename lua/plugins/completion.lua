@@ -8,7 +8,7 @@ return {
                 build = 'yarn install --frozen-lockfile && yarn compile',
             },
         },
-        build = 'make install_sregexp',
+        build = 'make install_jsregexp',
         config =  function ()
             local luasnip = require('luasnip')
 
