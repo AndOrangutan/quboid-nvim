@@ -127,9 +127,9 @@ return {
 
         end,
         keys = {
-            { '<leader>e', '<cmd>lua vim.diagnostic.open_float({}, {focus=false})<CR>', '[e]xamine Diagnostics (2x to enter)' },
-            { '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', 'Prev [d]iagnostic'},
-            { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', 'Next [d]iagnostic'},
+            { '<leader>e', '<cmd>lua vim.diagnostic.open_float({}, {focus=false})<CR>', desc = '[e]xamine Diagnostics (2x to enter)' },
+            { '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', desc = 'Prev [d]iagnostic'},
+            { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', desc = 'Next [d]iagnostic'},
         },
         event = 'VeryLazy',
     },

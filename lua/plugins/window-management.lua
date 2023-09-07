@@ -1,7 +1,7 @@
 return {
     { 'famiu/bufdelete.nvim',
         keys = {
-            { '<C-q>', function () require('bufdelete').bufdelete(0) end, 'Save and Close Buffer' }
+            { '<C-q>', function () require('bufdelete').bufdelete(0) end, desc = 'Save and Close Buffer' }
         },
 
     },
@@ -19,20 +19,20 @@ return {
 
         },
         keys = {
-            { '<C-A-h>', '<cmd>lua require("smart-splits").resize_left()<cr>', 'Resize Left' },
-            { '<C-A-j>', '<cmd>lua require("smart-splits").resize_down()<cr>', 'Resize Down' },
-            { '<C-A-k>', '<cmd>lua require("smart-splits").resize_up()<cr>', 'Resize Up' },
-            { '<C-A-l>', '<cmd>lua require("smart-splits").resize_right()<cr>', 'Resize Right' },
+            { '<C-A-h>', '<cmd>lua require("smart-splits").resize_left()<cr>', desc = 'Resize Left' },
+            { '<C-A-j>', '<cmd>lua require("smart-splits").resize_down()<cr>', desc = 'Resize Down' },
+            { '<C-A-k>', '<cmd>lua require("smart-splits").resize_up()<cr>', desc = 'Resize Up' },
+            { '<C-A-l>', '<cmd>lua require("smart-splits").resize_right()<cr>', desc = 'Resize Right' },
             -- moving between splits
-            { '<A-h>', '<cmd>lua require("smart-splits").move_cursor_left()<cr>', 'Move Left' },
-            { '<A-j>', '<cmd>lua require("smart-splits").move_cursor_down()<cr>', 'Move Down' },
-            { '<A-k>', '<cmd>lua require("smart-splits").move_cursor_up()<cr>', 'Move Up' },
-            { '<A-l>', '<cmd>lua require("smart-splits").move_cursor_right()<cr>', 'Move Right' },
+            { '<A-h>', '<cmd>lua require("smart-splits").move_cursor_left()<cr>', desc = 'Move Left' },
+            { '<A-j>', '<cmd>lua require("smart-splits").move_cursor_down()<cr>', desc = 'Move Down' },
+            { '<A-k>', '<cmd>lua require("smart-splits").move_cursor_up()<cr>', desc = 'Move Up' },
+            { '<A-l>', '<cmd>lua require("smart-splits").move_cursor_right()<cr>', desc = 'Move Right' },
             -- swapping buffers between windows
-            { '<A-H>', '<cmd>lua require("smart-splits").swap_buf_left()<cr>', 'Swap Left' },
-            { '<A-J>', '<cmd>lua require("smart-splits").swap_buf_down()<cr>', 'Swap Down' },
-            { '<A-K>', '<cmd>lua require("smart-splits").swap_buf_up()<cr>', 'Swap Up' },
-            { '<A-L>', '<cmd>lua require("smart-splits").swap_buf_right()<cr>', 'Swap Right' },
+            { '<A-H>', '<cmd>lua require("smart-splits").swap_buf_left()<cr>', desc = 'Swap Left' },
+            { '<A-J>', '<cmd>lua require("smart-splits").swap_buf_down()<cr>', desc = 'Swap Down' },
+            { '<A-K>', '<cmd>lua require("smart-splits").swap_buf_up()<cr>', desc = 'Swap Up' },
+            { '<A-L>', '<cmd>lua require("smart-splits").swap_buf_right()<cr>', desc = 'Swap Right' },
         },
     },
 }

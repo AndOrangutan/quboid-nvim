@@ -50,11 +50,11 @@ return {
             })
         end,
         keys = {
-            { '<leader>f', '<cmd>FzfLua<cr>', '[f]zf All' },
-            { '<leader>ff', '<cmd>FzfLua files<cr>', '[f]zf Find [f]iles' },
-            { '<leader>fc', '<cmd>FzfLua colorschemes<cr>', '[f]zf [c]olorschemes' },
-            { '<leader>fg', '<cmd>FzfLua live_grep_resume<cr>', '[f]zf [g]rep files' },
-            { '<leader>fh', '<cmd>FzfLua help_tags<cr>', '[f]zf Neovim [h]elp tags' },
+            { '<leader>f', '<cmd>FzfLua<cr>', desc = '[f]zf All' },
+            { '<leader>ff', '<cmd>FzfLua files<cr>', desc = '[f]zf Find [f]iles' },
+            { '<leader>fc', '<cmd>FzfLua colorschemes<cr>', desc = '[f]zf [c]olorschemes' },
+            { '<leader>fg', '<cmd>FzfLua live_grep_resume<cr>', desc = '[f]zf [g]rep files' },
+            { '<leader>fh', '<cmd>FzfLua help_tags<cr>', desc = '[f]zf Neovim [h]elp tags' },
         },
         event = { 'BufReadPre', 'BufNewFile' },
     }

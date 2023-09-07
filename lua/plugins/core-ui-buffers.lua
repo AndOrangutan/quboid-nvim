@@ -241,7 +241,7 @@ return {
         },
         event = 'VeryLazy',
         keys = {
-            { '<leader>bs', '<cmd>SymbolsOutline<cr>', '[b]uffer [s]symbol Outline Toggle' }
+            { '<leader>bs', '<cmd>SymbolsOutline<cr>', desc = '[b]uffer [s]symbol Outline Toggle' }
         },
     },
     { 'folke/trouble.nvim',
@@ -290,7 +290,7 @@ return {
     { 'mbbill/undotree',
         config = function () vim.g.undotree_SplitWidth = 40 end,
         keys = {
-            { '<leader>bu', '<cmd>UndotreeToggle<cr>', '[b]uffer [u]ndotree toggle' }
+            { '<leader>bu', '<cmd>UndotreeToggle<cr>', desc = '[b]uffer [u]ndotree toggle' }
         },
     },
 }

@@ -15,7 +15,7 @@ return {
         config = true,
         event = { "BufReadPre", "BufNewFile" },
         keys = {
-            { '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<cr>', '[g]it [b]lame toggle' },
+            { '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<cr>', desc = '[g]it [b]lame toggle' },
         },
     },
     { 'ThePrimeagen/git-worktree.nvim',
@@ -53,7 +53,7 @@ return {
             integrations = { diffview = true },
         },
         keys = {
-            { '<leader>gg', '<cmd>Neogit<cr>', 'Neo[g]it Toggle [g]oodness' }
+            { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Neo[g]it Toggle [g]oodness' }
         },
         event = 'VeryLazy',
     },
