@@ -227,7 +227,6 @@ return {
                 --     },
                 -- }),
 
-                -- require("typescript.extensions.null-ls.code-actions"),
 
                 null_ls.builtins.hover.dictionary,
 
@@ -236,6 +235,10 @@ return {
                 null_ls.builtins.formatting.black,
             }
 
+            local typescript_null_ls_ok, typescript_null_ls = pcall(require, 'typescript.extensions.null-ls.code-actions')
+            if typescript_null_ls_ok then
+                table.insert(sources, typescript_null_ls)
+            end
 
             local go_null_ls_ok, go_null_ls = pcall(require, 'go.null_ls')
             if go_null_ls_ok then
@@ -244,10 +247,34 @@ return {
                 table.insert(sources, go_null_ls.golangci_lint())
             end
 
+            local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+
             null_ls.setup({
                 sources = sources,
                 debounce = 1000,
-                default_timeout = 5000
+                default_timeout = 5000,
+                filter = function(client)
+                    return client.name == "null-ls"
+                end,
+                on_attach = function(client, bufnr)
+                    if client.supports_method 'textDocument/formatting' then
+                        local format_on_save = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+                        vim.api.nvim_create_autocmd('BufWritePre', {
+                            group = augroup,
+                            buffer = bufnr,
+                            callback = function()
+                                vim.notify('Formatting Document', vim.log.levels.INFO)
+                                vim.lsp.buf.format({
+                                    group = format_on_save,
+                                    bufnr = bufnr,
+                                    filter = function(c)
+                                        return c.name == 'null-ls'
+                                    end
+                                })
+                            end,
+                        })
+                    end
+                end,
             })
         end,
     },
