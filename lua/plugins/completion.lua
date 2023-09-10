@@ -26,18 +26,22 @@ return {
         dependencies = {
             'windwp/nvim-autopairs',
 
-            { 'petertriho/cmp-git',
-                opts = { fyletypes = require('quboid').ft_git },
-            },
             'saadparwaiz1/cmp_luasnip',
             { 'doxnit/cmp-luasnip-choice',
                 opts = { auto_open = true },
             },
+
             'hrsh7th/cmp-path',
-            'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-calc',
+
+            'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-cmdline',
+
+            { 'petertriho/cmp-git',
+                opts = { fyletypes = require('quboid').ft_git },
+            },
+            'kdheepak/cmp-latex-symbols',
         },
         opts = {
         },
@@ -56,9 +60,10 @@ return {
                 { name = 'nvim_lsp', priority = 9 },
                 { name = 'buffer', max_item_count = 3 },
             }
-            local sorces_markup = {
+            local sources_markup = {
                 { name = 'luasnip', priority = 10, max_item_count = 8 },
                 { name = 'luasnip_choice', priority = 10, max_item_count = 8 },
+                { name = 'latex_symbols', priority = 10 },
                 { name = 'calc', priority = 10},
                 { name = 'nvim_lsp', priority = 9 },
                 { name = 'buffer', max_item_count = 3 },
@@ -196,6 +201,10 @@ return {
                 }, {
                         { name = 'buffer' },
                     })
+            })
+
+            cmp.setup.filetype( quboid.ft_markup, {
+                sources = cmp.config.sources(sources_markup)
             })
 
             -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).

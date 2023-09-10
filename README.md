@@ -119,7 +119,7 @@ Keymaps:
 - [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - A completion plugin for neovim coded in Lua.
     - [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - nvim-cmp source for buffer words.
     - [hrsh7th/cmp-calc](https://github.com/hrsh7th/cmp-calc) - nvim-cmp source for math calculations.
-    - [petertriho/cmp-git](https://github.com/petertriho/cmp-git) - Git source for nvim-cmp.
+    <!-- TODO: Fix - [petertriho/cmp-git](https://github.com/petertriho/cmp-git) - Git source for nvim-cmp. -->
     - [kdheepak/cmp-latex-symbols](https://github.com/kdheepak/cmp-latex-symbols) - Add latex symbol support for nvim-cmp.
     - [saadparwaiz1/cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) - luasnip completion source for nvim-cmp.
     - [L3MON4D3/cmp-luasnip-choice](https://github.com/L3MON4D3/cmp-luasnip-choice) - Luasnip choice node completion source for nvim-cmp.
@@ -295,6 +295,7 @@ Keymaps:
     - https://github.com/martineausimon/nvim-xresources
     https://www.reddit.com/r/neovim/comments/15cza0z/created_a_little_utility_for_tailwind_to_get_all/
     - https://github.com/MaximilianLloyd/tw-values.nvim
+- override netrw.
 - LSP
     - Toggle underlines
     - Toggle autoformat
