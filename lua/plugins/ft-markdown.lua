@@ -107,6 +107,7 @@ return {
         cmd = {
             'ZkCd',
         },
+        event = 'VeryLazy',
         config = function ()
             local lsp_config = require('lsp.util').gen_config()
             lsp_config = vim.tbl_extend('keep', lsp_config or {}, { cmd = { 'zk', 'lsp' }, name = 'zk' })
@@ -165,6 +166,8 @@ return {
                     prompt = 'Select Group: ',
                 }, function (group_choice) 
                         require('util').input_builder(group_tbl[group_choice], function (table)
+                            table['group'] = group_choice
+                            table['dir'] = vim.fn.expand('%:p:h')
 
                             vim.notify(vim.inspect(table))
 
