@@ -77,6 +77,7 @@
   "promise-async": { "branch": "main", "commit": "e94f35161b8c5d4a4ca3b6ff93dd073eb9214c0e" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "9cbd3dc409af1f5531778ccd1ea6bce668241f39" },
   "smart-splits.nvim": { "branch": "master", "commit": "7aad6019dee974a01333523a5b8e122b7e7da454" },
+  "sniprun": { "branch": "master", "commit": "1c4bc063522946676dd178d01d6fc130d3e41da5" },
   "statuscol.nvim": { "branch": "main", "commit": "0944234914438695050eec6f83b4669864680c1a" },
   "symbols-outline.nvim": { "branch": "master", "commit": "512791925d57a61c545bc303356e8a8f7869763c" },
   "tabular": { "branch": "master", "commit": "339091ac4dd1f17e225fe7d57b48aff55f99b23a" },
@@ -88,6 +89,7 @@
   "vim-cool": { "branch": "master", "commit": "662e7b11064cbeedad17c45d2fe926e78d3cd0b6" },
   "vim-fugitive": { "branch": "master", "commit": "6fcb0ad03982de646e3fecb6915e585651b9a9fb" },
   "vim-markdown": { "branch": "master", "commit": "cc82d88e2a791f54d2b6e2b26e41f743351ac947" },
+  "vimtex": { "branch": "master", "commit": "2b8a5f16a5768b3ae1780c266b73022dbb658af1" },
   "vscode-es7-javascript-react-snippets": { "branch": "master", "commit": "185bb91a0b692c54136663464e8225872c434637" },
   "which-key.nvim": { "branch": "main", "commit": "7ccf476ebe0445a741b64e36c78a682c1c6118b7" },
   "zk-nvim": { "branch": "main", "commit": "797618aa07f58ceba6f79fb6e777e8e45c51e1ce" }

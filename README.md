@@ -105,6 +105,10 @@ Keymaps:
 
 #### Bloat (Totally deserves to be this high up haha)
 
+#### Code Runner
+
+- [michaelb/sniprun](https://github.com/michaelb/sniprun) - A neovim plugin to run lines/blocs of code (independently of the rest of the file), supporting multiples languages.
+
 #### Colorschemes
 
 - [rktjmp/lush.nvim](https://github.com/rktjmp/lush.nvim) - Create Neovim themes with real-time feedback, export anywhere.
@@ -173,6 +177,10 @@ Keymaps:
 - [preservim/vim-markdown](https://github.com/preservim/vim-markdown) - Markdown Vim Mode
 - [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim) - markdown preview plugin for (neo)vim
 - [mickael-menu/zk-nvim](https://github.com/mickael-menu/zk-nvim) - Neovim extension for zk.
+
+##### Tex
+
+- [lervag/vimtex](https://github.com/lervag/vimtex) - VimTeX: A modern Vim and neovim filetype plugin for LaTeX files.
 
 ##### Typescript/javasvript
 
@@ -270,14 +278,12 @@ Keymaps:
     - [jcha0713/cmp-tw2css](https://github.com/jcha0713/cmp-tw2css) - A source for nvim-cmp to convert tailwindcss classes to pure css codes
     - [David-Kunz/cmp-npm](https://github.com/David-Kunz/cmp-npm) - An additional source for nvim-cmp to autocomplete packages and its versions
     - [zbirenbaum/copilot-cmp](https://github.com/zbirenbaum/copilot-cmp) - Lua plugin to turn github copilot into a cmp source.
-    - [mfussenegger/nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls) - Extensions for the built-in LSP support in Neovim for eclipse.jdt.ls
     - https://github.com/nvim-neotest/neotest
     - https://github.com/andythigpen/nvim-coverage
     - https://github.com/JMarkin/cmp-diag-codes
     - https://github.com/tpope/vim-dadbod
     - https://github.com/kristijanhusak/vim-dadbod-completion
     - https://github.com/paopaol/cmp-doxygen
-    - https://github.com/DNLHC/glance.nvim
     - https://github.com/jcdickinson/wpm.nvim
     - https://github.com/nvim-neotest/neotest
     - https://github.com/smjonas/inc-rename.nvim
