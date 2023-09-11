@@ -7,6 +7,7 @@ M.ft_exclude = { 'NeogitStatus', 'fzf', 'lazy', 'mason', 'neo-tree', 'netrw', 't
 M.ft_git = { 'gitcommit', 'octo', 'NeogitCommitMessage' }
 M.ft_javascript_package_manager = 'yarn'
 M.ft_markup = { 'markdown' }
+M.ft_tex = { 'tex' }
 M.ft_rigid = {  }
 M.icons = {
     -- Shapes
