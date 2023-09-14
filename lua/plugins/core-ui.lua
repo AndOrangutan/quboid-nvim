@@ -71,7 +71,7 @@ return {
                 },
             })
         end,
-        event = 'VeryLazy',
+        event = { 'BufReadPre', 'BufNewFile' }, -- NOTE: Needed for autocmd to work
         keys = {
             { '<M-.>', '<cmd>BufferLineCycleNext<cr>', desc = 'Bufferline Cycle Next' },
             { '<M-,>', '<cmd>BufferLineCyclePrev<cr>', desc = 'Bufferline Cycle Prev' },
