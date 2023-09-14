@@ -166,8 +166,6 @@ return {
                     prompt = 'Select Group: ',
                 }, function (group_choice) 
                         require('util').input_builder(group_tbl[group_choice], function (table)
-                            table['group'] = group_choice
-                            table['dir'] = vim.fn.expand('%:p:h')
 
                             vim.notify(vim.inspect(table))
 
@@ -192,11 +190,12 @@ return {
                                 
                             end
 
-                        end)
+                        end, { group = group_choice, dir = vim.fn.expand('%:p:h') })
                     end)
 
             end },
             { '<leader>zs', '<cmd>ZkNotes<cr>', '[z]k [s]earch' },
+            { '<leader>zi', '<cmd>ZkInsertLink<cr>', '[z]k [s]earch' },
             { '<cr>', function () vim.lsp.buf.definition() end, 'Zk Follow note' }
         },
     }
