@@ -15,12 +15,12 @@ M.set_keymaps = function (_, bufnr)
     vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', { desc = 'Lsp [g]ather [i]mplementation', buffer = bufnr})
     vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', { desc = 'Lsp [g]ather [r]eferences', buffer = bufnr})
 
-    if glance_ok then
+    -- if glance_ok then
         vim.keymap.set('n', 'gD', '<cmd>Glance definitions<cr>', { desc = 'Lsp [g]oto Glance [d]efintion', buffer = bufnr })
         vim.keymap.set('n', 'gT', '<cmd>Glance type_definitions<cr>', { desc = 'Lsp [g]oto Glance [t]ype Def.', buffer = bufnr})
         vim.keymap.set('n', 'gI', '<cmd>Glance implementations<cr>', { desc = 'Lsp [g]ather Glance [i]mplementation', buffer = bufnr})
         vim.keymap.set('n', 'gR', '<cmd>Glance references<cr>', { desc = 'Lsp [g]ather Glance [r]eferences', buffer = bufnr})
-    end
+    -- end
 
     -- TODO: Rebind to something I'll actually use
     -- vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = 'Lsp [g]oto [D]eclaration', buffer = bufnr})
@@ -31,10 +31,10 @@ M.set_keymaps = function (_, bufnr)
         -- if not winid then require("pretty_hover").hover() end
     end, { desc = 'Lsp [k]ick up Hover', buffer = bufnr})
     vim.keymap.set('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { desc = 'Lsp Signature Help', buffer = bufnr})
-    vim.keymap.set('n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', { desc = 'Lsp [w]orkspace [a]dd dir', buffer = bufnr})
-    vim.keymap.set('n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', { desc = 'Lsp [w]orkspace [r]emove dir', buffer = bufnr})
-    vim.keymap.set('n', '<leader>wl', '<cmd>lua vim.notify(vim.inspect(vim.lsp.buf.remove_workspace_folder()))<cr>', { desc = 'Lsp [w]orkspace [l]ist dir', buffer = bufnr})
-    vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = 'Lsp [r]e[n]ame', buffer = bufnr})
+    vim.keymap.set('n', '<leader>lwa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>', { desc = '[l]sp [w]orkspace [a]dd dir', buffer = bufnr})
+    vim.keymap.set('n', '<leader>lwr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>', { desc = '[l]sp [w]orkspace [r]emove dir', buffer = bufnr})
+    vim.keymap.set('n', '<leader>lwl', '<cmd>lua vim.notify(vim.inspect(vim.lsp.buf.remove_workspace_folder()))<cr>', { desc = '[l]sp [w]orkspace [l]ist dir', buffer = bufnr})
+    vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', { desc = '[l]sp [r]e[n]ame', buffer = bufnr})
     vim.keymap.set('n', '<leader>F', '<cmd>lua vim.lsp.buf.format()<cr>', { desc = 'Lsp [F]ormat', buffer = bufnr})
     -- util.keymap('n', '<leader>ca', '<cmd>CodeActionMenu<cr>', { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
     vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
@@ -49,7 +49,12 @@ M.call_on_attach = function (client, bufnr)
     -- Autoformat
     -- if client.supports_method("textDocument/formatting") then
     --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    --     vim.cmd("autocmd BufWritePre lua vim.lsp.buf.format()")
+    --     vim.api.nvim_create_autocmd("BufWritePre", {
+    --         pattern = "*",
+    --         callback = function()
+    --             vim.lsp.buf.format()
+    --         end,
+    --     })
     -- end
 
     M.set_keymaps(client, bufnr)
