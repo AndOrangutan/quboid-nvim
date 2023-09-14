@@ -327,6 +327,12 @@ return {
 			})
 		end,
 	},
+    { 'RRethy/vim-illuminate',
+        event = 'BufRead',
+        config = function()
+			require('illuminate').configure()
+		end,
+    },
 	{
 		"zbirenbaum/neodim",
 		event = "LspAttach",
