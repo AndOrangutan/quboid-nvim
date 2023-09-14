@@ -42,6 +42,7 @@ return {
                 opts = { fyletypes = require('quboid').ft_git },
             },
             'kdheepak/cmp-latex-symbols',
+            'hrsh7th/cmp-omni',
         },
         opts = {
         },
@@ -68,6 +69,15 @@ return {
                 { name = 'nvim_lsp', priority = 9 },
                 { name = 'buffer', max_item_count = 3 },
             }
+            local sources_tex = {
+                { name = 'luasnip', priority = 10, max_item_count = 8 },
+                { name = 'omni', priority = 10 },
+                { name = 'luasnip_choice', priority = 10, max_item_count = 8 },
+                { name = 'calc', priority = 10},
+                { name = 'nvim_lsp', priority = 9 },
+                { name = 'latex_symbols', priority = 7 },
+                { name = 'buffer', max_item_count = 3 },
+            }
 
             local sources_git = {
                 { name = 'luasnip', priority = 10, max_item_count = 8 },
@@ -85,6 +95,8 @@ return {
                 luasnip_choice          = 'Choice',
                 nvim_lsp                = 'LSP',
                 path                    = 'Path',
+                latex_symbols           = 'LaTeX',
+                omni                    = 'Omni',
             }
 
 
@@ -207,6 +219,9 @@ return {
                 sources = cmp.config.sources(sources_markup)
             })
 
+            cmp.setup.filetype( quboid.ft_tex, {
+                sources = cmp.config.sources(sources_tex)
+            })
             -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
             cmp.setup.cmdline({ '/', '?' }, {
                 mapping = cmp.mapping.preset.cmdline(),
