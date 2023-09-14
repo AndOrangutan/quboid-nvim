@@ -8,6 +8,7 @@ M.ft_git = { 'gitcommit', 'octo', 'NeogitCommitMessage' }
 M.ft_javascript_package_manager = 'yarn'
 M.ft_markup = { 'markdown' }
 M.ft_tex = { 'tex' }
+M.ft_git = { 'gitcommit', 'NeogitCommitMessage' }
 M.ft_rigid = {  }
 M.icons = {
     -- Shapes
