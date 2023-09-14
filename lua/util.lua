@@ -41,8 +41,12 @@ end
 -- local tmp_tbl = {
 --     { 'index', 'Prmpt: ', function (input) return true end, function (table) return table end },
 -- }
-M.input_builder = function (builder_tbl, callback)
+M.input_builder = function (builder_tbl, callback, pass_in)
     local output_tbl = {}
+
+    if type(pass_in) == 'table' then
+        output_tbl = pass_in
+    end
 
     local recurse
     recurse = function (tbl, output)
