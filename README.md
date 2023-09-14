@@ -146,6 +146,12 @@ Keymaps:
     - [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim) - Highlight, list and search todo comments in your projects.
 - [mbbill/undotree](https://github.com/mbbill/undotree) - The undo history visualizer for VIM.
 
+#### Database
+
+- [tpope/vim-dadbod](https://github.com/tpope/vim-dadbod) - Modern database interface for Vim 
+- [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui) - Simple UI for vim-dadbod 
+- [kristijanhusak/vim-dadbod-completion](https://github.com/kristijanhusak/vim-dadbod-completion)
+
 #### Dependencies
 
 - [stefanlogue/hydrate.nvim](https://github.com/stefanlogue/hydrate.nvim) - Reminders to keep hydrated while you code.

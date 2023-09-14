@@ -43,6 +43,7 @@ return {
             },
             'kdheepak/cmp-latex-symbols',
             'hrsh7th/cmp-omni',
+            'kristijanhusak/vim-dadbod-completion',
         },
         opts = {
         },
@@ -57,8 +58,9 @@ return {
                 { name = 'luasnip_choice', priority = 10, max_item_count = 8 },
                 { name = 'path', priority = 10 },
                 { name = 'calc', priority = 10},
-
+                
                 { name = 'nvim_lsp', priority = 9 },
+                { name = 'vim-dadbod-completion', priority = 9 },
                 { name = 'buffer', max_item_count = 3 },
             }
             local sources_markup = {
@@ -97,6 +99,7 @@ return {
                 path                    = 'Path',
                 latex_symbols           = 'LaTeX',
                 omni                    = 'Omni',
+                ['vim-dadbod-completion'] = 'DadBod',
             }
 
 
