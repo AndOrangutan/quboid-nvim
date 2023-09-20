@@ -130,6 +130,7 @@ Keymaps:
     - [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - nvim-cmp source for neovim builtin LSP client.
     - [hrsh7th/cmp-omni](https://github.com/hrsh7th/cmp-omni) - nvim-cmp source for omnifunc.
     - [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path) - nvim-cmp source for path.
+    - [kristijanhusak/vim-dadbod-completion](https://github.com/kristijanhusak/vim-dadbod-completion)
 
 #### Core UI
 
@@ -149,12 +150,11 @@ Keymaps:
 #### Database
 
 - [tpope/vim-dadbod](https://github.com/tpope/vim-dadbod) - Modern database interface for Vim 
-- [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui) - Simple UI for vim-dadbod 
-- [kristijanhusak/vim-dadbod-completion](https://github.com/kristijanhusak/vim-dadbod-completion)
+    - [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui) - Simple UI for vim-dadbod 
 
 #### Dependencies
 
-- [stefanlogue/hydrate.nvim](https://github.com/stefanlogue/hydrate.nvim) - Reminders to keep hydrated while you code.
+- [tpope/vim-dispatch](https://github.com/tpope/vim-dispatch) - Asynchronous build and test dispatcher.
 - [nvim-tree/nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons) - lua `fork` of vim-web-devicons for neovim.
 
 #### Editing
@@ -278,6 +278,8 @@ Keymaps:
 
 - Completion
     - fix luasnip node shit
+- Zk
+    - Have dir passed into dir-title input
 - Plugins
     - [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua) - Fully featured & enhanced replacement for copilot.vim complete with API for interacting with Github Copilot 
     - [metakirby5/codi.vim](https://github.com/metakirby5/codi.vim) - The interactive scratchpad for hackers.
