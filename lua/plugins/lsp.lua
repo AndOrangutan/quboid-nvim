@@ -49,7 +49,7 @@ return {
 				-- update_in_insert = false,
 				severity_sort = true,
 				float = {
-					source = "if_many",
+					source = "always",
 				},
 			})
 
