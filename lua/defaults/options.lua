@@ -13,6 +13,8 @@ g.mapleader = " "
 
 --o.concealcursor="nc"
 
+-- wrapped
+o.smoothscroll         = true
 
 o.splitkeep = 'screen'
 -- o.spell             = true
