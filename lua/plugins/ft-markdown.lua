@@ -90,9 +90,16 @@ return {
     },
     { 'iamcco/markdown-preview.nvim',
         init = function()
+            -- https://github.com/iamcco/markdown-preview.nvim/issues/19#issuecomment-464344382
+            vim.cmd[[
+                function OpenMarkdownPreview (url)
+                    exec "silent ! qutebrowser --target=window " . a:url . " &"
+                endfunction
+            ]]
+            vim.g.mkdp_browserfunc = 'OpenMarkdownPreview'
             vim.g.mkdp_auto_start = 0
             vim.g.mkdp_auto_close = 1
-            vim.g.mkdp_browser = 'qutebrowser'
+            vim.g.mkdp_browser = ''
             vim.g.mkdp_echo_preview_url = 1
             vim.g.mkdp_theme = 'light'
         end,
