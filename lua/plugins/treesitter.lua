@@ -1,7 +1,8 @@
+---@diagnostic disable: missing-fields
 return {
+
     { 'nvim-treesitter/nvim-treesitter',
         dependencies = {
-            'windwp/nvim-ts-autotag',
             'JoosepAlviste/nvim-ts-context-commentstring',
             'RRethy/nvim-treesitter-endwise',
             'nvim-treesitter/playground',
@@ -10,6 +11,7 @@ return {
         },
         config = function ()
             local quboid = require('quboid')
+
             require('nvim-treesitter.configs').setup({
                 ensure_installed = 'all',
                 auto_install = true,
@@ -19,11 +21,9 @@ return {
                     -- additional_vim_regex_highlighting = false,
                 },
                 indent = { enable = true },
+                -- autotag = { enable = true },
 
                 -- Extensions
-                autotag = {
-                    enable = true,
-                },
                 context_commentstring = {
                     enable = true
                 },
@@ -93,15 +93,36 @@ return {
                 --         ['i;'] = 'textsubjects-container-inner',
                 --     },
                 -- },
+
             })
+
+            -- require('nvim-ts-autotag').setup()
         end,
         keys = {
             { '<leader>tsp', '<cmd>TSPlaygroundToggle<cr>', desc = '[t]ree[s]itter [p]layground Toggle' },
             { '<leader>tsc', '<cmd>TSContextToggle<cr>', desc = '[t]ree[s]itter [c]layground Toggle' },
         },
-        event = 'VeryLazy',
+        -- event = 'VeryLazy',
         build = ':TSUpdate',
     },
+    { 'alvan/vim-closetag' }, -- TODO: add to readme
+    -- { 'windwp/nvim-ts-autotag',
+    --     dependencies = "nvim-treesitter/nvim-treesitter",
+    --     config = function ()
+    --         require('nvim-ts-autotag').setup({
+    --             enable = true,
+    --             filetypes = { "html" , "xml", "eruby", "erb", "embedded_template" },
+    --
+    --             enable_rename = true,
+    --             enable_close = true,
+    --             enable_close_on_slash = true,
+    --         })
+    --         ---@diagnostic disable-next-line: undefined-global
+    --         lvim.builtin.treesitter.autotag.enable = true 
+    --     end,
+    --     lazy = true,
+    --     event = "VeryLazy"
+    -- },
     { 'nvim-treesitter/nvim-treesitter-context',
         dependencies = 'nvim-treesitter/nvim-treesitter',
         config = function ()
