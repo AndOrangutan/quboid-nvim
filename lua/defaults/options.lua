@@ -4,6 +4,9 @@ local w = vim.wo    -- For the window local options
 local b = vim.bo    -- For the buffer local options
 local g = vim.g
 
+vim.g.editorconfig = true;          -- Enable editor config
+vim.o.textwidth = 80
+
 --local utils = require('utils')
 
 -- TODO: Move to quboid.lua
