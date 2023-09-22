@@ -354,4 +354,35 @@ return {
 			})
 		end,
 	},
+	{ 'Wansmer/symbol-usage.nvim',
+		event = 'LspAttach',
+		config = function()
+			require('symbol-usage').setup({
+				---@type 'above'|'end_of_line'|'textwidth' above by default
+				vt_position = 'end_of_line',
+				references = { enabled = true, include_declaration = false },
+				definition = { enabled = true },
+				implementation = { enabled = true },
+				text_format = function(symbol)
+					local fragments = {}
+
+					if symbol.references then
+						local usage = symbol.references <= 1 and 'usage' or 'usages'
+						local num = symbol.references == 0 and 'no' or symbol.references
+						table.insert(fragments, ('%s %s'):format(num, usage))
+					end
+
+					if symbol.definition then
+						table.insert(fragments, symbol.definition .. ' defs')
+					end
+
+					if symbol.implementation then
+						table.insert(fragments, symbol.implementation .. ' impls')
+					end
+
+					return '  ('..table.concat(fragments, ', ')..')'
+				end,
+			})
+		end
+	}
 }
