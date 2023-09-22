@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-fields
 
 return {
 
@@ -82,6 +83,7 @@ return {
             }
 
             local sources_git = {
+                { name = 'git', priority = 10 }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
                 { name = 'luasnip', priority = 10, max_item_count = 8 },
                 { name = 'luasnip_choice', priority = 10, max_item_count = 8 },
                 { name = 'path', priority = 10 },
@@ -104,9 +106,10 @@ return {
 
 
             cmp.setup({
-                -- experimental = {
-                --     ghost_text = { hl_group = 'cmpghosttext' },
-                -- },
+                experimental = {
+                    -- ghost_text = { hl_group = 'CmpGhostText' },
+                    ghost_text = true,
+                },
                 --
                 -- completion = {
                 --     completeopt = 'menu,menuone,noinsert',
@@ -115,8 +118,16 @@ return {
                     expand = function (args) luasnip.lsp_expand(args.body) end,
                 },
                 window = {
-                    documentation = { border = quboid.border_float },
-                    completion = { border = quboid.border },
+                    documentation = {
+                        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+                        border = quboid.border_float,
+                    },
+                    completion = {
+                        border = quboid.border,
+                        -- winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+                        col_offset = -3,
+                        side_padding = 0,
+                    },
                 },
                 mapping = cmp.mapping.preset.insert({
                     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -207,16 +218,10 @@ return {
                 sources = cmp.config.sources(sources),
             })
 
-            require("cmp_git").setup()
+            require("cmp_git").setup({ filetypes = require('quboid').ft_git })
             
             -- Set configuration for specific filetype.
-            cmp.setup.filetype('gitcommit', {
-                sources = cmp.config.sources({
-                    { name = 'git' }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-                }, {
-                        { name = 'buffer' },
-                    })
-            })
+            cmp.setup.filetype( quboid.ft_git, { name = 'buffer' })
 
             cmp.setup.filetype( quboid.ft_markup, {
                 sources = cmp.config.sources(sources_markup)
