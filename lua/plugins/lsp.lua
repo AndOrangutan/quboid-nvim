@@ -333,8 +333,20 @@ return {
 			require('illuminate').configure()
 		end,
     },
-	{
-		"zbirenbaum/neodim",
+	{ 'smjonas/inc-rename.nvim',
+		dependencies = {
+			'rcarriga/nvim-notify',
+		},
+		opts = {
+			input_buffer_type = 'dressing',
+			-- post_hook = function (out) vim.notify(vim.inspect(out)) end,
+		},
+		event = 'VeryLazy',
+		-- cmd = {
+		-- 	'IncRename'
+		-- },
+	},
+	{ 'zbirenbaum/neodim',
 		event = "LspAttach",
 		config = function()
 			require("neodim").setup({
@@ -382,7 +394,12 @@ return {
 
 					return '  ('..table.concat(fragments, ', ')..')'
 				end,
+				request_pending_text = '  loading...',
 			})
-		end
+		end,
+		keys = {
+			{ '<leader>ls', function () require('symbol-usage').toggle() end, desc = '[l]SP [s]ymbol Toggle' }
+		}
+
 	}
 }
