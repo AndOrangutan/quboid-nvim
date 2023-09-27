@@ -26,8 +26,8 @@ M.set_keymaps = function (_, bufnr)
     -- vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = 'Lsp [g]oto [D]eclaration', buffer = bufnr})
     vim.keymap.set('n', 'K', function ()
         local winid = nil
-        if not winid then vim.lsp.buf.hover() end
         if ufo_ok then winid = require('ufo').peekFoldedLinesUnderCursor() end
+        if not winid then vim.lsp.buf.hover() end
         -- if not winid then require("pretty_hover").hover() end
     end, { desc = 'Lsp [k]ick up Hover', buffer = bufnr})
     vim.keymap.set('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', { desc = 'Lsp Signature Help', buffer = bufnr})
@@ -38,6 +38,34 @@ M.set_keymaps = function (_, bufnr)
     vim.keymap.set('n', '<leader>F', '<cmd>lua vim.lsp.buf.format()<cr>', { desc = 'Lsp [F]ormat', buffer = bufnr})
     -- util.keymap('n', '<leader>ca', '<cmd>CodeActionMenu<cr>', { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
     vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', { desc = 'Lsp [c]ode [a]ction', buffer = bufnr})
+
+    local function openHelpLinks(client, bufnr)
+    end 
+
+    -- Add keymaps for opening links.
+    if not vim.b[buf].markdown_keys then
+        vim.keymap.set('n', 'K', function()
+            -- Vim help links.
+            local url = (vim.fn.expand '<cWORD>' --[[@as string]]):match '|(%S-)|'
+            if url then
+                return vim.cmd.help(url)
+            end
+
+            -- Markdown links.
+            local col = vim.api.nvim_win_get_cursor(0)[2] + 1
+            local from, to
+            from, to, url = vim.api.nvim_get_current_line():find '%[.-%]%((%S-)%)'
+            if from and col >= from and col <= to then
+                vim.system({ 'open', url }, nil, function(res)
+                    if res.code ~= 0 then
+                        vim.notify('Failed to open URL' .. url, vim.log.levels.ERROR)
+                end
+            end)
+        end
+        end, { buffer = buf, silent = true })
+        vim.b[buf].markdown_keys = true
+    end
+
 end
 
 
@@ -62,6 +90,32 @@ M.call_on_attach = function (client, bufnr)
     if lsp_signature_ok then
         lsp_signature.on_attach({}, bufnr)
     end
+
+    -- Extra highlights.
+    for l, line in ipairs(vim.api.nvim_buf_get_lines(buf, 0, -1, false)) do
+        for pattern, hl_group in pairs {
+            ['|%S-|'] = '@text.reference',
+            ['@%S+'] = '@parameter',
+            ['^%s*(Parameters:)'] = '@text.title',
+            ['^%s*(Return:)'] = '@text.title',
+            ['^%s*(See also:)'] = '@text.title',
+            ['{%S-}'] = '@parameter',
+        } do
+            local from = 1 ---@type integer?
+            while from do
+                local to
+                from, to = line:find(pattern, from)
+                if from then
+                    vim.api.nvim_buf_set_extmark(buf, md_namespace, l - 1, from - 1, {
+                        end_col = to,
+                        hl_group = hl_group,
+                    })
+                end
+                from = to and to + 1 or nil
+            end
+        end
+    end
+
 
 end
 
