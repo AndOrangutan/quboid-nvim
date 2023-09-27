@@ -105,6 +105,10 @@ return {
         end,
         build = "cd app && yarn install",
         ft = require('quboid').ft_markup,
+        cmd = {
+            'MarkdownPreview',
+            'MarkdownPreviewToggle'
+        },
         keys = {
             { '<f5>', '<cmd>MarkdownPreviewToggle<cr>', desc = 'Markdown Preview Toggle' },
         },
