@@ -9,7 +9,7 @@ return {
         end,
         cmd = { 'Neogen' },
         keys = {
-            { 'gcd', function () require('neogen').generate() end, '[g]enerate [c]omment [d]ocumentaiton' },
+            { 'gcd', function () require('neogen').generate() end, desc = '[g]enerate [c]omment [d]ocumentaiton' },
         },
     },
 }

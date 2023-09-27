@@ -28,7 +28,7 @@ return {
             end)
         end,
         keys = {
-            { '<leader>fw', function () require('configs.fzf-git-worktree').git_worktrees() end, '[f]zf Git [w]orktrees' },
+            { '<leader>fw', function () require('configs.fzf-git-worktree').git_worktrees() end, desc = '[f]zf Git [w]orktrees' },
             -- TODO: Convert to current input_builder :')
             -- { '<leader>gwa', function ()
             --     local util = require('util')
@@ -44,7 +44,7 @@ return {
             --         require('git-worktree').create_worktree(output.path, output.name, output.remote)
             --     end, {})
             -- end, '[g]it [w]orktree [a]dd' },
-            { '<leadergws', function () require('git-worktree').switch_worktree(vim.fn.input('Path: ')) end, '[g]it [w]orktree [s]witch' },
+            { '<leadergws', function () require('git-worktree').switch_worktree(vim.fn.input('Path: ')) end, desc = '[g]it [w]orktree [s]witch' },
         },
     },
     { 'TimUntersberger/neogit',
