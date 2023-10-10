@@ -62,6 +62,14 @@ lazy.setup('plugins', {
             },
         },
     },
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                'netrwPlugin', -- disable netrw
+            },
+        },
+    },
+
 })
 
 -- Load post-plugin settings
