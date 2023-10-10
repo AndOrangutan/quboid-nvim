@@ -6,12 +6,14 @@ return {
             'nvim-treesitter/nvim-treesitter',
         },
         config = function()
+
             require('go').setup({
-                notify = true,
+                notify = false,
+                lsp_cfg = false,
             })
         end,
         event = {'CmdlineEnter'},
-        ft = {'go', 'gomod'},
+        ft = require('quboid').ft_go,
         build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     }
 }

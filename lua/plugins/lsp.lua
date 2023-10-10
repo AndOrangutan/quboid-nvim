@@ -86,13 +86,21 @@ return {
 				["gopls"] = function()
 					local install_root_dir = vim.fn.stdpath("data") .. "/lsp_servers"
 					local config = require("lsp.util").gen_config()
+
 					local ext_config = {
-						gopls_cmd = { install_root_dir .. "/go/gopls" },
+
+						gopls_cmd = { install_root_dir .. '/go/gopls' },
 						fillstruct = "gopls",
 						dap_debug = true,
 						dap_debug_gui = true,
+						filetypes = quboid.ft_go,
+						settings = {
+							gopls = {
+								['build.templateExtensions'] = { 'gohtml', 'html', 'gotmpl', 'tmpl' },
+							}
+						}
 					}
-					config = vim.tbl_extend("keep", config or {}, ext_config)
+					config = vim.tbl_extend("keep", ext_config or {}, config)
 					require("lspconfig").gopls.setup(config)
 				end,
 				["jdtls"] = function() end,
@@ -100,10 +108,11 @@ return {
 				["eslint"] = function()
 					local config = lsp_util.gen_config()
 
-					config.settings =
-						{
-							packageManager = quboid.ft_javascript_package_manager,
-						}, lspconfig.eslint.setup(config)
+					config.settings = {
+						packageManager = quboid.ft_javascript_package_manager,
+					}
+
+					lspconfig.eslint.setup(config)
 				end,
 				['tailwindcss'] = function ()
 					local config = lsp_util.gen_config()
@@ -245,6 +254,13 @@ return {
 				}),
 				null_ls.builtins.completion.spell,
 
+				null_ls.builtins.formatting.golines.with({
+					extra_args = {
+						"--max-len=180",
+						"--base-formatter=gofumpt",
+					},
+				}),
+
 				null_ls.builtins.formatting.google_java_format,
 				-- null_ls.builtins.diagnostics.pmd.with({
 				--     extra_args = {
@@ -261,16 +277,19 @@ return {
 			}
 
 			local typescript_null_ls_ok, typescript_null_ls =
-				pcall(require, "typescript.extensions.null-ls.code-actions")
+			pcall(require, "typescript.extensions.null-ls.code-actions")
 			if typescript_null_ls_ok then
 				table.insert(sources, typescript_null_ls)
 			end
 
 			local go_null_ls_ok, go_null_ls = pcall(require, "go.null_ls")
 			if go_null_ls_ok then
-				table.insert(sources, go_null_ls.gotest())
-				table.insert(sources, go_null_ls.gotest_action())
-				table.insert(sources, go_null_ls.golangci_lint())
+				local gotest = require("go.null_ls").gotest()
+				local gotest_codeaction = require("go.null_ls").gotest_action()
+				local golangci_lint = require("go.null_ls").golangci_lint()
+				table.insert(sources, gotest)
+				table.insert(sources, golangci_lint)
+				table.insert(sources, gotest_codeaction)
 			end
 
 			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -283,23 +302,23 @@ return {
 					return client.name == "null-ls"
 				end,
 				on_attach = function(client, bufnr)
-					if client.supports_method("textDocument/formatting") then
-						local format_on_save = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
-						-- vim.api.nvim_create_autocmd("BufWritePre", {
-						-- 	group = augroup,
-						-- 	buffer = bufnr,
-						-- 	callback = function()
-						-- 		vim.notify("Formatting Document", vim.log.levels.INFO)
-						-- 		vim.lsp.buf.format({
-						-- 			group = format_on_save,
-						-- 			bufnr = bufnr,
-						-- 			filter = function(c)
-						-- 				return c.name == "null-ls"
-						-- 			end,
-						-- 		})
-						-- 	end,
-						-- })
-					end
+					-- if client.supports_method("textDocument/formatting") then
+					-- 	-- local format_on_save = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+					-- 	-- vim.api.nvim_create_autocmd("BufWritePre", {
+					-- 	-- 	group = augroup,
+					-- 	-- 	buffer = bufnr,
+					-- 	-- 	callback = function()
+					-- 	-- 		vim.notify("Formatting Document", vim.log.levels.INFO)
+					-- 	-- 		vim.lsp.buf.format({
+					-- 	-- 			group = format_on_save,
+					-- 	-- 			bufnr = bufnr,
+					-- 	-- 			filter = function(c)
+					-- 	-- 				return c.name == "null-ls"
+					-- 	-- 			end,
+					-- 	-- 		})
+					-- 	-- 	end,
+					-- 	-- })
+					-- end
 				end,
 			})
 		end,
@@ -311,10 +330,10 @@ return {
 				hooks = {
 					before_open = function(results, open, jump, method)
 						local uri = vim.uri_from_bufnr(0)
-						if #results == 1 then
+					if #results == 1 then
 							local target_uri = results[1].uri or results[1].targetUri
 
-							if target_uri == uri then
+						if target_uri == uri then
 								jump(results[1])
 							else
 								open(results)
@@ -327,12 +346,12 @@ return {
 			})
 		end,
 	},
-    { 'RRethy/vim-illuminate',
-        event = 'BufRead',
-        config = function()
+	{ 'RRethy/vim-illuminate',
+		event = 'BufRead',
+		config = function()
 			require('illuminate').configure()
 		end,
-    },
+	},
 	{ 'smjonas/inc-rename.nvim',
 		dependencies = {
 			'rcarriga/nvim-notify',

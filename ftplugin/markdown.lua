@@ -14,5 +14,6 @@ vim.keymap.set('n', 'gk', 'k')
 vim.diagnostic.config({
     update_in_insert = true,
     virtual_lines = false,
+    virtual_text = false,
     underline = true
 })

@@ -105,7 +105,7 @@ return {
         -- event = 'VeryLazy',
         build = ':TSUpdate',
     },
-    { 'alvan/vim-closetag' }, -- TODO: add to readme
+    { 'alvan/vim-closetag' }, -- TODO: add to readme and add in gohtml
     -- { 'windwp/nvim-ts-autotag',
     --     dependencies = "nvim-treesitter/nvim-treesitter",
     --     config = function ()

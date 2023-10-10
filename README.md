@@ -278,6 +278,7 @@ Keymaps:
 
 ## TODO
 
+- Fix gotempl lsp (gotmpl + html)
 - Completion
     - fix luasnip node shit
 - Zk
