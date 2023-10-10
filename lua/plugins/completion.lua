@@ -54,15 +54,18 @@ return {
             local luasnip_ok, luasnip = pcall(require, 'luasnip')
             local cmp_autopairs_ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
 
+            vim.opt.pumheight = 32
+
+
             local sources = {
                 { name = 'luasnip', priority = 10, max_item_count = 8 },
                 { name = 'luasnip_choice', priority = 10, max_item_count = 8 },
                 { name = 'path', priority = 10 },
                 { name = 'calc', priority = 10},
-                
+
                 { name = 'nvim_lsp', priority = 9 },
                 { name = 'vim-dadbod-completion', priority = 9 },
-                { name = 'buffer', max_item_count = 3 },
+                { name = 'buffer', max_item_count = 3, option = { get_bufnrs = function() return vim.api.nvim_list_bufs() end }  },
             }
             local sources_markup = {
                 { name = 'luasnip', priority = 10, max_item_count = 8 },
@@ -70,7 +73,7 @@ return {
                 { name = 'latex_symbols', priority = 10 },
                 { name = 'calc', priority = 10},
                 { name = 'nvim_lsp', priority = 9 },
-                { name = 'buffer', max_item_count = 3 },
+                { name = 'buffer', max_item_count = 3, option = { get_bufnrs = function() return vim.api.nvim_list_bufs() end },}
             }
             local sources_tex = {
                 { name = 'luasnip', priority = 10, max_item_count = 8 },
@@ -79,7 +82,8 @@ return {
                 { name = 'calc', priority = 10},
                 { name = 'nvim_lsp', priority = 9 },
                 { name = 'latex_symbols', priority = 7 },
-                { name = 'buffer', max_item_count = 3 },
+                { name = 'buffer', max_item_count = 3, option = { get_bufnrs = function() return vim.api.nvim_list_bufs() end } },
+
             }
 
             local sources_git = {
@@ -89,7 +93,7 @@ return {
                 { name = 'path', priority = 10 },
 
                 { name = 'nvim_lsp', priority = 9 },
-                { name = 'buffer', max_item_count = 3 },
+                { name = 'buffer', max_item_count = 3, option = { get_bufnrs = function() return vim.api.nvim_list_bufs() end }  },
             }
 
             local completion_names = {
