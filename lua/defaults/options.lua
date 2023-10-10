@@ -14,7 +14,9 @@ local indentSize = 4
 
 g.mapleader = " "
 
+vim.opt.pumheight = 24
 --o.concealcursor="nc"
+
 
 -- wrapped
 o.smoothscroll         = true
