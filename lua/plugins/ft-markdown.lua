@@ -120,7 +120,7 @@ return {
         },
         event = 'VeryLazy',
         config = function ()
-            local lsp_config = require('lsp.util').gen_config()
+            local lsp_config = require('lsp').gen_config()
             lsp_config = vim.tbl_extend('keep', lsp_config or {}, { cmd = { 'zk', 'lsp' }, name = 'zk' })
 
             require('zk').setup({

@@ -1,4 +1,4 @@
-local quboid = require("quboid")
+---@diagnostic disable: missing-fields
 
 return {
 	{
@@ -19,7 +19,7 @@ return {
 					hi_parameter = "String",
 					floating_window_above_cur_line = true,
 					handler_opts = {
-						border = quboid.border,
+						border = require('quboid').border,
 					},
 				},
 				config = function(_, opts)
@@ -31,47 +31,8 @@ return {
 			local quboid = require("quboid")
 			local lspconfig = require("lspconfig")
 			local masonlsp = require("mason-lspconfig")
-			local lsp_util = require("lsp.util")
 
-			-- Set icons
-			local kinds = vim.lsp.protocol.CompletionItemKind
-			for i, kind in ipairs(kinds) do
-				kinds[i] = quboid.lsp_kind[i] or kind
-			end
-
-			-- Customize diagnostics also influences lsp_lines
-			vim.diagnostic.config({
-				virtual_text = false,
-				update_in_insert = false,
-				virtual_lines = { only_current_line = true },
-				-- signs = true,
-				underline = false,
-				-- update_in_insert = false,
-				severity_sort = true,
-				float = {
-					source = "always",
-				},
-			})
-
-			-- Overide border globally
-			local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
-			function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
-				opts = opts or {}
-				opts.border = opts.border or quboid.border
-				return orig_util_open_floating_preview(contents, syntax, opts, ...)
-			end
-
-			-- Customize the sign columns
-			local signs = {
-				Error = quboid.icons.circle_error,
-				Warn = quboid.icons.circle_warn,
-				Hint = quboid.icons.circle_hint,
-				Info = quboid.icons.circle_info,
-			}
-			for type, icon in pairs(signs) do
-				local hl = "DiagnosticSign" .. type
-				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-			end
+			require('lsp')
 
 			masonlsp.setup_handlers({
 				-- The first entry (without a key) will be the default handler
@@ -80,15 +41,14 @@ return {
 				-- default handler (optional)
 
 				function(server_name)
-					require("lspconfig")[server_name].setup(lsp_util.gen_config())
+					require("lspconfig")[server_name].setup(require('lsp').gen_config())
 				end,
 				-- Next, you canprovide targeted overrides for specific servers.
 				["gopls"] = function()
 					local install_root_dir = vim.fn.stdpath("data") .. "/lsp_servers"
-					local config = require("lsp.util").gen_config()
+					local config = require("lsp").gen_config()
 
 					local ext_config = {
-
 						gopls_cmd = { install_root_dir .. '/go/gopls' },
 						fillstruct = "gopls",
 						dap_debug = true,
@@ -106,16 +66,16 @@ return {
 				["jdtls"] = function() end,
 				["tsserver"] = function() end,
 				["eslint"] = function()
-					local config = lsp_util.gen_config()
+					local config = require('lsp').gen_config()
 
-					config.settings = {
-						packageManager = quboid.ft_javascript_package_manager,
-					}
+					-- config.settings = {
+					-- 	packageManager = quboid.ft_javascript_package_manager,
+					-- }
 
 					lspconfig.eslint.setup(config)
 				end,
 				['tailwindcss'] = function ()
-					local config = lsp_util.gen_config()
+					local config = require('lsp').gen_config()
 					config.root_dir = function (fname)
 						local root_pattern = require("lspconfig").util.root_pattern(
 							"tailwind.config.cjs",
@@ -124,16 +84,12 @@ return {
 						)
 						return root_pattern(fname)
 					end
-					lspconfig.lua_ls.setup({
-
-					})
+					lspconfig.tailwindcss.setup(config)
 				end,
 				["lua_ls"] = function()
 					lspconfig.lua_ls.setup({
-						on_attach = function(client, bufnr)
-							lsp_util.call_on_attach(client, bufnr)
-						end,
-						capabilities = lsp_util.gen_capabilities(),
+						on_attach = require('lsp').gen_on_attach(),
+						capabilities = require('lsp').gen_capabilities(),
 						settings = {
 							Lua = {
 								runtime = {
@@ -172,6 +128,7 @@ return {
 			},
 			{ "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc = "Prev [d]iagnostic" },
 			{ "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Next [d]iagnostic" },
+			{ '<leader>q', '<cmd> lua vim.diagnostic.setloclist()<cr', desc = 'Add [d]iagnostics to Loclist'}
 		},
 		event = "VeryLazy",
 	},
@@ -364,26 +321,6 @@ return {
 		-- cmd = {
 		-- 	'IncRename'
 		-- },
-	},
-	{ 'zbirenbaum/neodim',
-		event = "LspAttach",
-		config = function()
-			require("neodim").setup({
-				alpha = 0.5,
-				blend_color = "#000000",
-				hide = {
-					underline = true,
-					virtual_text = true,
-					signs = true,
-				},
-				regex = {
-					"[uU]nused",
-					"[nN]ever [rR]ead",
-					"[nN]ot [rR]ead",
-				},
-				disable = {},
-			})
-		end,
 	},
 	{ 'Wansmer/symbol-usage.nvim',
 		event = 'LspAttach',

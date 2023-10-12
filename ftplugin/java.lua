@@ -38,23 +38,21 @@ if root_dir == '' then
     return
 end
 
-local config = require('lsp.util').gen_config()
+local config = require('lsp').gen_config()
 
-config['on_attach'] = function (client, bufnr)
-    require('lsp.util').call_on_attach(client, bufnr)
-
+config['on_attach'] = require('lsp').gen_on_attach(function (client, bufnr)
     vim.keymap.set('n', '<M-o>', '<Cmd>lua require"jdtls".organize_imports()<CR>', { desc = 'JDTLS [o]rganize Imports', buffer = bufnr })
     vim.keymap.set('n', 'crv','<Cmd>lua require("jdtls").extract_variable()<CR>', { desc = 'JDTLS [cr]eate Extracted Variable', buffer = bufnr })
     vim.keymap.set('v', 'crv', '<Esc><Cmd>lua require("jdtls").extract_variable(true)<CR>', { desc = 'JDTLS [cr]eate Extracted Variable', buffer = bufnr })
     vim.keymap.set('n', 'crc', '<Cmd>lua require("jdtls").extract_constant()<CR>', { desc = 'JDTLS [cr]eate Extracted Constant', buffer = bufnr })
     vim.keymap.set('v', 'crc', '<Esc><Cmd>lua require("jdtls").extract_constant(true)<CR>', { desc = 'JDTLS [cr]eate Extracted Constant', buffer = bufnr })
     vim.keymap.set('v', 'crm', '<Esc><Cmd>lua require("jdtls").extract_method(true)<CR>', { desc = 'JDTLS [cr]eate Extracted Method', buffer = bufnr })
-end
+end)
 
 local extCapabilities = jdtls.extendedClientCapabilities
 extCapabilities.resolveAdditionalTextEditsSupport = true
 
-config['apabilitie'] = require('lsp.util').gen_capabilities(extCapabilities)
+config['capabilitie'] = require('lsp').gen_capabilities(extCapabilities)
 
 -- https://www.reddit.com/r/neovim/comments/12wypuf/comment/jhj5u6b/?utm_source=share&utm_medium=web2x&context=3
 config['cmd'] = {
