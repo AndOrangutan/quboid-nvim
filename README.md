@@ -6,13 +6,74 @@ Resiliant, fast, text-based Personal Development Environment
 
 ## Requirements
 
-### Dependencies
+### Dependencies and External Tools
 
+- [junegunn/fzf](https://github.com/junegunn/fzf)
+- [BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep)
 
 
 ## Core
 
 ### Features
+
+#### Language Support
+
+| Language          | LSP                                       | Format            | Lint              | DAP               |
+|-------------------|-------------------------------------------|-------------------|-------------------|-------------------|
+| AWK               | `awk_ls`                                  | -                 | -                 | -                 |
+| Angular           | `angluarls`                               | -                 | -                 | -                 |
+| Ansible           | `als`                                     | -                 | -                 | -                 |
+| Arduino           | `arduino_language_server`                 | -                 | -                 | -                 |
+| Assembly          | `asm_lsp`                                 | -                 | -                 | -                 |
+| Azure Pipeline    | `azure_pipelines_ls`                      | -                 | -                 | -                 |
+| Bash              | `bashls`<br>`pkgbuild_language_server`    | -                 | -                 | -                 |
+| C                 | `clangd`                                  | -                 | -                 | -                 |
+| C#                | `omnisharp`<br>`omnisharp_mono`           | -                 | -                 | -                 |
+| CMake             | `neocmake`                                | -                 | -                 | -                 |
+| CSS               | `cssls`                                   | -                 | -                 | -                 |
+| Clojure           | `clojure_lsp`                             | -                 | -                 | -                 |
+| Custom Elements   | `custom_elements_ls`                      | -                 | -                 | -                 |
+| Deno              | `denols`                                  | -                 | -                 | -                 |
+| Docker            | `dockerls`                               | -                 | -                 | -                 |
+| Docker Compose    | `docker_compose_language_service`         | -                 | -                 | -                 |
+| ESLint            | `eslint`                                  | -                 | -                 | -                 |
+| Elixer            | `elixerls`                                | -                 | -                 | -                 |
+| Fennel            | `fennel_language_server`                  | -                 | -                 | -                 |
+| Fortran           | `fortls`                                  | -                 | -                 | -                 |
+| Go                | `gopls`<br>`golangci_lint_ls`<br>`templ`  | -                 | -                 | -                 |
+| Gradle            | `gradle_ls`                               | -                 | -                 | -                 |
+| GraphQL           | `graphql`                                 | -                 | -                 | -                 |
+| HTML              | `html`<br>`emmet_language_server`         | -                 | -                 | -                 |
+| Haskell           | `hls`                                     | -                 | -                 | -                 |
+| JSON              | `jsonls`                                  | -                 | -                 | -                 |
+| Java              | `jdtls`                                   | -                 | -                 | -                 |
+| JavaScript(TS)    | `tsserver`                                | -                 | -                 | -                 |
+| Kotlin            | `kotlin_language_server`                  | -                 | -                 | -                 |
+| LaTeX             | `ltex`<br>`texlab`                        | -                 | -                 | -                 |
+| Lua               | `lua_ls`                                  | -                 | -                 | -                 |
+| Markdown          | `zk`<br>`ltex`                            | -                 | -                 | -                 |
+| Mathlab           | `matlab_ls`                               | -                 | -                 | -                 |
+| (Neo)Mutt         | `mutt_ls`                                 | -                 | -                 | -                 |
+| OCaml             | `ocamllsp`                                | -                 | -                 | -                 |
+| PHP               | `intelephense`                            | -                 | -                 | -                 |
+| Powershell        | `powershell_es`                           | -                 | -                 | -                 |
+| Python            | `pyright`<br>`pyre`<br>`ruff_lsp`         | -                 | -                 | -                 |
+| Ruby              | `ruby_ls`                                 | -                 | -                 | -                 |
+| Rust              | `rust_analyzeer`                          | -                 | -                 | -                 |
+| SQL               | `sqlls`                                   | -                 | -                 | -                 |
+| Svelte            | `svelte`                                  | -                 | -                 | -                 |
+| SystemVerilog     | `verible`                                 | -                 | -                 | -                 |
+| TOML              | `taplo`                                   | -                 | -                 | -                 |
+| Tailwind CSS      | `tailwindcss`                             | -                 | -                 | -                 |
+| Terraform         | `terraformls`<br>`tflint`                 | -                 | -                 | -                 |
+| UnoCSS            | `unocss`                                  | -                 | -                 | -                 |
+| VimL              | `vimls`                                   | -                 | -                 | -                 |
+| Vue               | `vtsls`                                   | -                 | -                 | -                 |
+| XML               | `lemminx`                                 | -                 | -                 | -                 |
+| YAML              | `yamlls`                                  | -                 | -                 | -                 |
+| Zig               | `zls`                                     | -                 | -                 | -                 |
+
+
 
 #### Git workflow
 
@@ -27,42 +88,6 @@ Resiliant, fast, text-based Personal Development Environment
 This is what makes modern languages and IDEs feel like a well oiled machine. Completion allows us to use longer and more descriptive names, goto-definition allows us to navigate quickly, proper renaming, and diagnostics. 
 
 Many of these are the exact same ones you can use in VSCode, except the configuration differs largely, so they are not always feature equivalent.
-
-| Language                  | Server            | Extension     |
-|---------------------------|-------------------|---------------|
-|  swk_ls                   | Awk               |               |
-|  angularls                | Angular           |               |
-|  arduino_language_server  | Aruino            |               |
-|  bashls                   | Bash              |               |
-|  clangd                   | C, C++            |               |
-|  omnisharp                | C#                |               |
-|  cmake                    | CMake             |               |
-|  cssls                    | CSS               |               |
-|  clojure_lsp              | Clojure           |               |
-|  dockerls                 | Docker            |               |
-|  emmet_ls                 | Emmet             |               |
-|  fortls                   | Fortran           |               |
-|  gopls                    | Go                |               |
-|  html                     | HTML              |               |
-|  eslint                   | Javascript        |               |
-|  jsonls                   | JSON              |               |
-|  jdtls                    | JAVA              |               |
-|  tsserver                 | Typescript        |               |
-|  kotlin_language_server   | Kotlin            |               |
-|  lua_ls                   | Lua               |               |
-|  rnix                     | Nix               |               |
-|  intelephense             | PHP               |               |
-|  pyright                  | Python            |               |
-|  Rust                     | Rust              |               |
-|  sqlls                    | SQL               |               |
-|  Svelte                   | Svelte            |               |
-|  taplo                    | TOML              |               |
-|  tailwindcss              | Tailwind CSS      |               |
-|  vimls                    | VimL              |               |
-|  vuels                    | Vue               |               |
-|  lemminx                  | XML               |               |
-|  yamlls                   | YAML              |               |
-|  zls                      | Zig               |               |
 
 <!-- #### DAP (Debug Adapter Protocol) -->
 
@@ -241,7 +266,8 @@ Keymaps:
 #### Picker
 
 - [stevearc/dressing.nvim](https://github.com/stevearc/dressing.nvim) - Neovim plugin to improve the default vim.ui interfaces.
-- [ibhagwan/fzf-lua](https://github.com/ibhagwan/fzf-lua) - Improved fzf.vim written in lua
+- [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - Find, Filter, Preview, Pick. All lua, all the time.
+    - [nvim-telescope/telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) - FZF sorter for telescope written in c
 
 #### Search
 
@@ -284,36 +310,77 @@ Keymaps:
 - Zk
     - Have dir passed into dir-title input
 - Plugins
-    - [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua) - Fully featured & enhanced replacement for copilot.vim complete with API for interacting with Github Copilot 
-    - [metakirby5/codi.vim](https://github.com/metakirby5/codi.vim) - The interactive scratchpad for hackers.
-    - [lukas-reineke/cmp-rg](https://github.com/lukas-reineke/cmp-rg) - ripgrep source for nvim-cmp
-    - [uga-rosa/cmp-dictionary](https://github.com/uga-rosa/cmp-dictionary) - nvim-cmp source for dictionary
-    - [jcha0713/cmp-tw2css](https://github.com/jcha0713/cmp-tw2css) - A source for nvim-cmp to convert tailwindcss classes to pure css codes
-    - [David-Kunz/cmp-npm](https://github.com/David-Kunz/cmp-npm) - An additional source for nvim-cmp to autocomplete packages and its versions
-    - [zbirenbaum/copilot-cmp](https://github.com/zbirenbaum/copilot-cmp) - Lua plugin to turn github copilot into a cmp source.
-    - https://github.com/nvim-neotest/neotest
-    - https://github.com/andythigpen/nvim-coverage
-    - https://github.com/JMarkin/cmp-diag-codes
-    - https://github.com/tpope/vim-dadbod
-    - https://github.com/kristijanhusak/vim-dadbod-completion
-    - https://github.com/paopaol/cmp-doxygen
-    - https://github.com/jcdickinson/wpm.nvim
-    - https://github.com/nvim-neotest/neotest
-    - https://github.com/smjonas/inc-rename.nvim
-    - https://github.com/koenverburg/peepsight.nvim
-    - https://github.com/uga-rosa/ccc.nvim
-    - https://github.com/jbyuki/nabla.nvim
-    - https://github.com/VidocqH/lsp-lens.nvim
-    - https://github.com/chrisgrieser/nvim-early-retirement
-    - https://github.com/t-troebst/perfanno.nvim
-    - https://github.com/ThePrimeagen/refactoring.nvim
-    - https://github.com/zbirenbaum/copilot.lua
-    - https://github.com/zbirenbaum/copilot-cmp
-    - https://github.com/jmbuhr/otter.nvim
-    - https://github.com/dkarter/bullets.vim
-    - https://github.com/martineausimon/nvim-xresources
-    https://www.reddit.com/r/neovim/comments/15cza0z/created_a_little_utility_for_tailwind_to_get_all/
-    - https://github.com/MaximilianLloyd/tw-values.nvim
+    - AI
+        - [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua) - Fully featured & enhanced replacement for copilot.vim complete with API for interacting with Github Copilot 
+        - [zbirenbaum/copilot-cmp](https://github.com/zbirenbaum/copilot-cmp) - Lua plugin to turn github copilot into a cmp source.
+    - High Priority
+        - https://github.com/pmizio/typescript-tools.nvim
+        - https://github.com/wsdjeg/vim-fetch
+        - https://github.com/uga-rosa/ccc.nvim
+    - Nice to have
+        - https://github.com/rest-nvim/rest.nvim
+        - https://github.com/Bekaboo/dropbar.nvim
+        - https://github.com/Bekaboo/deadcolumn.nvim
+        - https://github.com/ThePrimeagen/refactoring.nvim
+        - [metakirby5/codi.vim](https://github.com/metakirby5/codi.vim) - The interactive scratchpad for hackers.
+        - https://github.com/folke/edgy.nvim
+        - https://github.com/jcdickinson/wpm.nvim
+        - https://github.com/VidocqH/data-viewer.nvim
+        - https://github.com/koenverburg/peepsight.nvim
+        - https://github.com/chrisgrieser/nvim-various-textobjs
+    - Maybe
+        - https://github.com/miversen33/netman.nvim
+        - [MaximilianLloyd/tw-values.nvim](https://github.com/MaximilianLloyd/tw-values.nvim) - View all applied tailwindcss values on an element
+        - https://github.com/chrisgrieser/nvim-early-retirement
+        - https://github.com/Jezda1337/nvim-html-css
+        - https://github.com/pwntester/octo.nvim
+    - Completion
+        - https://github.com/lukas-reineke/cmp-under-comparator
+        - https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
+        - [uga-rosa/cmp-dictionary](https://github.com/uga-rosa/cmp-dictionary) - nvim-cmp source for dictionary
+        - [jcha0713/cmp-tw2css](https://github.com/jcha0713/cmp-tw2css) - A source for nvim-cmp to convert tailwindcss classes to pure css codes
+        - [David-Kunz/cmp-npm](https://github.com/David-Kunz/cmp-npm) - An additional source for nvim-cmp to autocomplete packages and its versions
+        - https://github.com/JMarkin/cmp-diag-codes
+        - https://github.com/paopaol/cmp-doxygen
+        - https://github.com/Gelio/cmp-natdat/
+    - Smellescope
+        - nvim-telescope/telescope.nvim
+        - https://github.com/nvim-telescope/telescope-fzf-native.nvim
+        - https://github.com/nvim-telescope/telescope-media-files.nvim
+        - https://github.com/dimaportenko/telescope-simulators.nvim
+        - https://github.com/axkirillov/easypick.nvim
+        - https://github.com/luckasRanarison/nvim-devdocs
+    - Lsp
+        - https://github.com/fmbarina/pick-lsp-formatter.nvim
+        - https://github.com/hinell/lsp-timeout.nvim
+        - https://github.com/lvimuser/lsp-inlayhints.nvim
+        - https://github.com/nvimtools/none-ls.nvim
+        - https://github.com/aznhe21/actions-preview.nvim
+    - DAP
+        - https://github.com/mfussenegger/nvim-dap
+        - https://github.com/ofirgall/goto-breakpoints.nvim
+        - https://github.com/rcarriga/nvim-dap-ui
+        - https://github.com/Weissle/persistent-breakpoints.nvim
+        - https://github.com/LiadOz/nvim-dap-repl-highlights
+        - https://github.com/nvim-telescope/telescope-dap.nvim
+    - Testing
+        - https://github.com/nvim-neotest/neotest
+        - https://github.com/andythigpen/nvim-coverage
+        - https://github.com/t-troebst/perfanno.nvim
+    - Markdown
+        - https://github.com/3rd/image.nvim
+        - https://github.com/jbyuki/nabla.nvim
+        - https://github.com/jmbuhr/otter.nvim
+        - https://github.com/dkarter/bullets.vim
+        - https://github.com/jbyuki/venn.nvim
+    - Rust
+        - https://github.com/Saecki/crates.nvim
+    - Colorscheme
+        - https://github.com/martineausimon/nvim-xresources
+    - https://www.reddit.com/r/neovim/comments/14yjftv/massive_update_to_neogit_and_new_home/
+    - https://www.reddit.com/r/neovim/comments/10cigze/minimove_move_any_selection_in_any_direction/
+    - https://www.reddit.com/r/neovim/comments/14k7pbc/what_is_the_nvimcmp_comparatorsorting_you_are/
+    - https://www.reddit.com/r/neovim/comments/170ykc0/tailwind_lsp_hover_documentation_multiple_lsps/
 - override netrw.
 - LSP
     - Toggle underlines

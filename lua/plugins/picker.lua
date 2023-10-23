@@ -10,61 +10,87 @@ return {
             },
         },
     },
-    { 'ibhagwan/fzf-lua',
+    { 'nvim-telescope/telescope.nvim',
         dependencies = {
-            'nvim-tree/nvim-web-devicons',
-            config = true,
+            'nvim-lua/plenary.nvim',
+            { 'nvim-telescope/telescope-fzf-native.nvim',
+                build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+            },
         },
-        config = function ()
-            local img_previewer = vim.fn.executable("ueberzug") == 1 and { "ueberzug" } or { "viu", "-b" }
-
-            require('fzf-lua').setup({
-                multiprocess=true,
-                file_icon_padding = ' ',
-                fzf_opts = { 
-                    ['--no-separator'] = '',
-                    ['--border'] = false
-                },
-                winopts = {
-                    border = { ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '  },
-                    hl = {
-                        normal         = 'NormalFloat', -- window normal color (fg+bg)
-                        border         = 'NormalFloat',        -- border color (try 'FloatBorder')
-                        -- Only valid with the builtin previewer:
-                        cursor         = 'Cursor',      -- cursor highlight (grep/LSP matches)
-                        cursorline     = 'NormalFloat',  -- cursor line
-                        search         = 'Search',      -- search matches (ctags)
-                        title           = 'FloatBorder',    -- preview border title (file/buffer)
-                        -- scrollbar_f = 'PmenuThumb',  -- scrollbar "full" section highlight
-                        -- scrollbar_e = 'PmenuSbar',   -- scrollbar "empty" section highlight
+        config = function()
+            local telescope = require('telescope')
+            telescope.setup{
+                defaults = {
+                    -- Default configuration for telescope goes here:
+                    -- config_key = value,
+                    mappings = {
+                        i = {
+                            ["<C-h>"] = "which_key",
+                        }
+                    }, 
+                    vimgrep_arguments = {
+                        "rg",
+                        "--color=never",
+                        "--no-heading",
+                        "--with-filename",
+                        "--line-number",
+                        "--column",
+                        "--smart-case",
+                        "--trim" -- add this value
                     },
-                },
-                winopts_fn = function ()
-                    return { 
-                        width = vim.o.columns>80 and 0.85 or 1,
-                        hight = vim.o.columns>80 and 0.85 or 1,
-                    }
-                end,
-                previewers = {
-                    builtin = {
-                        ueberzug_scaler = "cover",
-                        extensions = {
-                            ["gif"] = img_previewer,
-                            ["png"] = img_previewer,
-                            ["jpg"] = img_previewer,
-                            ["jpeg"] = img_previewer,
+                    prompt_prefix = "   ",
+                    selection_caret = "  ",
+                    entry_prefix = " ",
+                    initial_mode = "insert",
+                    selection_strategy = "reset",
+                    sorting_strategy = "ascending",
+                    layout_strategy = "horizontal",
+                    layout_config = {
+                        horizontal = {
+                            prompt_position = "top",
+                            preview_width = 0.55,
+                            results_width = 0.8,
                         },
+                        vertical = {
+                            mirror = false,
+                        },
+                        width = 0.95,
+                        height = 0.95,
+                        preview_cutoff = 120,
                     },
+                    border = {},
+                    borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
                 },
-            })
+                pickers = {
+                },
+                extensions = {
+                    fzf = {
+                        fuzzy = true,                    -- false will only do exact matching
+                        override_generic_sorter = true,  -- override the generic sorter
+                        override_file_sorter = true,     -- override t ffhe file sorter
+                        case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                        -- the default case_mode is "smart_case"
+                    },
+                }
+            }
+
+            telescope.load_extension('fzf')
+            telescope.load_extension('git_worktree')
         end,
         keys = {
-            { '<leader>f', '<cmd>FzfLua<cr>', desc = '[f]zf All' },
-            { '<leader>ff', '<cmd>FzfLua files<cr>', desc = '[f]zf Find [f]iles' },
-            { '<leader>fc', '<cmd>FzfLua colorschemes<cr>', desc = '[f]zf [c]olorschemes' },
-            { '<leader>fg', '<cmd>FzfLua live_grep_resume<cr>', desc = '[f]zf [g]rep files' },
-            { '<leader>fh', '<cmd>FzfLua help_tags<cr>', desc = '[f]zf Neovim [h]elp tags' },
+            { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'Telescope [f]Zf [f]iles' },
+            { '<leader>fg', '<cmd>Telescope live_grep<cr>', desc = 'Telescope [f]ZF [g]rep' },
+            { '<leader>fa', '<cmd>Telescope builtin<cr>', desc = 'Telescope [f]ZF [a]ll' },
+            { '<leader>fc', '<cmd>Telescope colorscheme<cr>', desc = 'Telescope [f]ZF [c]olorscheme' },
+            { '<leader>fm', '<cmd>Telescope marks<cr>', desc = 'Telescope [f]ZF [m]arks' },
+            { '<leader>fk', '<cmd>Telescope keymaps<cr>', desc = 'Telescope [f]ZF [k]eymaps' },
+            { '<leader>fb', '<cmd>Telescope buffers<cr>', desc = 'Telescope [f]ZF [b]uffers' },
+            { '<leader>fh', '<cmd>Telescope help_tags<cr>', desc = 'Telescope [f]ZF [h]elp Tags' },
+
+
+            -- { '<leader>fh', [[<cmd>lua require("require('telescope.builtin')").help_tags<cr>]], desc = 'Telescope [f]ZF [h]elp Tags' },
+
         },
-        event = { 'BufReadPre', 'BufNewFile' },
-    }
+        -- event = { 'BufReadPre', 'BufNewFile' },
+    },
 }

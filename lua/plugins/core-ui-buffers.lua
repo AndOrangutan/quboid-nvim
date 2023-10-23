@@ -46,25 +46,30 @@ return {
 				return feet
 			end
 
-			vim.g.my_notebook_open = function(selected, opts)
-				local slctd = selected
+			local notebook_open = function(propt_bufnr)
+				local actions_state = require("telescope.actions.state")
+				local actions = require("telescope.actions")
 
-				require("fzf-lua").actions.file_edit(slctd, opts)
+				local selected_entry = actions_state.get_selected_entry()
 
+				actions.select_default(propt_bufnr)
 				vim.wait(200)
-				-- require("zk").cd()
 				vim.cmd([[ZkCd]])
 			end
 
+			vim.g.quboid_attach_mapping = function(prompt_bufnr, map)
+				map("n", "<CR>", notebook_open)
+				map("i", "<CR>", notebook_open)
+				return true
+			end
+
 			dashboard.section.buttons.val = {
-				dashboard.button("r", "  > Recent", ":FzfLua oldfiles<CR>"),
+				dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
 				dashboard.button("s", "  > Sessions", ":SessionManager load_session<cr>"),
-				dashboard.button(
-					"n",
-					"  > Notebooks",
-					[[:cd $HOME/Dropbox/Notebooks/ | :lua require'fzf-lua'.files({ cwd = "~/Dropbox/Notebooks", cmd = "fd -e md -g 'index.md'", actions = { ['default'] = vim.g.my_notebook_open }})<cr>]]
-				),
-				dashboard.button("S", "  > Settings", ":cd $HOME/.config/nvim | lua require'fzf-lua'.files()<cr>"),
+				dashboard.button("n", "  > Notebooks",
+					[[:cd $HOME/Dropbox/Notebooks/ | :lua require('telescope.builtin').find_files({ cwd = "~/Dropbox/Notebooks", find_command = {"fd", "-e", "md", "-g", "index.md"}, attach_mappings = vim.g.quboid_attach_mapping, }) <cr>]]),
+				dashboard.button("S", "  > Settings",
+					":cd $HOME/.config/nvim | lua require'telescope'.find_files()<cr>"),
 				dashboard.button("q", "  > Quit NVIM", "<cmd>qa<cr>"),
 			}
 
@@ -220,7 +225,7 @@ return {
 				},
 
 				filesystem = {
-					hijack_netrw_behavior = "open_default"
+					hijack_netrw_behavior = "open_default",
 				},
 				-- https://github.com/echasnovski/mini.nvim/issues/177#issuecomment-1406203745
 				event_handlers = {
@@ -318,7 +323,7 @@ return {
 			use_diagnostic_signs = true,
 		},
 		keys = {
-			{ "<leader>xx", "<cmd>TroubleToggle<cr>", desc = "Trouble E[x]plore E[x]tensive (workspace)" },
+			{ "<leader>xx", "<cmd>TroubleToggle<cr>",          desc = "Trouble E[x]plore E[x]tensive (workspace)" },
 			{
 				"<leader>xw",
 				"<cmd>TroubleToggle workspace_diagnostics<cr>",
@@ -330,8 +335,8 @@ return {
 				desc = "Trouble E[x]plore [d]ocument Diagnostics",
 			},
 			{ "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", desc = "Trouble E[x]plore [q]uickfix Diagnostics" },
-			{ "<leader>xl", "<cmd>TroubleToggle loclist<cr>", desc = "Trouble E[x]plore [l]oclist Diagnostics" },
-			{ "<leader>xt", "<cmd>TodoTrouble<cr>", desc = "Trouble E[x]plore [t]odoComments" },
+			{ "<leader>xl", "<cmd>TroubleToggle loclist<cr>",  desc = "Trouble E[x]plore [l]oclist Diagnostics" },
+			{ "<leader>xt", "<cmd>TodoTrouble<cr>",            desc = "Trouble E[x]plore [t]odoComments" },
 		},
 	},
 	{
