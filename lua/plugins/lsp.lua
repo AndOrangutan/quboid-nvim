@@ -6,14 +6,12 @@ return {
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
 			"folke/neodev.nvim",
-			{
-				url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+			{ url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
 				config = function()
 					require("lsp_lines").setup()
 				end,
 			},
-			{
-				"ray-x/lsp_signature.nvim",
+			{ "ray-x/lsp_signature.nvim",
 				opts = {
 					hint_prefix = "",
 					hi_parameter = "String",
@@ -26,6 +24,8 @@ return {
 					require("lsp_signature").setup(opts)
 				end,
 			},
+			'aznhe21/actions-preview.nvim',
+
 		},
 		config = function()
 			local quboid = require("quboid")
@@ -66,13 +66,13 @@ return {
 				["jdtls"] = function() end,
 				["tsserver"] = function() end,
 				["eslint"] = function()
-					local config = require('lsp').gen_config()
-
-					-- config.settings = {
-					-- 	packageManager = quboid.ft_javascript_package_manager,
-					-- }
-
-					lspconfig.eslint.setup(config)
+					-- local config = require('lsp').gen_config()
+					--
+					-- -- config.settings = {
+					-- -- 	packageManager = quboid.ft_javascript_package_manager,
+					-- -- }
+					--
+					-- lspconfig.eslint.setup(config)
 				end,
 				['tailwindcss'] = function ()
 					local config = require('lsp').gen_config()
@@ -137,45 +137,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		opts = {
 			automatic_installation = true,
-			ensure_installed = {
-				-- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
-				"awk_ls",
-				"angularls",
-				-- 'arduino_language_server',
-				"bashls",
-				"clangd",
-				"omnisharp",
-				"cmake",
-				"cssls",
-				-- 'clojure_lsp',
-				"dockerls",
-				"emmet_language_server",
-				"eslint",
-				"fortls",
-				"gopls",
-				"gradle_ls",
-				"graphql",
-				"html",
-				"jsonls",
-				"jdtls",
-				"tsserver",
-				"kotlin_language_server",
-				"lua_ls",
-				"ltex",
-				"texlab",
-				"rnix",
-				"intelephense",
-				"pyright",
-				"sqlls",
-				"svelte",
-				"taplo",
-				"tailwindcss",
-				"vimls",
-				"vuels",
-				"lemminx",
-				"yamlls",
-				"zls",
-			},
+			ensure_installed = require('quboid').lsp_mason_ensure_installed,
 		},
 	},
 	{
