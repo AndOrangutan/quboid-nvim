@@ -6,7 +6,6 @@ return {
             'JoosepAlviste/nvim-ts-context-commentstring',
             'RRethy/nvim-treesitter-endwise',
             'nvim-treesitter/playground',
-            'nvim-treesitter/nvim-treesitter-textobjects',
             'RRethy/nvim-treesitter-textsubjects',
         },
         config = function ()
@@ -24,9 +23,6 @@ return {
                 -- autotag = { enable = true },
 
                 -- Extensions
-                context_commentstring = {
-                    enable = true
-                },
                 playground = {
                     enable = true,
                     disable = quboid.ft_exclude,
@@ -46,53 +42,6 @@ return {
                 endwise = {
                     enable = true,
                 },
-                textobjects = {
-                    enable = true,
-                    select = {
-                        enable = true,
-                        lookahead = true,
-                        keymaps = {
-                            ['agc'] = '@comment.outer',
-                            ['igc'] = '@comment.inner',
-                            ['af'] = '@function.outer',
-                            ['if'] = '@function.inner',
-                            ['ac'] = '@class.outer',
-                            ['ic'] = '@class.inner',
-                            ['ab'] = '@block.outer',
-                            ['ib'] = '@block.inner',
-                        },
-                    },
-                    move = {
-                        enable = true,
-                        set_jumps = true, -- whether to set jumps in the jumplist
-                        goto_next_start = {
-                            [']m'] = '@function.outer',
-                            [']]'] = { query = '@class.outer', desc = 'Next class start' },
-                        },
-                        goto_next_end = {
-                            [']M'] = '@function.outer',
-                            [']['] = '@class.outer',
-                        },
-                        goto_previous_start = {
-                            ['[m'] = '@function.outer',
-                            ['[['] = '@class.outer',
-                        },
-                        goto_previous_end = {
-                            ['[M'] = '@function.outer',
-                            ['[]'] = '@class.outer',
-                        },
-                    },
-                },
-                -- TODO: Config textsubjects correctly
-                -- textsubjects = {
-                --     enable = true,
-                --     prev_selection = ',', -- (Optional) keymap to select the previous selection
-                --     keymaps = {
-                --         ['<cr>'] = 'textsubjects-smart',
-                --         [';'] = 'textsubjects-container-outer',
-                --         ['i;'] = 'textsubjects-container-inner',
-                --     },
-                -- },
 
             })
 
