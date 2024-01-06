@@ -1,4 +1,10 @@
 return {
+ 	{ 'echasnovski/mini.nvim', version = false },
+    { 'echasnovski/mini.align',
+        config = function () require('mini.align').setup() end,
+        event = 'VeryLazy',
+        version = false,
+    },
     { 'echasnovski/mini.animate',
         config = function ()
             local m_animate = require('mini.animate')
@@ -10,7 +16,7 @@ return {
                 vim.keymap.set("", key, function()
                     mouse_scrolled = true
                     return key
-                end, { noremap = true, expr = true })
+                end, { expr = true })
             end
 
             m_animate.setup({
@@ -26,6 +32,15 @@ return {
                         end,
                     }),
                 },
+                resize = {
+                    timing = m_animate.gen_timing.linear({ duration = 100, unit = "total" }),
+                },
+                -- open = {
+                --     timing = m_animate.gen_timing.linear({ duration = 150, unit = "total" }),
+                -- },
+                -- close = {
+                --     timing = m_animate.gen_timing.linear({ duration = 150, unit = "total" }),
+                -- },
             })
         end,
         event = 'VeryLazy',
@@ -37,30 +52,50 @@ return {
         version = false,
     },
     { 'echasnovski/mini.indentscope',
+        dependencies = {
+            'echasnovski/mini.starter'
+        },
         config = function ()
             local quboid = require('quboid')
-
-            vim.api.nvim_create_autocmd('FileType', {
-                pattern = quboid.ft_exclude,
-                callback = function ()
-                    vim.b.miniindentscope_disable = true
-                end,
-            })
-
-            vim.api.nvim_create_autocmd('FileType', {
-                pattern = quboid.ft_markup,
-                callback = function ()
-                    vim.b.miniindentscope_disable = true
-                end,
-            })
 
             require('mini.indentscope').setup({
                 options = { try_as_border = true },
                 symbol = quboid.icons.bar_thick_split,
             })
 
+            local indentscope_disable = vim.api.nvim_create_augroup("indentscope_disable", {clear = true})
+
+            vim.api.nvim_create_autocmd({ 'FileType' }, {
+                pattern = require('quboid').ft_exclude,
+                group = indentscope_disable,
+                callback = function (opts)
+                    vim.schedule(function ()
+                        vim.b.miniindentscope_disable = true
+                    end)
+                end,
+            })
+            vim.api.nvim_create_autocmd({ 'User' }, {
+                pattern = 'MiniStarterOpened',
+                group = indentscope_disable,
+                callback = function (opts)
+                    vim.schedule(function ()
+                        vim.b.miniindentscope_disable = true
+                    end)
+                end,
+            })
+
+            vim.api.nvim_create_autocmd({ 'Filetype' }, {
+                pattern = quboid.ft_markup,
+                group = indentscope_disable,
+                callback = function (opts)
+                    vim.schedule(function ()
+                        vim.b.miniindentscope_disable = true
+                    end)
+                end,
+            })
+
         end,
-        event = { 'BufReadPre', 'BufNewFile' }, -- NOTE: Needed for autocmd to work
+        -- event = { 'BufReadPre', 'BufNewFile' }, -- NOTE: Needed for autocmd to work
         -- event = 'VeryLazy',
         version = false
     },
@@ -72,7 +107,7 @@ return {
             local map = require('mini.map')
             map.setup({
                 symbols = {
-                    scroll_line = quboid.icons.bar_cursor,
+                    scroll_ldine = quboid.icons.bar_cursor,
                     scroll_view = quboid.icons.bar_thick,
                 },
                 window = { show_integration_count = false },

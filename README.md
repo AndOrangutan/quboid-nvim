@@ -10,6 +10,9 @@ Resiliant, fast, text-based Personal Development Environment
 
 - [junegunn/fzf](https://github.com/junegunn/fzf)
 - [BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep)
+- [ImageMagick/ImageMagick](https://github.com/ImageMagick/ImageMagick)
+- [jstkdng/ueberzugpp](https://github.com/jstkdng/ueberzugpp)
+- `luarocks --local --lua-version=5.1 install magick`
 
 
 ## Core
@@ -34,7 +37,7 @@ Resiliant, fast, text-based Personal Development Environment
 | Clojure           | `clojure_lsp`                             | -                 | -                 | -                 |
 | Custom Elements   | `custom_elements_ls`                      | -                 | -                 | -                 |
 | Deno              | `denols`                                  | -                 | -                 | -                 |
-| Docker            | `dockerls`                               | -                 | -                 | -                 |
+| Docker            | `dockerls`                                | -                 | -                 | -                 |
 | Docker Compose    | `docker_compose_language_service`         | -                 | -                 | -                 |
 | ESLint            | `eslint`                                  | -                 | -                 | -                 |
 | Elixer            | `elixerls`                                | -                 | -                 | -                 |
@@ -166,7 +169,7 @@ Keymaps:
 
 #### Core UI Buffers
 
-- [goolord/alpha-nvim](https://github.com/goolord/alpha-nvim) - a lua powered greeter like vim-startify / dashboard-nvim 
+- [echasnovski/mini.starter](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-starter.md) - Fast and flexible start screen.
 - [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) - Neovim plugin to manage the file system and other tree like structures.
 - [folke/trouble.nvim](https://github.com/folke/trouble.nvim) - A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
     - [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim) - Highlight, list and search todo comments in your projects.
@@ -192,13 +195,18 @@ Keymaps:
 
 - [ray-x/go.nvim](https://github.com/ray-x/go.nvim) - A feature-rich Go development plugin, leveraging gopls, treesitter AST, Dap, and various Go tools to enhance the development experience.
 
+##### Image
+
+- [3rd/image.nvim](https://github.com/3rd/image.nvim) - Bringing images to Neovim.
+
 ##### Java
 
 - [mfussenegger/nvim-jdtls](https://github.com/mfussenegger/nvim-jdtls) - Extensions for the built-in LSP support in Neovim for eclipse.jdt.ls
-
+https://github.com/Vigemus/iron.nvim
 ##### Lua
 
 - [folke/neodev.nvim](https://github.com/folke/neodev.nvim) - Neovim setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
+- [milisims/nvim-luaref](https://github.com/milisims/nvim-luaref) - Add a vim :help reference for lua.
 
 ##### Markdown
 
@@ -222,6 +230,7 @@ Keymaps:
 #### General Purpose
 
 - [echasnovski/mini.nvim](https://github.com/echasnovski/mini.nvim/) - Library of 25+ independent Lua modules improving overall Neovim (version 0.7 and higher) experience with minimal effort.
+    - [mini.align](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-align.md) - Align text interactively.
     - [mini.animate](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-animate.md) - Animate common Neovim actions.
     - [mini.comment](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-comment.md) - Comment lines.
     - [mini.indentscope](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-indentscope.md) - Visualize and work with indent scope.
@@ -244,6 +253,7 @@ Keymaps:
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - Quickstart configs for Nvim LSP.
     - [whynothugo/lsp_lines.nvim](https://sr.ht/~whynothugo/lsp_lines.nvim/) - A simple neovim plugin that renders diagnostics using virtual lines on top of the real line of code.
     - [ray-x/lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) - LSP signature hint as you type.
+    - [aznhe21/actions-preview.nvim](https://github.com/aznhe21/actions-preview.nvim) - Fully customizable previewer for LSP code actions.
 - [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim. Strongly recommended for Windows users.
 - [jose-elias-alvarez/null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim) - Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
 - [jay-babu/mason-null-ls.nvim](https://github.com/jay-babu/mason-null-ls.nvim) - mason-null-ls bridges mason.nvim with the null-ls plugin - making it easier to use both plugins together.
@@ -304,7 +314,9 @@ Keymaps:
 
 ## TODO
 
+- Fix notifications so they are above lazy popup
 - Fix gotempl lsp (gotmpl + html)
+- have lsp display in completion and statusbar :o
 - Completion
     - fix luasnip node shit
 - Zk
@@ -315,7 +327,7 @@ Keymaps:
         - [zbirenbaum/copilot-cmp](https://github.com/zbirenbaum/copilot-cmp) - Lua plugin to turn github copilot into a cmp source.
     - High Priority
         - https://github.com/pmizio/typescript-tools.nvim
-        - https://github.com/wsdjeg/vim-fetch
+        - https://github.com/lewis6991/fileline.nvim
         - https://github.com/uga-rosa/ccc.nvim
     - Nice to have
         - https://github.com/rest-nvim/rest.nvim
@@ -329,6 +341,7 @@ Keymaps:
         - https://github.com/koenverburg/peepsight.nvim
         - https://github.com/chrisgrieser/nvim-various-textobjs
     - Maybe
+        - https://github.com/jpalardy/vim-slime
         - https://github.com/miversen33/netman.nvim
         - [MaximilianLloyd/tw-values.nvim](https://github.com/MaximilianLloyd/tw-values.nvim) - View all applied tailwindcss values on an element
         - https://github.com/chrisgrieser/nvim-early-retirement
@@ -344,13 +357,13 @@ Keymaps:
         - https://github.com/paopaol/cmp-doxygen
         - https://github.com/Gelio/cmp-natdat/
     - Smellescope
-        - nvim-telescope/telescope.nvim
-        - https://github.com/nvim-telescope/telescope-fzf-native.nvim
+        - https://github.com/benfowler/telescope-luasnip.nvim
         - https://github.com/nvim-telescope/telescope-media-files.nvim
         - https://github.com/dimaportenko/telescope-simulators.nvim
         - https://github.com/axkirillov/easypick.nvim
         - https://github.com/luckasRanarison/nvim-devdocs
     - Lsp
+        - https://github.com/barreiroleo/ltex_extra.nvim
         - https://github.com/fmbarina/pick-lsp-formatter.nvim
         - https://github.com/hinell/lsp-timeout.nvim
         - https://github.com/lvimuser/lsp-inlayhints.nvim
@@ -364,9 +377,12 @@ Keymaps:
         - https://github.com/LiadOz/nvim-dap-repl-highlights
         - https://github.com/nvim-telescope/telescope-dap.nvim
     - Testing
+        - https://github.com/Vigemus/iron.nvim
         - https://github.com/nvim-neotest/neotest
         - https://github.com/andythigpen/nvim-coverage
         - https://github.com/t-troebst/perfanno.nvim
+    - Lua
+        - https://github.com/milisims/nvim-luaref
     - Markdown
         - https://github.com/3rd/image.nvim
         - https://github.com/jbyuki/nabla.nvim

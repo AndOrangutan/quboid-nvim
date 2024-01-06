@@ -1,96 +1,128 @@
 return {
-	{
-		"goolord/alpha-nvim",
-		config = function()
-			local quboid = require("quboid")
+    { 'echasnovski/mini.starter',
+        dependencies = {
+            'akinsho/bufferline.nvim',
+            'nvim-telescope/telescope.nvim',
+        },
+        version = false,
+        config = function () 
+            local quboid = require('quboid')
+            local util = require('util')
+            local starter = require('mini.starter')
 
-			local alpha = require("alpha")
-			local dashboard = require("alpha.themes.dashboard")
+            local version = vim.version()
+            local date = os.date("%A, %b %d, %Y")
+            local ver = string.format("v%d.%d.%d", version.major, version.minor, version.patch)
+            local ms = 0
 
-			math.randomseed(os.time())
+            local details1 = quboid.icons.calendar .. " " .. date .. "  " .. quboid.icons.beaker .. " " .. ver
+            local details2 = quboid.icons.startup .. " Loaded " .. require("lazy").stats().count .. " Plugins in 000.00 ms".."  "
+            local quote = quboid.dashboard_quotes[math.random(#quboid.dashboard_quotes)]
+            local w = util.max_width(quboid.dashboard_header, details1, details2, quboid.dashboard_footer, quote)
 
-			local function pick_color()
-				local colors = { "String", "Identifier", "Keyword", "Constant", "Statement", "Type" }
-				return colors[math.random(#colors)]
-			end
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "LazyVimStarted",
+                callback = function()
+					vim.opt_local.statuscolumn = ""
+                    require('mini.starter').refresh()
+                end,
+            })
 
-			local function pad_to_width(str, wid_to_match)
-				local add_pad = (wid_to_match - #str) / 2
-				return string.rep(" ", add_pad) .. str .. string.rep(" ", add_pad)
-			end
+            local header = (function()
+                return function ()
+                    ms = (math.floor(require("lazy").stats().startuptime * 100 + 0.5) / 100)
+                    details2 = quboid.icons.startup .. " Loaded " .. require("lazy").stats().count .. " Plugins in "..ms.." ms"..' '
 
-			local function header()
-				return quboid.dashboard_header
-			end
+                    for i, str in ipairs(quboid.dashboard_header) do
+                        str = util.pad_to_width(str, w)
+                    end
+                    details1 = util.pad_to_width(details1, w)
+                    details2 = util.pad_to_width(details2, w)
 
-			local function footer()
-				local version = vim.version()
-				local stats = require("lazy").stats()
+                    local head = table.concat(quboid.dashboard_header, "\n")
+                    head = head..'\n'..details1..'\n'..details2
+                    return head
+                end
+            end)()
 
-				local feet = quboid.dashboard_footer
-				local w = quboid.dashboard_width
+            local function footer()
+                for i, str in ipairs(quboid.dashboard_footer) do
+                    str = util.pad_to_width(str, w)
+                end
+                quote = util.pad_to_width(quote, w)
 
-				local date = os.date("%A, %b %d, %Y")
-				local ver = string.format("v%d.%d.%d", version.major, version.minor, version.patch)
-				local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+                local feet = table.concat(quboid.dashboard_footer, "\n")
+                feet = feet..'\n'..quote
+                return feet
+            end
 
-				local details1 = quboid.icons.calendar .. " " .. date .. "  " .. quboid.icons.beaker .. " " .. ver
-				details1 = pad_to_width(details1, w)
-				table.insert(feet, details1)
+            local function dashboard_notebook_mapping (prompt_bufnr, map)
+                map({ "n", "i" }, "<CR>", function ()
+                    local selected_entry = require("telescope.actions.state").get_selected_entry()
+                    require("telescope.actions").select_default(prompt_bufnr)
+                    vim.cmd([[cd ]]..quboid.notebook_dir)
+                    vim.wait(200)
+                    vim.cmd([[ZkCd]])
+                end)
+                return true
+            end
 
-				local details2 = quboid.icons.startup .. " Loaded " .. stats.count .. " Plugins in " .. ms .. "ms"
-				details2 = pad_to_width(details2, w)
-				table.insert(feet, details2)
+            local function dashboard_config_mapping (prompt_bufnr, map)
+                map({ "n", "i" }, "<CR>", function()
+                    local actions = require("telescope.actions")
+                    actions.select_default(prompt_bufnr)
+                    vim.cmd([[cd ]]..'~/.config/nvim')
+                end)
+                return true
+            end
 
-				-- return footer
-				return feet
-			end
+            require('mini.starter').setup({
+                autoopen = true,
+                evaluate_single = false,
+                items = {
+                    -- starter.sections.telescope(),
+                    -- starter.sections.builtin_actions(),
+                    { name = [[Empty Buffer]], section = [[General Actions]], action = 'enew'},
+                    { name = [[Quit]], section = [[General Actions]], action = 'qa'},
 
-			local notebook_open = function(propt_bufnr)
-				local actions_state = require("telescope.actions.state")
-				local actions = require("telescope.actions")
+                    { name = [[Recent Files]], section = [[Navigation]], action = "Telescope oldfiles"},
+                    { name = [[Sessions]], section = [[Navigation]], action = "SessionManager load_session"},
+                    { name = [[Notebooks]], section = [[Navigation]], action = function ()
+                        require('telescope.builtin').find_files({ cwd = quboid.notebook_dir, find_command = {"fd", "-e", "md", "-g", "index.md"}, attach_mappings = dashboard_notebook_mapping, })
+                    end},
+                    { name = [[Config]], section = [[Navigation]], action = function ()
+                        require('telescope.builtin').find_files({ cwd = "~/.config/nvim", attach_mappings = dashboard_config_mapping })
+                    end},
 
-				local selected_entry = actions_state.get_selected_entry()
+                    starter.sections.recent_files(5, true),
+                },
+                content_hooks = {
+                    starter.gen_hook.adding_bullet('  '.."░ ",false),
+                    starter.gen_hook.aligning('center', 'center'),
+                    starter.gen_hook.indexing('all', { 'General Actions', 'Navigation' }),
+                },
+                header = header,
+                footer = footer(),
+            })
 
-				actions.select_default(propt_bufnr)
-				vim.wait(200)
-				vim.cmd([[ZkCd]])
-			end
+            local MiniStarterKeys = vim.api.nvim_create_augroup("MiniStarterKeys", {clear = true})
 
-			vim.g.quboid_attach_mapping = function(prompt_bufnr, map)
-				map("n", "<CR>", notebook_open)
-				map("i", "<CR>", notebook_open)
-				return true
-			end
+            vim.api.nvim_create_autocmd("User", {
+                pattern = "MiniStarterOpened",
+                group = MiniStarterKeys,
+                callback = function(opts)
+                    vim.schedule(function ()
+                        local bufnr = opts.buf
+                        vim.keymap.set('n', 'j', '<cmd>lua require("mini.starter").update_current_item("next")<cr>', { desc = 'Mini Starter Down', buffer = bufnr })
+                        vim.keymap.set('n', 'k', '<cmd>lua require("mini.starter").update_current_item("prev")<cr>', { desc = 'Mini Starter Up', buffer = bufnr })
+                    end)
+                end,
+            })
 
-			dashboard.section.buttons.val = {
-				dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
-				dashboard.button("s", "  > Sessions", ":SessionManager load_session<cr>"),
-				dashboard.button("n", "  > Notebooks",
-					[[:cd $HOME/Dropbox/Notebooks/ | :lua require('telescope.builtin').find_files({ cwd = "~/Dropbox/Notebooks", find_command = {"fd", "-e", "md", "-g", "index.md"}, attach_mappings = vim.g.quboid_attach_mapping, }) <cr>]]),
-				dashboard.button("S", "  > Settings",
-					":cd $HOME/.config/nvim | lua require'telescope'.find_files()<cr>"),
-				dashboard.button("q", "  > Quit NVIM", "<cmd>qa<cr>"),
-			}
-
-			-- Subheader
-			dashboard.section.header.val = header()
-			-- dashboard.section.footer.val = footer()
-			dashboard.section.header.opts.hl = pick_color()
-			dashboard.section.footer.opts.hl = pick_color()
-
-			dashboard.opts.opts.noautocmd = true
-			alpha.setup(dashboard.opts)
-
-			vim.api.nvim_create_autocmd("User", {
-				pattern = "LazyVimStarted",
-				callback = function()
-					dashboard.section.footer.val = footer()
-					pcall(vim.cmd.AlphaRedraw)
-				end,
-			})
-		end,
-	},
+            vim.api.nvim_create_user_command("MiniStarterOpen", "lua require('mini.starter').open()", {})
+            vim.api.nvim_create_user_command("MiniStarterClose", "lua require('mini.starter').close()", {})
+        end,
+    },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		dependencies = {
@@ -201,7 +233,7 @@ return {
 								show_path = "none", -- 'none', 'relative', 'absolute'
 							},
 						},
-						["A"] = "add_directory", -- also accepts the optional config.show_path option like 'add'. this also supports BASH style brace expansion.
+				["A"] = "add_directory", -- also accepts the optional config.show_path option like 'add'. this also supports BASH style brace expansion.
 						["d"] = "delete",
 						["r"] = "rename",
 						["y"] = "copy_to_clipboard",
@@ -324,19 +356,13 @@ return {
 		},
 		keys = {
 			{ "<leader>xx", "<cmd>TroubleToggle<cr>",          desc = "Trouble E[x]plore E[x]tensive (workspace)" },
-			{
-				"<leader>xw",
-				"<cmd>TroubleToggle workspace_diagnostics<cr>",
-				desc = "Trouble E[x]plore [w]orkspace Diagnostics",
-			},
-			{
-				"<leader>xd",
-				"<cmd>TroubleToggle document_diagnostics<cr>",
-				desc = "Trouble E[x]plore [d]ocument Diagnostics",
-			},
+			{ "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Trouble E[x]plore [w]orkspace Diagnostics",  },
+			{ "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Trouble E[x]plore [d]ocument Diagnostics",  },
 			{ "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", desc = "Trouble E[x]plore [q]uickfix Diagnostics" },
 			{ "<leader>xl", "<cmd>TroubleToggle loclist<cr>",  desc = "Trouble E[x]plore [l]oclist Diagnostics" },
 			{ "<leader>xt", "<cmd>TodoTrouble<cr>",            desc = "Trouble E[x]plore [t]odoComments" },
+			{ "[D", "<cmd>lua require('trouble').open('workspace_diagnostics')<cr> <bar> <cmd>lua require('trouble').previous({skip_groups = true, jump = true})<cr>", desc = "Trouble Next [d]iagnsotic" },
+			{ "]D", "<cmd>lua require('trouble').open('workspace_diagnostics')<cr> <bar> <cmd>lua require('trouble').next({skip_groups = true, jump = true})<cr>", desc = "Trouble Next [d]iagnsotic" },
 		},
 	},
 	{

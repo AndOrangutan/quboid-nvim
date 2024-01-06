@@ -74,6 +74,15 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		vim.api.nvim_set_hl(0, "TreesitterContext", { link = "Normal" })
 		vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { link = "Normal" })
 
+		-- Mini starter
+		local colorgroups = { "String", "Identifier", "Keyword", "Constant", "Statement", "Type" }
+
+		local header_hl = util.get_hl_val(colorgroups[math.random(#colorgroups)], 'foreground')
+		vim.api.nvim_set_hl(0, "MiniStarterHeader", { fg = header_hl })
+
+		local footer_hl = util.get_hl_val(colorgroups[math.random(#colorgroups)], 'foreground')
+		vim.api.nvim_set_hl(0, "MiniStarterFooter", { fg = footer_hl })
+
 		if lualine_ok then
 			lualine.refresh()
 		end
@@ -83,3 +92,4 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 vim.o.background = "dark"
 -- vim.cmd('colorscheme ayu')
 vim.cmd("colorscheme " .. quboid.colorscheme)
+
