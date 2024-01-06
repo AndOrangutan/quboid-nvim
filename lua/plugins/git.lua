@@ -26,8 +26,10 @@ return {
 			{ "<leader>gb", "<cmd>Gitsigns toggle_current_line_blame<cr>", desc = "[g]it [b]lame toggle" },
 		},
 	},
-	{
-		"ThePrimeagen/git-worktree.nvim",
+	{ "ThePrimeagen/git-worktree.nvim",
+		dependencies = {
+			'nvim-telescope/telescope.nvim',
+		},
 		config = function()
 			local worktree = require("git-worktree")
 			worktree.on_tree_change(function(op, metadata)
@@ -38,10 +40,19 @@ return {
 					)
 				end
 			end)
+			-- worktree.on_tree_change(function(op, metadata)
+			-- 	if op == worktree.Operations.Switch then
+			-- 		vim.cmd('cd '..metadata.path)
+			-- 		vim.notify(
+			-- 			"Switched worktree from " .. metadata.prev_path .. " to " .. metadata.path,
+			-- 			vim.log.levels["INFO"]
+			-- 		)
+			-- 	end
+			-- end)
 		end,
 		keys = {
-			{ "<leader>fws", '<cmd>lua require("telescope").extensions.git_worktree.git_worktrees()<cr>', desc = "Telescope [f]ZF [w]orktree [s]witch",  },
-			{ "<leader>fws", '<cmd>lua require("telescope").extensionscreate_git_worktree()<cr>', desc = "Telescope [f]ZF [w]orktree [c]reate",  },
+			{ "<leader>fws", '<cmd>Telescope git_worktree git_worktrees<cr>', desc = "Telescope [f]ZF [w]orktree [s]witch",  },
+			{ "<leader>fwc", '<cmd>Telescope git_worktree create_git_worktree<cr>', desc = "Telescope [f]ZF [w]orktree [c]reate",  },
 		},
 	},
 	{

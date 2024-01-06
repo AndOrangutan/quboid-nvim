@@ -50,6 +50,8 @@ return {
         },
         config = function()
             local telescope = require('telescope')
+            local actions = require("telescope.actions")
+
             telescope.setup{
                 defaults = {
                     -- Default configuration for telescope goes here:
@@ -57,6 +59,8 @@ return {
                     mappings = {
                         i = {
                             ["<C-h>"] = "which_key",
+                            ["<esc>"] = actions.close,
+                            ["<c-s>"] = actions.select_horizontal,
                         }
                     }, 
                     vimgrep_arguments = {
