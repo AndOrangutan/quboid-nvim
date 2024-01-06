@@ -7,6 +7,7 @@ M.exclude_patterns = {
     "node_modules/",
     ".git/",
 }
+M.winblend = 10
 M.notebook_dir = '~/Dropbox/Notebooks'
 M.ft_exclude = { 'NeogitStatus', 'TelescopePrompt', 'alpha', 'dbui', 'dockerfile', 'fzf', 'lazy', 'mason', 'neo-tree', 'netrw', 'starter', 'tutor', 'undotree',  }
 M.ft_git = { 'gitcommit', 'octo', 'NeogitCommitMessage' }

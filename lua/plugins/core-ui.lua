@@ -77,119 +77,62 @@ return {
             { '<M-,>', '<cmd>BufferLineCyclePrev<cr>', desc = 'Bufferline Cycle Prev' },
         },
     },
-    { 'rcarriga/nvim-notify',
+    { 'echasnovski/mini.notify',
         config = function ()
             local quboid = require('quboid')
-            local notify = require('notify')
 
-            vim.notify = notify
+            local opts = { ERROR = { duration = 10000 } }
+            vim.notify = require('mini.notify').make_notify(opts)
 
-            notify.setup({
-                background_colour = 'NormalFloat',
-                fps = 30,
-                icons = {
-                    INFO = quboid.icons.Info,
-                    ERROR = quboid.icons.Error,
-                    WARN = quboid.icons.Warn,
-                    DEBUG = quboid.icons.Debug,
-                    TRACE = quboid.icons.Trace,
+            require('mini.notify').setup({
+                -- Content management
+                content = {
+                    -- Function which formats the notification message
+                    -- By default prepends message with notification time
+                    format = nil,
+
+                    -- Function which orders notification array from most to least important
+                    -- By default orders first by level and then by update timestamp
+                    sort = function(notif_arr)
+                        table.sort(
+                            notif_arr,
+                            function(a, b) return a.ts_update > b.ts_update end
+                        )
+                        return notif_arr
+                    end,
                 },
-                level = 'info',
-                render = 'default',
-                stages = 'fade_in_slide_out',
-                timeout = 3000, -- from 5000
-                max_height = function()
-                    return math.floor(vim.o.lines * 0.75)
-                end,
-                max_width = function()
-                    return math.floor(vim.o.columns * 0.75)
-                end,
-                on_open = function(win)
-                    vim.api.nvim_win_set_config(win, { border = quboid.border_float })
-                end,
+                lsp_progress = {
+                    enable = false,
+                    duration_last = 500,
+                },
+                window = {
+                    config = {
+                        border = require('quboid').border,
+                    },
+                    winblend = require('quboid').winblend,
+                },
             })
 
-            vim.lsp.handlers['window/showMessage'] = function(_, result, ctx)
+            vim.api.nvim_create_user_command("MiniNotifyHistory", function()
+                vim.cmd[[split]]
+                require('mini.notify').show_history()
+            end, {})
+            vim.lsp.handlers['window/showMessage'] = function (_, result, ctx)
                 local client = vim.lsp.get_client_by_id(ctx.client_id)
-                local lvl = ({
-                    'ERROR',
-                    'WARN',
-                    'INFO',
-                    'DEBUG',
-                })[result.type]
-                notify({ result.message }, lvl, {
-                    title = 'LSP | ' .. client.name,
-                    timeout = 10000,
-                    keep = function()
-                        return lvl == 'ERROR' or lvl == 'WARN'
-                    end,
-                })
+
+                print("Did a thing, look")
+                vim.notify( result.message, result.type { title = 'LSP | ' .. client.name, timeout = 10000, } )
             end
-
-
-            local function qf_rename()
-                local position_params = vim.lsp.util.make_position_params()
-                position_params.oldName = vim.fn.expand("<cword>")
-                position_params.newName = vim.fn.input("Rename To> ", position_params.oldName)
-
-                vim.lsp.buf_request(0, "textDocument/rename", position_params, function(err, result, ...)
-                    if not result or not result.changes then
-                        require('notify')(string.format('could not perform rename'), 'error', {
-                            title = string.format('[lsp] rename: %s -> %s', position_params.oldName, position_params.newName),
-                            timeout = 2500
-                        })
-
-                        return
-                    end
-
-                    vim.lsp.handlers["textDocument/rename"](err, result, ...)
-
-                    local notification, entries = '', {}
-                    local num_files, num_updates = 0, 0
-                    for uri, edits in pairs(result.changes) do
-                        num_files = num_files + 1
-                        local bufnr = vim.uri_to_bufnr(uri)
-
-                        for _, edit in ipairs(edits) do
-                            local start_line = edit.range.start.line + 1
-                            local line = vim.api.nvim_buf_get_lines(bufnr, start_line - 1, start_line, false)[1]
-
-                            num_updates = num_updates + 1
-                            table.insert(entries, {
-                                bufnr = bufnr,
-                                lnum = start_line,
-                                col = edit.range.start.character + 1,
-                                text = line
-                            })
-                        end
-
-                        local short_uri = string.sub(vim.uri_to_fname(uri), #vim.fn.getcwd() + 2)
-                        notification = notification .. string.format('made %d change(s) in %s', #edits, short_uri)
-                    end
-
-                    require("notify")(notification, 'info', {
-                        title = string.format('[lsp] rename: %s -> %s', position_params.oldName, position_params.newName),
-                        timeout = 2500
-                    })
-
-                    if num_files > 1 then require("utils").qf_populate(entries, "r") end
-                    -- print(string.format("updated %d instance(s) in %d file(s)", num_updates, num_files))
-                end)
-            end
-            vim.lsp.buf.rename = qf_rename
-
         end,
-        event = { 'BufReadPre', 'BufNewFile' },
-        keys = {
-            { '<leader>nd', function() require("notify").dismiss({ silent = true, pending = true }) end, desc = '[n]otification [d]ismiss' },
-            { '<leader>nl', '<cmd>Notifications<cr>', desc = '[n]otification [l]ist' },
-        },
+        -- event = { 'BufReadPre', 'BufNewFile' },
     },
     { 'luukvbaal/statuscol.nvim',
         config = function()
             local builtin = require("statuscol.builtin")
             require("statuscol").setup({
                 foldfunc = "builtin",
+                ft_ignore = require('quboid').ft_exclude,
+                bt_ignore = require('quboid').ft_exclude,
                 setopt = true,
                 thousands = false,
                 relculright = true,
