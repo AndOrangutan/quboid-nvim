@@ -1,4 +1,9 @@
 return {
+    { 'echasnovski/mini.align',
+        config = function () require('mini.align').setup() end,
+        event = 'VeryLazy',
+        version = false,
+    },
     { 'windwp/nvim-autopairs',
         config = function ()
             local quboid = require('quboid')
@@ -63,6 +68,11 @@ return {
 
         end,
         event = 'InsertEnter',
+    },
+    { 'echasnovski/mini.comment',
+        config = function () require('mini.comment').setup() end,
+        event = 'VeryLazy',
+        version = false,
     },
     { 'NMAC427/guess-indent.nvim',
         opts = {
