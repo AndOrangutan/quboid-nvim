@@ -3,6 +3,7 @@
 return {
 
     { 'L3MON4D3/LuaSnip',
+        version = 'v2.*',
         dependencies = {
             'rafamadriz/friendly-snippets',
             { 'dsznajder/vscode-es7-javascript-react-snippets',
@@ -11,13 +12,15 @@ return {
         },
         build = 'make install_jsregexp',
         config =  function ()
-            local luasnip = require('luasnip')
+            local ls = require('luasnip')
 
-            luasnip.config.set_config {
+            ls.config.set_config {
                 history = true,
                 delete_check_events = 'InsertEnter',
 
             }
+
+            require('snippets').choice_node_popup()
             require('luasnip.loaders.from_vscode').lazy_load()
             require('luasnip.loaders.from_snipmate').lazy_load()
         end,
@@ -45,6 +48,24 @@ return {
             'kdheepak/cmp-latex-symbols',
             'hrsh7th/cmp-omni',
             'kristijanhusak/vim-dadbod-completion',
+
+            { 'uga-rosa/cmp-dictionary',
+                config = function ()
+                    local dict = require('cmp_dictionary')
+                    dict.setup({
+                        document = true,
+                    })
+                    dict.switcher({
+
+                        spelllang = {
+                            en = "/usr/share/dict/words",
+                        },
+                        -- filetype = {
+                        --     ['*'] = "/usr/share/dict/words",
+                        -- },
+                    })
+                end,
+            },
         },
         opts = {
         },
@@ -67,14 +88,18 @@ return {
                 { name = 'vim-dadbod-completion', priority = 9 },
                 { name = 'buffer', max_item_count = 3, option = { get_bufnrs = function() return vim.api.nvim_list_bufs() end }  },
             }
+
+            -- add dicitonary
             local sources_markup = {
                 { name = 'luasnip', priority = 10, max_item_count = 8 },
                 { name = 'luasnip_choice', priority = 10, max_item_count = 8 },
                 { name = 'latex_symbols', priority = 10 },
                 { name = 'calc', priority = 10},
                 { name = 'nvim_lsp', priority = 9 },
-                { name = 'buffer', max_item_count = 3, option = { get_bufnrs = function() return vim.api.nvim_list_bufs() end },}
+                { name = 'buffer', max_item_count = 3, option = { get_bufnrs = function() return vim.api.nvim_list_bufs() end },},
+                { name = "dictionary", keyword_length = 2, },
             }
+
             local sources_tex = {
                 { name = 'luasnip', priority = 10, max_item_count = 8 },
                 { name = 'omni', priority = 10 },
@@ -104,17 +129,13 @@ return {
                 nvim_lsp                = 'LSP',
                 path                    = 'Path',
                 latex_symbols           = 'LaTeX',
+                dictionary              = 'Dict',
                 omni                    = 'Omni',
                 ['vim-dadbod-completion'] = 'DadBod',
             }
 
 
             cmp.setup({
-                experimental = {
-                    -- ghost_text = { hl_group = 'CmpGhostText' },
-                    ghost_text = true,
-                },
-                --
                 -- completion = {
                 --     completeopt = 'menu,menuone,noinsert',
                 -- },
@@ -223,7 +244,7 @@ return {
             })
 
             require("cmp_git").setup({ filetypes = require('quboid').ft_git })
-            
+
             -- Set configuration for specific filetype.
             cmp.setup.filetype( quboid.ft_git, { name = 'buffer' })
 

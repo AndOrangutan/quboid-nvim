@@ -14,6 +14,11 @@ Resiliant, fast, text-based Personal Development Environment
 - [jstkdng/ueberzugpp](https://github.com/jstkdng/ueberzugpp)
 - `luarocks --local --lua-version=5.1 install magick`
 
+- Linters
+    - clangtidy
+    - cppcheck
+
+
 
 ## Core
 
@@ -163,6 +168,7 @@ Keymaps:
     - [hrsh7th/cmp-omni](https://github.com/hrsh7th/cmp-omni) - nvim-cmp source for omnifunc.
     - [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path) - nvim-cmp source for path.
     - [kristijanhusak/vim-dadbod-completion](https://github.com/kristijanhusak/vim-dadbod-completion)
+    - [uga-rosa/cmp-dictionary](https://github.com/uga-rosa/cmp-dictionary) - A dictionary completion source for nvim-cmp 
 
 #### Core UI
 
@@ -257,12 +263,13 @@ https://github.com/Vigemus/iron.nvim
 
 #### LSP (Language Server Protocol)
 
+- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim. Strongly recommended for Windows users.
 - [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - Quickstart configs for Nvim LSP.
     - [whynothugo/lsp_lines.nvim](https://sr.ht/~whynothugo/lsp_lines.nvim/) - A simple neovim plugin that renders diagnostics using virtual lines on top of the real line of code.
     - [ray-x/lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) - LSP signature hint as you type.
     - [aznhe21/actions-preview.nvim](https://github.com/aznhe21/actions-preview.nvim) - Fully customizable previewer for LSP code actions.
-- [williamboman/mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim) - Extension to mason.nvim that makes it easier to use lspconfig with mason.nvim. Strongly recommended for Windows users.
-- [jose-elias-alvarez/null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim) - Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
+- [rshkarin/mason-nvim-lint](https://github.com/rshkarin/mason-nvim-lint) - Extension to mason.nvim that makes it easier to use nvim-lint with mason.nvim
+- [mfussenegger/nvim-lint](https://github.com/mfussenegger/nvim-lint) - An asynchronous linter plugin for Neovim complementary to the built-in Language Server Protocol support.
 - [jay-babu/mason-null-ls.nvim](https://github.com/jay-babu/mason-null-ls.nvim) - mason-null-ls bridges mason.nvim with the null-ls plugin - making it easier to use both plugins together.
 - [DNLHC/glance.nvim](https://github.com/DNLHC/glance.nvim) - A pretty window for previewing, navigating and editing your LSP locations.
 - [RRethy/vim-illuminate](https://github.com/RRethy/vim-illuminate) - (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching
@@ -368,6 +375,9 @@ https://github.com/Vigemus/iron.nvim
         - https://github.com/axkirillov/easypick.nvim
         - https://github.com/luckasRanarison/nvim-devdocs
     - Lsp
+        - https://github.com/nvim-java/nvim-java
+        - https://github.com/mrcjkb/rustaceanvim
+        - https://github.com/p00f/clangd_extensions.nvim
         - https://github.com/barreiroleo/ltex_extra.nvim
         - https://github.com/fmbarina/pick-lsp-formatter.nvim
         - https://github.com/hinell/lsp-timeout.nvim
@@ -387,9 +397,7 @@ https://github.com/Vigemus/iron.nvim
         - https://github.com/andythigpen/nvim-coverage
         - https://github.com/t-troebst/perfanno.nvim
     - Lua
-        - https://github.com/milisims/nvim-luaref
     - Markdown
-        - https://github.com/3rd/image.nvim
         - https://github.com/jbyuki/nabla.nvim
         - https://github.com/jmbuhr/otter.nvim
         - https://github.com/dkarter/bullets.vim
@@ -404,6 +412,7 @@ https://github.com/Vigemus/iron.nvim
     - https://www.reddit.com/r/neovim/comments/170ykc0/tailwind_lsp_hover_documentation_multiple_lsps/
 - override netrw.
 - LSP
+    https://www.reddit.com/r/neovim/comments/15rbhzi/i_wrote_a_simple_script_that_lists_all_attached/
     - Toggle underlines
     - Toggle autoformat
     - Java
@@ -412,3 +421,6 @@ https://github.com/Vigemus/iron.nvim
     - keymaps
     - https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     - https://github.com/RRethy/nvim-treesitter-textsubjects
+
+
+
