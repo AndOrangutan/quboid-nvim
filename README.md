@@ -136,6 +136,11 @@ Keymaps:
 
 - [folke/lazy.nvim](https://github.com/folke/lazy.nvim) - Plugin Manager, best one I have tried.
 
+
+#### AI
+
+- [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua) - Fully featured & enhanced replacement for copilot.vim complete with API for interacting with Github Copilot.
+
 #### Bloat (Totally deserves to be this high up haha)
 
 - [echasnovski/mini.animate](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-animate.md) - Animate common Neovim actions.
@@ -168,7 +173,8 @@ Keymaps:
     - [hrsh7th/cmp-omni](https://github.com/hrsh7th/cmp-omni) - nvim-cmp source for omnifunc.
     - [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path) - nvim-cmp source for path.
     - [kristijanhusak/vim-dadbod-completion](https://github.com/kristijanhusak/vim-dadbod-completion)
-    - [uga-rosa/cmp-dictionary](https://github.com/uga-rosa/cmp-dictionary) - A dictionary completion source for nvim-cmp 
+    - [uga-rosa/cmp-dictionary](https://github.com/uga-rosa/cmp-dictionary) - A dictionary completion source for nvim-cmp.
+    - [zbirenbaum/copilot-cmp](https://github.com/zbirenbaum/copilot-cmp) - Lua plugin to turn github copilot into a cmp source.
 
 #### Core UI
 

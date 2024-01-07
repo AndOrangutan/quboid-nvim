@@ -4,23 +4,24 @@ M.colorscheme = 'onedark'
 M.border = 'solid'
 M.border_float = 'shadow'
 M.exclude_patterns = {
-    "node_modules/",
-    ".git/",
+    'node_modules/',
+    '.git/',
 }
 M.winblend = 10
 M.notebook_dir = '~/Dropbox/Notebooks'
-M.ft_exclude = { 'NeogitStatus', 'TelescopePrompt', 'alpha', 'dbui', 'dockerfile', 'fzf', 'lazy', 'mason', 'neo-tree', 'netrw', 'starter', 'tutor', 'undotree',  }
+M.ft_exclude = { 'NeogitStatus', 'TelescopePrompt', 'alpha', 'dbui', 'dockerfile', 'fzf', 'lazy', 'mason', 'neo-tree',
+    'netrw', 'starter', 'tutor', 'undotree', }
 M.ft_git = { 'gitcommit', 'octo', 'NeogitCommitMessage' }
 M.ft_go = { 'go', 'gomod', 'gowork', 'gohtml', 'gohtmltmpl', 'gotmpl', 'gotexttmpl' }
-M.ft_html = { 'gohtml', 'gohtmltmpl', 'gotmpl', 'gotexttmpl'  }
+M.ft_html = { 'gohtml', 'gohtmltmpl', 'gotmpl', 'gotexttmpl' }
 M.ft_javascript_package_manager = 'yarn'
 M.ft_markup = { 'markdown' }
 M.ft_tex = { 'tex' }
 M.ft_git = { 'gitcommit', 'NeogitCommitMessage' }
-M.ft_rigid = {  }
+M.ft_rigid = {}
 M.icons = {
     -- Shapes
-    pad = ' ',
+    pad             = ' ',
     bar_thin        = '｜',
     bar_cursor      = '▮',
     bar_thick       = '┃',
@@ -90,34 +91,34 @@ M.icons = {
 }
 
 M.lsp_kind = {
-    Class           = ' ',
-    Color           = ' ',
-    Constant        = ' ',
-    Constructor     = ' ',
-    Enum            = ' ',
-    EnumMember      = ' ',
-    Event           = ' ',
-    Field           = ' ',
-    File            = ' ',
-    Folder          = ' ',
-    Function        = '󰊕x',
-    Interface       = ' ',
-    Keyword         = ' ',
-    Method          = ' ',
-    Module          = ' ',
-    Operator        = ' ',
-    Property        = ' ',
-    Reference       = ' ',
-    Snippet         = ' ',
-    Struct          = " ",
-    Text            = ' ',
-    TypeParameter   = ' ',
-    Unit            = ' ',
-    Value           = ' ',
-    Variable        = ' ',
-    Copilot         = ' ',
+    Class         = ' ',
+    Color         = ' ',
+    Constant      = ' ',
+    Constructor   = ' ',
+    Enum          = ' ',
+    EnumMember    = ' ',
+    Event         = ' ',
+    Field         = ' ',
+    File          = ' ',
+    Folder        = ' ',
+    Function      = '󰊕x',
+    Interface     = ' ',
+    Keyword       = ' ',
+    Method        = ' ',
+    Module        = ' ',
+    Operator      = ' ',
+    Property      = ' ',
+    Reference     = ' ',
+    Snippet       = ' ',
+    Struct        = ' ',
+    Text          = ' ',
+    TypeParameter = ' ',
+    Unit          = ' ',
+    Value         = ' ',
+    Variable      = ' ',
+    Copilot       = ' ',
 }
-M.lsp_mason_ensure_installed = {  -- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
+M.lsp_mason_ensure_installed = { -- https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
     'awk_ls',
     'angularls',
     'als',
@@ -131,7 +132,6 @@ M.lsp_mason_ensure_installed = {  -- https://github.com/williamboman/mason-lspco
     'neocmake',
     'cssls',
     'clojure_lsp',
-    'custom_elements_ls',
     -- 'denols',
     'dockerls',
     'docker_compose_language_service',
@@ -179,6 +179,15 @@ M.lsp_mason_ensure_installed = {  -- https://github.com/williamboman/mason-lspco
     'lemminx',
     'yamlls',
     'zls'
+}
+M.nvim_lint_mason_ensure_installed = {
+    'luacheck',
+    'ruff',
+    'golangci-lint',
+    'eslint_d',
+    'checkstyle',
+    -- 'clangtidy',
+    -- 'cppcheck',
 }
 
 M.dashboard_header = {
