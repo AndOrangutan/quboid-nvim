@@ -5,8 +5,6 @@ return {
             'nvim-treesitter/nvim-treesitter-textobjects',
         },
         config = function ()
-        -- TODO: Config with ts support
-            
             local spec_treesitter = require('mini.ai').gen_spec.treesitter
             require('mini.ai').setup({
                 custom_textobjects = {
@@ -30,7 +28,6 @@ return {
     { 'windwp/nvim-autopairs',
         config = function ()
             local quboid = require('quboid')
-
             local npairs = require('nvim-autopairs')
             local Rule   = require('nvim-autopairs.rule')
 
@@ -44,7 +41,6 @@ return {
                 enable_check_bracket_line = false,
                 disable_filetype = quboid.ft_exclude,
             })
-
             -- Add spaces between parentheses
             local brackets = { { '(', ')' }, { '[', ']' }, { '{', '}' }, { '<', '>' }, }
             npairs.add_rules {
@@ -102,6 +98,27 @@ return {
             filetype_exclude = require('quboid').ft_exclude
         },
         event = 'VeryLazy',
+    },
+    { 'echasnovski/mini.move',
+        config = function () require('mini.move').setup(-- No need to copy this inside `setup()`. Will be used automatically.
+            {
+                mappings = {
+                    left = '<C-h>', right = '<C-l>',
+                    down = '<C-j>',
+                    up = '<C-k>',
+
+                    line_left = '<C-h>',
+                    line_right = '<C-l>',
+                    line_down = '<C-j>',
+                    line_up = '<C-k>',
+                },
+                options = {
+                    reindent_linewise = true,
+                },
+            }) 
+        end,
+        event = 'VeryLazy',
+        version = false,
     },
     { 'kylechui/nvim-surround',
         version = "*", -- Use for stability; omit to use `main` branch for the latest features

@@ -198,6 +198,7 @@ Keymaps:
 - [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) - Autopairs for neovim written by lua.
 - [echasnovski/mini.comment](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-comment.md) - Comment lines.
 - [NMAC427/guess-indent.nvim](https://github.com/NMAC427/guess-indent.nvim) - Automatic indentation style detection for Neovim.
+- [echasnovski/mini.move](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md) - Move any selection in any direction
 - [kylechui/nvim-surround](https://github.com/kylechui/nvim-surround) - Add/change/delete surrounding delimiter pairs with ease. Written with in Lua.
 
 #### Filetype Specific
