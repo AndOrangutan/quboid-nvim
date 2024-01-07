@@ -52,33 +52,37 @@ return {
             { 'uga-rosa/cmp-dictionary',
                 config = function ()
                     local dict = require('cmp_dictionary')
-                    dict.setup({
-                        document = true,
-                    })
+                    dict.setup({ document = true, })
                     dict.switcher({
-
                         spelllang = {
                             en = "/usr/share/dict/words",
                         },
-                        -- filetype = {
-                        --     ['*'] = "/usr/share/dict/words",
-                        -- },
                     })
                 end,
             },
+            { 'zbirenbaum/copilot-cmp',
+                dependencies = 'zbirenbaum/copilot.lua',
+                config = function ()
+                    require("copilot_cmp").setup()
+
+                    vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
+                end
+            },
+            { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
         },
         opts = {
         },
         config = function ()
             local quboid = require('quboid')  -- lol
             local cmp = require('cmp')
-            local luasnip_ok, luasnip = pcall(require, 'luasnip')
-            local cmp_autopairs_ok, cmp_autopairs = pcall(require, 'nvim-autopairs.completion.cmp')
+            local _, luasnip = pcall(require, 'luasnip')
+            -- local _, _ = pcall(require, 'nvim-autopairs.completion.cmp')
 
             vim.opt.pumheight = 32
 
 
             local sources = {
+                { name = "copilot", group_index = 2, priority = 10 },
                 { name = 'luasnip', priority = 10, max_item_count = 8 },
                 { name = 'luasnip_choice', priority = 10, max_item_count = 8 },
                 { name = 'path', priority = 10 },
@@ -131,14 +135,15 @@ return {
                 latex_symbols           = 'LaTeX',
                 dictionary              = 'Dict',
                 omni                    = 'Omni',
+                copilot                 = 'Copilot',
                 ['vim-dadbod-completion'] = 'DadBod',
             }
 
 
             cmp.setup({
                 -- completion = {
-                --     completeopt = 'menu,menuone,noinsert',
                 -- },
+                --     completeopt = 'menu,menuone,noinsert',
                 snippet = {
                     expand = function (args) luasnip.lsp_expand(args.body) end,
                 },
@@ -196,29 +201,29 @@ return {
 
                     --with_text = true,
 
-                    format = function (entry, vim_item)
+                    format = function (entry, item)
                         local cmp_item = entry:get_completion_item() -- @type l
                         if entry.source.name == 'nvim_lsp' then
                             local lspserver_name = nil
                             pcall(function()
                                 lspserver_name = entry.source.source.client.name
-                                vim_item.name = lspserver_name
+                                item.name = lspserver_name
                             end)
                         end
-                        vim_item.menu = completion_names[entry.source.name]
-                        vim_item.kind = quboid.lsp_kind[vim_item.kind]   -- Use built in icons
-                        return vim_item
+                        item.menu = completion_names[entry.source.name]
+                        item.kind = quboid.lsp_kind[item.kind]   -- Use built in icons
+                        return require("tailwindcss-colorizer-cmp").formatter(entry, item)
                     end,
                 },
                 sorting = {
                                 --         --     priority_weight = 2,
                     comparators = {
                         -- https://github.com/tjdevries/config_manager/blob/83b6897e83525efdfdc24001453137c40373aa00/xdg_config/nvim/after/plugin/completion.lua#L129-L155
-                        -- require("copilot_cmp.comparators").prioritize,
-                        -- require("copilot_cmp.comparators").score,
+                        require("copilot_cmp.comparators").prioritize,
                         cmp.config.compare.offset,
                         cmp.config.compare.exact,
                         cmp.config.compare.score,
+                        cmp.config.compare.recently_used,
 
                         -- copied from cmp-under, but I don't think I need the plugin for this.
                         -- I might add some more of my own.
