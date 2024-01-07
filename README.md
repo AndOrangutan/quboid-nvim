@@ -176,6 +176,7 @@ Keymaps:
     - [uga-rosa/cmp-dictionary](https://github.com/uga-rosa/cmp-dictionary) - A dictionary completion source for nvim-cmp.
     - [zbirenbaum/copilot-cmp](https://github.com/zbirenbaum/copilot-cmp) - Lua plugin to turn github copilot into a cmp source.
     - [roobert/tailwindcss-colorizer-cmp.nvim](https://github.com/roobert/tailwindcss-colorizer-cmp.nvim) - A Neovim plugin to add vscode-style TailwindCSS completion to nvim-cmp.
+    - [paopaol/cmp-doxygen](https://github.com/paopaol/cmp-doxygen) - neovim completion for doxygen use nvim-cmp.
 
 #### Core UI
 

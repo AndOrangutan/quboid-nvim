@@ -69,6 +69,11 @@ return {
                 end
             },
             { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+            { "paopaol/cmp-doxygen",
+                dependencies = { "nvim-treesitter/nvim-treesitter",
+                    "nvim-treesitter/nvim-treesitter-textobjects"
+                } 
+            }
         },
         opts = {
         },
@@ -87,6 +92,7 @@ return {
                 { name = 'luasnip_choice', priority = 10, max_item_count = 8 },
                 { name = 'path', priority = 10 },
                 { name = 'calc', priority = 10},
+                { name = 'doxygen', priority = 10},
 
                 { name = 'nvim_lsp', priority = 9 },
                 { name = 'vim-dadbod-completion', priority = 9 },
@@ -136,6 +142,7 @@ return {
                 dictionary              = 'Dict',
                 omni                    = 'Omni',
                 copilot                 = 'Copilot',
+                doxygen                 = 'Doxygen',
                 ['vim-dadbod-completion'] = 'DadBod',
             }
 
