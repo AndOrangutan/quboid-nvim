@@ -73,7 +73,8 @@ return {
                 dependencies = { "nvim-treesitter/nvim-treesitter",
                     "nvim-treesitter/nvim-treesitter-textobjects"
                 } 
-            }
+            },
+            { "Gelio/cmp-natdat", config = true },
         },
         opts = {
         },
@@ -93,6 +94,7 @@ return {
                 { name = 'path', priority = 10 },
                 { name = 'calc', priority = 10},
                 { name = 'doxygen', priority = 10},
+                { name = 'natdat', priority = 10},
 
                 { name = 'nvim_lsp', priority = 9 },
                 { name = 'vim-dadbod-completion', priority = 9 },
@@ -143,9 +145,9 @@ return {
                 omni                    = 'Omni',
                 copilot                 = 'Copilot',
                 doxygen                 = 'Doxygen',
+                natdat                  = 'NatDate',
                 ['vim-dadbod-completion'] = 'DadBod',
             }
-
 
             cmp.setup({
                 -- completion = {

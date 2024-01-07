@@ -177,6 +177,7 @@ Keymaps:
     - [zbirenbaum/copilot-cmp](https://github.com/zbirenbaum/copilot-cmp) - Lua plugin to turn github copilot into a cmp source.
     - [roobert/tailwindcss-colorizer-cmp.nvim](https://github.com/roobert/tailwindcss-colorizer-cmp.nvim) - A Neovim plugin to add vscode-style TailwindCSS completion to nvim-cmp.
     - [paopaol/cmp-doxygen](https://github.com/paopaol/cmp-doxygen) - neovim completion for doxygen use nvim-cmp.
+    - [Gelio/cmp-natdat](https://github.com/Gelio/cmp-natdat) - Nvim-cmp source to autocomplete natural dates and turm them into ISO dates.
 
 #### Core UI
 
@@ -368,13 +369,6 @@ https://github.com/Vigemus/iron.nvim
         - https://github.com/Jezda1337/nvim-html-css
         - https://github.com/pwntester/octo.nvim
     - Completion
-        - https://github.com/lukas-reineke/cmp-under-comparator
-        - https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
-        - [uga-rosa/cmp-dictionary](https://github.com/uga-rosa/cmp-dictionary) - nvim-cmp source for dictionary
-        - [jcha0713/cmp-tw2css](https://github.com/jcha0713/cmp-tw2css) - A source for nvim-cmp to convert tailwindcss classes to pure css codes
-        - [David-Kunz/cmp-npm](https://github.com/David-Kunz/cmp-npm) - An additional source for nvim-cmp to autocomplete packages and its versions
-        - https://github.com/JMarkin/cmp-diag-codes
-        - https://github.com/paopaol/cmp-doxygen
         - https://github.com/Gelio/cmp-natdat/
     - Smellescope
         - https://github.com/benfowler/telescope-luasnip.nvim
