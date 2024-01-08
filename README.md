@@ -194,6 +194,12 @@ Keymaps:
     - [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim) - Highlight, list and search todo comments in your projects.
 - [mbbill/undotree](https://github.com/mbbill/undotree) - The undo history visualizer for VIM.
 
+#### DAP
+
+- [mfussenegger/nvim-dap](https://github.com/mfussenegger/nvim-dap) - Debug Adapter Protocol client implementation for Neovim.
+- [jay-babu/mason-nvim-dap.nvim](https://github.com/jay-babu/mason-nvim-dap.nvim) - Bridges mason.nvim with the nvim-dap plugin - making it easier to use both plugins together.
+- [rcarriga/nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) - A UI for nvim-dap.
+
 #### Database
 
 - [tpope/vim-dadbod](https://github.com/tpope/vim-dadbod) - Modern database interface for Vim .
