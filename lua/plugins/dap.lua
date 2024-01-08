@@ -1,6 +1,14 @@
 return {
     {
         'mfussenegger/nvim-dap',
+        dependencies = {
+            { 'theHamsta/nvim-dap-virtual-text',
+                dependencies = {
+                    'nvim-treesitter/nvim-treesitter',
+                },
+                config = true,
+            },
+        },
         config = function()
             local dap = require('dap')
             dap.set_log_level('INFO')
@@ -32,7 +40,6 @@ return {
             },
             { '<leader>dt',
                 function()
-                    require('dap').clear_breakpoints()
                     require('dap').terminate()
                 end,
                 desc = '[d]AP [t]erminate'
@@ -60,17 +67,6 @@ return {
             local dapui = require('dapui')
             local dap = require('dap')
 
-            -- Auto open and close ui
-            dap.listeners.after.event_initialized['dapui_config'] = function()
-                dapui.open()
-            end
-            dap.listeners.before.event_terminated['dapui_config'] = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited['dapui_config'] = function()
-                dapui.close()
-            end
-
             dapui.setup({
                 icons = { expanded = '▾', collapsed = '▸' },
                 mappings = {
@@ -87,6 +83,19 @@ return {
                     },
                 },
             })
+
+
+            -- Auto open and close ui
+            dap.listeners.after.event_initialized['dapui_config'] = function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated['dapui_config'] = function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited['dapui_config'] = function()
+                dapui.close()
+            end
+
         end,
         keys = {
             { '<leader>du', function() require('dapui').toggle({}) end, desc = '[d]ap [u]i Toggle' },
@@ -95,9 +104,9 @@ return {
                 '<leader>dx',
                 function()
                     require('dapui').close()
+                    require('dapui').close()
                     require('dap').clear_breakpoints()
                     require('dap').terminate()
-                    vim.notify('Debugger stopped', vim.log.levels.INFO, { title = 'DAP' })
                 end,
                 desc = '[d]ap [E]val',
                 mode = { 'n', 'v' }
