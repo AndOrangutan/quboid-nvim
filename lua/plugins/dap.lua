@@ -2,7 +2,16 @@ return {
     {
         'mfussenegger/nvim-dap',
         dependencies = {
-            { 'theHamsta/nvim-dap-virtual-text',
+            {
+                'ofirgall/goto-breakpoints.nvim',
+                keys = {
+                    { ']b', function() require('goto-breakpoints').next() end, desc = 'DAP Next [b]reakpoint' },
+                    { '[b', function() require('goto-breakpoints').prev() end, desc = 'DAP Previous [b]reakpoint' },
+                    { ']S', function() require('goto-breakpoints').stopped() end, desc = 'DAP Goto Stopped' },
+                },
+            },
+            {
+                'theHamsta/nvim-dap-virtual-text',
                 dependencies = {
                     'nvim-treesitter/nvim-treesitter',
                 },
@@ -38,7 +47,8 @@ return {
                 end,
                 desc = '[d]AP [b]reakpoint Toggle'
             },
-            { '<leader>dt',
+            {
+                '<leader>dt',
                 function()
                     require('dap').terminate()
                 end,
@@ -95,7 +105,6 @@ return {
             dap.listeners.before.event_exited['dapui_config'] = function()
                 dapui.close()
             end
-
         end,
         keys = {
             { '<leader>du', function() require('dapui').toggle({}) end, desc = '[d]ap [u]i Toggle' },
