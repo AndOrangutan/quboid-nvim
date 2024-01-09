@@ -199,6 +199,7 @@ Keymaps:
 - [mfussenegger/nvim-dap](https://github.com/mfussenegger/nvim-dap) - Debug Adapter Protocol client implementation for Neovim.
     - [theHamsta/nvim-dap-virtual-text](https://github.com/theHamsta/nvim-dap-virtual-text) - This plugin adds virtual text support to nvim-dap.
     - [ofirgall/goto-breakpoints.nvim](https://github.com/ofirgall/goto-breakpoints.nvim) - Cycle between breakpoints with keymappings for nvim-dap.
+    - [LiadOz/nvim-dap-repl-highlights](https://github.com/LiadOz/nvim-dap-repl-highlights) - -Add syntax highlighting to the nvim-dap REPL.
 - [jay-babu/mason-nvim-dap.nvim](https://github.com/jay-babu/mason-nvim-dap.nvim) - Bridges mason.nvim with the nvim-dap plugin - making it easier to use both plugins together.
 - [rcarriga/nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) - A UI for nvim-dap.
 
@@ -395,8 +396,6 @@ https://github.com/Vigemus/iron.nvim
         - https://github.com/nvimtools/none-ls.nvim
         - https://github.com/aznhe21/actions-preview.nvim
     - DAP
-        - https://github.com/ofirgall/goto-breakpoints.nvim
-        - https://github.com/Weissle/persistent-breakpoints.nvim
         - https://github.com/LiadOz/nvim-dap-repl-highlights
         - https://github.com/nvim-telescope/telescope-dap.nvim
     - Testing

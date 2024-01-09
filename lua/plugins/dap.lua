@@ -5,8 +5,8 @@ return {
             {
                 'ofirgall/goto-breakpoints.nvim',
                 keys = {
-                    { ']b', function() require('goto-breakpoints').next() end, desc = 'DAP Next [b]reakpoint' },
-                    { '[b', function() require('goto-breakpoints').prev() end, desc = 'DAP Previous [b]reakpoint' },
+                    { ']b', function() require('goto-breakpoints').next() end,    desc = 'DAP Next [b]reakpoint' },
+                    { '[b', function() require('goto-breakpoints').prev() end,    desc = 'DAP Previous [b]reakpoint' },
                     { ']S', function() require('goto-breakpoints').stopped() end, desc = 'DAP Goto Stopped' },
                 },
             },
@@ -17,6 +17,13 @@ return {
                 },
                 config = true,
             },
+            {
+                'LiadOz/nvim-dap-repl-highlights',
+                dependencies = 'nvim-treesitter/nvim-treesitter',
+                config = function()
+                    require('nvim-dap-repl-highlights').setup()
+                end,
+            }
         },
         config = function()
             local dap = require('dap')
