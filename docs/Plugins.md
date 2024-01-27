@@ -3,6 +3,7 @@
 
 ## Core UI
 
+- [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) - A snazzy bufferline for Neovim.
 - [echasnovski/mini.notify](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-notify.md) - Show notifications.
 
 ## General Purpose

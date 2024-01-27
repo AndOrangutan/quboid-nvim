@@ -1,5 +1,7 @@
 {
+  "bufferline.nvim": { "branch": "main", "commit": "d6cb9b7cac52887bcac65f8698e67479553c0748" },
   "lazy.nvim": { "branch": "main", "commit": "28126922c9b54e35a192ac415788f202c3944c9f" },
   "mini.notify": { "branch": "main", "commit": "b033eba9761bb52b03d71f6e2948a6c4084bdbc8" },
-  "mini.nvim": { "branch": "main", "commit": "1cd8d7e8318071eddc536815f5cafe50b012ac29" }
+  "mini.nvim": { "branch": "main", "commit": "1cd8d7e8318071eddc536815f5cafe50b012ac29" },
+  "nvim-web-devicons": { "branch": "master", "commit": "b427ac5f9dff494f839e81441fb3f04a58cbcfbc" }
 }
