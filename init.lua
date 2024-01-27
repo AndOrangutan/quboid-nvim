@@ -1,11 +1,7 @@
-
 local quboid = require('quboid')
+local icons = require('quboid.icons')
 
--- Load pre-plugin settings
-require('defaults.options')
-require('custom.options')
-require('defaults.keymaps')
-require('custom.keymaps')
+print('test')
 
 -- Bootstrap Lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -39,26 +35,27 @@ lazy.setup('plugins', {
     ui = {
         border = quboid.border,
         icons = {
-            cmd         = quboid.icons.cmd,
-            config      = quboid.icons.cog,
-            vent        = quboid.icons.bolt,
-            ft          = quboid.icons.file,
-            init        = quboid.icons.cog,
-            import      = quboid.icons.file_import,
-            keys        = quboid.icons.keyboard,
-            lazy        = "󰒲 ",
-            loaded      = quboid.icons.hourglass_100,
-            not_loaded  = quboid.icons.hourglass_0,
-            plugin      = quboid.icons.cube,
-            runtime     = quboid.icons.vim,
-            source      = quboid.icons.code,
-            start       = quboid.icons.circle_play,
-            task        = quboid.icons.check,
+            cmd = icons.gen.cmd,
+            config = icons.gen.cmd,
+            event = icons.gen.bolt,
+            ft = icons.gen.file,
+            init = icons.gen.cog,
+            import = icons.gen.file_inport,
+            keys = icons.gen.keybord,
+            lazy = icons.gen.zzz,
+            loaded = icons.gen.circle,
+            not_loaded = icons.gen.circle_o,
+            plugin = icons.gen.plug,
+            runtime = icons.gen.editor,
+            require = icons.lang.lua,
+            source = icons.gen.code,
+            start = icons.gen.play,
+            task = icons.gen.check,
             list = {
-                "●",
-                "➜",
-                "★",
-                "‒",
+                '●',
+                '➜',
+                '★',
+                '‒',
             },
         },
     },
@@ -72,18 +69,14 @@ lazy.setup('plugins', {
 
 })
 
--- Fixes diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false
-    }
-)
 
--- Load post-plugin settings
-require('defaults.autocmds')
-require('custom.autocmds')
-require('defaults.autocmds')
-require('custom.autocmds')
+-- TODO: Checkout
+-- -- Fixes diagnostics
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+--     vim.lsp.diagnostic.on_publish_diagnostics, {
+--         virtual_text = false
+--     }
+-- )
 
 -- colorscheme and highlights
-require('highlights')
+-- require('highlights')
