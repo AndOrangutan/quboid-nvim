@@ -20,7 +20,7 @@ does the latter, if I am using a "niche" editor I want it to be mine.
 
 ### Plugins
 
-- [Plugin list](docs/plugins.md)
+- [Plugin list](docs/Plugins.md)
 
 ## TODO
 
