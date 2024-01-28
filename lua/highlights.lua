@@ -4,6 +4,9 @@ local quboid = require('quboid')
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = '*',
     callback = function()
+        -- Rebind float
+        vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Pmenu' })
+
         -- Link ts-context to bufferline
         vim.api.nvim_set_hl(0, 'TreesitterContext', { link = 'BufferLineFill' })
 
@@ -15,7 +18,6 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         --
         -- vim.api.nvim_set_hl(0, "FoldColumn", { link = "Normal" })
         --
-        -- vim.api.nvim_set_hl(0, "NormalFloat", { link = "Pmenu" })
         --
         -- -- HACK: to change borders to solid by default
         -- vim.api.nvim_set_hl(

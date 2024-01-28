@@ -141,7 +141,7 @@ return {
                 },
             })
         end,
-        event = { 'BufReadPre', 'BufNewFile' },
+        event = { 'BufReadPre', 'BufNewFile', 'BufEnter' },
         keys = {
             { '<leader>nn', '<cmd>Neotree toggle<cr>', desc = 'Neo-tree Toggle' },
         },

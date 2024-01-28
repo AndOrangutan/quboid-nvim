@@ -83,7 +83,7 @@ return {
                 },
             })
         end,
-        event = { 'BufReadPre', 'BufNewFile' },
+        event = { 'BufReadPre', 'BufNewFile', 'BufEnter' },
         keys = {
             { '<M-.>', '<cmd>BufferLineCycleNext<cr>', desc = 'Bufferline Cycle Next' },
             { '<M-,>', '<cmd>BufferLineCyclePrev<cr>', desc = 'Bufferline Cycle Prev' },
@@ -137,7 +137,7 @@ return {
                 vim.notify(result.message, result.type { title = 'LSP | ' .. client.name, timeout = 10000, })
             end
         end,
-        event = { 'BufReadPre', 'BufNewFile' },
+        event = { 'BufReadPre', 'BufNewFile', 'BufEnter' },
     },
     {
         'folke/which-key.nvim',

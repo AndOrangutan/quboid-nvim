@@ -1,9 +1,10 @@
-local M       = {}
+local M        = {}
 
-M.background  = 'dark'
-M.colorscheme = 'default'
+M.background   = 'dark'
+M.colorscheme  = 'default'
 
-M.indentsize = 4
-M.border      = 'solid'
+M.border       = 'solid'
+M.border_float = 'solid'
+M.indentsize   = 4
 
 return M

@@ -85,7 +85,7 @@ o.showmode       = false
 o.conceallevel   = 2
 o.listchars      = 'eol:¬'
 o.signcolumn     = 'yes:1'
-o.fillchars      = 'foldsep: ,foldopen:'..icons.ui.expand..'foldclose:'..icons.ui.expand..','
+o.fillchars      = 'foldsep: ,foldopen:'..icons.ui.expand..',foldclose:'..icons.ui.expand
 
 o.cmdheight      = 0
 o.termguicolors  = true
