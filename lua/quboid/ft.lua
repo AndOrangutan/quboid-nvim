@@ -10,4 +10,9 @@ M.bf_exclude = {
     'quickfix',
 }
 
+-- For markdown and note taking like environments
+M.markup = { 
+    'markdown',
+}
+
 return M

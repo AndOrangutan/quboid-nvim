@@ -10,6 +10,11 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         -- Link ts-context to bufferline
         vim.api.nvim_set_hl(0, 'TreesitterContext', { link = 'BufferLineFill' })
 
+        -- Mini Stuffs
+        vim.api.nvim_set_hl(0, "MiniMapNormal", { link = "Comment" })
+        vim.api.nvim_set_hl(0, "MiniIndentscopePrefix", { link = "Comment" })
+        vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { link = "Comment" })
+
         -- -- Blanks out cursorline but keeps lnnr hl
         -- vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Normal" })
         -- vim.api.nvim_set_hl(0, "CursorLine", { link = "NONE" })
