@@ -1,6 +1,8 @@
 local quboid = require('quboid')
 local icons = require('quboid.icons')
 
+require('options')
+
 -- Bootstrap Lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
