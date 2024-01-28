@@ -1,13 +1,15 @@
 local M = {}
 
 M.ft_exclude = {
+    'gitcommit',
+    'gitrebase',
     'lazy',
     'neo-tree',
 }
 
-M.bf_exclude = {
-    'terminal',
+M.bt_exclude = {
     'quickfix',
+    'terminal',
 }
 
 -- For markdown and note taking like environments

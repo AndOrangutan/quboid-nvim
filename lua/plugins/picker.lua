@@ -12,10 +12,13 @@ return {
                 -- Priority list of preferred vim.select implementations
                 -- backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
                 fzf_lua = {
-                    -- winopts = {
-                    --   height = 0.5,
-                    --   width = 0.5,
-                    -- },
+                    prompt   = '❯ ',
+                    winopts = {
+                        height     = 0.30,
+                        width      = 1.00,
+                        row        = 1,
+                        col        = 0.50,
+                    },
                 }
 
             },
