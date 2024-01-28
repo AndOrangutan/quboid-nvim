@@ -48,8 +48,7 @@ return {
                             filetype = 'neo-tree',
                             text = 'Neo Tree',
                             highlight = 'NeoTreeNormal',
-                            text_align =
-                            'center',
+                            text_align = 'center',
                             padding = 0
                         },
                         {
@@ -139,5 +138,19 @@ return {
             end
         end,
         event = { 'BufReadPre', 'BufNewFile' },
+    },
+    {
+        'folke/which-key.nvim',
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            local wk = require('which-key')
+            wk.setup()
+            wk.register()
+        end,
+        keys = {
+            { '<leader>' },
+        },
+        event = 'VeryLazy',
     },
 }
