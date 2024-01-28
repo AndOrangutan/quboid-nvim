@@ -47,7 +47,7 @@ return {
                         {
                             filetype = 'neo-tree',
                             text = 'Neo Tree',
-                            highlight = 'NvimTreeNormal',
+                            highlight = 'NeoTreeNormal',
                             text_align =
                             'center',
                             padding = 0
