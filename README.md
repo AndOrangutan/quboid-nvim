@@ -48,5 +48,6 @@ paru -S fzf fd ripgrep git-delta ueberzug
 ## TODO
 
 - Documentation
+   - LSP
    - Picker
    - Filetree

@@ -1,6 +1,7 @@
 return {
     {
         'williamboman/mason.nvim',
+        event = 'VeryLazy',
         config = function()
             local quboid = require('quboid')
             local icons = require('quboid.icons')
@@ -18,6 +19,5 @@ return {
                 max_concurrent_installers = 4,
             })
         end,
-        event = 'VeryLazy',
     },
 }
