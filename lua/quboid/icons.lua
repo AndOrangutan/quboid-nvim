@@ -101,9 +101,10 @@ M.lang = {
 M.ui = {
     bar_cursor      = '▮',
     bar_thick       = '┃',
-    bar_thick_tree  = '┣',
     bar_thick_elbow = '┗',
     bar_thick_split = '╏',
+    bar_thick_tree  = '┣',
+    bar_thin        = '｜',
     collapse        = '',
     expand          = '',
 }
