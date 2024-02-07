@@ -47,7 +47,6 @@ paru -S fzf fd ripgrep git-delta ueberzug
 
 ## TODO
 
-- require("quboid.icons")
-- require("quboid")
-- require("quboid.ft")
-- require("quboid.ui")
+- Documentation
+   - Picker
+   - Filetree

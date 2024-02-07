@@ -147,7 +147,13 @@ return {
             vim.o.timeoutlen = 300
             local wk = require('which-key')
             wk.setup()
-            wk.register()
+            wk.register({
+                ["<leader>s"] = { name = "Sessions" },
+                ["<leader>m"] = { name = "Mini Lib (Map)" },
+                ["<leader>n"] = { name = "Navigation" },
+                ["<leader>p"] = { name = "Picker" },
+                ["<leader>ts"] = { name = "Treesitter" },
+            })
         end,
         keys = {
             { '<leader>' },
