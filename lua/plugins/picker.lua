@@ -36,6 +36,15 @@ return {
 
             -- calling `setup` is optional for customization
             require('fzf-lua').setup({
+                hls = {
+                    normal = 'NormalFloat',
+                    border = 'NormalFloat',
+                    title = 'NormalFloat',
+                    previewBorder = 'NormalFloat',
+                    previewNormal = 'Normal',
+                    cursor = 'Normal',
+                    cursorLine = 'Normal',
+                },
                 -- fzf_bin         = 'sk',            -- use skim instead of fzf?
                 -- https://github.com/lotabout/skim
                 -- can also be set to 'fzf-tmux'
