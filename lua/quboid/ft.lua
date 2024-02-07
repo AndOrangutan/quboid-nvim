@@ -1,5 +1,6 @@
 local M = {}
 
+-- TODO: Add fzf-lua
 M.ft_exclude = {
     'gitcommit',
     'gitrebase',

@@ -146,4 +146,145 @@ return {
             { '<leader>nn', '<cmd>Neotree toggle<cr>', desc = 'Neo-tree Toggle' },
         },
     },
+    {
+        'echasnovski/mini.starter',
+        dependencies = {
+            'akinsho/bufferline.nvim',
+            'ibhagwan/fzf-lua',
+        },
+        event = { 'BufReadPre', 'BufNewFile', 'BufEnter' },
+        version = false,
+        config = function()
+            local quboid = require('quboid')
+            local icons = require('quboid.icons')
+            local util = require('quboid.util')
+            local starter = require('mini.starter')
+
+            local version = vim.version()
+            local date = os.date('%A, %b %d, %Y')
+            local ver = string.format('v%d.%d.%d', version.major, version.minor, version.patch)
+            local ms = 0
+
+            local details1 = icons.gen.calendar .. ' ' .. date .. '  ' .. icons.gen.beaker .. ' ' .. ver
+            local details2 = icons.gen.startup ..
+                ' Loaded ' .. require('lazy').stats().count .. ' Plugins in 000.00 ms' .. '  '
+            local quote = quboid.dashboard_quotes[math.random(#quboid.dashboard_quotes)]
+            local w = util.max_width(quboid.dashboard_header, details1, details2, quboid.dashboard_footer, quote)
+
+
+            local header = (function()
+                return function()
+                    ms = (math.floor(require('lazy').stats().startuptime * 100 + 0.5) / 100)
+                    details2 = icons.gen.startup ..
+                        ' Loaded ' .. require('lazy').stats().count .. ' Plugins in ' .. ms .. ' ms' .. ' '
+
+                    for i, str in ipairs(quboid.dashboard_header) do
+                        str = util.pad_to_width(str, w)
+                    end
+                    details1 = util.pad_to_width(details1, w)
+                    details2 = util.pad_to_width(details2, w)
+
+                    local head = table.concat(quboid.dashboard_header, '\n')
+                    head = head .. '\n' .. details1 .. '\n' .. details2
+                    return head
+                end
+            end)()
+
+            local function footer()
+                for i, str in ipairs(quboid.dashboard_footer) do
+                    str = util.pad_to_width(str, w)
+                end
+                quote = util.pad_to_width(quote, w)
+
+                local feet = table.concat(quboid.dashboard_footer, '\n')
+                feet = feet .. '\n' .. quote
+                return feet
+            end
+
+
+            require('mini.starter').setup({
+                autoopen = true,
+                evaluate_single = false,
+                items = {
+                    -- starter.sections.telescope(),
+                    -- starter.sections.builtin_actions(),
+                    { name = [[Empty Buffer]], section = [[General Actions]], action = 'enew' },
+                    { name = [[Quit]],         section = [[General Actions]], action = 'qa' },
+                    { name = [[Recent Files]], section = [[Navigation]],      action = 'FzfLua oldfiles' },
+                    { name = [[Sessions]],     section = [[Navigation]],      action = 'SessionManager load_session' },
+                    {
+                        name = [[Notebooks]],
+                        section = [[Navigation]],
+                        action = function()
+                            require('fzf-lua').files({
+                                prompt = 'Notebooks> ',
+                                cmd = 'fd -e md -g index.md',
+                                cwd = quboid.notebook_dir,
+                                actions = {
+                                    ['default'] = function (selected, opts)
+                                        vim.cmd([[cd ]] .. quboid.notebook_dir)
+                                        require('fzf-lua').actions.file_edit(selected, opts)
+                                            vim.wait(200)
+                                        -- TODO: Enable ZK
+                                        -- vim.cmd([[ZkCd]])
+                                    end
+                                }
+                            })
+                        end
+                    },
+                    {
+                        name = [[Config]],
+                        section = [[Navigation]],
+                        action = function()
+                            require('fzf-lua').files({
+                                prompt = 'Config> ',
+                                cwd = '~/.config/nvim',
+                                actions = {
+                                    ['default'] = function (selected, opts)
+                                        require('fzf-lua').actions.file_edit(selected, opts)
+                                        vim.cmd('cd ~/.config/nvim')
+                                    end
+                                }
+                            })
+                        end
+                    },
+
+                    starter.sections.recent_files(5, true),
+                },
+                content_hooks = {
+                    starter.gen_hook.adding_bullet('  ' .. '░ ', false),
+                    starter.gen_hook.aligning('center', 'center'),
+                    starter.gen_hook.indexing('all', { 'General Actions', 'Navigation' }),
+                },
+                header = header,
+                footer = footer(),
+            })
+
+            local MiniStarterKeys = vim.api.nvim_create_augroup('MiniStarterKeys', { clear = true })
+
+            vim.api.nvim_create_autocmd('User', {
+                pattern = 'LazyVimStarted',
+                callback = function()
+                    vim.opt_local.statuscolumn = ''
+                    require('mini.starter').refresh()
+                end,
+            })
+            vim.api.nvim_create_autocmd('User', {
+                pattern = 'MiniStarterOpened',
+                group = MiniStarterKeys,
+                callback = function(opts)
+                    vim.schedule(function()
+                        local bufnr = opts.buf
+                        vim.keymap.set('n', 'j', '<cmd>lua require("mini.starter").update_current_item("next")<cr>',
+                            { desc = 'Mini Starter Down', buffer = bufnr })
+                        vim.keymap.set('n', 'k', '<cmd>lua require("mini.starter").update_current_item("prev")<cr>',
+                            { desc = 'Mini Starter Up', buffer = bufnr })
+                    end)
+                end,
+            })
+
+            vim.api.nvim_create_user_command('MiniStarterOpen', "lua require('mini.starter').open()", {})
+            vim.api.nvim_create_user_command('MiniStarterClose', "lua require('mini.starter').close()", {})
+        end,
+    },
 }

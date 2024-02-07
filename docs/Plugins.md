@@ -16,6 +16,7 @@
 ## Core UI Buffers
 
 - [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) - Neovim plugin to manage the file system and other tree like structures.
+- [echasnovski/mini.starter](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-starter.md) - Fast and flexible start screen.
 
 ## General Purpose
 
