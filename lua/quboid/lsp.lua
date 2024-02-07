@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             { desc = 'LSP [r]e[n]ame', expr = true })
         vim.keymap.set('n', '<leader>F', '<cmd>lua vim.lsp.buf.format({ async = true })<cr>',
             { desc = 'LSP [f]ormat', buffer = ev.buf })
-        vim.keymap.set('n', '<leader>ca', '<cmd>FzfLua lsp_code_action<cr>',
+        vim.keymap.set('n', '<leader>ca', '<cmd>FzfLua lsp_code_actions<cr>',
             { desc = 'LSP [c]ode [a]ction', buffer = ev.buf })
 
         -- Float on hold
@@ -57,7 +57,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             buffer = ev.buf,
             callback = function()
                 local opts = {
-                    focus=false,
+                    focus = false,
                     close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
                     -- prefix = ' ',
                     scope = 'cursor',
@@ -68,13 +68,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
--- Customize diagnostics also influences lsp_lines
+-- Customize diagnostics
 vim.diagnostic.config({
     virtual_text = false,
-    update_in_insert = false,
+    update_in_insert = true,
     -- signs = true,
     underline = true,
-    -- update_in_insert = true,
     severity_sort = true,
     float = {
         source = 'always',
