@@ -47,6 +47,8 @@ paru -S fzf fd ripgrep git-delta ueberzug
 
 ## TODO
 
+- Make the editor debuggable
+   - https://github.com/jbyuki/one-small-step-for-vimkind
 - Documentation
    - LSP
    - Picker

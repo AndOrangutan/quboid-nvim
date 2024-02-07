@@ -106,8 +106,6 @@ return {
                                         [vim.fn.expand('$VIMRUNTIME/lua')] = true,
                                         [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
                                         ['/usr/share/awesome/lib'] = true,
-                                        -- TODO: Add in
-                                        -- require("neodev.config").types(),
                                     },
                                 },
                                 telemetry = {

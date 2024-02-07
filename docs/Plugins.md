@@ -22,6 +22,13 @@
 - [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) - Neovim plugin to manage the file system and other tree like structures.
 - [echasnovski/mini.starter](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-starter.md) - Fast and flexible start screen.
 
+## Filetype Specific
+
+### Lua
+
+- [folke/neodev.nvim](https://github.com/folke/neodev.nvim) - Neovim setup for init.lua and plugin development with full signature help, docs and completion for the nvim lua API.
+- [milisims/nvim-luaref](https://github.com/milisims/nvim-luaref) - Add a vim :help reference for lua.
+
 ## General Purpose
 
 - [echasnovski/mini.nvim](https://github.com/echasnovski/mini.nvim/) - Library of 25+ independent Lua modules improving overall Neovim (version 0.7 and higher) experience with minimal effort.
