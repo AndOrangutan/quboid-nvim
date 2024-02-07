@@ -1,11 +1,12 @@
 local M = {}
 
--- TODO: Add fzf-lua
 M.ft_exclude = {
+    'fzf',
     'gitcommit',
     'gitrebase',
     'lazy',
     'neo-tree',
+    'starter',
 }
 
 M.bt_exclude = {
@@ -14,7 +15,7 @@ M.bt_exclude = {
 }
 
 -- For markdown and note taking like environments
-M.markup = { 
+M.markup = {
     'markdown',
 }
 
