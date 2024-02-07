@@ -1,20 +1,25 @@
 local quboid = require('quboid')
+local util = require('quboid.util')
 
+
+local highlights = vim.api.nvim_create_augroup('highlights', { clear = true })
 
 vim.api.nvim_create_autocmd('ColorScheme', {
     pattern = '*',
+    group = highlights,
     callback = function()
         -- Rebind float
         vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Pmenu' })
 
         -- Link ts-context to bufferline
-        vim.api.nvim_set_hl(0, 'TreesitterContext', { link = 'BufferLineFill' })
+        -- vim.api.nvim_set_hl(0, 'TreesitterContext', { link = 'BufferLineFill' })
 
         -- Mini Stuffs
-        vim.api.nvim_set_hl(0, "MiniMapNormal", { link = "Comment" })
-        vim.api.nvim_set_hl(0, "MiniIndentscopePrefix", { link = "Comment" })
-        vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { link = "Comment" })
+        vim.api.nvim_set_hl(0, 'MiniMapNormal', { link = 'Comment' })
+        vim.api.nvim_set_hl(0, 'MiniIndentscopePrefix', { link = 'Comment' })
+        vim.api.nvim_set_hl(0, 'MiniIndentscopeSymbol', { link = 'Comment' })
 
+        
         -- -- Blanks out cursorline but keeps lnnr hl
         -- vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Normal" })
         -- vim.api.nvim_set_hl(0, "CursorLine", { link = "NONE" })
@@ -52,7 +57,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         --
         -- local mantle = util.get_hl_val("NormalFloat", "background")
         -- local surface0 = util.get_hl_val("NormalFloat", "background")
-        -- local green = util.get_hl_val("String", "foreground")
+        -- local green  = util.get_hl_val("String", "foreground")
         -- local pink = util.get_hl_val("Keyword", "foreground")
         -- local flamingo = util.get_hl_val("Identifier", "foreground")
         -- local normal = util.get_hl_val("Normal", "background")
@@ -82,15 +87,24 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         -- vim.api.nvim_set_hl(0, "TreesitterContext", { link = "Normal" })
         -- vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { link = "Normal" })
 
-        -- -- Mini starter
-        -- local colorgroups = { 'String', 'Identifier', 'Keyword', 'Constant', 'Statement', 'Type' }
-        --
-        -- local header_hl = util.get_hl_val(colorgroups[math.random(#colorgroups)], 'foreground')
-        -- vim.api.nvim_set_hl(0, 'MiniStarterHeader', { fg = header_hl })
-        --
-        -- local footer_hl = util.get_hl_val(colorgroups[math.random(#colorgroups)], 'foreground')
-        -- vim.api.nvim_set_hl(0, 'MiniStarterFooter', { fg = footer_hl })
-        --
+
+        -- Mini starter
+        local colorgroups = { 'String', 'Identifier', 'Constant', 'Statement', 'Type' }
+
+        local header_hl = util.get_hl_val(colorgroups[math.random(#colorgroups)], 'foreground')
+        if header_hl ~= nil then
+            vim.api.nvim_set_hl(0, 'MiniStarterHeader', { fg = header_hl })
+        else
+            vim.notify('No footer hl', vim.log.levels['WARN'])
+        end
+
+        local footer_hl = util.get_hl_val(colorgroups[math.random(#colorgroups)], 'foreground')
+        if footer_hl ~= nil then
+            vim.api.nvim_set_hl(0, 'MiniStarterFooter', { fg = footer_hl })
+        else
+            vim.notify('No footer hl', vim.log.levels['WARN'])
+        end
+
         -- if lualine_ok then
         --     lualine.refresh()
         -- end
