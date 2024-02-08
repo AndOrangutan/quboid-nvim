@@ -1,5 +1,12 @@
 return {
     {
+        'famiu/bufdelete.nvim',
+        keys = {
+            { '<C-q>', function() require('bufdelete').bufdelete(0) end, desc = 'Save and Close Buffer, not buffer' }
+        },
+
+    },
+    {
         'mrjones2014/smart-splits.nvim',
         opts = {
             ignore_filetypes = require('quboid.ft').ft_exclude,
