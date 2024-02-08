@@ -171,7 +171,6 @@ return {
             local quote = quboid.dashboard_quotes[math.random(#quboid.dashboard_quotes)]
             local w = util.max_width(quboid.dashboard_header, details1, details2, quboid.dashboard_footer, quote)
 
-
             local header = (function()
                 return function()
                     ms = (math.floor(require('lazy').stats().startuptime * 100 + 0.5) / 100)
@@ -201,8 +200,7 @@ return {
                 return feet
             end
 
-
-            require('mini.starter').setup({
+            starter.setup({
                 autoopen = true,
                 evaluate_single = false,
                 items = {
@@ -221,10 +219,10 @@ return {
                                 cmd = 'fd -e md -g index.md',
                                 cwd = quboid.notebook_dir,
                                 actions = {
-                                    ['default'] = function (selected, opts)
+                                    ['default'] = function(selected, opts)
                                         vim.cmd([[cd ]] .. quboid.notebook_dir)
                                         require('fzf-lua').actions.file_edit(selected, opts)
-                                            vim.wait(200)
+                                        vim.wait(200)
                                         -- TODO: Enable ZK
                                         -- vim.cmd([[ZkCd]])
                                     end
@@ -240,7 +238,7 @@ return {
                                 prompt = 'Config> ',
                                 cwd = '~/.config/nvim',
                                 actions = {
-                                    ['default'] = function (selected, opts)
+                                    ['default'] = function(selected, opts)
                                         require('fzf-lua').actions.file_edit(selected, opts)
                                         vim.cmd('cd ~/.config/nvim')
                                     end
@@ -260,13 +258,14 @@ return {
                 footer = footer(),
             })
 
-            local MiniStarterKeys = vim.api.nvim_create_augroup('MiniStarterKeys', { clear = true })
 
             vim.api.nvim_create_autocmd('User', {
                 pattern = 'LazyVimStarted',
-                callback = function()
+                callback = function(opts)
                     vim.opt_local.statuscolumn = ''
-                    require('mini.starter').refresh()
+                    if vim.bo[opts.buf].filetype == 'starter' then
+                        require('mini.starter').refresh()
+                    end
                 end,
             })
             vim.api.nvim_create_autocmd('User', {

@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.api.nvim_set_hl(0, 'MiniIndentscopePrefix', { link = 'Comment' })
         vim.api.nvim_set_hl(0, 'MiniIndentscopeSymbol', { link = 'Comment' })
 
-        
+
         vim.api.nvim_set_hl(0, "FoldColumn", { link = "Normal" })
 
         -- -- Blanks out cursorline but keeps lnnr hl
@@ -90,21 +90,13 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
 
         -- Mini starter
-        local colorgroups = { 'String', 'Identifier', 'Constant', 'Statement', 'Type' }
-
+        local colorgroups = { 'String', 'Identifier', 'Keyword', 'Constant', 'Statement', 'Type' }
+        math.randomseed(os.clock()*100000)
         local header_hl = util.get_hl_val(colorgroups[math.random(#colorgroups)], 'foreground')
-        if header_hl ~= nil then
-            vim.api.nvim_set_hl(0, 'MiniStarterHeader', { fg = header_hl })
-        else
-            vim.notify('No footer hl', vim.log.levels['WARN'])
-        end
+        vim.api.nvim_set_hl(0, 'MiniStarterHeader', { fg = header_hl })
 
         local footer_hl = util.get_hl_val(colorgroups[math.random(#colorgroups)], 'foreground')
-        if footer_hl ~= nil then
-            vim.api.nvim_set_hl(0, 'MiniStarterFooter', { fg = footer_hl })
-        else
-            vim.notify('No footer hl', vim.log.levels['WARN'])
-        end
+        vim.api.nvim_set_hl(0, 'MiniStarterFooter', { fg = footer_hl })
 
         if lualine_ok then
             lualine.refresh()
