@@ -124,7 +124,9 @@ return {
         'linrongbin16/lsp-progress.nvim',
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
+            local icons = require('quboid.icons')
             require('lsp-progress').setup({
+                spinner = icons.spinner,
                 client_format = function(client_name, spinner, series_messages)
                     if #series_messages == 0 then
                         return nil

@@ -54,7 +54,7 @@ return {
                 config = function()
                     local dict = require('cmp_dictionary')
                     dict.setup({
-                        paths = { "/usr/share/dict/words" },
+                        paths = { '/usr/share/dict/words' },
                         document = {
                             enable = true,
                             command = { 'wn', '${label}', '-over' },
