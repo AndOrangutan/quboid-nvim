@@ -1,6 +1,7 @@
 local quboid = require('quboid')
 local util = require('quboid.util')
 
+local lualine = require('lualine')
 
 local highlights = vim.api.nvim_create_augroup('highlights', { clear = true })
 
@@ -105,9 +106,9 @@ vim.api.nvim_create_autocmd('ColorScheme', {
             vim.notify('No footer hl', vim.log.levels['WARN'])
         end
 
-        -- if lualine_ok then
-        --     lualine.refresh()
-        -- end
+        if lualine_ok then
+            lualine.refresh()
+        end
     end,
 })
 
