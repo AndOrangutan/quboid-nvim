@@ -79,3 +79,4 @@ lazy.setup('plugins', {
 
 -- colorscheme and highlights
 require('highlights')
+require('keymaps')

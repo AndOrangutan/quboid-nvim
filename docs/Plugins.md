@@ -37,8 +37,9 @@
 
 - [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) - A snazzy bufferline for Neovim.
 - [echasnovski/mini.notify](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-notify.md) - Show notifications.
-- [folke/which-key.nvim](https://github.com/folke/which-key.nvim) - Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
-- [luukvball/statuscol.nvim](https://github.com/luukvbaal/statuscol.nvim) - Status column plugin that provides a configurable 'statuscolumn' and click handlers.
+- [luukvball/statuscol.nvim](https://github.com/luukvbaal/statuscol.nvim) - 
+Status column plugin that provides a configurable 'statuscolumn' and click 
+handlers.
 
 ### Core UI Buffers
 
@@ -63,9 +64,12 @@
 ### Git
 
 - [sindrets/diffview.nvim](https://github.com/sindrets/diffview.nvim) - Single tabpage interface for easily cycling through diffs for all modified files for any git rev.
-- [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Git 
-integration for buffers.
+- [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim) - Git integration for buffers.
 - [TimUntersberger/neogit](https://github.com/TimUntersberger/neogit) - magit for neovim.
+
+### Keymaps
+
+- [folke/which-key.nvim](https://github.com/folke/which-key.nvim) - Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.
 
 ### LSP (Language Server Protocol)
 

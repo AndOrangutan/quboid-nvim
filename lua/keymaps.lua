@@ -16,7 +16,6 @@ vim.keymap.set('n', 'Q', function()
     --vim.api.nvim_command('write')
 end, { desc = 'Save and Close Buffer' })
 
-vim.keymap.set('n', '<leader>w', '<c-w>', { desc = 'Open [w]indow Options' })
 vim.keymap.set('n', '<leader>w+', '<c-w>+', { desc = '[w]indow height +' })
 vim.keymap.set('n', '<leader>w-', '<c-w>+', { desc = '[w]indow height -' })
 vim.keymap.set('n', '<leader>w<', '<c-w><', { desc = '[w]indow width <' })
