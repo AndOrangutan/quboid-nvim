@@ -51,20 +51,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>ca', '<cmd>FzfLua lsp_code_actions<cr>',
             { desc = 'LSP [c]ode [a]ction', buffer = ev.buf })
 
-        -- Float on hold
-        vim.o.updatetime = 250
-        vim.api.nvim_create_autocmd('CursorHold', {
-            buffer = ev.buf,
-            callback = function()
-                local opts = {
-                    focus = false,
-                    close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
-                    -- prefix = ' ',
-                    scope = 'cursor',
-                }
-                vim.diagnostic.open_float({}, opts)
-            end
-        })
+        -- -- Float on hold
+        -- vim.o.updatetime = 500
+        -- vim.api.nvim_create_autocmd('CursorHold', {
+        --     buffer = ev.buf,
+        --     callback = function()
+        --         local opts = {
+        --             focus = false,
+        --             close_events = { 'BufLeave', 'CursorMoved', 'InsertEnter', 'FocusLost' },
+        --             -- prefix = ' ',
+        --             scope = 'cursor',
+        --         }
+        --         vim.diagnostic.open_float({}, opts)
+        --     end
+        -- })
     end,
 })
 
