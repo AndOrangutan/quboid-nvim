@@ -6,7 +6,7 @@ return {
             'DiffviewOpen',
             'DiffviewToggle',
         },
-        event = 'VeryLazy',
+        event = { 'BufReadPre', 'BufNewFile' },
         keys = {
             {
                 '<leader>gd',
@@ -14,5 +14,13 @@ return {
                 desc = '[d]iffview Toggle',
             },
         },
+    },
+    {
+        'lewis6991/gitsigns.nvim',
+        event = { 'BufReadPre', 'BufNewFile' },
+        keys = {
+            { '<leader>gb', '<cmd>Gitsigns toggle_current_line_blame<cr>', desc = '[g]it [b]lame toggle' },
+        },
+        config = true,
     },
 }
