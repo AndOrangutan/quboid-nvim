@@ -6,7 +6,10 @@ M.ft_exclude = {
     'gitrebase',
     'lazy',
     'neo-tree',
+    'nofile',
+    'prompt',
     'starter',
+    'quickfix',
 }
 
 M.bt_exclude = {
