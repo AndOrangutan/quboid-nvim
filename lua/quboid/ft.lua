@@ -19,4 +19,8 @@ M.markup = {
     'markdown',
 }
 
+M.git = {
+    'gitcommit',
+}
+
 return M

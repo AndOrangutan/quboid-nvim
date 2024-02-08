@@ -28,9 +28,10 @@ does the latter, if I am using a "niche" editor I want it to be mine.
    - `[rg](https://github.com/BurntSushi/ripgrep)`
    - `[dleta](https://github.com/dandavison/delta)`
    - `[ueberzug](https://github.com/seebye/ueberzug)`
+   - [wordnet](https://wordnet.princeton.edu/)
 
 ```
-paru -S fzf fd ripgrep git-delta ueberzug
+paru -S fzf fd ripgrep git-delta ueberzug wordnet-cli
 ```
 
 ### Plugins
