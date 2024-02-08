@@ -27,6 +27,8 @@ M.gen = {
     calendar     = ' ',
     check        = ' ',
     circle       = ' ',
+    cicle_triple = ' ',
+    circle_dot   = ' ',
     circle_half  = ' ',
     circle_o     = ' ',
     close        = ' ',
@@ -43,10 +45,12 @@ M.gen = {
     hidden       = ' ',
     key          = ' ',
     keybord      = ' ',
+    map          = ' ',
     pause        = ' ',
     pencil       = ' ',
     play         = ' ',
     plug         = ' ',
+    pound        = ' ',
     question     = ' ',
     server       = ' ',
     startup      = ' ',
@@ -93,6 +97,10 @@ M.lsp_kind = {
     Value         = ' ',
     Variable      = ' ',
     Copilot       = ' ',
+}
+
+M.spinner = {
+    ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '
 }
 
 M.lang = {

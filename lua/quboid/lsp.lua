@@ -8,8 +8,7 @@ local quboid = require('quboid')
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = function(ev)
-        local glance_ok, _ = pcall(require, 'glance')
-        local actions_preview_ok, _ = pcall(require, 'glance')
+        local ufo_ok, ufo = pcall(require, 'ufo')
 
         -- Enable completion triggered by <c-x><c-o>
         vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
@@ -31,7 +30,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = 'lsp [g]oto [d]eclaration', buffer = ev.buf})
         vim.keymap.set('n', 'K', function()
             local winid = nil
-            -- if ufo_ok then winid = require('ufo').peekfoldedlinesundercursor() end
+            if ufo_ok then winid = require('ufo').peekFoldedLinesUnderCursor() end
             if not winid then
                 vim.lsp.buf.hover()
             end
