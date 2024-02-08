@@ -23,4 +23,15 @@ return {
         },
         config = true,
     },
+	{
+		"TimUntersberger/neogit",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = {
+			integrations = { diffview = true },
+		},
+		keys = {
+			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Neo[g]it Toggle [g]oodness" },
+		},
+		event = "VeryLazy",
+	},
 }
