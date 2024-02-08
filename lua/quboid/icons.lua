@@ -48,6 +48,7 @@ M.gen = {
     play         = ' ',
     plug         = ' ',
     question     = ' ',
+    server       = ' ',
     startup      = ' ',
     toggle_off   = ' ',
     toggle_on    = ' ',
