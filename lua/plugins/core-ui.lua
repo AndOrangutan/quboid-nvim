@@ -148,16 +148,36 @@ return {
             local wk = require('which-key')
             wk.setup()
             wk.register({
-                ["<leader>s"] = { name = "Sessions" },
-                ["<leader>m"] = { name = "Mini Lib (Map)" },
-                ["<leader>n"] = { name = "Navigation" },
-                ["<leader>p"] = { name = "Picker" },
-                ["<leader>ts"] = { name = "Treesitter" },
+                ['<leader>s'] = { name = 'Sessions' },
+                ['<leader>m'] = { name = 'Mini Lib (Map)' },
+                ['<leader>n'] = { name = 'Navigation' },
+                ['<leader>p'] = { name = 'Picker' },
+                ['<leader>ts'] = { name = 'Treesitter' },
             })
         end,
         keys = {
             { '<leader>' },
         },
         event = 'VeryLazy',
+    },
+    {
+        'luukvbaal/statuscol.nvim',
+        config = function()
+            local ft = require('quboid.ft')
+            local builtin = require('statuscol.builtin')
+            require('statuscol').setup({
+                foldfunc = 'builtin',
+                ft_ignore = ft.ft_exclude,
+                bt_ignore = ft.bt_exclude,
+                setopt = true,
+                thousands = false,
+                relculright = true,
+                segments = {
+                    { text = { '%s' },                click = 'v:lua.ScSa' },
+                    { text = { builtin.lnumfunc, ' ' }, click = 'v:lua.ScLa' },
+                    { text = { builtin.foldfunc },    click = 'v:lua.ScFa' },
+                }
+            })
+        end
     },
 }
