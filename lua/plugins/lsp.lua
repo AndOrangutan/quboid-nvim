@@ -31,6 +31,7 @@ return {
 
                 -- Disable
                 ['jdtls'] = function() end,
+                ['zk'] = function() end,
                 ['tsserver'] = function() end,
                 ['eslint'] = function() end,
 

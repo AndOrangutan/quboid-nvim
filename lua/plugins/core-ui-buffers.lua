@@ -223,8 +223,7 @@ return {
                                         vim.cmd([[cd ]] .. quboid.notebook_dir)
                                         require('fzf-lua').actions.file_edit(selected, opts)
                                         vim.wait(200)
-                                        -- TODO: Enable ZK
-                                        -- vim.cmd([[ZkCd]])
+                                        vim.cmd([[ZkCd]])
                                     end
                                 }
                             })

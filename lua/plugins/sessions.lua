@@ -24,7 +24,7 @@ return {
         end,
         keys = {
             { '<leader>ss', '<cmd>SessionManager save_current_session<CR>', desc = '[s]essions [s]ave' },
-            { '<leader>sl', '<cmd>SessionManager load_session<CR>', desc = '[s]essions [l]oad' },
+            { '<leader>sl', '<cmd>SessionManager load_session<CR>',         desc = '[s]essions [l]oad' },
         },
     }
 }

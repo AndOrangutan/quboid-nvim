@@ -4,21 +4,58 @@ return {
         opts = {
             input = {
                 enabled = true,
+                border = require('quboid').border,
+
+                -- Default prompt string
+                default_prompt = 'Input',
+
+                -- Trim trailing `:` from prompt
+                trim_prompt = true,
+
+                -- Can be 'left', 'right', or 'center'
                 title_pos = 'center',
-                border = require('quboid').border_float,
-            },
-            select = {
-                enabled = true,
-                -- Priority list of preferred vim.select implementations
-                -- backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
-                fzf_lua = {
-                    prompt   = '❯ ',
-                    winopts = {
-                        height     = 0.30,
-                        width      = 1.00,
-                        row        = 1,
-                        col        = 0.50,
-                    },
+
+                -- When true, <Esc> will close the modal
+                insert_only = true,
+
+                -- When true, input will start in insert mode.
+                start_in_insert = true,
+
+                -- These are passed to nvim_open_win
+                -- 'editor' and 'win' will default to being centered
+                relative = 'cursor',
+
+                -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
+                prefer_width = 40,
+                width = nil,
+                -- min_width and max_width can be a list of mixed types.
+                -- min_width = {20, 0.2} means "the greater of 20 columns or 20% of total"
+                max_width = { 140, 0.9 },
+                min_width = { 20, 0.2 },
+
+                buf_options = {},
+                win_options = {
+                    -- Disable line wrapping
+                    wrap = false,
+                    -- Indicator for when text exceeds window
+                    list = true,
+                    listchars = 'precedes:…,extends:…',
+                    -- Increase this for more context when text scrolls off the window
+                    sidescrolloff = 0,
+                },
+                select = {
+                    enabled = true,
+                    -- Priority list of preferred vim.select implementations
+                    -- backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
+                    fzf_lua = {
+                        prompt  = '❯ ',
+                        winopts = {
+                            height = 0.30,
+                            width  = 1.00,
+                            row    = 1,
+                            col    = 0.50,
+                        },
+                    }
                 }
 
             },
@@ -36,7 +73,7 @@ return {
 
             -- calling `setup` is optional for customization
             require('fzf-lua').setup({
-                hls = {
+                hls               = {
                     normal = 'NormalFloat',
                     border = 'NormalFloat',
                     title = 'NormalFloat',
@@ -55,16 +92,16 @@ return {
                     col        = 0.50,
                     border     = quboid.border,
                     hl         = {
-                        normal     = 'Normal', -- window normal color (fg+bg)
-                        border     = 'Normal', -- border color (try 'FloatBorder')
+                        normal       = 'Normal',     -- window normal color (fg+bg)
+                        border       = 'Normal',     -- border color (try 'FloatBorder')
                         -- Only valid with the builtin previewer:
-                        cursor     = 'Normal', -- cursor highlight (grep/LSP matches)
-                        cursorline = 'Normal', -- cursor line
-                        cursorlinenr = 'Normal', -- cursor line
-                        search     = 'Search', -- search matches (ctags)
-                        title      = 'NormalBorder', -- preview border title (file/buffer)
+                        cursor       = 'Normal',     -- cursor highlight (grep/LSP matches)
+                        cursorline   = 'Normal',     -- cursor line
+                        cursorlinenr = 'Normal',     -- cursor line
+                        search       = 'Search',     -- search matches (ctags)
+                        title        = 'NormalBorder', -- preview border title (file/buffer)
                     },
-                    fullscreen = false,      -- start fullscreen?
+                    fullscreen = false,              -- start fullscreen?
                     preview    = {
                         -- applies only when scrollbar = 'float'
                         scrollchars = { '█', '' }, -- scrollbar chars ({ <full>, <empty> }
@@ -194,10 +231,10 @@ return {
                 },
                 files             = {
                     prompt       = 'Files❯ ',
-                    multiprocess = true,           -- run command in a separate process
-                    git_icons    = true,           -- show git icons?
-                    file_icons   = true,           -- show file icons?
-                    color_icons  = true,           -- colorize file|git icons
+                    multiprocess = true, -- run command in a separate process
+                    git_icons    = true, -- show git icons?
+                    file_icons   = true, -- show file icons?
+                    color_icons  = true, -- colorize file|git icons
 
                     find_opts    = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
                     rg_opts      = "--color=never --files --hidden --follow -g '!.git'",
@@ -273,8 +310,8 @@ return {
                         -- this action toggles between 'grep' and 'live_grep'
                         ['ctrl-g'] = { actions.grep_lgrep }
                     },
-                    no_header    = false,   -- hide grep|cwd header?
-                    no_header_i  = false,   -- hide interactive header?
+                    no_header    = false, -- hide grep|cwd header?
+                    no_header_i  = false, -- hide interactive header?
                 },
                 args              = {
                     prompt  = 'Args❯ ',
@@ -320,7 +357,7 @@ return {
                     },
                 },
                 blines            = {
-                    previewer = 'builtin',       -- set to 'false' to disable
+                    previewer = 'builtin', -- set to 'false' to disable
                     prompt    = 'BLines❯ ',
                     -- actions inherit from 'actions.buffers' and merge
                     actions   = {
@@ -331,7 +368,7 @@ return {
                 },
                 tags              = {
                     prompt     = 'Tags❯ ',
-                    ctags_file = nil,   -- auto-detect from tags-option
+                    ctags_file = nil, -- auto-detect from tags-option
                     actions    = {
                         -- actions inherit from 'actions.files' and merge
                         -- this action toggles between 'grep' and 'live_grep'
@@ -469,15 +506,14 @@ return {
         keys = {
             { '<C-x><C-f>', '<cmd>lua require("fzf-lua").complete_path()<cr>',
                 { desc = 'Bufferline Cycle Next', mode = { 'n', 'v', 'i' } } },
-
-            { '<leader>pp', '<cmd>FzfLua<cr>', desc = 'FzfLua [p]ick [p]ickers' },
-            { '<leader>pf', '<cmd>FzfLua files<cr>', desc = 'FzfLua [p]ick [f]iles' },
-            { '<leader>pg', '<cmd>FzfLua live_grep<cr>', desc = 'FzfLua [p]ick live [g]rep' },
+            { '<leader>pp', '<cmd>FzfLua<cr>',              desc = 'FzfLua [p]ick [p]ickers' },
+            { '<leader>pf', '<cmd>FzfLua files<cr>',        desc = 'FzfLua [p]ick [f]iles' },
+            { '<leader>pg', '<cmd>FzfLua live_grep<cr>',    desc = 'FzfLua [p]ick live [g]rep' },
             { '<leader>pc', '<cmd>FzfLua colorschemes<cr>', desc = 'FzfLua [p]ick [c]olorschemes' },
-            { '<leader>pm', '<cmd>FzfLua marks<cr>', desc = 'FzfLua [p]ick [m]arks' },
-            { '<leader>pk', '<cmd>FzfLua keymaps<cr>', desc = 'FzfLua [p]ick [k]eymaps' },
-            { '<leader>pb', '<cmd>FzfLua buffers<cr>', desc = 'FzfLua [p]ick [b]buffers' },
-            { '<leader>ph', '<cmd>FzfLua help_tags<cr>', desc = 'FzfLua [p]ick [h]elp_tags' },
+            { '<leader>pm', '<cmd>FzfLua marks<cr>',        desc = 'FzfLua [p]ick [m]arks' },
+            { '<leader>pk', '<cmd>FzfLua keymaps<cr>',      desc = 'FzfLua [p]ick [k]eymaps' },
+            { '<leader>pb', '<cmd>FzfLua buffers<cr>',      desc = 'FzfLua [p]ick [b]buffers' },
+            { '<leader>ph', '<cmd>FzfLua help_tags<cr>',    desc = 'FzfLua [p]ick [h]elp_tags' },
         },
     }
 }
