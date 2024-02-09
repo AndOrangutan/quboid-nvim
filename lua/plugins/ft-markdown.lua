@@ -94,5 +94,22 @@ return {
             { '<leader>zi', '<cmd>ZkInsertLink<cr>',                 desc = '[z]k [i]sert Link' },
             { '<cr>',       function() vim.lsp.buf.definition() end, desc = 'Zk Follow note' }
         },
-    }
+    },
+    { 'lukas-reineke/headlines.nvim',
+        opts = {
+            markdown = {
+                headline_highlights = { "Headline" },
+                codeblock_highlight = "CodeBlock",
+                dash_highlight = "Dash",
+                dash_string = "-",
+                quote_highlight = "Quote",
+                quote_string = "┃",
+                fat_headlines = false,
+                fat_headline_upper_string = "▃",
+                fat_headline_lower_string = "🬂",
+                bullets = { "◉", "○", "✸", "✿" },
+            },
+        },
+        ft = require('quboid.ft').markup,
+    },
 }
