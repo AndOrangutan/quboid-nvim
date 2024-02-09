@@ -60,7 +60,7 @@ return {
                 vim.ui.select(group_names, {
                     prompt = 'Select Group: ',
                 }, function(group_choice)
-                        require('quboid.util').input_builder(group_tbl[group_choice], function (table)
+                    require('quboid.util').input_builder(group_tbl[group_choice], function(table)
                         vim.notify(vim.inspect(table))
 
                         local confirm_val = vim.fn.confirm('Use Custom Template?', '&No\n&Yes')
@@ -95,21 +95,33 @@ return {
             { '<cr>',       function() vim.lsp.buf.definition() end, desc = 'Zk Follow note' }
         },
     },
-    { 'lukas-reineke/headlines.nvim',
+    {
+        'lukas-reineke/headlines.nvim',
         opts = {
             markdown = {
-                headline_highlights = { "Headline" },
-                codeblock_highlight = "CodeBlock",
-                dash_highlight = "Dash",
-                dash_string = "-",
-                quote_highlight = "Quote",
-                quote_string = "┃",
+                headline_highlights = { 'Headline' },
+                codeblock_highlight = 'CodeBlock',
+                dash_highlight = 'Dash',
+                dash_string = '-',
+                quote_highlight = 'Quote',
+                quote_string = '┃',
                 fat_headlines = false,
-                fat_headline_upper_string = "▃",
-                fat_headline_lower_string = "🬂",
-                bullets = { "◉", "○", "✸", "✿" },
+                fat_headline_upper_string = '▃',
+                fat_headline_lower_string = '🬂',
+                bullets = { '◉', '○', '✸', '✿' },
             },
         },
         ft = require('quboid.ft').markup,
+    },
+    {
+        'NFrid/due.nvim',
+        dependencies = 'nvim-treesitter/nvim-treesitter',
+        ft = require('quboid.ft').markup,
+        opts = {
+            prescript = '  due in ', -- prescript to due data
+            use_clock_time = true,   -- display also hours and minutes
+            use_clock_today = true,  -- do it instead of TODAY
+            use_seconds = false,     -- if use_clock_time == true, display seconds
+        },
     },
 }
