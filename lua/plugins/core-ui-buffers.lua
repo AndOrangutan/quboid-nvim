@@ -222,7 +222,7 @@ return {
                                     ['default'] = function(selected, opts)
                                         vim.cmd([[cd ]] .. quboid.notebook_dir)
                                         require('fzf-lua').actions.file_edit(selected, opts)
-                                        vim.cmd[[TZMinimalist]]
+                                        vim.cmd([[TZMinimalist]])
                                         vim.wait(200)
                                         vim.cmd([[ZkCd]])
                                     end
@@ -285,5 +285,119 @@ return {
             vim.api.nvim_create_user_command('MiniStarterOpen', "lua require('mini.starter').open()", {})
             vim.api.nvim_create_user_command('MiniStarterClose', "lua require('mini.starter').close()", {})
         end,
+    },
+    {
+        'folke/trouble.nvim',
+        dependencies = {
+            'nvim-tree/nvim-web-devicons',
+            {
+                'folke/todo-comments.nvim',
+                dependencies = { 'nvim-lua/plenary.nvim' },
+                opts = {
+                    keywords = {
+                        FIX = {
+                            icon = require('quboid.icons').gen.bug,
+                            color = 'error',
+                            alt = { 'FIXME', 'BUG', 'FIXIT', 'ISSUE' },
+                        },
+                        TODO = { icon = require('quboid.icons').gen.check, color = 'info' },
+                        HACK = { icon = require('quboid.icons').gen.estinguisher, color = 'warning' },
+                        WARN = {
+                            icon = require('quboid.icons').gen.exclamation,
+                            color = 'warning',
+                            alt = { 'WARNING', 'XXX' },
+                        },
+                        PERF = {
+                            icon = require('quboid.icons').gen.flag_checkered,
+                            alt = { 'OPTIM', 'PERFORMANCE', 'OPTIMIZE' },
+                        },
+                        NOTE = { icon = require('quboid.icons').gen.pin, color = 'hint', alt = { 'INFO' } },
+                        TEST = {
+                            icon = require('quboid.icons').gen.beaker,
+                            color = 'test',
+                            alt = { 'TESTING', 'PASSED', 'FAILED' },
+                        },
+                    },
+                },
+                event = 'VeryLazy',
+                keys = {
+
+                    {
+                        ']t',
+                        function()
+                            require('todo-comments').jump_next()
+                        end,
+                        desc = 'Next [t]odo',
+                    },
+                    {
+                        '[t',
+                        function()
+                            require('todo-comments').jump_prev()
+                        end,
+                        desc = 'Prev [t]odo',
+                    },
+                },
+            },
+        },
+        event = 'VimEnter',
+        opts = {
+            -- fold_open   = '',
+            -- fold_closed = '',
+            padding = false,
+            cycle_results = false,
+            auto_preview = false,
+            indent_lines = false,
+            use_diagnostic_signs = true,
+        },
+        keys = {
+            {
+                '<leader>xx',
+                '<cmd>TroubleToggle<cr>',
+                desc =
+                'Trouble E[x]plore E[x]tensive (workspace)'
+            },
+            {
+                '<leader>xw',
+                '<cmd>TroubleToggle workspace_diagnostics<cr>',
+                desc =
+                'Trouble E[x]plore [w]orkspace Diagnostics',
+            },
+            {
+                '<leader>xd',
+                '<cmd>TroubleToggle document_diagnostics<cr>',
+                desc =
+                'Trouble E[x]plore [d]ocument Diagnostics',
+            },
+            {
+                '<leader>xq',
+                '<cmd>TroubleToggle quickfix<cr>',
+                desc =
+                'Trouble E[x]plore [q]uickfix Diagnostics'
+            },
+            {
+                '<leader>xl',
+                '<cmd>TroubleToggle loclist<cr>',
+                desc =
+                'Trouble E[x]plore [l]oclist Diagnostics'
+            },
+            {
+                '<leader>xt',
+                '<cmd>TodoTrouble<cr>',
+                desc =
+                'Trouble E[x]plore [t]odoComments'
+            },
+            {
+                '[D',
+                "<cmd>lua require('trouble').open('workspace_diagnostics')<cr> <bar> <cmd>lua require('trouble').previous({skip_groups = true, jump = true})<cr>",
+                desc =
+                'Trouble Next [d]iagnsotic'
+            },
+            {
+                ']D',
+                "<cmd>lua require('trouble').open('workspace_diagnostics')<cr> <bar> <cmd>lua require('trouble').next({skip_groups = true, jump = true})<cr>",
+                desc =
+                'Trouble Next [d]iagnsotic'
+            },
+        },
     },
 }

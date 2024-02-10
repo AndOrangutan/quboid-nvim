@@ -11,6 +11,8 @@ M.ft_exclude = {
     'prompt',
     'starter',
     'quickfix',
+    'Trouble',
+    'NeogitStatus',
 }
 
 M.bt_exclude = {
