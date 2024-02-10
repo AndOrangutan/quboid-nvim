@@ -222,6 +222,7 @@ return {
                                     ['default'] = function(selected, opts)
                                         vim.cmd([[cd ]] .. quboid.notebook_dir)
                                         require('fzf-lua').actions.file_edit(selected, opts)
+                                        vim.cmd[[TZMinimalist]]
                                         vim.wait(200)
                                         vim.cmd([[ZkCd]])
                                     end
