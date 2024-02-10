@@ -131,4 +131,23 @@ return {
             { '<leader>ml', '<cmd>lua require("nabla").toggle_virt()<cr>', desc = '[m]arkdown [l]aTeX Toggle' },
         },
     },
+    { 'AckslD/nvim-FeMaco.lua',
+        opts = {
+            border = require('quboid').border,
+            prepare_buffer = function(opts)
+                vim.cmd('split')
+                local win = vim.api.nvim_get_current_win()
+                local buf = vim.api.nvim_create_buf(false, false)
+                return vim.api.nvim_win_set_buf(win, buf)
+            end,
+            post_open_float = function(winnr)
+                -- vim.wo.signcolumn = 'no'
+                vim.wo.winhighlight = "Nomral:NormalFloat"
+            end
+        },
+        ft = require('quboid').markup,
+        keys = {
+            { '<leader>o', '<cmd>FeMaco<cr>', desc = 'FeMaco [o]pen Codeblock' }
+        },
+    },
 }
