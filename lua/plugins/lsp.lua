@@ -212,6 +212,10 @@ return {
             })
         end,
     },
+    {
+        'hinell/lsp-timeout.nvim',
+        dependencies = { 'neovim/nvim-lspconfig' }
+    },
 
     {
         'nvimtools/none-ls.nvim',

@@ -15,22 +15,23 @@
 ### Completion
 
 - [L3MON4D3/LuaSnip](https://github.com/L3MON4D3/LuaSnip) - Snippet Engine for Neovim written in Lua.
-    - [rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets) - Set of preconfigured snippets for different languages.
-    - [r5n-dev/vscode-react-javascript-snippets](https://github.com/r5n-dev/vscode-react-javascript-snippets) - Extension for React/Javascript snippets with search supporting ES7+ and babel features.
+
+  - [rafamadriz/friendly-snippets](https://github.com/rafamadriz/friendly-snippets) - Set of preconfigured snippets for different languages.
+  - [r5n-dev/vscode-react-javascript-snippets](https://github.com/r5n-dev/vscode-react-javascript-snippets) - Extension for React/Javascript snippets with search supporting ES7+ and babel features.
 
 - [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) - A completion plugin for neovim coded in Lua.
-    - [hrsh7th/cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua) - nvim-cmp source for nvim lua.
-    - [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - nvim-cmp source for neovim builtin LSP client.
-    - [saadparwaiz1/cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) - luasnip completion source for nvim-cmp.
-    - [L3MON4D3/cmp-luasnip-choice](https://github.com/L3MON4D3/cmp-luasnip-choice) - Luasnip choice node completion source for nvim-cmp.
-    - [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - nvim-cmp source for buffer words.
-    - [petertriho/cmp-git](https://github.com/petertriho/cmp-git) - Git source for nvim-cmp.
-    - [hrsh7th/cmp-calc](https://github.com/hrsh7th/cmp-calc) - nvim-cmp source for math calculations.
-    - [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path) - nvim-cmp source for path.
-    - [kdheepak/cmp-latex-symbols](https://github.com/kdheepak/cmp-latex-symbols) - Add latex symbol support for nvim-cmp.
-    - [uga-rosa/cmp-dictionary](https://github.com/uga-rosa/cmp-dictionary) - A dictionary completion source for nvim-cmp.
-    - [roobert/tailwindcss-colorizer-cmp.nvim](https://github.com/roobert/tailwindcss-colorizer-cmp.nvim) - A Neovim plugin to add vscode-style TailwindCSS completion to nvim-cmp.
-    - [Gelio/cmp-natdat](https://github.com/Gelio/cmp-natdat) - Nvim-cmp source to autocomplete natural dates and turm them into ISO dates.
+  - [hrsh7th/cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua) - nvim-cmp source for nvim lua.
+  - [hrsh7th/cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp) - nvim-cmp source for neovim builtin LSP client.
+  - [saadparwaiz1/cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip) - luasnip completion source for nvim-cmp.
+  - [L3MON4D3/cmp-luasnip-choice](https://github.com/L3MON4D3/cmp-luasnip-choice) - Luasnip choice node completion source for nvim-cmp.
+  - [hrsh7th/cmp-buffer](https://github.com/hrsh7th/cmp-buffer) - nvim-cmp source for buffer words.
+  - [petertriho/cmp-git](https://github.com/petertriho/cmp-git) - Git source for nvim-cmp.
+  - [hrsh7th/cmp-calc](https://github.com/hrsh7th/cmp-calc) - nvim-cmp source for math calculations.
+  - [hrsh7th/cmp-path](https://github.com/hrsh7th/cmp-path) - nvim-cmp source for path.
+  - [kdheepak/cmp-latex-symbols](https://github.com/kdheepak/cmp-latex-symbols) - Add latex symbol support for nvim-cmp.
+  - [uga-rosa/cmp-dictionary](https://github.com/uga-rosa/cmp-dictionary) - A dictionary completion source for nvim-cmp.
+  - [roobert/tailwindcss-colorizer-cmp.nvim](https://github.com/roobert/tailwindcss-colorizer-cmp.nvim) - A Neovim plugin to add vscode-style TailwindCSS completion to nvim-cmp.
+  - [Gelio/cmp-natdat](https://github.com/Gelio/cmp-natdat) - Nvim-cmp source to autocomplete natural dates and turm them into ISO dates.
 
 ### Core UI
 
@@ -43,18 +44,18 @@
 - [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) - Neovim plugin to manage the file system and other tree like structures.
 - [echasnovski/mini.starter](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-starter.md) - Fast and flexible start screen.
 - [folke/trouble.nvim](https://github.com/folke/trouble.nvim) - A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
-    - [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim) - Highlight, list and search todo comments in your projects.
-- [mbbill/undotree](https://github.com/mbbill/undotree) - The undo history 
+  - [folke/todo-comments.nvim](https://github.com/folke/todo-comments.nvim) - Highlight, list and search todo comments in your projects.
+- [mbbill/undotree](https://github.com/mbbill/undotree) - The undo history
 - [hedyhli/outline.nvim](https://github.com/hedyhli/outline.nvim) - Code outline sidebar powered by LSP. Significantly enhanced & refactored fork of symbols-outline.nvim.
 
 ### Editing
 
 - [echasnovski/mini.comment](https://github.com/echasnovski/mini.comment) - Neovim Lua plugin for fast and familiar per-line commenting. Part of 'mini.nvim' library.
 - [echasnovski/mini.ai](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md) - Extend and create a/i textobjects.
-    - [nvim-treesitter/textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) - Syntax aware text-objects.
+  - [nvim-treesitter/textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) - Syntax aware text-objects.
 - [echasnovski/mini.align](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-align.md) - Align text interactively.
 - [kylechui/nvim-surround](https://github.com/kylechui/nvim-surround) - Add/change/delete surrounding delimiter pairs with ease. Written with in Lua.
-- [folke/twilight.nvim](https://github.com/folke/twilight.nvim) - Twilight is a Lua plugin for Neovim 0.5 that dims inactive portions of the code you're editing using TreeSitter. 
+- [folke/twilight.nvim](https://github.com/folke/twilight.nvim) - Twilight is a Lua plugin for Neovim 0.5 that dims inactive portions of the code you're editing using TreeSitter.
 - [pocco81/true-zen.nvim](https://github.com/pocco81/true-zen.nvim) - Clean and elegant distraction-free writing for NeoVim.
 
 ### Filetype Specific
@@ -98,6 +99,7 @@
 - [ray-x/lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) - LSP signature hint as you type.
 - [RRethy/vim-illuminate](https://github.com/RRethy/vim-illuminate) - (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching
 - [DNLHC/glance.nvim](https://github.com/DNLHC/glance.nvim) - A pretty window for previewing, navigating and editing your LSP locations.
+- [hinell/lsp-timeout.nvim](https://github.com/hinell/lsp-timeout.nvim) - Start/stop LSP servers upon demand; keeps RAM usage low.
 
 - [nvimtools/none-ls.nvim](https://github.com/nvimtools/none-ls.nvim) - null-ls.nvim reloaded / Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
 - [jay-babu/mason-null-ls.nvim](https://github.com/jay-babu/mason-null-ls.nvim) - mason-null-ls bridges mason.nvim with the null-ls plugin - making it easier to use both plugins together.
@@ -122,13 +124,13 @@
 ### Statusline
 
 - [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) - A blazing fast and easy to configure neovim statusline plugin written in pure lua.
-    - [linrongbin16/lsp-progress.nvim](https://github.com/linrongbin16/lsp-progress.nvim) - A performant lsp progress status for Neovim. 
+  - [linrongbin16/lsp-progress.nvim](https://github.com/linrongbin16/lsp-progress.nvim) - A performant lsp progress status for Neovim.
 
 ### Treesitter
 
 - [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Nvim Treesitter configurations and abstraction layer.
-    - [JoosepAlviste/nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring) - Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
-    - [nvim-treesitter/playground](https://github.com/nvim-treesitter/playground) - Treesitter playground integrated into Neovim.
+  - [JoosepAlviste/nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring) - Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
+  - [nvim-treesitter/playground](https://github.com/nvim-treesitter/playground) - Treesitter playground integrated into Neovim.
 - [ckolkey/ts-node-action](https://github.com/CKolkey/ts-node-action) - Neovim Plugin for running functions on nodes.
 
 ### Window Management
@@ -139,9 +141,6 @@
 ## Todo
 
 - Dap
-
-- [Wansmer/symbol-usage.nvim](https://github.com/Wansmer/symbol-usage.nvim) - 
-Display references, definitions and implementations of document symbols.
 
 ### AI
 
@@ -158,9 +157,9 @@ Display references, definitions and implementations of document symbols.
 ### DAP
 
 - [mfussenegger/nvim-dap](https://github.com/mfussenegger/nvim-dap) - Debug Adapter Protocol client implementation for Neovim.
-    - [theHamsta/nvim-dap-virtual-text](https://github.com/theHamsta/nvim-dap-virtual-text) - This plugin adds virtual text support to nvim-dap.
-    - [ofirgall/goto-breakpoints.nvim](https://github.com/ofirgall/goto-breakpoints.nvim) - Cycle between breakpoints with keymappings for nvim-dap.
-    - [LiadOz/nvim-dap-repl-highlights](https://github.com/LiadOz/nvim-dap-repl-highlights) - Add syntax highlighting to the nvim-dap REPL.
+  - [theHamsta/nvim-dap-virtual-text](https://github.com/theHamsta/nvim-dap-virtual-text) - This plugin adds virtual text support to nvim-dap.
+  - [ofirgall/goto-breakpoints.nvim](https://github.com/ofirgall/goto-breakpoints.nvim) - Cycle between breakpoints with keymappings for nvim-dap.
+  - [LiadOz/nvim-dap-repl-highlights](https://github.com/LiadOz/nvim-dap-repl-highlights) - Add syntax highlighting to the nvim-dap REPL.
 - [jay-babu/mason-nvim-dap.nvim](https://github.com/jay-babu/mason-nvim-dap.nvim) - Bridges mason.nvim with the nvim-dap plugin - making it easier to use both plugins together.
 - [rcarriga/nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui) - A UI for nvim-dap.
 - [NMAC427/guess-indent.nvim](https://github.com/NMAC427/guess-indent.nvim) - Automatic indentation style detection for Neovim.
@@ -169,8 +168,7 @@ Display references, definitions and implementations of document symbols.
 ### Database
 
 - [tpope/vim-dadbod](https://github.com/tpope/vim-dadbod) - Modern database interface for Vim .
-    - [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui) - Simple UI for vim-dadbod.
-
+  - [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui) - Simple UI for vim-dadbod.
 
 #### Typescript/javasvript
 
@@ -183,12 +181,11 @@ Display references, definitions and implementations of document symbols.
 - [ThePrimeagen/harpoon](https://github.com/ThePrimeagen/harpoon) - Getting you where you want with the fewest keystrokes.
 - [chentoast/marks.nvim](https://github.com/chentoast/marks.nvim) - A better user experience for viewing and interacting with Vim marks.
 
-
 ### Treesitter
 
 - [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) - Use treesitter to auto close and auto rename html tag
 - [JoosepAlviste/nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring) - Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
 - [RRethy/nvim-treesitter-endwise](https://github.com/RRethy/nvim-treesitter-endwise) - Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise
 - [nvim-treesitter/playground](https://github.com/nvim-treesitter/playground) - Treesitter playground integrated into Neovim.
-- [hiphish/rainbow-delimiters.nvim](https://github.com/hiphish/rainbow-delimiters.nvim) 
+- [hiphish/rainbow-delimiters.nvim](https://github.com/hiphish/rainbow-delimiters.nvim)
   - Rainbow delimiters for Neovim with Tree-sitter.
