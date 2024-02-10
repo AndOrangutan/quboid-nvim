@@ -10,7 +10,7 @@ return {
             },
         },
         build = 'make install_jsregexp',
-        event = 'InsertEnter',
+        event = { 'InsertEnter', 'CmdlineEnter' },
         config = function()
             local ls = require('luasnip')
 
@@ -66,7 +66,7 @@ return {
             -- -- Git
             'petertriho/cmp-git',
         },
-        event = 'InsertEnter',
+        event = { 'InsertEnter', 'CmdlineEnter' },
         config = function()
             local quboid = require('quboid')
             local icons = require('quboid.icons')
