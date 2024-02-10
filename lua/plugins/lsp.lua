@@ -212,4 +212,77 @@ return {
             })
         end,
     },
+
+    {
+        'nvimtools/none-ls.nvim',
+        dependencies = {
+            {
+                'jay-babu/mason-null-ls.nvim',
+                config = function()
+                    require('mason-null-ls').setup({
+                        ensure_installed = require('quboid').none_ls_ensure_installed,
+                        automatic_installation = true,
+                    })
+                end,
+            },
+        },
+        config = function()
+            local null_ls = require('null-ls')
+
+            null_ls.setup({
+                sources = {
+
+                    ------------------
+                    -- Code Actions --
+                    ------------------
+                    -- Buitlin
+                    null_ls.builtins.code_actions.gitrebase,
+                    null_ls.builtins.code_actions.gitsigns,
+                    -- Installed
+                    null_ls.builtins.code_actions.eslint,
+                    null_ls.builtins.code_actions.shellcheck,
+
+                    ----------------
+                    -- Completion --
+                    ----------------
+                    --- Builtin
+                    null_ls.builtins.completion.spell,
+                    null_ls.builtins.completion.tags,
+
+                    -----------------
+                    -- Diagnostics --
+                    -----------------
+                    --- Installed
+                    null_ls.builtins.diagnostics.actionlint,
+                    null_ls.builtins.diagnostics.checkstyle.with({
+                        extra_args = { '-c', '/google_checks.xml' }, -- or "/sun_checks.xml" or path to self written rules
+                    }),
+                    null_ls.builtins.diagnostics.cmake_lint,
+                    null_ls.builtins.diagnostics.cppcheck,
+                    null_ls.builtins.diagnostics.gdlint,
+                    null_ls.builtins.diagnostics.eslint,
+                    null_ls.builtins.diagnostics.php,
+                    null_ls.builtins.diagnostics.ruff,
+                    null_ls.builtins.diagnostics.shellcheck,
+
+                    ----------------
+                    -- Formatting --
+                    ----------------
+                    null_ls.builtins.formatting.stylua,
+                    null_ls.builtins.formatting.clang_format,
+                    null_ls.builtins.formatting.cmake_format,
+                    null_ls.builtins.formatting.gdformat,
+                    null_ls.builtins.formatting.jq,
+                    null_ls.builtins.formatting.prettierd,
+                    null_ls.builtins.formatting.ruff,
+
+                    -----------
+                    -- Hover --
+                    -----------
+                    -- Builtin
+                    null_ls.builtins.hover.dictionary,
+                },
+            })
+        end,
+    },
 }

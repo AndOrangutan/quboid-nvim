@@ -74,6 +74,17 @@ M.lsp_ensure_installed = { -- https://github.com/williamboman/mason-lspconfig.nv
     'zls'
 }
 
+M.none_ls_ensure_installed = {
+    'eslint',
+    'shellcheck',
+    'actionlint',
+    'checkstyle',
+    'cmakelang',
+    'cppcheck',
+    'gdtoolkit',
+    'ruff',
+}
+
 M.dashboard_header = {
     ' ▄▄▄▄▄▄▄▄         ▄▄                ▄▄▄        ▄▄ ',
     ' ██    ██         ██                ▀▀▀        ██ ',

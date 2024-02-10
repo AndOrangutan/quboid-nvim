@@ -36,10 +36,7 @@ M.markup = {
     'markdown',
 }
 
-M.js = {
-    -- TODO: Add other jsx types
-    'javascript',
-}
+M.js = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue' }
 
 M.git = {
     'gitcommit',
