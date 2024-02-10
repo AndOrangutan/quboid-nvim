@@ -5,6 +5,7 @@ M.ft_exclude = {
     'gitcommit',
     'gitrebase',
     'lazy',
+    'markdown',
     'neo-tree',
     'nofile',
     'prompt',
