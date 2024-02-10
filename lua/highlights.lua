@@ -20,6 +20,9 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.api.nvim_set_hl(0, 'MiniIndentscopePrefix', { link = 'Comment' })
         vim.api.nvim_set_hl(0, 'MiniIndentscopeSymbol', { link = 'Comment' })
 
+        -- Eyeliner
+        vim.api.nvim_set_hl(0, 'EyelinerPrimary', { bold = true, underline = true })
+        vim.api.nvim_set_hl(0, 'EyelinerSecondary', { underline = true })
 
         vim.api.nvim_set_hl(0, "FoldColumn", { link = "Normal" })
 
