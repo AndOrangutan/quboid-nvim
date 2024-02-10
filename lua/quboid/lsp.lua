@@ -9,6 +9,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = function(ev)
         local ufo_ok, ufo = pcall(require, 'ufo')
+        local glance_ok, _ = pcall(require, 'glance')
 
         -- Enable completion triggered by <c-x><c-o>
         vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
@@ -25,6 +26,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
             { desc = 'LSP [g]ather [r]eferences', buffer = ev.buf })
         vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>',
             { desc = 'LSP [g]et [s]ignature', buffer = ev.buf })
+        if glance_ok then
+            vim.keymap.set('n', 'gD', '<cmd>Glance definitions<cr>', { desc = 'LSP [g]oto Glance [d]efintion', buffer = ev.buf })
+            vim.keymap.set('n', 'gT', '<cmd>Glance type_definitions<cr>', { desc = 'LSP [g]oto Glance [t]ype def.', buffer = ev.buf})
+            vim.keymap.set('n', 'gI', '<cmd>Glance implementations<cr>', { desc = 'LSP [g]ather Glance [i]mplementation', buffer = ev.buf})
+            vim.keymap.set('n', 'gR', '<cmd>Glance references<cr>', { desc = 'LSP [g]ather Glance [r]eferences', buffer = ev.buf})
+        end
 
         -- todo: rebind to something i'll actually use
         -- vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.declaration()<cr>', { desc = 'lsp [g]oto [d]eclaration', buffer = ev.buf})
