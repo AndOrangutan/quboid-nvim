@@ -131,7 +131,8 @@ return {
             { '<leader>ml', '<cmd>lua require("nabla").toggle_virt()<cr>', desc = '[m]arkdown [l]aTeX Toggle' },
         },
     },
-    { 'AckslD/nvim-FeMaco.lua',
+    {
+        'AckslD/nvim-FeMaco.lua',
         opts = {
             border = require('quboid').border,
             prepare_buffer = function(opts)
@@ -142,12 +143,43 @@ return {
             end,
             post_open_float = function(winnr)
                 -- vim.wo.signcolumn = 'no'
-                vim.wo.winhighlight = "Nomral:NormalFloat"
+                vim.wo.winhighlight = 'Nomral:NormalFloat'
             end
         },
         ft = require('quboid').markup,
         keys = {
             { '<leader>o', '<cmd>FeMaco<cr>', desc = 'FeMaco [o]pen Codeblock' }
         },
+    },
+    {
+        'toppair/peek.nvim',
+        event = { 'VeryLazy' },
+        build = 'deno task --quiet build:fast',
+        keys = {
+            { '<f5>', '<cmd>PeekToggle<cr>', desc = 'Markdown Preview Toggle' },
+        },
+        config = function()
+            require('peek').setup({
+                close_on_bdelete = true, -- close preview window on buffer delete
+                syntax = true,           -- enable syntax highlighting, affects performance
+                theme = 'dark',          -- 'dark' or 'light'
+                update_on_change = true,
+                app = 'webview', -- 'webview', 'browser', string or a table of strings
+                -- explained below
+
+                filetype = require('quboid.ft').markup, -- list of filetypes to recognize as markdown
+
+                -- relevant if update_on_change is true
+                throttle_at = 200000,   -- start throttling when file exceeds this
+                -- amount of bytes in size
+                throttle_time = 'auto', -- minimum amount of time in milliseconds
+                -- that has to pass before starting new render
+            })
+            -- refer to `configuration to change defaults`
+            vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
+            vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
+            vim.api.nvim_create_user_command('PeekToggle', function () require('quboid.util').toggle_cmd('PeekOpen', 'PeekClose') end, {})
+
+        end,
     },
 }

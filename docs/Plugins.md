@@ -65,6 +65,7 @@
 - [nfrid/due.nvim](https://github.com/nfrid/due.nvim) - Neovim plugin for displaying due dates.
 - [jbyuki/nabla.nvim](https://github.com/jbyuki/nabla.nvim) - Take your scientific notes in Neovim.
 - [AckslD/nvim-FeMaco.lua](https://github.com/AckslD/nvim-FeMaco.lua) - Catalyze your Fenced Markdown Code-block editing!
+- [toppair/peek.nvim](https://github.com/toppair/peek.nvim) - Markdown preview plugin for Neovim.
 
 ### Folding
 
@@ -124,7 +125,6 @@
 
 ## Todo
 
-- Comment
 - Dap
 
 - [folke/trouble.nvim](https://github.com/folke/trouble.nvim) - A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
@@ -163,9 +163,6 @@
 
 - [tpope/vim-dadbod](https://github.com/tpope/vim-dadbod) - Modern database interface for Vim .
     - [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui) - Simple UI for vim-dadbod.
-
-### Editing
-
 
 
 #### Typescript/javasvript
