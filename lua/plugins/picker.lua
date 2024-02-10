@@ -43,22 +43,22 @@ return {
                     -- Increase this for more context when text scrolls off the window
                     sidescrolloff = 0,
                 },
-                select = {
-                    enabled = true,
-                    -- Priority list of preferred vim.select implementations
-                    -- backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
-                    fzf_lua = {
-                        prompt  = '❯ ',
-                        winopts = {
-                            height = 0.30,
-                            width  = 1.00,
-                            row    = 1,
-                            col    = 0.50,
-                        },
-                    }
-                }
-
             },
+            select = {
+                enabled = true,
+                -- Priority list of preferred vim.select implementations
+                -- backend = { "telescope", "fzf_lua", "fzf", "builtin", "nui" },
+                fzf_lua = {
+                    prompt  = '❯ ',
+                    winopts = {
+                        height = 0.30,
+                        width  = 1.00,
+                        row    = 1,
+                        col    = 0.50,
+                    },
+                }
+            }
+
         },
     },
     {
@@ -92,16 +92,16 @@ return {
                     col        = 0.50,
                     border     = quboid.border,
                     hl         = {
-                        normal       = 'Normal',     -- window normal color (fg+bg)
-                        border       = 'Normal',     -- border color (try 'FloatBorder')
+                        normal       = 'Normal',       -- window normal color (fg+bg)
+                        border       = 'Normal',       -- border color (try 'FloatBorder')
                         -- Only valid with the builtin previewer:
-                        cursor       = 'Normal',     -- cursor highlight (grep/LSP matches)
-                        cursorline   = 'Normal',     -- cursor line
-                        cursorlinenr = 'Normal',     -- cursor line
-                        search       = 'Search',     -- search matches (ctags)
+                        cursor       = 'Normal',       -- cursor highlight (grep/LSP matches)
+                        cursorline   = 'Normal',       -- cursor line
+                        cursorlinenr = 'Normal',       -- cursor line
+                        search       = 'Search',       -- search matches (ctags)
                         title        = 'NormalBorder', -- preview border title (file/buffer)
                     },
-                    fullscreen = false,              -- start fullscreen?
+                    fullscreen = false,                -- start fullscreen?
                     preview    = {
                         -- applies only when scrollbar = 'float'
                         scrollchars = { '█', '' }, -- scrollbar chars ({ <full>, <empty> }
