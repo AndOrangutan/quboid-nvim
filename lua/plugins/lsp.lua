@@ -148,4 +148,11 @@ return {
             require('lsp_signature').setup(opts)
         end,
     },
+    {
+        'RRethy/vim-illuminate',
+        event = 'BufRead',
+        config = function()
+            require('illuminate').configure()
+        end,
+    },
 }

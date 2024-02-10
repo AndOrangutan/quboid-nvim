@@ -24,7 +24,10 @@ vim.api.nvim_create_autocmd('ColorScheme', {
         vim.api.nvim_set_hl(0, 'EyelinerPrimary', { bold = true, underline = true })
         vim.api.nvim_set_hl(0, 'EyelinerSecondary', { underline = true })
 
-        vim.api.nvim_set_hl(0, "FoldColumn", { link = "Normal" })
+        -- Illuminate
+        vim.api.nvim_set_hl(0, 'IlluminatedWordText', { underline = true, sp = util.get_hl_val('Normal', 'foreground') })
+
+        vim.api.nvim_set_hl(0, 'FoldColumn', { link = 'Normal' })
 
         -- -- Blanks out cursorline but keeps lnnr hl
         -- vim.api.nvim_set_hl(0, "CursorLineNr", { link = "Normal" })
@@ -94,16 +97,14 @@ vim.api.nvim_create_autocmd('ColorScheme', {
 
         -- Mini starter
         local colorgroups = { 'String', 'Identifier', 'Keyword', 'Constant', 'Statement', 'Type' }
-        math.randomseed(os.clock()*100000)
+        math.randomseed(os.clock() * 100000)
         local header_hl = util.get_hl_val(colorgroups[math.random(#colorgroups)], 'foreground')
         vim.api.nvim_set_hl(0, 'MiniStarterHeader', { fg = header_hl })
 
         local footer_hl = util.get_hl_val(colorgroups[math.random(#colorgroups)], 'foreground')
         vim.api.nvim_set_hl(0, 'MiniStarterFooter', { fg = footer_hl })
 
-        if lualine_ok then
-            lualine.refresh()
-        end
+        lualine.refresh()
     end,
 })
 
