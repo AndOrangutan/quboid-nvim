@@ -405,8 +405,27 @@ return {
         config = function()
             vim.g.undotree_SplitWidth = 40
         end,
+    },
+    {
+        'hedyhli/outline.nvim',
+        lazy = true,
+        cmd = { 'Outline', 'OutlineOpen' },
         keys = {
-            { '<leader>bu', '<cmd>UndotreeToggle<cr>', desc = '[b]uffer [u]ndotree toggle' },
+            { '<leader>bo', '<cmd>Outline<CR>', desc = '[o]utline Toggle' },
         },
+        config = function()
+            require('outline').setup {
+                preview_window = {
+                    border = require('quboid').border
+                },
+                symbols = {
+                    icon_fetcher = function(kind)
+                        local icons = require('quboid.icons')
+
+                        return icons.lsp_kind[kind]
+                    end,
+                }
+            }
+        end,
     },
 }
