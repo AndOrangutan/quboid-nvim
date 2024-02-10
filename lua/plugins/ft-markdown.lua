@@ -124,4 +124,11 @@ return {
             use_seconds = false,     -- if use_clock_time == true, display seconds
         },
     },
+    {
+        'jbyuki/nabla.nvim',
+        ft = require('quboid.ft').markup,
+        keys = {
+            { '<leader>ml', '<cmd>lua require("nabla").toggle_virt()<cr>', desc = '[m]arkdown [l]aTeX Toggle' },
+        },
+    },
 }

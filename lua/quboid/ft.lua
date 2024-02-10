@@ -17,6 +17,15 @@ M.bt_exclude = {
     'terminal',
 }
 
+M.supported_lang = {
+    'c',
+    'cpp',
+    'go',
+    'java',
+    'javascript',
+    'lua',
+    'python',
+}
 -- For markdown and note taking like environments
 M.markup = {
     'markdown',
