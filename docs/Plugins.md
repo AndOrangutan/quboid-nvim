@@ -49,6 +49,7 @@
 - [echasnovski/mini.ai](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md) - Extend and create a/i textobjects.
     - [nvim-treesitter/textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects) - Syntax aware text-objects.
 - [echasnovski/mini.align](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-align.md) - Align text interactively.
+- [kylechui/nvim-surround](https://github.com/kylechui/nvim-surround) - Add/change/delete surrounding delimiter pairs with ease. Written with in Lua.
 
 ### Filetype Specific
 
@@ -165,8 +166,6 @@
 
 ### Editing
 
-- [kylechui/nvim-surround](https://github.com/kylechui/nvim-surround) - 
-Add/change/delete surrounding delimiter pairs with ease. Written with in Lua.
 
 
 #### Typescript/javasvript

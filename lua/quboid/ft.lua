@@ -31,6 +31,11 @@ M.markup = {
     'markdown',
 }
 
+M.js = {
+    -- TODO: Add other jsx types
+    'javascript',
+}
+
 M.git = {
     'gitcommit',
 }
