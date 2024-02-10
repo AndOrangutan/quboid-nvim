@@ -1,6 +1,8 @@
 local M = {}
 
 M.ft_exclude = {
+    'NeogitStatus',
+    'Trouble',
     'fzf',
     'gitcommit',
     'gitrebase',
@@ -9,10 +11,9 @@ M.ft_exclude = {
     'neo-tree',
     'nofile',
     'prompt',
-    'starter',
     'quickfix',
-    'Trouble',
-    'NeogitStatus',
+    'starter',
+    'undotree',
 }
 
 M.bt_exclude = {

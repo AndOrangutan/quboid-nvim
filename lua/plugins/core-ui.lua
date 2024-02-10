@@ -55,16 +55,21 @@ return {
                             filetype = 'NvimTree',
                             text = 'File Tree',
                             highlight = 'NvimTreeNormal',
-                            text_align =
-                            'center',
+                            text_align = 'center',
                             padding = 0
                         },
                         {
                             filetype = 'Outline',
                             text = 'Symbol Outline',
                             highlight = 'NvimTreeNormal',
-                            text_align =
-                            'center',
+                            text_align = 'center',
+                            padding = 0
+                        },
+                        {
+                            filetype = 'undotree',
+                            text = 'Undo Tree',
+                            highlight = 'NvimTreeNormal',
+                            text_align = 'center',
                             padding = 0
                         },
                     },
@@ -153,9 +158,9 @@ return {
                 thousands = false,
                 relculright = true,
                 segments = {
-                    { text = { '%s' },                click = 'v:lua.ScSa' },
+                    { text = { '%s' },                  click = 'v:lua.ScSa' },
                     { text = { builtin.lnumfunc, ' ' }, click = 'v:lua.ScLa' },
-                    { text = { builtin.foldfunc },    click = 'v:lua.ScFa' },
+                    { text = { builtin.foldfunc },      click = 'v:lua.ScFa' },
                 }
             })
         end
