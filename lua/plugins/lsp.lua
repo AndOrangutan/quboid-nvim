@@ -132,5 +132,20 @@ return {
                 desc = 'Add [d]iagnostics to Loclist'
             }
         },
-    }
+    },
+    {
+        'ray-x/lsp_signature.nvim',
+        opts = {
+            hint_prefix = '',
+            hi_parameter = 'String',
+            floating_window_above_cur_line = true,
+            handler_opts = {
+                border = require('quboid').border,
+            },
+        },
+        event = 'VeryLazy',
+        config = function(_, opts)
+            require('lsp_signature').setup(opts)
+        end,
+    },
 }

@@ -2,6 +2,7 @@ local M = {}
 
 M.ft_exclude = {
     'NeogitStatus',
+    'Outline',
     'Trouble',
     'fzf',
     'gitcommit',
