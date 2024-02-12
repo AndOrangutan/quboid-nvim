@@ -176,8 +176,7 @@
 - [rebelot/kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim) - NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai.
 - [scysta/pink-panic.nvim](https://github.com/scysta/pink-panic.nvim) - A simple and pretty pink colorscheme for Neovim made with Lush.
 
-- [echasnovski/mini.move](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md)
-  - Move any selection in any direction
+- [echasnovski/mini.move](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md) - Move any selection in any direction
 
 ### Database
 
