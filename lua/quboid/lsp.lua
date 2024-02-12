@@ -27,10 +27,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>',
             { desc = 'LSP [g]et [s]ignature', buffer = ev.buf })
         if glance_ok then
-            vim.keymap.set('n', 'gD', '<cmd>Glance definitions<cr>', { desc = 'LSP [g]oto Glance [d]efintion', buffer = ev.buf })
-            vim.keymap.set('n', 'gT', '<cmd>Glance type_definitions<cr>', { desc = 'LSP [g]oto Glance [t]ype def.', buffer = ev.buf})
-            vim.keymap.set('n', 'gI', '<cmd>Glance implementations<cr>', { desc = 'LSP [g]ather Glance [i]mplementation', buffer = ev.buf})
-            vim.keymap.set('n', 'gR', '<cmd>Glance references<cr>', { desc = 'LSP [g]ather Glance [r]eferences', buffer = ev.buf})
+            vim.keymap.set('n', 'gD', '<cmd>Glance definitions<cr>',
+                { desc = 'LSP [g]oto Glance [d]efintion', buffer = ev.buf })
+            vim.keymap.set('n', 'gT', '<cmd>Glance type_definitions<cr>',
+                { desc = 'LSP [g]oto Glance [t]ype def.', buffer = ev.buf })
+            vim.keymap.set('n', 'gI', '<cmd>Glance implementations<cr>',
+                { desc = 'LSP [g]ather Glance [i]mplementation', buffer = ev.buf })
+            vim.keymap.set('n', 'gR', '<cmd>Glance references<cr>',
+                { desc = 'LSP [g]ather Glance [r]eferences', buffer = ev.buf })
         end
 
         -- todo: rebind to something i'll actually use
