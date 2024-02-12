@@ -16,6 +16,8 @@ vim.keymap.set('n', 'Q', function()
     --vim.api.nvim_command('write')
 end, { desc = 'Save and Close Buffer' })
 
+vim.keymap.set('n', '<leader>qf', '<cmd>copen<cr>', { desc = '[q]uick[f]ix Open' })
+
 vim.keymap.set('n', '<leader>w+', '<c-w>+', { desc = '[w]indow height +' })
 vim.keymap.set('n', '<leader>w-', '<c-w>+', { desc = '[w]indow height -' })
 vim.keymap.set('n', '<leader>w<', '<c-w><', { desc = '[w]indow width <' })

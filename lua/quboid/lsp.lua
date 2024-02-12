@@ -60,6 +60,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
             { desc = 'LSP [f]ormat', buffer = ev.buf })
         vim.keymap.set('n', '<leader>ca', '<cmd>FzfLua lsp_code_actions<cr>',
             { desc = 'LSP [c]ode [a]ction', buffer = ev.buf })
+
+
+        vim.keymap.set('n', '<leader>qd', '<cmd>lua vim.diagnostic.setqflist()<cr>',
+            { desc = '[q]uickfix Diagnostics', buffer = ev.buf })
     end,
 })
 
