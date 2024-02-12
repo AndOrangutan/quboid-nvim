@@ -164,7 +164,7 @@ return {
                 syntax = true,           -- enable syntax highlighting, affects performance
                 theme = 'dark',          -- 'dark' or 'light'
                 update_on_change = true,
-                app = 'webview', -- 'webview', 'browser', string or a table of strings
+                app = 'webview',         -- 'webview', 'browser', string or a table of strings
                 -- explained below
 
                 filetype = require('quboid.ft').markup, -- list of filetypes to recognize as markdown
@@ -178,8 +178,35 @@ return {
             -- refer to `configuration to change defaults`
             vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
             vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
-            vim.api.nvim_create_user_command('PeekToggle', function () require('quboid.util').toggle_cmd('PeekOpen', 'PeekClose') end, {})
-
+            vim.api.nvim_create_user_command('PeekToggle',
+                function() require('quboid.util').toggle_cmd('PeekOpen', 'PeekClose') end, {})
         end,
+    },
+    {
+        'postfen/clipboard-image.nvim',
+        config = true,
+        opts = {
+            default = {
+                img_dir = { '%:p:h' },
+                img_dir_txt = '',
+                img_name = function()
+                    return vim.fn.expand('%:t:r') .. '-' .. os.date('%Y-%m-%d-%H-%M-%S')
+                end,
+                img_handler = function(img)
+                    -- Add in alt text
+                    vim.cmd('normal! f[')                              -- go vo [
+                    vim.cmd('normal! a' .. vim.fn.input('Alt-text: ')) -- append text with image name
+
+                    -- Compress image
+                    --local script = string.format('~/.scripts/tinypng.sh -s f %s &', img.path)
+                    --return os.execute(script)
+                end,
+                affix = '![](%s)',
+            },
+        },
+        keys = {
+            { '<c-P>', '<cmd>PasteImg<cr>', desc = '[p]aste Image from Clipboard' },
+            { '<c-P>', '<cmd>PasteImg<cr>', { desc = '[p]aste Image from Clipboard', mode = 'i' } }
+        },
     },
 }
