@@ -10,6 +10,9 @@ return {
                 -- https://github.com/nvim-neotest/neotest?tab=readme-ov-file#supported-runners
                 adapters = {
                 },
+                consumers = {
+                    overseer = require('neotest.consumers.overseer'),
+                },
             })
         end,
         keys = {
@@ -37,7 +40,12 @@ return {
                 desc =
                 'Neo[t]est [s]top Nearest'
             },
-            { '<leader>ta', '<cmd>lua require("neotest").run.attach()<cr>', desc = 'Neo[t]est [a]ttach Nearest' },
+            {
+                '<leader>ta',
+                '<cmd>lua require("neotest").run.attach()<cr>',
+                desc =
+                'Neo[t]est [a]ttach Nearest'
+            },
         },
     }
 }
