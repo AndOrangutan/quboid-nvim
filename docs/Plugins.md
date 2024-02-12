@@ -153,23 +153,19 @@
 
 ## Todo
 
-- Dap
-
 ### AI
 
 - [zbirenbaum/copilot.lua](https://github.com/zbirenbaum/copilot.lua) - Fully featured & enhanced replacement for copilot.vim complete with API for interacting with Github Copilot.
 
 ### Colorschemes
 
-- [rktjmp/lush.nvim](https://github.com/rktjmp/lush.nvim) - Create Neovim themes with real-time feedback, export anywhere.
-- [Shatur/neovim-ayu](https://github.com/Shatur/neovim-ayu) - Ayu theme for Neovim
+- [Shatur/neovim-ayu](https://github.com/Shatur/neovim-ayu) - Ayu theme for Neovim.
 - [neanias/everforest-nvim](https://github.com/neanias/everforest-nvim) - A Lua port of the Everforest colour scheme.
 - [rebelot/kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim) - NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai.
 - [scysta/pink-panic.nvim](https://github.com/scysta/pink-panic.nvim) - A simple and pretty pink colorscheme for Neovim made with Lush.
 
-- [NMAC427/guess-indent.nvim](https://github.com/NMAC427/guess-indent.nvim) -
-  Automatic indentation style detection for Neovim.
-- [echasnovski/mini.move](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md) - Move any selection in any direction
+- [echasnovski/mini.move](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md)
+  - Move any selection in any direction
 
 ### Database
 

@@ -35,7 +35,7 @@ return {
             vim.fn.sign_define('DapStopped',
                 { text = icons.gen.circle_stop, texthl = 'DiagnosticError', linehl = '', numhl = '' })
 
-            require('dap_cfg')
+            require('quboid.dap')
         end,
         keys = {
             { '<F5>',        function() require('dap').continue() end,          desc = '[d]AP [c]ontinue' },
