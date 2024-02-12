@@ -1,7 +1,9 @@
-
 return {
-    { 'folke/neodev.nvim',
-        config = true
+    {
+        'folke/neodev.nvim',
+        opts = {
+            library = { plugins = { 'neotest', } }
+        }
     },
     { 'milisims/nvim-luaref' },
 }
