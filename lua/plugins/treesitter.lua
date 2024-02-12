@@ -69,12 +69,17 @@ return {
             local null_ls_ok, null_ls = pcall(require, 'null-ls')
 
             if null_ls_ok then
-                null_ls.register({ name = 'more_actions', method = { require 'null-ls'.methods.CODE_ACTION },
-                    filetypes = { '_all' }, generator = { fn = require('ts-node-action').available_actions } })
+                null_ls.register({
+                    name = 'more_actions',
+                    method = { require 'null-ls'.methods.CODE_ACTION },
+                    filetypes = { '_all' },
+                    generator = { fn = require('ts-node-action').available_actions }
+                })
             end
         end,
         keys = {
             { '<leader>na', function() require('ts-node-action').node_action() end, desc = 'TS Node Action' }
         },
     },
+    { 'HiPhish/rainbow-delimiters.nvim' },
 }
