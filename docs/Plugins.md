@@ -57,6 +57,7 @@
 - [kylechui/nvim-surround](https://github.com/kylechui/nvim-surround) - Add/change/delete surrounding delimiter pairs with ease. Written with in Lua.
 - [folke/twilight.nvim](https://github.com/folke/twilight.nvim) - Twilight is a Lua plugin for Neovim 0.5 that dims inactive portions of the code you're editing using TreeSitter.
 - [pocco81/true-zen.nvim](https://github.com/pocco81/true-zen.nvim) - Clean and elegant distraction-free writing for NeoVim.
+- [VidocqH/auto-indent.nvim](https://github.com/VidocqH/auto-indent.nvim) - Auto indent like VSCode when cursor at the first column and press <TAB> key.
 
 ### Filetype Specific
 
@@ -177,8 +178,8 @@
 
 ### Navigation
 
-- [jinh0/eyeliner.nvim](https://github.com/jinh0/eyeliner.nvim) - Move faster with unique f/F indicators.
-- [ThePrimeagen/harpoon](https://github.com/ThePrimeagen/harpoon) - Getting you where you want with the fewest keystrokes.
+- [ThePrimeagen/harpoon](https://github.com/ThePrimeagen/harpoon) - Getting you
+  where you want with the fewest keystrokes.
 - [chentoast/marks.nvim](https://github.com/chentoast/marks.nvim) - A better user experience for viewing and interacting with Vim marks.
 
 ### Treesitter
@@ -186,6 +187,5 @@
 - [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) - Use treesitter to auto close and auto rename html tag
 - [JoosepAlviste/nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring) - Neovim treesitter plugin for setting the commentstring based on the cursor location in a file.
 - [RRethy/nvim-treesitter-endwise](https://github.com/RRethy/nvim-treesitter-endwise) - Wisely add "end" in Ruby, Vimscript, Lua, etc. Tree-sitter aware alternative to tpope's vim-endwise
-- [nvim-treesitter/playground](https://github.com/nvim-treesitter/playground) - Treesitter playground integrated into Neovim.
-- [hiphish/rainbow-delimiters.nvim](https://github.com/hiphish/rainbow-delimiters.nvim)
-  - Rainbow delimiters for Neovim with Tree-sitter.
+- [nvim-treesitter/playground](https://github.com/nvim-treesitter/playground) -
+  Treesitter playground integrated into Neovim.

@@ -1,12 +1,12 @@
-local M        = {}
+local M                = {}
 
-M.background   = 'dark'
-M.colorscheme  = 'onedark'
+M.background           = 'dark'
+M.colorscheme          = 'onedark'
 
-M.border       = 'solid'
-M.border_float = 'shadow'
-M.indentsize   = 4
-M.notebook_dir = '~/Dropbox/Notebooks'
+M.border               = 'solid'
+M.border_float         = 'shadow'
+M.indentsize           = 4
+M.notebook_dir         = '~/Dropbox/Notebooks'
 
 M.session_exclude_dirs = {
     M.notebook_dir,
