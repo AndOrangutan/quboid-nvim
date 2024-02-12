@@ -88,11 +88,11 @@ return {
                     end, { group = group_choice, dir = vim.fn.expand('%:p:h') })
                 end)
             end },
-            { '<leader>zs', '<cmd>ZkNotes<cr>',                      desc = '[z]k [s]earch' },
-            { '<leader>zl', '<cmd>ZkLinks<cr>',                      desc = '[z]k [l]inks' },
-            { '<leader>zb', '<cmd>ZkBacklinks<cr>',                  desc = '[z]k [b]acklinks' },
-            { '<leader>zi', '<cmd>ZkInsertLink<cr>',                 desc = '[z]k [i]sert Link' },
-            { '<cr>',       function() vim.lsp.buf.definition() end, desc = 'Zk Follow note' }
+            { '<leader>zs', '<cmd>ZkNotes<cr>',      desc = '[z]k [s]earch' },
+            { '<leader>zl', '<cmd>ZkLinks<cr>',      desc = '[z]k [l]inks' },
+            { '<leader>zb', '<cmd>ZkBacklinks<cr>',  desc = '[z]k [b]acklinks' },
+            { '<leader>zi', '<cmd>ZkInsertLink<cr>', desc = '[z]k [i]sert Link' },
+            -- { '<cr>',       function() vim.lsp.buf.definition() end, desc = 'Zk Follow note' }
         },
     },
     {
