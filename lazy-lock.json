@@ -41,6 +41,7 @@
   "mini.comment": { "branch": "main", "commit": "b0b359ada4293cdcea7ab4072dfd5b031aac3f8e" },
   "mini.indentscope": { "branch": "main", "commit": "ca129b71edb672d30b8d7ec3138106db1b1f6a8b" },
   "mini.map": { "branch": "main", "commit": "394a774459bf8db7db94385478741a1ace54c93c" },
+  "mini.move": { "branch": "main", "commit": "251d541a8ab745e81295a53c128829cb2bff18e3" },
   "mini.notify": { "branch": "main", "commit": "e89abd49f80a31318a26267b3d9c85a3b514f731" },
   "mini.nvim": { "branch": "main", "commit": "16600082b7b3e3ee3aa3d59f2bc589fc60ffcada" },
   "mini.starter": { "branch": "main", "commit": "83817cf18f8b0a2e7f653b74052454a02583cd6d" },

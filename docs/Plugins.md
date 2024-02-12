@@ -72,6 +72,7 @@
 - [folke/twilight.nvim](https://github.com/folke/twilight.nvim) - Twilight is a Lua plugin for Neovim 0.5 that dims inactive portions of the code you're editing using TreeSitter.
 - [pocco81/true-zen.nvim](https://github.com/pocco81/true-zen.nvim) - Clean and elegant distraction-free writing for NeoVim.
 - [VidocqH/auto-indent.nvim](https://github.com/VidocqH/auto-indent.nvim) - Auto indent like VSCode when cursor at the first column and press <TAB> key.
+- [echasnovski/mini.move](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md) - Move any selection in any direction
 
 ### Filetype Specific
 
@@ -175,8 +176,6 @@
 - [neanias/everforest-nvim](https://github.com/neanias/everforest-nvim) - A Lua port of the Everforest colour scheme.
 - [rebelot/kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim) - NeoVim dark colorscheme inspired by the colors of the famous painting by Katsushika Hokusai.
 - [scysta/pink-panic.nvim](https://github.com/scysta/pink-panic.nvim) - A simple and pretty pink colorscheme for Neovim made with Lush.
-
-- [echasnovski/mini.move](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-ai.md) - Move any selection in any direction
 
 ### Database
 

@@ -237,5 +237,29 @@ return {
         version = '*', -- Use for stability; omit to use `main` branch for the latest features
         event = 'VeryLazy',
         config = true,
-    }
+    },
+    {
+        'echasnovski/mini.move',
+        config = function()
+            require('mini.move').setup( -- No need to copy this inside `setup()`. Will be used automatically.
+                {
+                    mappings = {
+                        left = '<C-h>',
+                        right = '<C-l>',
+                        down = '<C-j>',
+                        up = '<C-k>',
+
+                        line_left = '<C-h>',
+                        line_right = '<C-l>',
+                        line_down = '<C-j>',
+                        line_up = '<C-k>',
+                    },
+                    options = {
+                        reindent_linewise = true,
+                    },
+                })
+        end,
+        event = 'VeryLazy',
+        version = false,
+    },
 }
