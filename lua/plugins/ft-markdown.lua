@@ -154,6 +154,7 @@ return {
     {
         'toppair/peek.nvim',
         event = { 'VeryLazy' },
+        ft = require('quboid').markup,
         build = 'deno task --quiet build:fast',
         keys = {
             { '<f5>', '<cmd>PeekToggle<cr>', desc = 'Markdown Preview Toggle' },
@@ -185,6 +186,7 @@ return {
     {
         'postfen/clipboard-image.nvim',
         config = true,
+        ft = require('quboid').markup,
         opts = {
             default = {
                 img_dir = { '%:p:h' },
