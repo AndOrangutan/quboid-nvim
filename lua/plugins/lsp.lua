@@ -67,25 +67,24 @@ return {
                 --     end
                 --     lspconfig.tailwindcss.setup(config)
                 -- end,
-                -- ['clangd'] = function()
-                --     require('lspconfig').clangd.setup {
-                --         on_attach = require('lsp').gen_on_attach(),
-                --         capabilities = require('lsp').gen_capabilities(),
-                --         cmd = {
-                --             'clangd',
-                --             '--offset-encoding=utf-16',
-                --         },
-                --         root_pattern = {
-                --             '.clangd',
-                --             '.clang-tidy',
-                --             '.clang-format',
-                --             'compile_commands.json',
-                --             'compile_flags.txt',
-                --             'configure.ac',
-                --             '.git'
-                --         },
-                --     }
-                -- end,
+                ['clangd'] = function()
+                    require('lspconfig').clangd.setup {
+                        capabilities = require('quboid.lsp').gen_capabilities(),
+                        cmd = {
+                            'clangd',
+                            '--offset-encoding=utf-16',
+                        },
+                        root_pattern = {
+                            '.clangd',
+                            '.clang-tidy',
+                            '.clang-format',
+                            'compile_commands.json',
+                            'compile_flags.txt',
+                            'configure.ac',
+                            '.git'
+                        },
+                    }
+                end,
                 ['lua_ls'] = function()
                     lspconfig.lua_ls.setup({
                         capabilities = require('quboid.lsp').gen_capabilities(),

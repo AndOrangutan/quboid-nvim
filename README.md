@@ -54,3 +54,6 @@ paru -S fzf fd ripgrep git-delta ueberzug wordnet-cli
   - LSP
   - Picker
   - Filetree
+  - Debugger
+    - `echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope`
+    - `Error on launch: Failed to attach to the target process. Timed out trying to get messages from the runInTerminal launcher`

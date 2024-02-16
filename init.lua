@@ -24,7 +24,7 @@ end
 
 lazy.setup('plugins', {
     diff = {
-        cmd = "diffview.nvim",
+        cmd = 'diffview.nvim',
     },
     install = { colorscheme = { 'onedark' } },
     checker = {

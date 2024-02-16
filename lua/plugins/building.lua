@@ -8,6 +8,8 @@ return {
         { '<leader>bb', '<cmd>OverseerToggle<cr>', desc = 'Overseer [b]uffer [b]uild Toggle' },
     },
     config = function()
+        require('dap.ext.vscode').json_decode = require('overseer.json').decode
+
         -- :Make similar to dispatch
         vim.api.nvim_create_user_command('Make', function(params)
             -- Insert args at the '$*' in the makeprg
@@ -32,7 +34,7 @@ return {
         require('overseer').setup({
             component_aliases = {
                 default = {
-                    { 'display_duration',   detail_level = 2 },
+                    { 'display_duration', detail_level = 2 },
                     'on_output_summarize',
                     'on_exit_set_status',
                     'on_complete_notify',
@@ -46,7 +48,5 @@ return {
                 },
             }
         })
-
-        require('dap.ext.vscode').json_decode = require('overseer.json').decode
     end,
 }
