@@ -7,6 +7,10 @@ return {
             local icons = require('quboid.icons')
 
             require('mason').setup({
+                registries = {
+                    'github:nvim-java/mason-registry',
+                    'github:mason-org/mason-registry',
+                },
                 ui = {
                     border = quboid.border_float,
                     icons = {

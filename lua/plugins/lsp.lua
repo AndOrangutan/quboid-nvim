@@ -30,7 +30,6 @@ return {
                 end,
 
                 -- Disable
-                ['jdtls'] = function() end,
                 ['zk'] = function() end,
                 ['tsserver'] = function() end,
                 ['eslint'] = function() end,
@@ -67,6 +66,13 @@ return {
                 --     end
                 --     lspconfig.tailwindcss.setup(config)
                 -- end,
+                ['jdtls'] = function()
+                    require('java').setup()
+
+                    lspconfig.jdtls.setup({
+                        capabilities = require('quboid.lsp').gen_capabilities(),
+                    })
+                end,
                 ['clangd'] = function()
                     require('lspconfig').clangd.setup {
                         capabilities = require('quboid.lsp').gen_capabilities(),
@@ -275,7 +281,12 @@ return {
                     -- Formatting --
                     ----------------
                     null_ls.builtins.formatting.stylua,
-                    null_ls.builtins.formatting.clang_format,
+                    null_ls.builtins.formatting.cbfmt,
+                    null_ls.builtins.formatting.clang_format.with({
+                        filetypes = {
+                            'c', 'cpp', 'cs', 'cuda', 'proto'
+                        },
+                    }),
                     null_ls.builtins.formatting.cmake_format,
                     null_ls.builtins.formatting.gdformat,
                     null_ls.builtins.formatting.jq,
