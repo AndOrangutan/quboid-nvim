@@ -83,6 +83,10 @@
 #### java
 
 - [nvim-java/nvim-java](https://github.com/nvim-java/nvim-java) - Painless Java in Neovim.
+    - [nvim-java/lua-async-await](https://github.com/nvim-java/lua-async-await) - Synchronous like asynchronous with promise like error handling.
+    - [nvim-java/nvim-java-core](https://github.com/nvim-java/nvim-java-core) - Provides APIs to interact with java projects in Neovim.
+    - [nvim-java/nvim-java-test](https://github.com/nvim-java/nvim-java-test) - Provides APIs related to testing Java.
+    - [nvim-java/nvim-java-dap](https://github.com/nvim-java/nvim-java-dap) - Provides APIs related to debugging Java.
 
 #### Lua
 
