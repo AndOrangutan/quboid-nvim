@@ -3,7 +3,7 @@ return {
         'kevinhwang91/nvim-ufo',
         dependencies = {
             'kevinhwang91/promise-async',
-            'nvim/nvim-lspconfig',
+            'neovim/nvim-lspconfig',
         },
         lazy = false,
         init = function()
@@ -59,8 +59,6 @@ return {
             end
 
             ufo.setup({
-                close_fold_kinds = { 'comment', 'imports' },
-                -- close_fold_kinds = {'comment', 'imports', 'region'},
                 fold_virt_text_handler = handler,
                 preview = {
                     win_config = {

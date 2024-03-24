@@ -42,12 +42,12 @@ return {
         keys = {
             { '<F5>',        function() require('dap').continue() end,          desc = '[d]AP [c]ontinue' },
             { '<F10>',       function() require('dap').step_over() end,         desc = '[d]AP [s]tep [o]ver' },
-            { '<F11>',       function() require('dap').step_in() end,           desc = '[d]AP [s]tep [i]n' },
+            { '<F11>',       function() require('dap').step_into() end,           desc = '[d]AP [s]tep [i]n' },
             { '<F12>',       function() require('dap').step_out() end,          desc = '[d]AP [s]tep O[u]t' },
             { '<leader>db',  function() require('dap').toggle_breakpoint() end, desc = '[d]AP [b]reakpoint Toggle' },
             { '<leader>dc',  function() require('dap').continue() end,          desc = '[d]AP [c]ontinue' },
             { '<leader>dso', function() require('dap').step_over() end,         desc = '[d]AP [s]tep [o]ver' },
-            { '<leader>dsi', function() require('dap').step_in() end,           desc = '[d]AP [s]tep [i]n' },
+            { '<leader>dsi', function() require('dap').step_into() end,           desc = '[d]AP [s]tep [i]n' },
             { '<leader>dsu', function() require('dap').step_out() end,          desc = '[d]AP [s]tep O[u]t' },
             {
                 '<leader>dC',

@@ -143,12 +143,6 @@ return {
                 require('mini.notify').show_history()
             end, {})
 
-            vim.lsp.handlers['window/showMessage'] = function(_, result, ctx)
-                local client = vim.lsp.get_client_by_id(ctx.client_id)
-
-                print('Did a thing, look')
-                vim.notify(result.message, result.type { title = 'LSP | ' .. client.name, timeout = 10000, })
-            end
         end,
         event = { 'BufReadPre', 'BufNewFile', 'BufEnter' },
     },

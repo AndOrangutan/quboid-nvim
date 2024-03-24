@@ -50,6 +50,8 @@ paru -S fzf fd ripgrep git-delta ueberzug wordnet-cli
 
 - Make the editor debuggable
   - https://github.com/jbyuki/one-small-step-for-vimkind
+- Add checkhealth 
+https://github.com/nvim-lua/kickstart.nvim/blob/master/lua/kickstart/health.lua
 - Documentation
   - LSP
   - Picker
