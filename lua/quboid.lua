@@ -18,8 +18,8 @@ M.lsp_ensure_installed = { -- https://github.com/williamboman/mason-lspconfig.nv
     'angularls',
     'als',
     'arduino_language_server',
-    'asm_lsp',
     'azure_pipelines_ls',
+    'asm_lsp',
     'bashls',
     -- 'pkgbuild_language_server',
     'clangd',
@@ -74,14 +74,18 @@ M.lsp_ensure_installed = { -- https://github.com/williamboman/mason-lspconfig.nv
 }
 
 M.none_ls_ensure_installed = {
-    'eslint',
-    'shellcheck',
     'actionlint',
     'checkstyle',
+    'black',
+    'cbfmt',
     'cmakelang',
     'cppcheck',
+
     'gdtoolkit',
-    'ruff',
+    -- 'isort',
+    'markdownlint',
+    'prettierd',
+    'shellharden',
 }
 
 M.dashboard_header = {

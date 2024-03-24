@@ -185,6 +185,7 @@ signature hint as you type.
 - https://github.com/code-biscuits/nvim-biscuits
 - https://github.com/deathbeam/lspecho.nvim
 - https://github.com/Zeioth/compiler.nvim
+- Eslint
 
 ### AI
 

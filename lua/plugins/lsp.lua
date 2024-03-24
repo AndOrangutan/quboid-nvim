@@ -57,17 +57,15 @@ return {
                         },
                     }
                 end,
-                ["jdtls"] = function ()
-                    -- print(require('java').setup())
-                    print("test shit")
+                ['jdtls'] = function()
                     require('lspconfig').jdtls.setup({
                         settings = {
                             java = {
                                 configuration = {
                                     runtimes = {
                                         {
-                                            name = "JavaSE-21",
-                                            path = "/opt/jdk-21",
+                                            name = 'JavaSE-21',
+                                            path = '/opt/jdk-21',
                                             default = true,
                                         }
                                     }
@@ -170,8 +168,6 @@ return {
                     null_ls.builtins.code_actions.gitrebase,
                     null_ls.builtins.code_actions.gitsigns,
                     -- Installed
-                    null_ls.builtins.code_actions.eslint,
-                    null_ls.builtins.code_actions.shellcheck,
                     null_ls.builtins.code_actions.ts_node_action,
 
                     ----------------
@@ -192,26 +188,49 @@ return {
                     null_ls.builtins.diagnostics.cmake_lint,
                     null_ls.builtins.diagnostics.cppcheck,
                     null_ls.builtins.diagnostics.gdlint,
-                    null_ls.builtins.diagnostics.eslint,
-                    null_ls.builtins.diagnostics.php,
-                    null_ls.builtins.diagnostics.ruff,
-                    null_ls.builtins.diagnostics.shellcheck,
+                    null_ls.builtins.formatting.markdownlint,
 
                     ----------------
                     -- Formatting --
                     ----------------
-                    null_ls.builtins.formatting.stylua,
+                    null_ls.builtins.formatting.black,
                     null_ls.builtins.formatting.cbfmt,
                     null_ls.builtins.formatting.clang_format.with({
                         filetypes = {
-                            'c', 'cpp', 'cs', 'cuda', 'proto'
+                            'c',
+                            'cpp',
+                            'cs',
+                            'cuda',
+                            'proto',
+                            -- 'java',
                         },
                     }),
                     null_ls.builtins.formatting.cmake_format,
                     null_ls.builtins.formatting.gdformat,
-                    null_ls.builtins.formatting.jq,
-                    null_ls.builtins.formatting.prettierd,
-                    null_ls.builtins.formatting.ruff,
+                    -- null_ls.builtins.formatting.isort,
+                    null_ls.builtins.formatting.markdownlint,
+                    null_ls.builtins.formatting.prettierd.with({
+                        filetypes = {
+                            'javascript',
+                            'javascriptreact',
+                            'typescript',
+                            'typescriptreact',
+                            'vue',
+                            'css',
+                            'scss',
+                            'less',
+                            'html',
+                            'json',
+                            'jsonc',
+                            'yaml',
+                            -- 'markdown',
+                            -- 'markdown.mdx',
+                            'graphql',
+                            'handlebars'
+                        }
+                    }),
+                    null_ls.builtins.formatting.shellharden,
+                    null_ls.builtins.formatting.stylua,
 
                     -----------
                     -- Hover --
@@ -249,9 +268,9 @@ return {
         },
         event = 'VeryLazy',
     },
-        config = function(_, opts)
-            require('lsp_signature').setup(opts)
-        end,
+    config = function(_, opts)
+        require('lsp_signature').setup(opts)
+    end,
     {
         'RRethy/vim-illuminate',
         event = 'BufRead',
