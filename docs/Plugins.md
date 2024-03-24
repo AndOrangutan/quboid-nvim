@@ -83,10 +83,10 @@
 #### java
 
 - [nvim-java/nvim-java](https://github.com/nvim-java/nvim-java) - Painless Java in Neovim.
-    - [nvim-java/lua-async-await](https://github.com/nvim-java/lua-async-await) - Synchronous like asynchronous with promise like error handling.
-    - [nvim-java/nvim-java-core](https://github.com/nvim-java/nvim-java-core) - Provides APIs to interact with java projects in Neovim.
-    - [nvim-java/nvim-java-test](https://github.com/nvim-java/nvim-java-test) - Provides APIs related to testing Java.
-    - [nvim-java/nvim-java-dap](https://github.com/nvim-java/nvim-java-dap) - Provides APIs related to debugging Java.
+  - [nvim-java/lua-async-await](https://github.com/nvim-java/lua-async-await) - Synchronous like asynchronous with promise like error handling.
+  - [nvim-java/nvim-java-core](https://github.com/nvim-java/nvim-java-core) - Provides APIs to interact with java projects in Neovim.
+  - [nvim-java/nvim-java-test](https://github.com/nvim-java/nvim-java-test) - Provides APIs related to testing Java.
+  - [nvim-java/nvim-java-dap](https://github.com/nvim-java/nvim-java-dap) - Provides APIs related to debugging Java.
 
 #### Lua
 
@@ -102,6 +102,10 @@
 - [AckslD/nvim-FeMaco.lua](https://github.com/AckslD/nvim-FeMaco.lua) - Catalyze your Fenced Markdown Code-block editing!
 - [toppair/peek.nvim](https://github.com/toppair/peek.nvim) - Markdown preview plugin for Neovim.
 - [postfen/clipboard-image.nvim](https://github.com/postfen/clipboard-image.nvim) - Neovim Lua plugin to paste image from clipboard.
+
+#### Typescript
+
+- [dmmulroy/ts-error-translator.nvim](https://github.com/dmmulroy/ts-error-translator.nvim) - A Neovim port of Matt Pocock's ts-error-translator for VSCode for turning messy and confusing TypeScript errors into plain English.
 
 ### Folding
 
@@ -129,7 +133,7 @@
 - [nvimtools/none-ls.nvim](https://github.com/nvimtools/none-ls.nvim) - null-ls.nvim reloaded / Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
 - [jay-babu/mason-null-ls.nvim](https://github.com/jay-babu/mason-null-ls.nvim) - mason-null-ls bridges mason.nvim with the null-ls plugin - making it easier to use both plugins together.
 
-- [ray-x/lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) - LSP 
+- [ray-x/lsp_signature.nvim](https://github.com/ray-x/lsp_signature.nvim) - LSP
 signature hint as you type.
 - [RRethy/vim-illuminate](https://github.com/RRethy/vim-illuminate) - (Neo)Vim plugin for automatically highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching
 - [DNLHC/glance.nvim](https://github.com/DNLHC/glance.nvim) - A pretty window for previewing, navigating and editing your LSP locations.
@@ -181,10 +185,10 @@ signature hint as you type.
 
 ## Todo
 
-- https://github.com/Zeioth/compiler.nvim?tab=readme-ov-file
-- https://github.com/code-biscuits/nvim-biscuits
-- https://github.com/deathbeam/lspecho.nvim
-- https://github.com/Zeioth/compiler.nvim
+- <https://github.com/Zeioth/compiler.nvim?tab=readme-ov-file>
+- <https://github.com/code-biscuits/nvim-biscuits>
+- <https://github.com/deathbeam/lspecho.nvim>
+- <https://github.com/Zeioth/compiler.nvim>
 - Eslint
 
 ### AI
