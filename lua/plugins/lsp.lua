@@ -1,78 +1,44 @@
 return {
     {
-        'williamboman/mason-lspconfig.nvim',
-        dependencies = {
-            'williamboman/mason.nvim'
-        },
-        event = 'VeryLazy',
-        opts = {
-            automatic_installation = true,
-            ensure_installed = require('quboid').lsp_ensure_installed,
-        },
-    },
-    {
         'neovim/nvim-lspconfig',
         depdencies = {
             'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
         },
-        event = 'VeryLazy',
-        config = function()
-            -- lsp utils and settings
-            local lsp = require('quboid.lsp')
-
-            local lspconfig = require('lspconfig')
-            local masonlsp = require('mason-lspconfig')
-
-            masonlsp.setup_handlers({
-
+        -- event = 'VeryLazy',
+        keys = {
+            {
+                '<leader>e',
+                '<cmd>lua vim.diagnostic.open_float({}, {focus=false})<CR>',
+                desc = '[e]xamine Diagnostics (2x to enter)',
+            },
+            { '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', desc = 'Prev [d]iagnostic' },
+            { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', desc = 'Next [d]iagnostic' },
+            {
+                '<leader>q',
+                '<cmd> lua vim.diagnostic.setloclist()<cr',
+                desc = 'Add [d]iagnostics to Loclist'
+            }
+        },
+    },
+    {
+        'williamboman/mason-lspconfig.nvim',
+        dependencies = {
+            'williamboman/mason.nvim',
+        },
+        -- event = 'VeryLazy',
+        opts = {
+            automatic_installation = false,
+            ensure_installed = require('quboid').lsp_ensure_installed,
+            handlers = {
                 function(server_name)
-                    require('lspconfig')[server_name].setup(lsp.gen_config())
+                    require('lspconfig')[server_name].setup(require('quboid.lsp').gen_config())
                 end,
-
                 -- Disable
                 ['zk'] = function() end,
                 ['tsserver'] = function() end,
                 ['eslint'] = function() end,
 
-                -- -- Next, you canprovide targeted overrides for specific servers.
-                -- ['gopls'] = function()
-                --     local install_root_dir = vim.fn.stdpath('data') .. '/lsp_servers'
-                --     local config = require('lsp').gen_config()
-                --
-                --     local ext_config = {
-                --         gopls_cmd = { install_root_dir .. '/go/gopls' },
-                --         fillstruct = 'gopls',
-                --         dap_debug = true,
-                --         dap_debug_gui = true,
-                --         filetypes = quboid.ft_go,
-                --         settings = {
-                --             gopls = {
-                --                 ['build.templateExtensions'] = { 'gohtml', 'html', 'gotmpl', 'tmpl' },
-                --             }
-                --         }
-                --     }
-                --     config = vim.tbl_extend('keep', ext_config or {}, config)
-                --     require('lspconfig').gopls.setup(config)
-                -- end,
-                -- ['tailwindcss'] = function()
-                --     local config = require('lsp').gen_config()
-                --     config.root_dir = function(fname)
-                --         local root_pattern = require('lspconfig').util.root_pattern(
-                --             'tailwind.config.cjs',
-                --             'tailwind.config.js',
-                --             'postcss.config.js'
-                --         )
-                --         return root_pattern(fname)
-                --     end
-                --     lspconfig.tailwindcss.setup(config)
-                -- end,
-                ['jdtls'] = function()
-                    require('java').setup()
-
-                    lspconfig.jdtls.setup({
-                        capabilities = require('quboid.lsp').gen_capabilities(),
-                    })
-                end,
                 ['clangd'] = function()
                     require('lspconfig').clangd.setup {
                         capabilities = require('quboid.lsp').gen_capabilities(),
@@ -91,8 +57,15 @@ return {
                         },
                     }
                 end,
+                ["jdtls"] = function ()
+                    -- print(require('java').setup())
+                    print("test shit")
+                    require('lspconfig').jdtls.setup({
+                        capabilities = require('quboid.lsp').gen_capabilities(),
+                    })
+                end,
                 ['lua_ls'] = function()
-                    lspconfig.lua_ls.setup({
+                    require('lspconfig').lua_ls.setup({
                         capabilities = require('quboid.lsp').gen_capabilities(),
                         settings = {
                             Lua = {
@@ -120,106 +93,41 @@ return {
                             },
                         },
                     })
+                    -- -- Next, you canprovide targeted overrides for specific servers.
+                    -- ['gopls'] = function()
+                    --     local install_root_dir = vim.fn.stdpath('data') .. '/lsp_servers'
+                    --     local config = require('lsp').gen_config()
+                    --
+                    --     local ext_config = {
+                    --         gopls_cmd = { install_root_dir .. '/go/gopls' },
+                    --         fillstruct = 'gopls',
+                    --         dap_debug = true,
+                    --         dap_debug_gui = true,
+                    --         filetypes = quboid.ft_go,
+                    --         settings = {
+                    --             gopls = {
+                    --                 ['build.templateExtensions'] = { 'gohtml', 'html', 'gotmpl', 'tmpl' },
+                    --             }
+                    --         }
+                    --     }
+                    --     config = vim.tbl_extend('keep', ext_config or {}, config)
+                    --     require('lspconfig').gopls.setup(config)
+                    -- end,
+                    -- ['tailwindcss'] = function()
+                    --     local config = require('lsp').gen_config()
+                    --     config.root_dir = function(fname)
+                    --         local root_pattern = require('lspconfig').util.root_pattern(
+                    --             'tailwind.config.cjs',
+                    --             'tailwind.config.js',
+                    --             'postcss.config.js'
+                    --         )
+                    --         return root_pattern(fname)
+                    --     end
+                    --     lspconfig.tailwindcss.setup(config)
+                    -- end,
                 end,
-            })
-        end,
-        keys = {
-            {
-                '<leader>e',
-                '<cmd>lua vim.diagnostic.open_float({}, {focus=false})<CR>',
-                desc = '[e]xamine Diagnostics (2x to enter)',
-            },
-            { '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', desc = 'Prev [d]iagnostic' },
-            { ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', desc = 'Next [d]iagnostic' },
-            {
-                '<leader>q',
-                '<cmd> lua vim.diagnostic.setloclist()<cr',
-                desc = 'Add [d]iagnostics to Loclist'
             }
         },
-    },
-    {
-        'ray-x/lsp_signature.nvim',
-        opts = {
-            hint_prefix = '',
-            hi_parameter = 'String',
-            floating_window_above_cur_line = true,
-            handler_opts = {
-                border = require('quboid').border,
-            },
-        },
-        event = 'VeryLazy',
-        config = function(_, opts)
-            require('lsp_signature').setup(opts)
-        end,
-    },
-    {
-        'RRethy/vim-illuminate',
-        event = 'BufRead',
-        config = function()
-            require('illuminate').configure()
-        end,
-    },
-    {
-        'dnlhc/glance.nvim',
-        config = function()
-            local glance = require('glance')
-            local actions = glance.actions
-
-            require('glance').setup({
-                mappings = {
-                    list = {
-                        ['j'] = actions.next,     -- Bring the cursor to the next item in the list
-                        ['k'] = actions.previous, -- Bring the cursor to the previous item in the list
-                        ['<Down>'] = actions.next,
-                        ['<Up>'] = actions.previous,
-                        ['<Tab>'] = actions.next_location,       -- Bring the cursor to the next location skipping groups in the list
-                        ['<S-Tab>'] = actions.previous_location, -- Bring the cursor to the previous location skipping groups in the list
-                        ['<C-u>'] = actions.preview_scroll_win(5),
-                        ['<C-d>'] = actions.preview_scroll_win(-5),
-                        ['<C-v>'] = actions.jump_vsplit,
-                        ['<C-s>'] = actions.jump_split,
-                        ['t'] = actions.jump_tab,
-                        ['<CR>'] = actions.jump,
-                        ['o'] = actions.jump,
-                        ['l'] = actions.open_fold,
-                        ['h'] = actions.close_fold,
-                        ['<leader>l'] = actions.enter_win('preview'), -- Focus preview window
-                        ['q'] = actions.close,
-                        ['Q'] = actions.close,
-                        ['<Esc>'] = actions.close,
-                        ['<C-q>'] = actions.quickfix,
-                        -- ['<Esc>'] = false -- disable a mapping
-                    },
-                    preview = {
-                        ['Q'] = actions.close,
-                        ['<Tab>'] = actions.next_location,
-                        ['<S-Tab>'] = actions.previous_location,
-                        ['<leader>l'] = actions.enter_win('list'), -- Focus list window
-                    },
-                },
-                hooks = {
-                    before_open = function(results, open, jump, method)
-                        local uri = vim.uri_from_bufnr(0)
-                        if #results == 1 then
-                            local target_uri = results[1].uri or results[1].targetUri
-
-                            if target_uri == uri then
-                                jump(results[1])
-                            else
-                                open(results)
-                            end
-                        else
-                            open(results)
-                        end
-                    end,
-                },
-            })
-        end,
-    },
-    {
-        'hinell/lsp-timeout.nvim',
-        dependencies = { 'neovim/nvim-lspconfig' }
     },
 
     {
@@ -230,7 +138,6 @@ return {
                 config = function()
                     require('mason-null-ls').setup({
                         ensure_installed = require('quboid').none_ls_ensure_installed,
-                        automatic_installation = true,
                     })
                 end,
             },
@@ -313,6 +220,86 @@ return {
                         })
                     end
                 end,
+            })
+        end,
+    },
+
+    {
+        'ray-x/lsp_signature.nvim',
+        opts = {
+            hint_prefix = '',
+            hi_parameter = 'String',
+            floating_window_above_cur_line = true,
+            handler_opts = {
+                border = require('quboid').border,
+            },
+        },
+        event = 'VeryLazy',
+    },
+        config = function(_, opts)
+            require('lsp_signature').setup(opts)
+        end,
+    {
+        'RRethy/vim-illuminate',
+        event = 'BufRead',
+        config = function()
+            require('illuminate').configure()
+        end,
+    },
+    {
+        'dnlhc/glance.nvim',
+        config = function()
+            local glance = require('glance')
+            local actions = glance.actions
+
+            require('glance').setup({
+                mappings = {
+                    list = {
+                        ['j'] = actions.next,     -- Bring the cursor to the next item in the list
+                        ['k'] = actions.previous, -- Bring the cursor to the previous item in the list
+                        ['<Down>'] = actions.next,
+                        ['<Up>'] = actions.previous,
+                        ['<Tab>'] = actions.next_location,       -- Bring the cursor to the next location skipping groups in the list
+                        ['<S-Tab>'] = actions.previous_location, -- Bring the cursor to the previous location skipping groups in the list
+                        ['<C-u>'] = actions.preview_scroll_win(5),
+                        ['<C-d>'] = actions.preview_scroll_win(-5),
+                        ['<C-v>'] = actions.jump_vsplit,
+                        ['<C-s>'] = actions.jump_split,
+                        ['t'] = actions.jump_tab,
+                        ['<CR>'] = actions.jump,
+                        ['o'] = actions.jump,
+                        ['l'] = actions.open_fold,
+                        ['h'] = actions.close_fold,
+                        ['<leader>l'] = actions.enter_win('preview'), -- Focus preview window
+                        ['q'] = actions.close,
+                        ['Q'] = actions.close,
+                        ['<Esc>'] = actions.close,
+                        ['<C-q>'] = actions.quickfix,
+                        -- ['<Esc>'] = false -- disable a mapping
+                    },
+                    preview = {
+                        ['Q'] = actions.close,
+                        ['<Tab>'] = actions.next_location,
+                        ['<S-Tab>'] = actions.previous_location,
+                        ['<leader>l'] = actions.enter_win('list'), -- Focus list window
+                    },
+                },
+                hooks = {
+                    before_open = function(results, open, jump, method)
+                        local uri = vim.uri_from_bufnr(0)
+                        if #results == 1 then
+                            local target_uri = results[1].uri or results[1].targetUri
+
+                            if target_uri == uri then
+                                jump(results[1])
+                            else
+                                open(results)
+                            end
+                        else
+                            open(results)
+                        end
+                    end,
+                },
             })
         end,
     },
