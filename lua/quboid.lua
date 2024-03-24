@@ -42,7 +42,6 @@ M.lsp_ensure_installed = { -- https://github.com/williamboman/mason-lspconfig.nv
     'html',
     'emmet_language_server',
     'jsonls',
-    'jdtls',
     'tsserver',
     'kotlin_language_server',
     'ltex',

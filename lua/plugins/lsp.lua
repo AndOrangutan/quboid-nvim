@@ -61,6 +61,19 @@ return {
                     -- print(require('java').setup())
                     print("test shit")
                     require('lspconfig').jdtls.setup({
+                        settings = {
+                            java = {
+                                configuration = {
+                                    runtimes = {
+                                        {
+                                            name = "JavaSE-21",
+                                            path = "/opt/jdk-21",
+                                            default = true,
+                                        }
+                                    }
+                                }
+                            }
+                        },
                         capabilities = require('quboid.lsp').gen_capabilities(),
                     })
                 end,

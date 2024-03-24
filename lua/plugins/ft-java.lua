@@ -1,6 +1,5 @@
 return {
-    {
-        'nvim-java/nvim-java',
+    { 'nvim-java/nvim-java',
         dependencies = {
             'nvim-java/lua-async-await',
             'nvim-java/nvim-java-core',
@@ -10,6 +9,8 @@ return {
             'neovim/nvim-lspconfig',
             'mfussenegger/nvim-dap',
             'williamboman/mason.nvim',
+            'williamboman/mason-lspconfig.nvim',
         },
-    },
+        config = true,
+    }
 }
